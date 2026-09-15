@@ -1,7 +1,10 @@
 ///|
 test "fold comments and preserve exactly one continuation space with source span" {
   let ds : Array[Diagnostic] = []
-  let lines = logical_lines(@utf8.encode("# comment\n folded comment\ndescription: one\n  two\r\n"), ds)
+  let lines = logical_lines(
+    @utf8.encode("# comment\n folded comment\ndescription: one\n  two\r\n"),
+    ds,
+  )
   assert_eq(ds.length(), 0)
   assert_eq(lines[0].text, "description: one two")
   assert_eq(lines[0].span.line, 3)
@@ -11,11 +14,11 @@ test "fold comments and preserve exactly one continuation space with source span
 ///|
 test "inline values preserve binary bytes and trailing spaces" {
   let ds : Array[Diagnostic] = []
-  let binary = parse_field({ text: "photo:: /wBB", span: single_line(1) }, ds).unwrap()
+  let binary = parse_field({ text: "photo:: /wBB", span: single_line(1), }, ds).unwrap()
   assert_true(binary.value == Inline(Bytes::from_array([255, 0, 65])))
-  let text = parse_field({ text: "cn: Alice ", span: single_line(2) }, ds).unwrap()
+  let text = parse_field({ text: "cn: Alice ", span: single_line(2), }, ds).unwrap()
   assert_true(text.value == Inline(@utf8.encode("Alice ")))
-  let empty = parse_field({ text: "description:", span: single_line(3) }, ds).unwrap()
+  let empty = parse_field({ text: "description:", span: single_line(3), }, ds).unwrap()
   assert_true(empty.value == Inline(b""))
   assert_eq(ds.length(), 0)
 }
@@ -24,7 +27,7 @@ test "inline values preserve binary bytes and trailing spaces" {
 test "reject malformed base64 instead of accepting reference parser leniency" {
   for value in ["QQ!!==", "Q", "A===", "QQ=", "QQ==AA"] {
     let ds : Array[Diagnostic] = []
-    ignore(parse_field({ text: "cn:: " + value, span: single_line(1) }, ds))
+    ignore(parse_field({ text: "cn:: " + value, span: single_line(1), }, ds))
     assert_true(ds.any(d => d.code == "invalid-base64"))
   }
 }
@@ -37,7 +40,10 @@ test "bad physical input has clear errors and external values never resolve" {
     assert_true(ds.any(d => d.severity == "error"))
   }
   let ds : Array[Diagnostic] = []
-  let field = parse_field({ text: "photo:< file:///private/image", span: single_line(1) }, ds).unwrap()
+  let field = parse_field(
+    { text: "photo:< file:///private/image", span: single_line(1), },
+    ds,
+  ).unwrap()
   assert_true(field.value == External("file:///private/image"))
   assert_true(ds.any(d => d.severity == "unsupported"))
 }

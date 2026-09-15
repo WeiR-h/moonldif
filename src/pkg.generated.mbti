@@ -1,0 +1,102 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "WeiR-h/moonldif"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn document_json(Document) -> Json
+
+pub fn parse(Bytes, options? : Options) -> Report
+
+pub fn parse_text(String, options? : Options) -> Report
+
+pub fn same_attribute_description(String, String) -> Bool
+
+pub fn version() -> String
+
+pub fn write(Document) -> String raise WriteError
+
+// Errors
+pub suberror WriteError {
+  InvalidDocument(String)
+} derive(@debug.Debug)
+
+// Types and methods
+pub(all) struct Attribute {
+  name : String
+  value : Value
+  span : Span
+} derive(Eq)
+
+pub(all) enum Body {
+  Entry(Array[Attribute])
+  Add(Array[Attribute])
+  Delete
+  Modify(Array[Modification])
+  Rename(String, Bool, String?)
+} derive(Eq)
+
+pub(all) struct Control {
+  oid : String
+  critical : Bool
+  value : Value?
+  span : Span
+} derive(Eq)
+
+pub(all) struct Diagnostic {
+  code : String
+  severity : String
+  span : Span
+  reason : String
+} derive(Eq, ToJson)
+
+pub(all) struct Document {
+  mode : String
+  records : Array[Record]
+} derive(Eq)
+
+pub(all) struct Modification {
+  operation : String
+  attribute : String
+  values : Array[Attribute]
+  span : Span
+} derive(Eq)
+
+pub(all) struct Options {
+  allow_missing_version : Bool
+  deny_delete : Bool
+} derive(Eq)
+pub fn Options::default() -> Self
+
+pub(all) struct Record {
+  dn : String
+  controls : Array[Control]
+  body : Body
+  span : Span
+} derive(Eq)
+
+pub(all) struct Report {
+  document : Document
+  diagnostics : Array[Diagnostic]
+}
+pub fn Report::exit_code(Self) -> Int
+pub fn Report::format(Self) -> String raise WriteError
+pub fn Report::status(Self) -> String
+pub fn Report::to_json(Self, include_records? : Bool) -> Json
+pub fn Report::to_text(Self, include_records? : Bool) -> String
+
+pub(all) struct Span {
+  line : Int
+  end_line : Int
+} derive(Eq, ToJson)
+
+pub(all) enum Value {
+  Inline(Bytes)
+  External(String)
+} derive(Eq)
+
+// Type aliases
+
+// Traits

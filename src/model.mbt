@@ -72,7 +72,7 @@ pub(all) struct Options {
 
 ///|
 pub fn Options::default() -> Options {
-  { allow_missing_version: false, deny_delete: false }
+  { allow_missing_version: false, deny_delete: false, }
 }
 
 ///|
@@ -94,17 +94,32 @@ pub fn Report::status(self : Report) -> String {
 
 ///|
 pub fn Report::exit_code(self : Report) -> Int {
-  if self.status() != "complete" { 2 }
-  else if self.diagnostics.any(d => d.severity == "policy") { 1 }
-  else { 0 }
+  if self.status() != "complete" {
+    2
+  } else if self.diagnostics.any(d => d.severity == "policy") {
+    1
+  } else {
+    0
+  }
 }
 
 ///|
-fn diagnose(ds : Array[Diagnostic], code : String, severity : String, span : Span, reason : String) -> Unit {
+fn diagnose(
+  ds : Array[Diagnostic],
+  code : String,
+  severity : String,
+  span : Span,
+  reason : String,
+) -> Unit {
   if ds.length() < 100 {
-    ds.push({ code, severity, span, reason })
+    ds.push({ code, severity, span, reason, })
   } else if ds.length() == 100 {
-    ds.push({ code: "diagnostic-limit", severity: "error", span, reason: "Stopped collecting diagnostics at the configured limit." })
+    ds.push({
+      code: "diagnostic-limit",
+      severity: "error",
+      span,
+      reason: "Stopped collecting diagnostics at the configured limit.",
+    })
   }
 }
 
@@ -115,7 +130,11 @@ priv struct Line {
 }
 
 ///|
-fn single_line(line : Int) -> Span { { line, end_line: line } }
+fn single_line(line : Int) -> Span {
+  { line, end_line: line, }
+}
 
 ///|
-pub fn version() -> String { "0.1.0-dev.1" }
+pub fn version() -> String {
+  "0.1.0-dev.1"
+}
