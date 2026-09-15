@@ -2,7 +2,7 @@
 
 MoonBit 原生 LDIF 读写与离线结构预检库。
 
-状态：`0.1.0-dev.4` 本地开发版。已完成核心、互操作、变更审阅和本地浏览器工作台，尚未公开发布或提交赛事。开发与验证结果记录在 [交付状态](docs/STATUS.md)。
+状态：`0.1.0-dev.5`，正在完成 GitHub 公开交付验证。mooncakes 尚未发布，赛事尚未提交。开发与验证结果记录在 [交付状态](docs/STATUS.md)。
 
 范围：LDIF 内容与基本变更记录、字节属性、源位置、确定性写回和结构报告。目录 Schema、DN 语义相等、权限及真实服务器执行结果不在检查范围内。
 
@@ -73,7 +73,7 @@ npm test
 npm run verify
 ```
 
-核心与 CLI 无需安装 npm 依赖；浏览器工作台的依赖由 `web/package-lock.json` 固定。`verify` 包含格式、类型、JS / Wasm GC 两个目标的 31 个核心测试、构建、9 组 CLI 集成测试和三个场景；实际输出与时间记录在 `verification/local/`。这是本地结果，GitHub Actions 的 Windows/Ubuntu 配置已包含工作台构建，但还未在远端运行。
+核心与 CLI 无需安装 npm 依赖；浏览器工作台的依赖由 `web/package-lock.json` 固定。`verify` 包含格式、类型、JS / Wasm GC 两个目标的 32 个核心测试、构建、9 组 CLI 集成测试和三个场景；实际输出与时间记录在 `verification/local/`。这是本地结果，GitHub Actions 的 Windows/Ubuntu 配置已包含工作台构建，但还未在远端运行。
 
 本机使用忽略提交的 `.local-toolchain.json` 指向已有 MoonBit 工具链；它不是项目源代码依赖。换机器时安装工具链即可，不需要 MoonAPI Check 工程。
 
