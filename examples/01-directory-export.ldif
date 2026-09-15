@@ -1,0 +1,12 @@
+version: 1
+# Synthetic training directory. No production identities.
+dn: uid=demo,ou=People,dc=example,dc=org
+objectClass: inetOrgPerson
+uid: demo
+cn:: 56S65L6L55So5oi3
+sn:: 56S65L6L
+mail: demo@example.org
+description: First line
+  continued with a space
+jpegPhoto:: /wBB
+

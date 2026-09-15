@@ -1,0 +1,13 @@
+version: 1
+# Demonstrates a plan only. MoonLDIF never connects to LDAP.
+dn: uid=demo,ou=People,dc=example,dc=org
+changetype: modify
+replace: mail
+mail: new-address@example.org
+-
+delete: description
+-
+
+dn: uid=retired,ou=People,dc=example,dc=org
+changetype: delete
+

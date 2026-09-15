@@ -1,0 +1,14 @@
+version: 1
+dn: uid=demo,ou=People,dc=example,dc=org
+changetype: add
+objectClass: inetOrgPerson
+uid: demo
+cn: Demo User
+sn: User
+
+dn: uid=demo,ou=People,dc=example,dc=org
+changetype: modrdn
+newrdn: uid=demo-renamed
+deleteoldrdn: 1
+newsuperior: ou=Archive,dc=example,dc=org
+

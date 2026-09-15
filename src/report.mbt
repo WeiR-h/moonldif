@@ -25,7 +25,7 @@ fn record_json(r : Record) -> Json {
         "operation": v.operation.to_json(), "attribute": v.attribute.to_json(), "values": v.values.map(attr_json).to_json(),
       }).to_json(),
     }
-    Rename(rdn, old, superior) => { "type": "moddn", "newrdn": rdn.to_json(), "deleteoldrdn": old.to_json(), "newsuperior": superior.to_json() }
+    Rename(rdn, old, superior) => { "type": "moddn", "newrdn": rdn.to_json(), "deleteoldrdn": old.to_json(), "newsuperior": match superior { Some(s) => s.to_json(); None => Json::null() } }
   }
   let controls = r.controls.map(c => {
     "oid": c.oid.to_json(), "critical": c.critical.to_json(), "value": match c.value { Some(v) => value_json(v); None => Json::null() },
