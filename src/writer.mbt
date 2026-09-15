@@ -68,6 +68,61 @@ fn write_text(
 }
 
 ///|
+fn same_attributes(a : Array[Attribute], b : Array[Attribute]) -> Bool {
+  a.length() == b.length() &&
+  a
+  .iter()
+  .zip(b.iter())
+  .all(pair => pair.0.name == pair.1.name && pair.0.value == pair.1.value)
+}
+
+///|
+// Compare the contract directly, omitting only physical spans. Serializing two
+// complete JSON trees here duplicates binary/text values and inflates memory.
+fn same_document(a : Document, b : Document) -> Bool {
+  if a.mode != b.mode || a.records.length() != b.records.length() {
+    return false
+  }
+  for i in 0..<a.records.length() {
+    let x = a.records[i]
+    let y = b.records[i]
+    if x.dn != y.dn || x.controls.length() != y.controls.length() {
+      return false
+    }
+    for j in 0..<x.controls.length() {
+      let c = x.controls[j]
+      let d = y.controls[j]
+      if c.oid != d.oid || c.critical != d.critical || c.value != d.value {
+        return false
+      }
+    }
+    let body_equal = match (x.body, y.body) {
+      (Entry(p), Entry(q)) | (Add(p), Add(q)) => same_attributes(p, q)
+      (Delete, Delete) => true
+      (Rename(p, flag, parent), Rename(q, other_flag, other_parent)) =>
+        p == q && flag == other_flag && parent == other_parent
+      (Modify(p), Modify(q)) =>
+        p.length() == q.length() &&
+        p
+        .iter()
+        .zip(q.iter())
+        .all(pair => {
+          let m = pair.0
+          let n = pair.1
+          m.operation == n.operation &&
+          m.attribute == n.attribute &&
+          same_attributes(m.values, n.values)
+        })
+      _ => false
+    }
+    if !body_equal {
+      return false
+    }
+  }
+  true
+}
+
+///|
 /// Deterministic semantic serialization. Comments, casing of changetype
 /// aliases, original folding and source locations are not preserved.
 /// Refuses models that do not round-trip through this supported profile.
@@ -85,6 +140,9 @@ pub fn write(document : Document) -> String raise WriteError {
         (if c.critical { " true" } else { " false" })
       let line = match c.value {
         None => prefix
+        // Empty Base64 is equivalent to an empty plain value, and avoids an
+        // out-of-bounds read in UnboundID 7.0.5's control parser for "false:".
+        Some(Inline(b)) if b.is_empty() => prefix + "::"
         Some(v) => prefix + value_suffix(v)
       }
       folded(out, line)
@@ -145,9 +203,7 @@ pub fn write(document : Document) -> String raise WriteError {
   }
   let result = out.to_string()
   let verified = parse_text(result)
-  if verified.exit_code() != 0 ||
-    verified.document.mode != document.mode ||
-    document_json(verified.document) != document_json(document) {
+  if verified.exit_code() != 0 || !same_document(verified.document, document) {
     raise InvalidDocument(
       "Serialized model does not round-trip within the supported profile.",
     )

@@ -101,3 +101,21 @@ test "root DN, encoded rename and unordered attribute options" {
     rename.document.records[0].body == Rename("cn=你好", false, None),
   )
 }
+
+///|
+test "whole control encoding is explicitly incomplete and never silently dropped" {
+  let r = check_text(
+    "version: 1\ndn: cn=A\ncontrol:: MS4yLjQgZmFsc2U6IA==\nchangetype: delete\n",
+  )
+  assert_eq(r.status(), "incomplete")
+  assert_eq(r.exit_code(), 2)
+  assert_true(r.diagnostics.any(d => d.code == "unsupported-control-encoding"))
+  assert_true(
+    try {
+      ignore(r.format())
+      false
+    } catch {
+      _ => true
+    },
+  )
+}

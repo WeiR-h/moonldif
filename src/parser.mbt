@@ -24,6 +24,16 @@ fn line_name(line : Line) -> String {
 fn parse_control(line : Line, ds : Array[Diagnostic]) -> Control? {
   // Controls have a distinct grammar: OID [criticality] [value-spec].
   let b = @utf8.encode(line.text[:])
+  if b.length() > 8 && b[8] == 58 {
+    diagnose(
+      ds,
+      "unsupported-control-encoding",
+      "unsupported",
+      line.span,
+      "Whole-control Base64 encoding is a tool extension outside this profile. Encode only the control value after the OID and criticality.",
+    )
+    return None
+  }
   let mut i = 8 // control:
   while i < b.length() && b[i] == 32 {
     i = i + 1

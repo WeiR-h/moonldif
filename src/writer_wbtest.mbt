@@ -22,6 +22,7 @@ test "change serialization keeps order and control optional value" {
     "version: 1\ndn: a\ncontrol: 1.2.3 true\ncontrol: 1.2.4:\nchangetype: modify\ndelete: cn\ncn: A\n-\nadd: cn\ncn: B\n-\n\ndn: b\nchangetype: modrdn\nnewrdn: c\ndeleteoldrdn: 1\n",
   )
   let again = parse_text(r.format())
+  assert_true(r.format().contains("control: 1.2.4 false::\n"))
   assert_true(document_json(r.document) == document_json(again.document))
 }
 
