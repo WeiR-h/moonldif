@@ -10,6 +10,9 @@
     "test:moon": "node scripts/moon.mjs test --target js",
     "build": "node scripts/build.mjs",
     "test:cli": "node --test tests/*.test.mjs",
-    "test": "npm run test:moon && npm run build && npm run test:cli"
+    "test": "npm run test:moon && npm run build && npm run test:cli",
+    "verify": "node scripts/verify.mjs",
+    "demo": "node scripts/demo.mjs",
+    "test:moonldap": "node scripts/test-moonldap.mjs"
   }
 }
