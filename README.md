@@ -2,7 +2,7 @@
 
 MoonBit 原生 LDIF 读写与离线结构预检库。
 
-状态：`0.1.0-dev.5`，正在完成 GitHub 公开交付验证。mooncakes 尚未发布，赛事尚未提交。开发与验证结果记录在 [交付状态](docs/STATUS.md)。
+状态：`0.1.0-dev.5`，[GitHub 源码已公开](https://github.com/WeiR-h/moonldif)，[Windows / Ubuntu CI 已通过](https://github.com/WeiR-h/moonldif/actions/runs/34963017480)。mooncakes 尚未发布，赛事尚未提交。开发与验证结果记录在 [交付状态](docs/STATUS.md)。
 
 范围：LDIF 内容与基本变更记录、字节属性、源位置、确定性写回和结构报告。目录 Schema、DN 语义相等、权限及真实服务器执行结果不在检查范围内。
 
@@ -37,7 +37,7 @@ npm --prefix web run preview
 
 ## 本机立即试用
 
-在这个项目文件夹打开终端。当前机器已构建好 `dist`，可直接运行：
+首次使用请先按下文“从源码构建与验收”克隆并构建。然后在项目文件夹执行：
 
 ```text
 node scripts/demo.mjs
@@ -68,12 +68,14 @@ node dist/moonldif.js format examples/01-directory-export.ldif --output normaliz
 需要 Node.js 24 和官方 MoonBit 工具链。本轮验证版本为 `moonc v0.10.11+6ff76a5f9`，其他工具链版本暂未验证。新机器按 [MoonBit 官方工具链说明](https://docs.moonbitlang.com/en/latest/toolchain/moon/index.html) 安装，并将 `moon` 加入 PATH，或设置 `MOON_HOME`。
 
 ```text
+git clone https://github.com/WeiR-h/moonldif.git
+cd moonldif
 npm run build
 npm test
 npm run verify
 ```
 
-核心与 CLI 无需安装 npm 依赖；浏览器工作台的依赖由 `web/package-lock.json` 固定。`verify` 包含格式、类型、JS / Wasm GC 两个目标的 32 个核心测试、构建、9 组 CLI 集成测试和三个场景；实际输出与时间记录在 `verification/local/`。这是本地结果，GitHub Actions 的 Windows/Ubuntu 配置已包含工作台构建，但还未在远端运行。
+核心与 CLI 无需安装 npm 依赖；浏览器工作台的依赖由 `web/package-lock.json` 固定。`verify` 包含格式、类型、JS / Wasm GC 两个目标的 32 个核心测试、构建、9 组 CLI 集成测试和三个场景；实际输出与时间记录在 `verification/local/`。[远端双平台 CI](https://github.com/WeiR-h/moonldif/actions/runs/34963017480) 已执行通过，另包含工作台构建、归档公共 API、独立参考和生态适配验证；对应提交和完整证据见 [公开交付记录](docs/PUBLICATION.md)。
 
 本机使用忽略提交的 `.local-toolchain.json` 指向已有 MoonBit 工具链；它不是项目源代码依赖。换机器时安装工具链即可，不需要 MoonAPI Check 工程。
 

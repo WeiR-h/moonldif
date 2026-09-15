@@ -7,7 +7,8 @@ GitHub delivery iteration; mooncakes not published.
 - Include attribute names and supplied-value counts in text review without exposing attribute bytes.
 - Show target DNs directly for each browser attribute operation, making similar operations on different entries distinguishable.
 - Add batch review and CLI regressions; verify source navigation for the second entry on desktop and mobile layouts.
-- Prepare source-only clean-room verification and GitHub publication evidence; preserve historical failures and unsupported profiles.
+- Verify a source-only clean workspace and publish the public GitHub repository with passing Windows/Ubuntu CI; preserve historical failures and unsupported profiles.
+- Update official CI actions to Node 24 releases after observing deprecation warnings in the initial successful run.
 
 ## 0.1.0-dev.4 — 2026-09-15
 
