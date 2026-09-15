@@ -1,0 +1,32 @@
+{
+  "recorded_at": "2026-09-15T09:10:51.2000218Z",
+  "tested_source_commit": "19b9ead60b80a864617faf4994dbd07c76150a72",
+  "platform": "Windows",
+  "node": "v24.13.0",
+  "moon": "0.1.20260827",
+  "moonc": "v0.10.11+6ff76a5f9",
+  "core_tests": {
+    "passed": 19,
+    "failed": 0
+  },
+  "cli_groups": {
+    "passed": 5,
+    "failed": 0
+  },
+  "independent_reference_cases": {
+    "passed": 8,
+    "failed": 0
+  },
+  "moonldap_tests": {
+    "passed": 2,
+    "failed": 0
+  },
+  "scenario_exit_codes": [
+    0,
+    1,
+    0
+  ],
+  "remote_ci": "not_run",
+  "published": false,
+  "server_import": "not_performed"
+}
