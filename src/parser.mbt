@@ -476,7 +476,7 @@ pub fn parse(data : Bytes, options? : Options = Options::default()) -> Report {
       "No supported records were found.",
     )
   }
-  { document: { mode, records, }, diagnostics: ds, }
+  { document: { mode, records, }, diagnostics: ds, names_checked: false, }
 }
 
 ///|

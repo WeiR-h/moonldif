@@ -162,7 +162,7 @@ pub fn analyse(
   let bytes = @base64.decode(encoded[:], ignore_whitespace=false) catch {
     _ => return host_error("Invalid input transport.", format)
   }
-  let r = @ldif.parse(bytes, options={
+  let r = @ldif.check(bytes, options={
     allow_missing_version: compat,
     deny_delete,
   })

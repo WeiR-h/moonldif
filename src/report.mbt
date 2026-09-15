@@ -90,11 +90,13 @@ pub fn Report::to_json(self : Report, include_records? : Bool = false) -> Json {
     "exit_code": self.exit_code().to_json(),
     "mode": self.document.mode.to_json(),
     "record_count": self.document.records.length().to_json(),
-    "scope": "LDIF v1 supported structural profile; not server import approval",
-    "not_checked": [
-      "full DN syntax and equality", "directory schema", "server state and ACL",
-      "control semantics", "external value contents",
-    ],
+    "scope": if self.names_checked {
+      "LDIF v1 supported structure and DN/RDN string syntax; not server import approval"
+    } else {
+      "LDIF v1 supported structural profile; not server import approval"
+    },
+    "names_checked": self.names_checked.to_json(),
+    "not_checked": self.not_checked().to_json(),
     "diagnostics": self.diagnostics.to_json(),
     "document": if include_records {
       document_json(self.document)
@@ -128,8 +130,13 @@ pub fn Report::to_text(
     "\n",
   )
   out.write_string(
-    "Scope: supported LDIF structure only. DN semantics, schema, ACL, server state and control semantics are not checked.\n",
+    if self.names_checked {
+      "Scope: supported LDIF structure and DN/RDN string syntax.\n"
+    } else {
+      "Scope: supported LDIF structure; DN/RDN syntax was not requested.\n"
+    },
   )
+  out.write_string("Not checked: " + self.not_checked().join(", ") + ".\n")
   for d in self.diagnostics {
     out.write_string(
       d.severity +
@@ -149,4 +156,16 @@ pub fn Report::to_text(
     out.write_string("\n")
   }
   out.to_string()
+}
+
+///|
+pub fn Report::not_checked(self : Report) -> Array[String] {
+  let items = [
+    "DN equality and schema matching", "BER-hex assertion semantics", "directory schema",
+    "server state and ACL", "control semantics", "external value contents",
+  ]
+  if !self.names_checked {
+    items.push("DN/RDN string syntax")
+  }
+  items
 }

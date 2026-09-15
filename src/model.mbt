@@ -79,6 +79,7 @@ pub fn Options::default() -> Options {
 pub(all) struct Report {
   document : Document
   diagnostics : Array[Diagnostic]
+  names_checked : Bool
 }
 
 ///|

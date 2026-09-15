@@ -6,9 +6,17 @@ import {
 }
 
 // Values
+pub fn check(Bytes, options? : Options) -> Report
+
+pub fn check_text(String, options? : Options) -> Report
+
 pub fn document_json(Document) -> Json
 
 pub fn parse(Bytes, options? : Options) -> Report
+
+pub fn parse_dn(String) -> Result[DistinguishedName, NameError]
+
+pub fn parse_rdn(String) -> Result[RelativeName, NameError]
 
 pub fn parse_text(String, options? : Options) -> Report
 
@@ -52,6 +60,10 @@ pub(all) struct Diagnostic {
   reason : String
 } derive(Eq, ToJson)
 
+pub(all) struct DistinguishedName {
+  rdns : Array[RelativeName]
+} derive(Eq)
+
 pub(all) struct Document {
   mode : String
   records : Array[Record]
@@ -62,6 +74,23 @@ pub(all) struct Modification {
   attribute : String
   values : Array[Attribute]
   span : Span
+} derive(Eq)
+
+pub(all) struct NameAssertion {
+  attribute : String
+  value : NameValue
+  byte_offset : Int
+} derive(Eq)
+
+pub(all) struct NameError {
+  code : String
+  byte_offset : Int
+  reason : String
+} derive(Eq, ToJson)
+
+pub(all) enum NameValue {
+  Text(Bytes)
+  Ber(Bytes)
 } derive(Eq)
 
 pub(all) struct Options {
@@ -77,12 +106,18 @@ pub(all) struct Record {
   span : Span
 } derive(Eq)
 
+pub(all) struct RelativeName {
+  assertions : Array[NameAssertion]
+} derive(Eq)
+
 pub(all) struct Report {
   document : Document
   diagnostics : Array[Diagnostic]
+  names_checked : Bool
 }
 pub fn Report::exit_code(Self) -> Int
 pub fn Report::format(Self) -> String raise WriteError
+pub fn Report::not_checked(Self) -> Array[String]
 pub fn Report::status(Self) -> String
 pub fn Report::to_json(Self, include_records? : Bool) -> Json
 pub fn Report::to_text(Self, include_records? : Bool) -> String

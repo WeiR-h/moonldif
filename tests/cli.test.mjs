@@ -55,9 +55,9 @@ test('format writes a new file, preserves semantics and refuses every overwrite'
 test('policy and incomplete checks retain diagnostics and block writing', () => withFiles(dir => {
   const input = join(dir, 'changes.ldif');
   const output = join(dir, 'must-not-exist.ldif');
-  writeFileSync(input, 'version: 1\ndn: a\nchangetype: delete\n');
+  writeFileSync(input, 'version: 1\ndn: cn=A\nchangetype: delete\n');
   assert.equal(run('check', input, '--deny-delete').status, 1);
-  writeFileSync(input, 'version: 1\ndn: a\nchangetype: delete\n\ndn: b\nchangetype: add\nphoto:< file:///never-read\n');
+  writeFileSync(input, 'version: 1\ndn: cn=A\nchangetype: delete\n\ndn: cn=B\nchangetype: add\nphoto:< file:///never-read\n');
   const r = run('format', input, '--output', output, '--deny-delete', '--format', 'json');
   assert.equal(r.status, 2);
   const report = JSON.parse(r.stdout);
@@ -74,4 +74,17 @@ test('invalid bytes, large inputs and directories become input errors', () => wi
   writeFileSync(input, Buffer.alloc(8 * 1024 * 1024 + 1, 65));
   assert.equal(run('check', input).status, 2);
   assert.equal(run('check', dir).status, 2);
+}));
+
+test('preflight blocks malformed directory names before writing', () => withFiles(dir => {
+  const input = join(dir, 'bad-name.ldif');
+  const output = join(dir, 'blocked.ldif');
+  writeFileSync(input, 'version: 1\ndn: cn=A,\nchangetype: delete\n');
+  const r = run('format', input, '--output', output, '--deny-delete', '--format', 'json');
+  assert.equal(r.status, 2);
+  const report = JSON.parse(r.stdout);
+  assert.equal(report.names_checked, true);
+  assert.ok(report.diagnostics.some(d => d.code === 'name-empty-component' && d.span.line === 2));
+  assert.ok(report.diagnostics.some(d => d.code === 'delete-denied'));
+  assert.equal(existsSync(output), false);
 }));
