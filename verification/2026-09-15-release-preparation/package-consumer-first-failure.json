@@ -1,0 +1,31 @@
+{
+  "started": "2026-09-15T10:46:59.837207+00:00",
+  "method": "fresh local workspace importing extracted moon package archive; not registry installation",
+  "status": "failed",
+  "steps": [
+    {
+      "command": [
+        "C:\\Users\\<USER>\\Desktop\\Competition\\MoonBit \u9ed1\u5ba2\u677e\\MoonAPI Check\\.tools\\moon\\bin\\moon.exe",
+        "package"
+      ],
+      "exit_code": 0,
+      "output": "Warning: 'repository' field is not set or empty in module manifest\nRunning moon check ...\nFinished. moon: no work to do\nCheck passed\nPackage to C:\\Users\\<USER>\\Desktop\\Competition\\MoonBit \u9ed1\u5ba2\u677e\\MoonLDIF\\_build\\publish\\WeiR-h-moonldif-0.1.0-dev.3.zip\n"
+    },
+    {
+      "command": [
+        "C:\\Users\\<USER>\\Desktop\\Competition\\MoonBit \u9ed1\u5ba2\u677e\\MoonAPI Check\\.tools\\moon\\bin\\moon.exe",
+        "test",
+        "-p",
+        "local/moonldif_consumer",
+        "--target",
+        "js"
+      ],
+      "exit_code": 4294967295,
+      "output": "Error: Failed to solve package relationship\n\nCaused by:\n    Import WeiR-h/moonldif@0.1.0-dev.3 exists in global environment, \n            but its containing module is not imported by local/moonldif_consumer@0.0.0 (local C:\\Users\\<USER>\\Desktop\\Competition\\MoonBit \u9ed1\u5ba2\u677e\\MoonLDIF\\.tools\\package-consumers\\consumer-6nhnu6nk\\consumer), thus cannot be imported by its package ''\n"
+    }
+  ],
+  "archive": "WeiR-h-moonldif-0.1.0-dev.3.zip",
+  "sha256": "c6b76f56169a5fdbd9c5a465f858374f1b74908e67eb2011f756849cda84b753",
+  "error": "Error: Failed to solve package relationship\n\nCaused by:\n    Import WeiR-h/moonldif@0.1.0-dev.3 exists in global environment, \n            but its containing module is not imported by local/moonldif_consumer@0.0.0 (local C:\\Users\\<USER>\\Desktop\\Competition\\MoonBit \u9ed1\u5ba2\u677e\\MoonLDIF\\.tools\\package-consumers\\consumer-6nhnu6nk\\consumer), thus cannot be imported by its package ''\n",
+  "finished": "2026-09-15T10:47:00.698184+00:00"
+}
