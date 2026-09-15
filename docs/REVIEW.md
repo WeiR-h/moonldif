@@ -20,8 +20,11 @@ node dist/moonldif.js review examples/02-account-changes.ldif --format json
 | 空替换 | 请求清空属性值 |
 | 重命名 / 指定新父 DN | 展示新名称、旧 RDN 值保留/删除意图以及目标父 DN |
 | 操作控制项 | 显示 OID 与 criticality，不解释控制值 |
+| 未知修改操作 | 明确表示效果未分析，不能将 increment 等操作误当作 replace / clear |
 
 level 是审阅优先级，不是服务器错误或事故概率。内容文件不会隐式转换成新增操作。
+
+文本报告显示目标 DN、属性名与给定值数量；网页在属性审阅项中直接显示目标 DN，便于区分批量文件中的同名属性。两种报告都不展开属性值，但 DN 本身可能包含用户数据，分享报告时需自行判断。
 
 只保存前 200 个审阅项，但继续计算已识别操作的总数并设置 truncated。截断不改变 LDIF 格式检查结果；界面要求分段审阅，不能把列表尾部未显示当作没有其他影响。不完整输入明确标记 analysis_complete=false；已保留的项目不是对全部输入的完整审查。
 
