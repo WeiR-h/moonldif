@@ -1,0 +1,57 @@
+{
+  "observations": [
+    "Initial reinstall failed because running preview locked Windows native binding; stopped preview",
+    "Restricted-network reinstall interrupted before completion; retried with approved network access"
+  ],
+  "at": "2026-09-15T10:41:25.9402226Z",
+  "status": "passed",
+  "steps": [
+    "npm ci from official registry with locked integrity hashes",
+    "MoonBit CLI build",
+    "Vite production build",
+    "bundled runtime license generation"
+  ],
+  "assets": [
+    {
+      "bytes": 65106,
+      "name": "analysis.worker-1oU2KrfI.js",
+      "sha256": "d4736e9ee1104ae5a955d335d1bc79d15c3b3733e2423797d16d22319e06163d"
+    },
+    {
+      "bytes": 65106,
+      "name": "analysis.worker-Dh-I8hgl.js",
+      "sha256": "1c8af89a35f5853361c3e65ee280088ef7eafa60244f4b8a33d6df853ac20de4"
+    },
+    {
+      "bytes": 237587,
+      "name": "index-Bw-dM2-t.js",
+      "sha256": "3ebca0ef4b78bc81c48f6b7632f234e7d856a3b6a0d02ae2440947c7cb18a631"
+    },
+    {
+      "bytes": 238037,
+      "name": "index-Cn2ndVEG.js",
+      "sha256": "a4b1ac583ed92084ed249108fcdc445a4bd11de57e06d19481610e9fdab5e75a"
+    },
+    {
+      "bytes": 238005,
+      "name": "index-CY25g42N.js",
+      "sha256": "a003f4c989d4c8b8ab4ede61040d9865c5bed9127a83c8c1e0b157921add7ec9"
+    },
+    {
+      "bytes": 10242,
+      "name": "index-DFaUf7Hu.css",
+      "sha256": "546ca46e7cf63bdfd68d0a86d6ce7ec64f32091db25ebeca7f318571cdc5a582"
+    },
+    {
+      "bytes": 9565,
+      "name": "index-gafc0ARw.css",
+      "sha256": "d8b8a88c799eb04bab6b3041be02a1cf36b7e27bb6aadfbe7b1f970172418415"
+    },
+    {
+      "bytes": 237556,
+      "name": "index-X3zj9TYa.js",
+      "sha256": "2ec33a3131bfc60eee774389b84a9b6a35585eae24a94467b9194e7fe3b38176"
+    }
+  ],
+  "version": "0.1.0-dev.3"
+}

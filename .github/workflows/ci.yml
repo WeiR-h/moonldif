@@ -42,6 +42,10 @@ jobs:
           echo "$HOME/.moon/bin" >> "$GITHUB_PATH"
       - name: Verify core, CLI and scenarios
         run: node scripts/verify.mjs
+      - name: Install locked workbench dependencies
+        run: npm --prefix web ci
+      - name: Build browser workbench with the MoonBit core
+        run: npm --prefix web run build
       - name: Compare with independent parser
         run: python scripts/reference-verify.py
       - name: Compare all change types with independent LDAP SDK

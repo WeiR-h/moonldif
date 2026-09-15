@@ -5,6 +5,7 @@ import { mkdtempSync, writeFileSync, readFileSync, existsSync, rmSync } from 'no
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { workbench } from '../dist/core.mjs';
 
 const cli = fileURLToPath(new URL('../dist/moonldif.js', import.meta.url));
 const run = (...args) => spawnSync(process.execPath, [cli, ...args], { encoding: 'utf8' });
@@ -16,7 +17,7 @@ const content = 'version: 1\ndn: cn=A\ncn: A\nphoto:: /wBB\n';
 
 test('help, version and command failures are predictable', () => {
   assert.equal(run('--help').status, 0);
-  assert.match(run('--version').stdout, /^0\.1\.0-dev\.2\s*$/);
+  assert.match(run('--version').stdout, /^0\.1\.0-dev\.3\s*$/);
   for (const args of [[], ['check'], ['check', 'a', 'b'], ['check', 'a', '--format', 'xml'], ['format', 'a'], ['check', 'a', '--output', 'b']]) {
     assert.equal(run(...args).status, 2);
   }
@@ -101,3 +102,37 @@ test('legacy name padding is opt-in and preserved with a diagnostic', () => with
   assert.match(readFileSync(output, 'utf8'), /dn: cn=A, dc=example/);
   assert.equal(run('check', input, '--legacy-dn-spaces', '--legacy-dn-spaces').status, 2);
 }));
+
+test('review reports ordered intent and retains policy and incomplete exit codes', () => withFiles(dir => {
+  const input = join(dir, 'review.ldif');
+  writeFileSync(input, 'version: 1\ndn: cn=A\nchangetype: modify\nreplace: photo\n-\n\ndn: cn=B\nchangetype: delete\n');
+  const r = run('review', input, '--deny-delete', '--format', 'json');
+  assert.equal(r.status, 1);
+  const report = JSON.parse(r.stdout);
+  assert.deepEqual(report.review.items.map(i => i.code), ['attribute-clear', 'entry-delete']);
+  assert.equal(report.review.items[1].attribute, null);
+  assert.equal(report.document, null);
+  assert.equal(JSON.parse(run('check', input, '--format', 'json').stdout).review, null);
+  assert.match(run('review', input).stdout, /Operation review: 2 items/);
+  writeFileSync(input, 'version: 1\ndn: cn=A\nchangetype: add\nphoto:< file:///never-read\n');
+  const partial = run('review', input, '--format', 'json');
+  assert.equal(partial.status, 2);
+  assert.equal(JSON.parse(partial.stdout).review.analysis_complete, false);
+}));
+
+test('browser bridge uses the actual core writer and refuses policy or incomplete exports', () => {
+  const call = (text, deny = true) => JSON.parse(workbench(Buffer.from(text).toString('base64'), false, deny, false, true));
+  const valid = call(content);
+  assert.equal(valid.exit_code, 0);
+  assert.match(valid.written, /photo:: \/wBB/);
+  assert.equal(JSON.parse(valid.output).review.total_items, 0);
+  const denied = call('version: 1\ndn: cn=A\nchangetype: delete\n');
+  assert.equal(denied.exit_code, 1);
+  assert.equal(denied.written, null);
+  const incomplete = call('version: 1\ndn: cn=A\nphoto:< file:///never-read\n');
+  assert.equal(incomplete.exit_code, 2);
+  assert.equal(incomplete.written, null);
+  const invalidName = call('version: 1\ndn: broken\ncn: A\n');
+  assert.equal(invalidName.exit_code, 2);
+  assert.equal(invalidName.written, null);
+});

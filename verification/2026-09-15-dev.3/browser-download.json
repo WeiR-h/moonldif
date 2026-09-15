@@ -1,0 +1,10 @@
+{
+  "at": "2026-09-15T10:20:17.768529+00:00",
+  "status": "passed",
+  "input": "examples/02-account-changes.ldif",
+  "downloaded_file": "02-account-changes-normalized.ldif",
+  "bytes": 205,
+  "sha256": "6afcbb4dd4169681dfe1a692617ecf326d6cad7639be1b688c9966bd9ef43bfa",
+  "verification": "Actual downloaded file parsed by CLI; complete document model equals original fixture. Policy was explicitly disabled in UI and rechecked.",
+  "observer_note": "IAB download event timed out; actual file presence and content verified instead."
+}

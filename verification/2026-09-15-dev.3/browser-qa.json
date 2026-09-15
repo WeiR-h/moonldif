@@ -1,0 +1,31 @@
+{
+  "date": "2026-09-15",
+  "version": "0.1.0-dev.3",
+  "environment": "Windows, Codex IAB, production preview at 127.0.0.1:4178",
+  "method": "Agent-operated real browser actions, DOM observations and viewport screenshots; not CI automation or independent user acceptance",
+  "viewports": [{"width":1536,"height":1024},{"width":390,"height":844}],
+  "checks": [
+    {"case":"default policy","result":"passed","observed":"2 records, 3 review items, 1 deletion policy diagnostic, export disabled"},
+    {"case":"source navigation","result":"passed","observed":"Attribute deletion selected exact physical lines 8-9, delete: description and separator"},
+    {"case":"policy revision","result":"passed","observed":"Changing option invalidates old results; export available only after a new complete check"},
+    {"case":"actual download","result":"passed","observed":"205-byte normalized file exists; CLI document model equals source; see browser-download.json"},
+    {"case":"bad DN repair","result":"passed","observed":"Invalid name blocks export, location selects source, edit invalidates report, corrected recheck enables export"},
+    {"case":"Chinese filename and binary attribute","result":"passed","observed":"Actual local chooser imports UTF-8 file with photo:: /wAB; one content record, no implicit add"},
+    {"case":"bad UTF-8","result":"passed","observed":"Explicit rejection, previous editor text preserved, prior successful result invalidated, export disabled"},
+    {"case":"oversized file","result":"passed","observed":"1 MiB plus one byte rejected before replacing editor; export disabled"},
+    {"case":"external value URL","result":"passed","observed":"file:///never-read reported incomplete; identified add intent retained; export disabled"},
+    {"case":"independent compatibility flags","result":"passed","observed":"Missing version and legacy DN spacing require their separate explicit options; two warnings after both enabled"},
+    {"case":"keyboard tabs","result":"passed","observed":"ArrowLeft changes result tab; Ctrl+Home no longer intercepted after modifier fix"},
+    {"case":"mobile layout","result":"passed","observed":"390px viewport has no page horizontal overflow; editor scroll remains local; editor/results stack"},
+    {"case":"rapid edit invalidation","result":"passed","observed":"Recheck 2400-record text then immediately edit to bad DN: old results stale, export blocked; next check reflects current invalid record"},
+    {"case":"console","result":"passed","observed":"No error/warning entries observed during tested flows"},
+    {"case":"production privacy boundary","result":"inspected","observed":"CSP connect-src none, local assets, worker source uses MoonBit core, no storage or analytics in source; no network trace captured"}
+  ],
+  "limitations": [
+    "IAB download event observer timed out; actual disk download and CLI semantic comparison independently succeeded.",
+    "One read-only locator observation timed out; fresh DOM confirmed expected state. No restart used to conceal a failed action.",
+    "Mobile full-page stitched capture had artifacts; saved viewport screenshots were inspected instead.",
+    "Rapid-edit flow is an observed sequence, not a deterministically forced worker race test.",
+    "No real device, cross-browser fleet, directory server import, enterprise sample or third-party user trial is claimed."
+  ]
+}

@@ -69,7 +69,11 @@ pub fn document_json(document : Document) -> Json {
 }
 
 ///|
-pub fn Report::to_json(self : Report, include_records? : Bool = false) -> Json {
+pub fn Report::to_json(
+  self : Report,
+  include_records? : Bool = false,
+  include_review? : Bool = false,
+) -> Json {
   let locations = if include_records {
     self.document.records.map(r => {
       let attrs : Array[Attribute] = match r.body {
@@ -109,6 +113,11 @@ pub fn Report::to_json(self : Report, include_records? : Bool = false) -> Json {
     },
     "not_checked": self.not_checked().to_json(),
     "diagnostics": self.diagnostics.to_json(),
+    "review": if include_review {
+      self.review().to_json()
+    } else {
+      Json::null()
+    },
     "document": if include_records {
       document_json(self.document)
     } else {

@@ -7,4 +7,5 @@ node_modules/
 __pycache__/
 *.log
 !verification/2026-09-15-dev.2/*.log
+!verification/2026-09-15-dev.3/*.log
 verification/local/

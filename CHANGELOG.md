@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.1.0-dev.3 — 2026-09-15
+
+Third local development iteration; not published.
+
+- Add ordered, source-linked operation review without exposing attribute values or changing input/policy status; retain incomplete results and bound review output.
+- Add review CLI and MoonBit browser bridge using the same analysis and checked writer.
+- Add a local React workbench with worker isolation, file/edit revision guards, diagnostic navigation and checked downloads.
+- Verify desktop/mobile layouts and actual file import, repair, policy, export and failure flows; independently compare the downloaded file through the CLI.
+- Expand to 30 core tests on JS/Wasm GC and 9 CLI groups; rerun Python, Java SDK, RFC and moonldap comparisons.
+- Add locked browser dependencies and production build to the prepared dual-platform CI. Remote CI remains unverified.
+
 ## 0.1.0-dev.2 — 2026-09-15
 
 Second local development iteration; not published.

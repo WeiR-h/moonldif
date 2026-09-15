@@ -118,9 +118,34 @@ pub(all) struct Report {
 pub fn Report::exit_code(Self) -> Int
 pub fn Report::format(Self) -> String raise WriteError
 pub fn Report::not_checked(Self) -> Array[String]
+pub fn Report::review(Self) -> Review
 pub fn Report::status(Self) -> String
-pub fn Report::to_json(Self, include_records? : Bool) -> Json
+pub fn Report::to_json(Self, include_records? : Bool, include_review? : Bool) -> Json
 pub fn Report::to_text(Self, include_records? : Bool) -> String
+
+pub(all) struct Review {
+  items : Array[ReviewItem]
+  total_items : Int
+  truncated : Bool
+  analysis_complete : Bool
+  input_exit_code : Int
+  record_count : Int
+} derive(Eq)
+pub fn Review::to_json(Self) -> Json
+pub fn Review::to_text(Self) -> String
+
+pub(all) struct ReviewItem {
+  code : String
+  level : String
+  record_index : Int
+  dn : String
+  attribute : String?
+  value_count : Int
+  span : Span
+  title : String
+  reason : String
+  action : String
+} derive(Eq)
 
 pub(all) struct Span {
   line : Int

@@ -2,7 +2,7 @@
 
 MoonBit 原生 LDIF 读写与离线结构预检库。
 
-状态：`0.1.0-dev.2` 本地开发版。已完成核心及互操作增强，尚未公开发布或提交赛事。开发与验证结果记录在 [交付状态](docs/STATUS.md)。
+状态：`0.1.0-dev.3` 本地开发版。已完成核心、互操作、变更审阅和本地浏览器工作台，尚未公开发布或提交赛事。开发与验证结果记录在 [交付状态](docs/STATUS.md)。
 
 范围：LDIF 内容与基本变更记录、字节属性、源位置、确定性写回和结构报告。目录 Schema、DN 语义相等、权限及真实服务器执行结果不在检查范围内。
 
@@ -18,8 +18,22 @@ MoonBit 原生 LDIF 读写与离线结构预检库。
 - 运行 `--deny-delete`，在导入前发现删除整条记录的计划并返回非零退出码。
 - 安全整理为新文件：写出后重新读取比较，保留属性字节和操作顺序，拒绝覆盖已有文件。
 - 可选接入 `hbYlj/moonldap 0.3.0` 的操作模型，已做离线 BER 编解码往返测试。
+- 审阅删除指定值、删除整个属性、清空、替换、移动和控制项；保留操作顺序与位置，不展开属性值。
+- 在浏览器中打开文件、定位问题、编辑复检和导出新文件；处理留在本机，过期或不完整结果禁止导出。
 
 核心解析、规则、写回、报告和参数判断都用 MoonBit 实现。Node.js 只负责读取本地文件、传递参数、写出文件和设置进程退出码。Python 只在独立验证或下载测试依赖时使用。
+
+## 浏览器试用
+
+从项目根目录执行以下命令，再打开 `http://127.0.0.1:4178/`：
+
+```text
+npm --prefix web ci
+npm --prefix web run build
+npm --prefix web run preview
+```
+
+默认合成示例展示删除拦截。点击“定位原文”，修订内容后重新检查；检查完成且策略允许时导出新文件。浏览器入口上限 1 MiB / 10,000 行。详见 [工作台说明](web/README.md) 与 [本轮浏览器验证](verification/2026-09-15-dev.3/browser-qa.json)。React 仅负责界面，分析和写回使用同一个 MoonBit 核心。
 
 ## 本机立即试用
 
@@ -34,6 +48,7 @@ node scripts/demo.mjs
 ```text
 node dist/moonldif.js check examples/01-directory-export.ldif
 node dist/moonldif.js inspect examples/03-migration-plan.ldif --format json
+node dist/moonldif.js review examples/02-account-changes.ldif --deny-delete
 node dist/moonldif.js check examples/02-account-changes.ldif --deny-delete
 node dist/moonldif.js format examples/01-directory-export.ldif --output normalized.ldif
 ```
@@ -58,7 +73,7 @@ npm test
 npm run verify
 ```
 
-无需安装 npm 依赖。`verify` 包含格式、类型、JS / Wasm GC 两个目标的 26 个核心测试、构建、7 组 CLI 集成测试和三个场景；实际输出与时间记录在 `verification/local/`。这是本地结果，GitHub Actions 的 Windows/Ubuntu 配置已准备，但还未在远端运行。
+核心与 CLI 无需安装 npm 依赖；浏览器工作台的依赖由 `web/package-lock.json` 固定。`verify` 包含格式、类型、JS / Wasm GC 两个目标的 30 个核心测试、构建、9 组 CLI 集成测试和三个场景；实际输出与时间记录在 `verification/local/`。这是本地结果，GitHub Actions 的 Windows/Ubuntu 配置已包含工作台构建，但还未在远端运行。
 
 本机使用忽略提交的 `.local-toolchain.json` 指向已有 MoonBit 工具链；它不是项目源代码依赖。换机器时安装工具链即可，不需要 MoonAPI Check 工程。
 
@@ -97,6 +112,7 @@ if report.exit_code() == 0 {
 - [获奖项目对标与交付目标](docs/AWARD_TARGET.md)：官方依据、实际差距和后续门槛。
 - [规范覆盖表](docs/CONFORMANCE.md)：RFC 示例、勘误与限制。
 - [支持矩阵](docs/SUPPORT.md)：范围、限制与退出码。
+- [变更审阅](docs/REVIEW.md)：操作分类、输出字段、截断与诊断边界。
 - [三个使用场景](docs/SCENARIOS.md)：用户问题、输入、操作、预期结果。
 - [交付状态](docs/STATUS.md)：完成、验证和未完成事项。
 - [下一轮计划](docs/NEXT.md)：完善为可申报候选的优先顺序。

@@ -42,7 +42,7 @@ pub fn host_error(message : String, format : String) -> String {
 fn help() -> String {
   "MoonLDIF " +
   @ldif.version() +
-  "\nUsage:\n  node dist/moonldif.js check INPUT [--format text|json] [--compat] [--deny-delete] [--legacy-dn-spaces]\n  node dist/moonldif.js inspect INPUT [--format text|json] [--compat] [--deny-delete] [--legacy-dn-spaces]\n  node dist/moonldif.js format INPUT --output NEW_FILE [--format text|json] [--compat] [--deny-delete] [--legacy-dn-spaces]\n  node dist/moonldif.js --help | --version\nUse -- before an input filename starting with '-'.\nExit: 0 complete; 1 deletion policy blocked; 2 invalid, incomplete or execution failure.\nFiles are local, maximum 8 MiB. URL values are never fetched. Format refuses overwrites.\nChecks cover supported LDIF structure and DN/RDN syntax, not directory schema or server acceptance. --compat only permits a missing version; --legacy-dn-spaces permits separator padding with warnings and preserves the original names.\n"
+  "\nUsage:\n  node dist/moonldif.js check INPUT [--format text|json] [--compat] [--deny-delete] [--legacy-dn-spaces]\n  node dist/moonldif.js review INPUT [--format text|json] [--compat] [--deny-delete] [--legacy-dn-spaces]\n  node dist/moonldif.js inspect INPUT [--format text|json] [--compat] [--deny-delete] [--legacy-dn-spaces]\n  node dist/moonldif.js format INPUT --output NEW_FILE [--format text|json] [--compat] [--deny-delete] [--legacy-dn-spaces]\n  node dist/moonldif.js --help | --version\nUse -- before an input filename starting with '-'.\nExit: 0 complete; 1 deletion policy blocked; 2 invalid, incomplete or execution failure.\nFiles are local, maximum 8 MiB. URL values are never fetched. Format refuses overwrites.\nChecks cover supported LDIF structure and DN/RDN syntax, not directory schema or server acceptance. --compat only permits a missing version; --legacy-dn-spaces permits separator padding with warnings and preserves the original names.\n"
 }
 
 ///|
@@ -75,7 +75,8 @@ pub fn cli_plan(args_json : String) -> String {
       format = "json"
     }
   }
-  if args.is_empty() || !["check", "inspect", "format"].contains(args[0]) {
+  if args.is_empty() ||
+    !["check", "inspect", "review", "format"].contains(args[0]) {
     return host_error("Invalid command.\n" + help(), format)
   }
   let mut input : String? = None
@@ -176,9 +177,16 @@ pub fn analyse(
     legacy_dn_spaces~,
   )
   let output = if format == "json" {
-    r.to_json(include_records=command == "inspect").stringify(indent=2) + "\n"
+    r
+    .to_json(
+      include_records=command == "inspect",
+      include_review=command == "review",
+    )
+    .stringify(indent=2) +
+    "\n"
   } else {
-    r.to_text(include_records=command == "inspect")
+    r.to_text(include_records=command == "inspect") +
+    (if command == "review" { r.review().to_text() } else { "" })
   }
   if command == "format" && r.exit_code() == 0 {
     let formatted = r.format() catch {
@@ -187,5 +195,35 @@ pub fn analyse(
     envelope(0, output, written=Some(formatted))
   } else {
     envelope(r.exit_code(), output)
+  }
+}
+
+///|
+/// Browser uses the same check, review and safe-writer implementation as CLI.
+/// The host chooses when to request writing; no result is cached here.
+#export_name("workbench")
+pub fn workbench(
+  encoded : String,
+  compat : Bool,
+  deny_delete : Bool,
+  legacy_dn_spaces : Bool,
+  write_output : Bool,
+) -> String {
+  let bytes = @base64.decode(encoded[:], ignore_whitespace=false) catch {
+    _ => return host_error("Invalid input transport.", "json")
+  }
+  let report = @ldif.check(
+    bytes,
+    options={ allow_missing_version: compat, deny_delete, },
+    legacy_dn_spaces~,
+  )
+  let output = report.to_json(include_review=true).stringify()
+  if write_output && report.exit_code() == 0 {
+    let written = report.format() catch {
+      _ => return host_error("Writer rejected this document.", "json")
+    }
+    envelope(0, output, written=Some(written))
+  } else {
+    envelope(report.exit_code(), output)
   }
 }

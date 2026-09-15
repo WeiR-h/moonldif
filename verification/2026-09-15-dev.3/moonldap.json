@@ -1,0 +1,7 @@
+{
+  "command": "node scripts/test-moonldap.mjs",
+  "output": "Total tests: 2, passed: 2, failed: 0.",
+  "at": "2026-09-15T10:41:25.8617389Z",
+  "network": "No LDAP connections",
+  "exit_code": 0
+}

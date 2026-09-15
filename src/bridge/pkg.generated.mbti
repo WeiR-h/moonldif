@@ -8,6 +8,8 @@ pub fn cli_plan(String) -> String
 
 pub fn host_error(String, String) -> String
 
+pub fn workbench(String, Bool, Bool, Bool, Bool) -> String
+
 // Errors
 
 // Types and methods
