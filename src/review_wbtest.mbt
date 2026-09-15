@@ -1,4 +1,28 @@
 ///|
+test "unsupported modifications never masquerade as replace or clear" {
+  for operation in ["increment", "unknown"] {
+    for value in ["", "uidNumber: 1\n"] {
+      let report = check_text(
+        "version: 1\ndn: cn=A\nchangetype: modify\ndelete: description\n-\n" +
+        operation +
+        ": uidNumber\n" +
+        value +
+        "-\n",
+      )
+      let review = report.review()
+      assert_eq(report.exit_code(), 2)
+      assert_true(!review.analysis_complete)
+      assert_eq(review.items.map(i => i.code), [
+        "attribute-delete-all", "unsupported-modification",
+      ])
+      assert_eq(review.items[1].span.line, 6)
+      assert_true(review.items[1].reason.contains(operation))
+      assert_true(!review.to_text().contains("This replaces the entire"))
+    }
+  }
+}
+
+///|
 test "review distinguishes add selected delete whole delete and empty replace in order" {
   let report = check_text(
     "version: 1\ndn: cn=A\nchangetype: modify\nadd: description\ndescription: one\n-\ndelete: description\ndescription: two\n-\ndelete: mail\n-\nreplace: photo\n-\nreplace: cn\ncn: B\n-\n",

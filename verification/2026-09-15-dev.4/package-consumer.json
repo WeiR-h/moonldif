@@ -1,0 +1,42 @@
+{
+  "started": "2026-09-15T11:02:36.247072+00:00",
+  "method": "fresh local workspace importing extracted moon package archive; not registry installation",
+  "status": "passed",
+  "steps": [
+    {
+      "command": [
+        "C:\\Users\\<USER>\\Desktop\\Competition\\MoonBit \u9ed1\u5ba2\u677e\\MoonAPI Check\\.tools\\moon\\bin\\moon.exe",
+        "package"
+      ],
+      "exit_code": 0,
+      "output": "Warning: 'repository' field is not set or empty in module manifest\nRunning moon check ...\nFinished. moon: ran 5 tasks, now up to date\nCheck passed\nPackage to C:\\Users\\<USER>\\Desktop\\Competition\\MoonBit \u9ed1\u5ba2\u677e\\MoonLDIF\\_build\\publish\\WeiR-h-moonldif-0.1.0-dev.4.zip\n"
+    },
+    {
+      "command": [
+        "C:\\Users\\<USER>\\Desktop\\Competition\\MoonBit \u9ed1\u5ba2\u677e\\MoonAPI Check\\.tools\\moon\\bin\\moon.exe",
+        "test",
+        "-p",
+        "local/moonldif_consumer",
+        "--target",
+        "js"
+      ],
+      "exit_code": 0,
+      "output": "Total tests: 1, passed: 1, failed: 0.\nWarning: [0029]\n   \u256d\u2500[ C:\\Users\\<USER>\\Desktop\\Competition\\MoonBit \u9ed1\u5ba2\u677e\\MoonLDIF\\.tools\\package-consumers\\consumer-d54cknd5\\consumer\\moon.pkg:1:10 ]\n   \u2502\n 1 \u2502 import { \"WeiR-h/moonldif\" @ldif }\n   \u2502          \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500  \n   \u2502                  \u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 Warning (unused_package): Unused package 'WeiR-h/moonldif'\n\u2500\u2500\u2500\u256f\nWarning: [0029]\n   \u256d\u2500[ C:\\Users\\<USER>\\Desktop\\Competition\\MoonBit \u9ed1\u5ba2\u677e\\MoonLDIF\\.tools\\package-consumers\\consumer-d54cknd5\\consumer\\moon.pkg:1:28 ]\n   \u2502\n 1 \u2502 import { \"WeiR-h/moonldif\" @ldif }\n   \u2502                            \u2500\u2500\u252c\u2500\u2500  \n   \u2502                              \u2570\u2500\u2500\u2500\u2500 Warning (unused_package): Unused package alias 'ldif'\n\u2500\u2500\u2500\u256f\n"
+    },
+    {
+      "command": [
+        "C:\\Users\\<USER>\\Desktop\\Competition\\MoonBit \u9ed1\u5ba2\u677e\\MoonAPI Check\\.tools\\moon\\bin\\moon.exe",
+        "test",
+        "-p",
+        "local/moonldif_consumer",
+        "--target",
+        "wasm-gc"
+      ],
+      "exit_code": 0,
+      "output": "Total tests: 1, passed: 1, failed: 0.\nWarning: [0029]\n   \u256d\u2500[ C:\\Users\\<USER>\\Desktop\\Competition\\MoonBit \u9ed1\u5ba2\u677e\\MoonLDIF\\.tools\\package-consumers\\consumer-d54cknd5\\consumer\\moon.pkg:1:10 ]\n   \u2502\n 1 \u2502 import { \"WeiR-h/moonldif\" @ldif }\n   \u2502          \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500  \n   \u2502                  \u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 Warning (unused_package): Unused package 'WeiR-h/moonldif'\n\u2500\u2500\u2500\u256f\nWarning: [0029]\n   \u256d\u2500[ C:\\Users\\<USER>\\Desktop\\Competition\\MoonBit \u9ed1\u5ba2\u677e\\MoonLDIF\\.tools\\package-consumers\\consumer-d54cknd5\\consumer\\moon.pkg:1:28 ]\n   \u2502\n 1 \u2502 import { \"WeiR-h/moonldif\" @ldif }\n   \u2502                            \u2500\u2500\u252c\u2500\u2500  \n   \u2502                              \u2570\u2500\u2500\u2500\u2500 Warning (unused_package): Unused package alias 'ldif'\n\u2500\u2500\u2500\u256f\n"
+    }
+  ],
+  "archive": "WeiR-h-moonldif-0.1.0-dev.4.zip",
+  "sha256": "ec3a1f7a5031bfcd39db220a22253ea727c548698c6621d2030062abb855c811",
+  "finished": "2026-09-15T11:02:39.525251+00:00"
+}

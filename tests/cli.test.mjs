@@ -17,7 +17,8 @@ const content = 'version: 1\ndn: cn=A\ncn: A\nphoto:: /wBB\n';
 
 test('help, version and command failures are predictable', () => {
   assert.equal(run('--help').status, 0);
-  assert.match(run('--version').stdout, /^0\.1\.0-dev\.3\s*$/);
+  const packageVersion = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8')).version;
+  assert.equal(run('--version').stdout, packageVersion + '\n');
   for (const args of [[], ['check'], ['check', 'a', 'b'], ['check', 'a', '--format', 'xml'], ['format', 'a'], ['check', 'a', '--output', 'b']]) {
     assert.equal(run(...args).status, 2);
   }
@@ -135,4 +136,8 @@ test('browser bridge uses the actual core writer and refuses policy or incomplet
   const invalidName = call('version: 1\ndn: broken\ncn: A\n');
   assert.equal(invalidName.exit_code, 2);
   assert.equal(invalidName.written, null);
+  const unknown = call('version: 1\ndn: cn=A\nchangetype: modify\nincrement: uidNumber\nuidNumber: 1\n-\n');
+  assert.equal(unknown.exit_code, 2);
+  assert.equal(unknown.written, null);
+  assert.equal(JSON.parse(unknown.output).review.items[0].code, 'unsupported-modification');
 });

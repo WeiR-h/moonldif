@@ -180,7 +180,7 @@ pub fn Report::review(self : Report) -> Review {
                   "Only the supplied values are requested for removal.", "Check that the values exist and are the intended removal targets.",
                 )
               }
-            _ =>
+            "replace" =>
               if empty {
                 (
                   "attribute-clear", "high", "Clear attribute values", "An empty replace requests removal of this attribute's values.",
@@ -192,6 +192,16 @@ pub fn Report::review(self : Report) -> Review {
                   "Include any old values that must be retained in the replacement set.",
                 )
               }
+            _ =>
+              (
+                "unsupported-modification",
+                "high",
+                "Unsupported modification requires review",
+                "The modification '" +
+                m.operation +
+                "' is outside the supported profile; its effect has not been interpreted.",
+                "Use a tool that supports this operation or revise the source intentionally. Do not treat it as replace or clear.",
+              )
           }
           push_review(
             items,

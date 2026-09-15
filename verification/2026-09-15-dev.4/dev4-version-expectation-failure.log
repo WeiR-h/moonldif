@@ -1,0 +1,38 @@
+✖ help, version and command failures are predictable (221.4978ms)
+✔ Chinese and space paths, binary inspect and deterministic JSON (207.8378ms)
+✔ format writes a new file, preserves semantics and refuses every overwrite (662.9638ms)
+✔ policy and incomplete checks retain diagnostics and block writing (198.8805ms)
+✔ invalid bytes, large inputs and directories become input errors (287.0864ms)
+✔ preflight blocks malformed directory names before writing (100.154ms)
+✔ legacy name padding is opt-in and preserved with a diagnostic (456.4854ms)
+✔ review reports ordered intent and retains policy and incomplete exit codes (462.2051ms)
+✔ browser bridge uses the actual core writer and refuses policy or incomplete exports (15.22ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 8
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2810.4183
+
+✖ failing tests:
+
+test at tests\cli.test.mjs:18:1
+✖ help, version and command failures are predictable (221.4978ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /^0\.1\.0-dev\.3\s*$/. Input:
+  
+  '0.1.0-dev.4\n'
+  
+      at TestContext.<anonymous> (file:///C:/Users/<USER>/Desktop/Competition/MoonBit%20%E9%BB%91%E5%AE%A2%E6%9D%BE/MoonLDIF/tests/cli.test.mjs:20:10)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.start (node:internal/test_runner/test:1003:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:358:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '0.1.0-dev.4\n',
+    expected: /^0\.1\.0-dev\.3\s*$/,
+    operator: 'match',
+    diff: 'simple'
+  }

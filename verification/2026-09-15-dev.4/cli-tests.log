@@ -1,0 +1,17 @@
+✔ help, version and command failures are predictable (857.0948ms)
+✔ Chinese and space paths, binary inspect and deterministic JSON (201.8432ms)
+✔ format writes a new file, preserves semantics and refuses every overwrite (650.4248ms)
+✔ policy and incomplete checks retain diagnostics and block writing (227.6954ms)
+✔ invalid bytes, large inputs and directories become input errors (394.0158ms)
+✔ preflight blocks malformed directory names before writing (126.7897ms)
+✔ legacy name padding is opt-in and preserved with a diagnostic (439.4909ms)
+✔ review reports ordered intent and retains policy and incomplete exit codes (400.1806ms)
+✔ browser bridge uses the actual core writer and refuses policy or incomplete exports (10.8529ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3475.3581

@@ -3,6 +3,7 @@ import { Icon } from './Icon.jsx';
 
 const reviewCopy = {
   'attribute-replace': ['替换属性值', '替换整个属性值集合，请核对是否需要保留旧值。'],
+  'unsupported-modification': ['尚未支持的修改操作', '此操作的效果尚未分析，请使用支持它的工具或有意修订原文；不能将它当作替换或清空。'],
   'attribute-delete-all': ['删除整个属性', '没有指定值，将请求删除该属性的所有值。请确认该属性不是必填项。'],
   'attribute-delete-values': ['删除指定属性值', '仅请求删除指定值，请核对这些值是否存在、是否为预期目标。'],
   'attribute-clear': ['清空属性值', '空替换将请求移除属性值，请确认清空操作符合预期及目录规则。'],
@@ -20,6 +21,7 @@ const diagnosticTitles = {
   'name-unescaped-character': '名称含未转义字符', 'missing-version': '缺少版本头',
   'invalid-base64': 'Base64 编码无效', 'legacy-name-separator-spaces': '已启用旧 DN 分隔空格兼容',
   'unsupported-control-encoding': '整个控制项的编码扩展暂不支持',
+  'unsupported-modification': '修改操作暂不支持',
 };
 function lineLabel(span) { return span ? `第 ${span.line}${span.end_line !== span.line ? `–${span.end_line}` : ''} 行` : '输入'; }
 export function Results({ analysis, locate, selected }) {
@@ -54,7 +56,7 @@ export function Results({ analysis, locate, selected }) {
               <div className="row-heading"><h3>{copy[0]}</h3><span className="line-label">{lineLabel(item.span)}</span><button className="locate" onClick={() => locate({ ...item.span })} aria-label={`定位${copy[0]}，${lineLabel(item.span)}`}><Icon name="arrow" />定位原文</button></div>
               <p className="item-target" title={item.dn}>{item.attribute || item.dn}{item.attribute && item.value_count > 0 ? ` · ${item.value_count} 个值` : ''}</p>
               <p>{blockedDeletion ? '删除策略已拦截；请核对目标条目后再决定。' : copy[1]}</p>
-              {['entry-move', 'entry-rename', 'operation-control'].includes(item.code) && <p className="raw-detail">{item.reason}</p>}
+              {['entry-move', 'entry-rename', 'operation-control', 'unsupported-modification'].includes(item.code) && <p className="raw-detail">{item.reason}</p>}
             </article>;
           })}
         </> : diagnostics.length === 0 ? <div className="empty-state"><Icon name="check" /><h3>支持范围内未发现问题</h3><p>仍需在目标目录核对 Schema、权限及服务端状态。</p></div> : diagnostics.map((d, i) => <article className="result-row" key={`${d.code}-${i}`}>
