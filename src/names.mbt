@@ -70,6 +70,14 @@ fn name_attribute(s : String) -> Bool {
 ///|
 /// RFC 4514 string grammar. Empty DN is the root; values are never trimmed.
 pub fn parse_dn(text : String) -> Result[DistinguishedName, NameError] {
+  parse_name(text, false)
+}
+
+///|
+fn parse_name(
+  text : String,
+  legacy_spaces : Bool,
+) -> Result[DistinguishedName, NameError] {
   let b = @utf8.encode(text[:])
   if b.length() > 16384 {
     return Err(
@@ -83,6 +91,19 @@ pub fn parse_dn(text : String) -> Result[DistinguishedName, NameError] {
   let mut assertions : Array[NameAssertion] = []
   let mut i = 0
   while i < b.length() {
+    // Compatibility only for separator padding. Never trim assertion values.
+    if legacy_spaces && i > 0 {
+      while i < b.length() && b[i] == 32 {
+        i = i + 1
+      }
+      if i == b.length() {
+        return Err(
+          name_error(
+            "name-empty-component", i, "Expected an assertion after separator padding.",
+          ),
+        )
+      }
+    }
     let begin = i
     while i < b.length() && b[i] != 61 && b[i] != 43 && b[i] != 44 {
       i = i + 1
@@ -284,9 +305,50 @@ fn report_name_error(
 }
 
 ///|
+fn check_name_field(
+  text : String,
+  field : String,
+  span : Span,
+  ds : Array[Diagnostic],
+  legacy_spaces : Bool,
+) -> Unit {
+  let strict = if field == "newrdn" {
+    parse_rdn(text).map(_ => ())
+  } else {
+    parse_dn(text).map(_ => ())
+  }
+  match strict {
+    Ok(_) => ()
+    Err(e) => {
+      let legacy_valid = legacy_spaces &&
+        (match parse_name(text, true) {
+          Ok(name) => field != "newrdn" || name.rdns.length() == 1
+          Err(_) => false
+        })
+      if legacy_valid {
+        diagnose(
+          ds,
+          "legacy-name-separator-spaces",
+          "warning",
+          span,
+          field +
+          ": accepted ASCII spaces after DN/RDN separators by explicit legacy mode. The original value is preserved; this is not strict RFC 4514 syntax.",
+        )
+      } else {
+        report_name_error(ds, e, field, span)
+      }
+    }
+  }
+}
+
+///|
 /// Structural parsing plus DN/newrdn/newsuperior string-syntax checks.
 /// Diagnostics locate original physical fields even with Base64 or folding.
-pub fn check(data : Bytes, options? : Options = Options::default()) -> Report {
+pub fn check(
+  data : Bytes,
+  options? : Options = Options::default(),
+  legacy_dn_spaces? : Bool = false,
+) -> Report {
   let report = parse(data, options~)
   let ds = report.diagnostics.copy()
   let lines = logical_lines(data, [])
@@ -311,22 +373,15 @@ pub fn check(data : Bytes, options? : Options = Options::default()) -> Report {
       }
       cursor = cursor + 1
     }
-    match parse_dn(r.dn) {
-      Err(e) => report_name_error(ds, e, "dn", dn_span)
-      Ok(_) => ()
-    }
+    check_name_field(r.dn, "dn", dn_span, ds, legacy_dn_spaces)
     match r.body {
       Rename(rdn, _, superior) => {
-        match parse_rdn(rdn) {
-          Err(e) => report_name_error(ds, e, "newrdn", rdn_span)
-          Ok(_) => ()
-        }
+        check_name_field(rdn, "newrdn", rdn_span, ds, legacy_dn_spaces)
         match superior {
           Some(s) =>
-            match parse_dn(s) {
-              Err(e) => report_name_error(ds, e, "newsuperior", superior_span)
-              Ok(_) => ()
-            }
+            check_name_field(
+              s, "newsuperior", superior_span, ds, legacy_dn_spaces,
+            )
           None => ()
         }
       }
@@ -340,6 +395,7 @@ pub fn check(data : Bytes, options? : Options = Options::default()) -> Report {
 pub fn check_text(
   text : String,
   options? : Options = Options::default(),
+  legacy_dn_spaces? : Bool = false,
 ) -> Report {
-  check(@utf8.encode(text[:]), options~)
+  check(@utf8.encode(text[:]), options~, legacy_dn_spaces~)
 }

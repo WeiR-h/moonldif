@@ -16,7 +16,7 @@ const content = 'version: 1\ndn: cn=A\ncn: A\nphoto:: /wBB\n';
 
 test('help, version and command failures are predictable', () => {
   assert.equal(run('--help').status, 0);
-  assert.match(run('--version').stdout, /^0\.1\.0-dev\.1\s*$/);
+  assert.match(run('--version').stdout, /^0\.1\.0-dev\.2\s*$/);
   for (const args of [[], ['check'], ['check', 'a', 'b'], ['check', 'a', '--format', 'xml'], ['format', 'a'], ['check', 'a', '--output', 'b']]) {
     assert.equal(run(...args).status, 2);
   }
@@ -87,4 +87,17 @@ test('preflight blocks malformed directory names before writing', () => withFile
   assert.ok(report.diagnostics.some(d => d.code === 'name-empty-component' && d.span.line === 2));
   assert.ok(report.diagnostics.some(d => d.code === 'delete-denied'));
   assert.equal(existsSync(output), false);
+}));
+
+test('legacy name padding is opt-in and preserved with a diagnostic', () => withFiles(dir => {
+  const input = join(dir, 'legacy.ldif');
+  const output = join(dir, 'legacy-output.ldif');
+  writeFileSync(input, 'version: 1\ndn: cn=A, dc=example\ncn: A\n');
+  assert.equal(run('check', input).status, 2);
+  assert.equal(run('check', input, '--compat').status, 2);
+  const r = run('format', input, '--output', output, '--legacy-dn-spaces', '--format', 'json');
+  assert.equal(r.status, 0);
+  assert.ok(JSON.parse(r.stdout).diagnostics.some(d => d.code === 'legacy-name-separator-spaces'));
+  assert.match(readFileSync(output, 'utf8'), /dn: cn=A, dc=example/);
+  assert.equal(run('check', input, '--legacy-dn-spaces', '--legacy-dn-spaces').status, 2);
 }));

@@ -22,4 +22,10 @@ CLI 诊断包含原始物理行范围。对于折行或 Base64 字段，错误�
 
 限制：每个解码后 DN 最大 16 KiB、最多 256 层 RDN。测试含 RFC 4514 示例、转义 Unicode、二进制转义字节、非法语法、折行位置、Base64 定位与策略并存。
 
+## 旧文件的分隔空格
+
+RFC 2849 的示例含 `cn=A, dc=example` 一类旧格式。默认检查会指出属性类型前的空格；对明确使用这种格式的文件可加 `--legacy-dn-spaces`，库接口对应 `check(..., legacy_dn_spaces=true)`。此时仅接受逗号或加号之后的 ASCII 空格，给出 `legacy-name-separator-spaces` 警告，JSON `name_profile` 标记实际用了扩展。
+
+此选项不接受引号包围值、分号分隔符、前后未转义的属性值空格或任意坏转义，也不代表完整 RFC 2253/LDAPv2 支持。`--compat` 仍然只允许缺版本头。写回保留原始 DN，不自动删除空格；因此输出可能仍需以同一旧格式配置读取。警告受总诊断上限约束，超过上限时不会静默通过。
+
 依据：[RFC 4514](https://www.rfc-editor.org/rfc/rfc4514.html) 的字符串语法与转义规则、[RFC 4512](https://www.rfc-editor.org/rfc/rfc4512.html) 的属性类型描述符与数字 OID 语法。

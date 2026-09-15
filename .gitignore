@@ -6,4 +6,5 @@ node_modules/
 .local-toolchain.json
 __pycache__/
 *.log
+!verification/2026-09-15-dev.2/*.log
 verification/local/

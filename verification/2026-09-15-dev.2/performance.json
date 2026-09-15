@@ -1,0 +1,108 @@
+{
+  "at": "2026-09-15T09:55:42.700Z",
+  "node": "v24.13.0",
+  "platform": "win32",
+  "arch": "x64",
+  "cpu": "AMD Ryzen 7 5800H with Radeon Graphics         ",
+  "version": "0.1.0-dev.2",
+  "method": "Fresh Node process per case; one warm-up plus three measured runs. Includes Base64 transport, MoonBit analysis, report and optional writer round-trip. RSS is before/after, not peak or core-only allocation. Synthetic input; no speed comparison claim.",
+  "status": "passed",
+  "cases": [
+    {
+      "command": "check",
+      "records": 100,
+      "input_bytes": 21282,
+      "measured_runs": 3,
+      "min_ms": 9.6053,
+      "median_ms": 9.646500000000003,
+      "max_ms": 10.340300000000013,
+      "rss_before_bytes": 39948288,
+      "rss_after_bytes": 55513088,
+      "status": "passed"
+    },
+    {
+      "command": "format",
+      "records": 100,
+      "input_bytes": 21282,
+      "measured_runs": 3,
+      "min_ms": 11.303800000000024,
+      "median_ms": 13.836100000000002,
+      "max_ms": 18.556600000000003,
+      "rss_before_bytes": 39870464,
+      "rss_after_bytes": 58789888,
+      "status": "passed"
+    },
+    {
+      "command": "check",
+      "records": 1000,
+      "input_bytes": 215682,
+      "measured_runs": 3,
+      "min_ms": 42.618300000000005,
+      "median_ms": 47.14949999999999,
+      "max_ms": 48.7063,
+      "rss_before_bytes": 41496576,
+      "rss_after_bytes": 92086272,
+      "status": "passed"
+    },
+    {
+      "command": "format",
+      "records": 1000,
+      "input_bytes": 215682,
+      "measured_runs": 3,
+      "min_ms": 77.95940000000002,
+      "median_ms": 96.6796,
+      "max_ms": 118.0156,
+      "rss_before_bytes": 41431040,
+      "rss_after_bytes": 133267456,
+      "status": "passed"
+    },
+    {
+      "command": "check",
+      "records": 5000,
+      "input_bytes": 1091682,
+      "measured_runs": 3,
+      "min_ms": 224.9367000000001,
+      "median_ms": 229.51290000000006,
+      "max_ms": 275.5422,
+      "rss_before_bytes": 45711360,
+      "rss_after_bytes": 272101376,
+      "status": "passed"
+    },
+    {
+      "command": "format",
+      "records": 5000,
+      "input_bytes": 1091682,
+      "measured_runs": 3,
+      "min_ms": 439.88890000000015,
+      "median_ms": 454.4159000000002,
+      "max_ms": 477.29189999999994,
+      "rss_before_bytes": 45682688,
+      "rss_after_bytes": 338202624,
+      "status": "passed"
+    },
+    {
+      "command": "check",
+      "records": 10000,
+      "input_bytes": 2186682,
+      "measured_runs": 3,
+      "min_ms": 468.65700000000015,
+      "median_ms": 526.4857,
+      "max_ms": 538.5761000000002,
+      "rss_before_bytes": 50765824,
+      "rss_after_bytes": 350392320,
+      "status": "passed"
+    },
+    {
+      "command": "format",
+      "records": 10000,
+      "input_bytes": 2186682,
+      "measured_runs": 3,
+      "min_ms": 975.8103000000001,
+      "median_ms": 1031.6389,
+      "max_ms": 1038.2655000000002,
+      "rss_before_bytes": 50528256,
+      "rss_after_bytes": 605069312,
+      "status": "passed"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+✔ help, version and command failures are predictable (955.189ms)
+✔ Chinese and space paths, binary inspect and deterministic JSON (215.6008ms)
+✔ format writes a new file, preserves semantics and refuses every overwrite (627.071ms)
+✔ policy and incomplete checks retain diagnostics and block writing (205.7755ms)
+✔ invalid bytes, large inputs and directories become input errors (293.1968ms)
+✔ preflight blocks malformed directory names before writing (104.5269ms)
+✔ legacy name padding is opt-in and preserved with a diagnostic (397.2774ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2936.2626

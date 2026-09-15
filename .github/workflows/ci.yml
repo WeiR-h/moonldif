@@ -22,6 +22,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
       - name: Install official MoonBit toolchain (Windows)
         if: runner.os == 'Windows'
         shell: pwsh
@@ -40,6 +44,10 @@ jobs:
         run: node scripts/verify.mjs
       - name: Compare with independent parser
         run: python scripts/reference-verify.py
+      - name: Compare all change types with independent LDAP SDK
+        run: python scripts/sdk-verify.py
+      - name: Verify published RFC examples and documented variants
+        run: python scripts/rfc-verify.py
       - name: Prepare pinned ecosystem dependencies
         run: python scripts/prepare-moonldap.py
       - name: Verify offline moonldap mapping

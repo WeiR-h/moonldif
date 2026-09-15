@@ -42,7 +42,7 @@ pub fn host_error(message : String, format : String) -> String {
 fn help() -> String {
   "MoonLDIF " +
   @ldif.version() +
-  "\nUsage:\n  node dist/moonldif.js check INPUT [--format text|json] [--compat] [--deny-delete]\n  node dist/moonldif.js inspect INPUT [--format text|json] [--compat] [--deny-delete]\n  node dist/moonldif.js format INPUT --output NEW_FILE [--format text|json] [--compat] [--deny-delete]\n  node dist/moonldif.js --help | --version\nUse -- before an input filename starting with '-'.\nExit: 0 complete; 1 deletion policy blocked; 2 invalid, incomplete or execution failure.\nFiles are local, maximum 8 MiB. URL values are never fetched. Format refuses overwrites.\nChecks cover the supported structural profile, not directory schema or server acceptance.\n"
+  "\nUsage:\n  node dist/moonldif.js check INPUT [--format text|json] [--compat] [--deny-delete] [--legacy-dn-spaces]\n  node dist/moonldif.js inspect INPUT [--format text|json] [--compat] [--deny-delete] [--legacy-dn-spaces]\n  node dist/moonldif.js format INPUT --output NEW_FILE [--format text|json] [--compat] [--deny-delete] [--legacy-dn-spaces]\n  node dist/moonldif.js --help | --version\nUse -- before an input filename starting with '-'.\nExit: 0 complete; 1 deletion policy blocked; 2 invalid, incomplete or execution failure.\nFiles are local, maximum 8 MiB. URL values are never fetched. Format refuses overwrites.\nChecks cover supported LDIF structure and DN/RDN syntax, not directory schema or server acceptance. --compat only permits a missing version; --legacy-dn-spaces permits separator padding with warnings and preserves the original names.\n"
 }
 
 ///|
@@ -82,6 +82,7 @@ pub fn cli_plan(args_json : String) -> String {
   let mut output : String? = None
   let mut compat = false
   let mut deny = false
+  let mut legacy_spaces = false
   let mut positional = false
   let mut i = 1
   let mut seen_format = false
@@ -99,6 +100,11 @@ pub fn cli_plan(args_json : String) -> String {
         return host_error("Duplicate --deny-delete.", format)
       }
       deny = true
+    } else if !positional && arg == "--legacy-dn-spaces" {
+      if legacy_spaces {
+        return host_error("Duplicate --legacy-dn-spaces.", format)
+      }
+      legacy_spaces = true
     } else if !positional && (arg == "--format" || arg == "--output") {
       if i + 1 >= args.length() {
         return host_error("Missing option value.", format)
@@ -146,6 +152,7 @@ pub fn cli_plan(args_json : String) -> String {
     "format": format.to_json(),
     "compat": compat.to_json(),
     "deny_delete": deny.to_json(),
+    "legacy_dn_spaces": legacy_spaces.to_json(),
   }
   result.stringify()
 }
@@ -158,14 +165,16 @@ pub fn analyse(
   format : String,
   compat : Bool,
   deny_delete : Bool,
+  legacy_dn_spaces : Bool,
 ) -> String {
   let bytes = @base64.decode(encoded[:], ignore_whitespace=false) catch {
     _ => return host_error("Invalid input transport.", format)
   }
-  let r = @ldif.check(bytes, options={
-    allow_missing_version: compat,
-    deny_delete,
-  })
+  let r = @ldif.check(
+    bytes,
+    options={ allow_missing_version: compat, deny_delete, },
+    legacy_dn_spaces~,
+  )
   let output = if format == "json" {
     r.to_json(include_records=command == "inspect").stringify(indent=2) + "\n"
   } else {

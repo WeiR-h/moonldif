@@ -28,7 +28,7 @@ try {
   else {
     format = plan.format;
     const bytes = readBounded(plan.input);
-    result = JSON.parse(core.analyse(bytes.toString('base64'), plan.command, plan.format, plan.compat, plan.deny_delete));
+    result = JSON.parse(core.analyse(bytes.toString('base64'), plan.command, plan.format, plan.compat, plan.deny_delete, plan.legacy_dn_spaces));
     if (result.written !== null && result.exit_code === 0) {
       writeFileSync(plan.output_path, result.written, { encoding: 'utf8', flag: 'wx', mode: 0o600 });
     }

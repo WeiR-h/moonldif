@@ -70,19 +70,23 @@ pub fn document_json(document : Document) -> Json {
 
 ///|
 pub fn Report::to_json(self : Report, include_records? : Bool = false) -> Json {
-  let locations = self.document.records.map(r => {
-    let attrs : Array[Attribute] = match r.body {
-      Entry(a) | Add(a) => a
-      Modify(m) => m.iter().flat_map(v => v.values.iter()).to_array()
-      _ => []
-    }
-    {
-      "record": ToJson::to_json(r.span),
-      "attributes": attrs
-      .map(a => { "name": a.name.to_json(), "span": ToJson::to_json(a.span) })
-      .to_json(),
-    }
-  })
+  let locations = if include_records {
+    self.document.records.map(r => {
+      let attrs : Array[Attribute] = match r.body {
+        Entry(a) | Add(a) => a
+        Modify(m) => m.iter().flat_map(v => v.values.iter()).to_array()
+        _ => []
+      }
+      {
+        "record": ToJson::to_json(r.span),
+        "attributes": attrs
+        .map(a => { "name": a.name.to_json(), "span": ToJson::to_json(a.span) })
+        .to_json(),
+      }
+    })
+  } else {
+    []
+  }
   {
     "tool": "MoonLDIF",
     "version": version().to_json(),
@@ -96,6 +100,13 @@ pub fn Report::to_json(self : Report, include_records? : Bool = false) -> Json {
       "LDIF v1 supported structural profile; not server import approval"
     },
     "names_checked": self.names_checked.to_json(),
+    "name_profile": if !self.names_checked {
+      "not_checked"
+    } else if self.diagnostics.any(d => d.code == "legacy-name-separator-spaces") {
+      "RFC 4514 with explicitly enabled legacy separator spaces"
+    } else {
+      "RFC 4514 string syntax"
+    },
     "not_checked": self.not_checked().to_json(),
     "diagnostics": self.diagnostics.to_json(),
     "document": if include_records {

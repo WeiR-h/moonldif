@@ -2,7 +2,7 @@
 package "WeiR-h/moonldif/bridge"
 
 // Values
-pub fn analyse(String, String, String, Bool, Bool) -> String
+pub fn analyse(String, String, String, Bool, Bool, Bool) -> String
 
 pub fn cli_plan(String) -> String
 

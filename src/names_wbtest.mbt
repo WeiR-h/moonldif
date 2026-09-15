@@ -121,3 +121,36 @@ test "names are bounded without folding or rewriting values" {
   let different = parse_dn("cn=alice").unwrap().rdns[0].assertions[0]
   assert_true(ordinary.value != different.value)
 }
+
+///|
+test "explicit legacy separator padding does not trim or rewrite DN values" {
+  let source = "version: 1\ndn: cn=A, ou=People, dc=example\nchangetype: moddn\nnewrdn: cn=B+ uid=42\ndeleteoldrdn: 1\nnewsuperior: ou=Archive, dc=example\n"
+  assert_eq(check_text(source).exit_code(), 2)
+  let compatible = check_text(source, legacy_dn_spaces=true)
+  assert_eq(compatible.exit_code(), 0)
+  assert_eq(compatible.diagnostics.length(), 3)
+  assert_true(
+    compatible.diagnostics.all(d => d.code == "legacy-name-separator-spaces"),
+  )
+  assert_true(
+    document_json(parse_text(compatible.format()).document) ==
+    document_json(compatible.document),
+  )
+  for dn in ["cn= A", "cn=A , dc=x", "cn=A, ", " cn=A", "cn=A+ uid=\\q"] {
+    assert_eq(
+      check_text("version: 1\ndn: " + dn + "\ncn: A\n", legacy_dn_spaces=true).exit_code(),
+      if dn == " cn=A" {
+        0
+      } else {
+        2
+      },
+    )
+  }
+  // LDIF's FILL consumes initial spaces; the standalone name parser does not.
+  assert_true(
+    match parse_name(" cn=A", true) {
+      Err(_) => true
+      _ => false
+    },
+  )
+}

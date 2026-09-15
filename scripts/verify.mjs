@@ -8,6 +8,8 @@ const steps = [
   ['format', ['scripts/moon.mjs', 'fmt', '--check']],
   ['check', ['scripts/moon.mjs', 'check', '--target', 'js', '--deny-warn']],
   ['moonbit-tests', ['scripts/moon.mjs', 'test', '--target', 'js']],
+  ['wasm-gc-check', ['scripts/moon.mjs', 'check', '--target', 'wasm-gc', '--deny-warn']],
+  ['wasm-gc-tests', ['scripts/moon.mjs', 'test', '--target', 'wasm-gc']],
   ['build', ['scripts/build.mjs']],
   ['cli-tests', ['--test', 'tests/cli.test.mjs']],
   ['scenarios', ['scripts/demo.mjs']],

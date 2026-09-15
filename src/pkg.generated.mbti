@@ -6,9 +6,9 @@ import {
 }
 
 // Values
-pub fn check(Bytes, options? : Options) -> Report
+pub fn check(Bytes, options? : Options, legacy_dn_spaces? : Bool) -> Report
 
-pub fn check_text(String, options? : Options) -> Report
+pub fn check_text(String, options? : Options, legacy_dn_spaces? : Bool) -> Report
 
 pub fn document_json(Document) -> Json
 
