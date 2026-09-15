@@ -296,6 +296,15 @@ pub fn Review::to_text(self : Review) -> String {
       ": " +
       item.title +
       "\n" +
+      (match item.attribute {
+        Some(attribute) =>
+          "Attribute: " +
+          attribute +
+          "; supplied values: " +
+          item.value_count.to_string() +
+          "\n"
+        None => ""
+      }) +
       item.reason +
       "\nAction: " +
       item.action +

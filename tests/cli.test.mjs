@@ -115,6 +115,7 @@ test('review reports ordered intent and retains policy and incomplete exit codes
   assert.equal(report.document, null);
   assert.equal(JSON.parse(run('check', input, '--format', 'json').stdout).review, null);
   assert.match(run('review', input).stdout, /Operation review: 2 items/);
+  assert.match(run('review', input).stdout, /Attribute: photo; supplied values: 0/);
   writeFileSync(input, 'version: 1\ndn: cn=A\nchangetype: add\nphoto:< file:///never-read\n');
   const partial = run('review', input, '--format', 'json');
   assert.equal(partial.status, 2);
