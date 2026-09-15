@@ -9,6 +9,7 @@
 - 独立行为参考：[python-ldap ldif 模块](https://github.com/python-ldap/python-ldap/blob/7ffae5b4f16eed9dae4ed3ab682396cd678acd5d/Lib/ldif.py)，提交 `7ffae5b4f16eed9dae4ed3ab682396cd678acd5d`，SHA-256 `4bfd6cc743c4651e54a7a8e673586ccc42c5c632a0381f4775240aed4d7c080a`。来源许可见 [上游 LICENSE](https://github.com/python-ldap/python-ldap/blob/7ffae5b4f16eed9dae4ed3ab682396cd678acd5d/LICENSE)。其源码不作为本项目解析器，不随本项目提交。验证仅覆盖内容读写与 modify 回调；没有把参考实现的宽松 Base64 接受行为当作标准。
 - 工程运行脚本参考作者已有 MoonAPI Check 的本地工具链/Node.js 运行方式；不复用 OpenAPI 分析逻辑。
 - 示例为人工构造，不是企业用户案例。没有全球首创、官方审核通过或获奖声明。
+- 外部测试数据：OpenLDAP 官方镜像提交 `725ae5b0e583a1b2a3c3c445e6d3d45cf9fea972` 的六份 `tests/data` 文件，OpenLDAP Public License 2.8。只下载到忽略提交的缓存，保留上游 LICENSE 并核验文件 SHA-256；不复制为本项目 Apache-2.0 源码或产品示例。原始文件不改写，明确保留两份的配置拒绝结果。范围与发现见 `docs/OPENLDAP.md`。
 - 浏览器界面使用 React / React DOM 19.3.0（MIT），构建使用 Vite 8.3.0（MIT）；实际直接与传递依赖版本固定于 `web/package-lock.json`，来源为 npm 官方包注册表。项目 Apache-2.0 许可不替代依赖许可；浏览器发行物应附带依赖许可文本。
 - 工作台设计参照由内置 Image Gen 生成，记录于 `web/docs/design/`；界面通过 HTML/CSS/React 与自有 SVG 图标实现，未把生成图片作为产品 UI 或第三方用户案例。
 - 实施使用 AI 辅助编写、调试和文档整理；可复验的结果单独记录。原创性陈述仅指本项目文件模型、解析、诊断、写回和适配代码，不能据此推出生态中绝无同类项目。

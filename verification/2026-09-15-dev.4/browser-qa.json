@@ -1,0 +1,23 @@
+{
+  "date": "2026-09-15",
+  "version": "0.1.0-dev.4",
+  "environment": "Windows Codex IAB; local production preview http://127.0.0.1:4178/",
+  "viewports": ["1536x1024", "390x844"],
+  "method": "Real browser interaction through CUA; no external Playwright fallback",
+  "page_identity": "passed: MoonLDIF directory file workbench at intended URL",
+  "blank_page_and_overlay": "passed: meaningful editor and review; no framework error overlay",
+  "console": "passed: no error or warning entries observed",
+  "interactions": [
+    "Enter increment modification, recheck: incomplete status, unsupported-modification review, export disabled",
+    "Locate review: exact selection is increment: uidNumber, uidNumber: 1, and terminating hyphen at physical lines 4-6",
+    "Mobile review: Chinese and raw operation reason visible; no horizontal page overflow (innerWidth 390, scrollWidth 375)",
+    "Intentionally change operation to replace: old results disappear and export stays disabled before recheck",
+    "Recheck new replacement plan: complete status, replacement review, export enabled; this changes operation intent and is not a suggested automatic repair"
+  ],
+  "observations": [
+    "One read-only locator evaluation timed out. Fresh DOM and read-only page selection confirmed actual selection; no page restart was used.",
+    "First screenshot immediately after viewport change was cropped. Confirmed viewport and no overflow, then recaptured stable desktop; not treated as a passed screenshot.",
+    "Snapshots inspected with view_image. Styles unchanged; added explicit unsupported-operation copy. Viewport override reset afterward."
+  ],
+  "limits": "Targeted regression only, not all dev.3 flows rerun; no real-device or cross-browser claim, no LDAP server execution"
+}

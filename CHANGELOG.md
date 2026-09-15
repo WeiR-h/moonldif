@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.0-dev.4 — 2026-09-15
+
+Unpublished correctness follow-up using upstream OpenLDAP test data.
+
+- Fix unsupported modifications such as increment being mislabeled as replace/clear in review. Parsing already blocked export; review now explicitly states that effects were not analyzed.
+- Add regression coverage for populated/empty unknown operations and the actual browser bridge; keep incomplete status and export refusal.
+- Add six pinned, unmodified OpenLDAP test files: four content fixtures pass three-way Python interoperability with explicit missing-header compatibility; two retain documented rejection and write refusal.
+- Update Chinese review labels and verify the rendered failure-to-repair flow. No new LDAP operations are supported by this change.
+
 ## 0.1.0-dev.3 — 2026-09-15
 
 Third local development iteration; not published.

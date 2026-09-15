@@ -2,7 +2,7 @@
 
 MoonBit 原生 LDIF 读写与离线结构预检库。
 
-状态：`0.1.0-dev.3` 本地开发版。已完成核心、互操作、变更审阅和本地浏览器工作台，尚未公开发布或提交赛事。开发与验证结果记录在 [交付状态](docs/STATUS.md)。
+状态：`0.1.0-dev.4` 本地开发版。已完成核心、互操作、变更审阅和本地浏览器工作台，尚未公开发布或提交赛事。开发与验证结果记录在 [交付状态](docs/STATUS.md)。
 
 范围：LDIF 内容与基本变更记录、字节属性、源位置、确定性写回和结构报告。目录 Schema、DN 语义相等、权限及真实服务器执行结果不在检查范围内。
 
@@ -73,7 +73,7 @@ npm test
 npm run verify
 ```
 
-核心与 CLI 无需安装 npm 依赖；浏览器工作台的依赖由 `web/package-lock.json` 固定。`verify` 包含格式、类型、JS / Wasm GC 两个目标的 30 个核心测试、构建、9 组 CLI 集成测试和三个场景；实际输出与时间记录在 `verification/local/`。这是本地结果，GitHub Actions 的 Windows/Ubuntu 配置已包含工作台构建，但还未在远端运行。
+核心与 CLI 无需安装 npm 依赖；浏览器工作台的依赖由 `web/package-lock.json` 固定。`verify` 包含格式、类型、JS / Wasm GC 两个目标的 31 个核心测试、构建、9 组 CLI 集成测试和三个场景；实际输出与时间记录在 `verification/local/`。这是本地结果，GitHub Actions 的 Windows/Ubuntu 配置已包含工作台构建，但还未在远端运行。
 
 本机使用忽略提交的 `.local-toolchain.json` 指向已有 MoonBit 工具链；它不是项目源代码依赖。换机器时安装工具链即可，不需要 MoonAPI Check 工程。
 
@@ -83,6 +83,7 @@ npm run verify
 
 ```text
 python scripts/reference-verify.py
+python scripts/openldap-verify.py
 python scripts/sdk-verify.py
 python scripts/rfc-verify.py
 python scripts/package-verify.py
@@ -94,6 +95,8 @@ node scripts/test-moonldap.mjs
 Python 对照覆盖七组内容数据和一组 modify 顺序；新增 Java/JDK 17+ 的 SDK 对照覆盖四类变更等 27 组输入，其中一组的 SDK 输出需显式转换扩展语法，其余 26 组三个方向直接通过。七个 RFC 示例分别记录原刊与修订结果，外部值不记为完整通过。详见 [互操作证据](docs/INTEROPERABILITY.md) 和 [规范覆盖表](docs/CONFORMANCE.md)。moonldap 适配另有两个测试：四种实际模型及 BER 往返、拒绝不支持的输入。适配是单独的本地工作区，普通核心构建不下载这些依赖。
 
 ## MoonBit 库接口
+
+dev.4 增加 [OpenLDAP 原始测试样本验证](docs/OPENLDAP.md)：六份固定文件不做修订，四份在显式 `--compat` 下通过独立 Python 三方向对照，两份保留拒绝和写出阻断。此验证发现并修正了未知修改操作被错误解释成替换的审阅问题；不代表支持全部 OpenLDAP 输入或服务器导入。
 
 尚未发布到 mooncakes，当前通过本地 `moon.work` 引用模块 `WeiR-h/moonldif`。可选适配工作区提供了实际示例。
 
