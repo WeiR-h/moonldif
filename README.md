@@ -85,6 +85,7 @@ npm run verify
 python scripts/reference-verify.py
 python scripts/sdk-verify.py
 python scripts/rfc-verify.py
+python scripts/package-verify.py
 node scripts/benchmark.mjs
 python scripts/prepare-moonldap.py
 node scripts/test-moonldap.mjs
@@ -95,6 +96,8 @@ Python 对照覆盖七组内容数据和一组 modify 顺序；新增 Java/JDK 1
 ## MoonBit 库接口
 
 尚未发布到 mooncakes，当前通过本地 `moon.work` 引用模块 `WeiR-h/moonldif`。可选适配工作区提供了实际示例。
+
+`package-verify.py` 将实际发行归档解压到新工作区，以公共 API 在 JS/Wasm GC 两个目标验证字节写回、操作审阅、策略和不完整状态。它没有从注册表下载，不代替未来的 mooncakes 安装验收。
 
 ```moonbit
 let report = @ldif.check_text("version: 1\ndn: cn=Demo\ncn: Demo\n")
@@ -113,6 +116,7 @@ if report.exit_code() == 0 {
 - [规范覆盖表](docs/CONFORMANCE.md)：RFC 示例、勘误与限制。
 - [支持矩阵](docs/SUPPORT.md)：范围、限制与退出码。
 - [变更审阅](docs/REVIEW.md)：操作分类、输出字段、截断与诊断边界。
+- [三分钟演示与个人复验](docs/DEMO.md)、[核心实现解释](docs/ARCHITECTURE.md)、[生态互补复查](docs/ECOSYSTEM.md)。
 - [三个使用场景](docs/SCENARIOS.md)：用户问题、输入、操作、预期结果。
 - [交付状态](docs/STATUS.md)：完成、验证和未完成事项。
 - [下一轮计划](docs/NEXT.md)：完善为可申报候选的优先顺序。

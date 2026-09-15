@@ -46,6 +46,8 @@ jobs:
         run: npm --prefix web ci
       - name: Build browser workbench with the MoonBit core
         run: npm --prefix web run build
+      - name: Verify packaged library from a fresh consumer workspace
+        run: python scripts/package-verify.py
       - name: Compare with independent parser
         run: python scripts/reference-verify.py
       - name: Compare all change types with independent LDAP SDK
