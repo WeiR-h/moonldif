@@ -43,6 +43,12 @@ fn attribute_equal(a : String, b : String) -> Bool {
 }
 
 ///|
+/// LDAP attribute-description spelling only; does not compare DN or values.
+pub fn same_attribute_description(a : String, b : String) -> Bool {
+  valid_attribute(a) && valid_attribute(b) && attribute_equal(a, b)
+}
+
+///|
 fn parse_field(line : Line, ds : Array[Diagnostic]) -> Attribute? {
   let bytes = @utf8.encode(line.text[:])
   let mut colon = -1
