@@ -1,0 +1,28 @@
+{
+  "initial_absent": [
+    {
+      "path": ".local-toolchain.json",
+      "absent": true
+    },
+    {
+      "path": "dist",
+      "absent": true
+    },
+    {
+      "path": "web/node_modules",
+      "absent": true
+    },
+    {
+      "path": ".tools",
+      "absent": true
+    }
+  ],
+  "at": "2026-09-15T11:18:11.8553869Z",
+  "directory": "C:\\Users\\何浩然\\Desktop\\Competition\\MoonBit 黑客松\\MoonLDIF\\.tools\\cleanroom-630e445d64a64437aea64543d203e5d5\\source",
+  "web_exit": 0,
+  "status": "passed",
+  "core_exit": 0,
+  "install_exit": 0,
+  "source_commit": "3cf87f7",
+  "shared": "Installed MoonBit toolchain and integrity-checked npm download cache only"
+}

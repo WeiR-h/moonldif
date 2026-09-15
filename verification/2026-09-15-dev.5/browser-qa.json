@@ -1,0 +1,20 @@
+{
+  "environment": "Windows Codex IAB; local production preview",
+  "source_delivery_commit": "3cf87f7",
+  "checks": [
+    "Two entries with same mail replacement show distinct target DNs",
+    "Second operation location selects exact physical lines 10-12",
+    "Attribute bytes are present only in source editor, not expanded in review",
+    "Meaningful page, correct URL/title, no framework overlay",
+    "No error or warning console entries observed",
+    "Desktop and mobile screenshots inspected; viewport override reset"
+  ],
+  "date": "2026-09-15",
+  "code_commit": "e704258",
+  "viewports": [
+    "1536x1024",
+    "390x844"
+  ],
+  "limits": "Targeted regression, not all browser engines or real mobile devices",
+  "status": "passed"
+}
