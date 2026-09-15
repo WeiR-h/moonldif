@@ -55,6 +55,7 @@ export function Results({ analysis, locate, selected }) {
             return <article className={`result-row ${isSelected ? 'selected' : ''}`} key={`${item.record_index}-${index}`}>
               <div className="row-heading"><h3>{copy[0]}</h3><span className="line-label">{lineLabel(item.span)}</span><button className="locate" onClick={() => locate({ ...item.span })} aria-label={`定位${copy[0]}，${lineLabel(item.span)}`}><Icon name="arrow" />定位原文</button></div>
               <p className="item-target" title={item.dn}>{item.attribute || item.dn}{item.attribute && item.value_count > 0 ? ` · ${item.value_count} 个值` : ''}</p>
+              {item.attribute && <p className="raw-detail">目标 DN：{item.dn || '空 DN（根目录）'}</p>}
               <p>{blockedDeletion ? '删除策略已拦截；请核对目标条目后再决定。' : copy[1]}</p>
               {['entry-move', 'entry-rename', 'operation-control', 'unsupported-modification'].includes(item.code) && <p className="raw-detail">{item.reason}</p>}
             </article>;

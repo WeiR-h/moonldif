@@ -1,4 +1,18 @@
 ///|
+test "text review identifies attribute and target without exposing supplied bytes" {
+  let review = check_text(
+      "version: 1\ndn: cn=First\nchangetype: modify\nreplace: mail\nmail: private-one\n-\n\ndn: cn=Second\nchangetype: modify\ndelete: description\n-\n",
+    )
+    .review()
+    .to_text()
+  assert_true(review.contains("cn=First"))
+  assert_true(review.contains("cn=Second"))
+  assert_true(review.contains("Attribute: mail; supplied values: 1"))
+  assert_true(review.contains("Attribute: description; supplied values: 0"))
+  assert_true(!review.contains("private-one"))
+}
+
+///|
 test "unsupported modifications never masquerade as replace or clear" {
   for operation in ["increment", "unknown"] {
     for value in ["", "uidNumber: 1\n"] {
