@@ -41,6 +41,9 @@ test "batch unavailable and later files cannot turn a failure into success" {
   })
   assert_eq(batch.exit_code(), 2)
   batch.add_unavailable("missing.ldif")
+  assert_true(batch.to_text().contains("deny_delete"))
+  assert_true(batch.to_markdown().contains("deny&#95;delete"))
+  assert_true(batch.to_markdown().contains("true"))
   batch.add_bytes(
     "valid.ldif",
     b"version: 1\ndn: cn=Demo\ncn: Demo\n",

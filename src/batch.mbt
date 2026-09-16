@@ -212,15 +212,20 @@ pub fn BatchReview::to_json(self : BatchReview) -> Json {
     .filter(i => i.code == 2)
     .length()
     .to_json(),
-    "options": {
-      "allow_missing_version": self.options.allow_missing_version.to_json(),
-      "deny_delete": self.options.deny_delete.to_json(),
-      "deny_clear": self.risk_policy.deny_clear.to_json(),
-      "deny_rename": self.risk_policy.deny_rename.to_json(),
-      "legacy_dn_spaces": self.legacy_dn_spaces.to_json(),
-    },
+    "options": self.options_json(),
     "diagnostics": diagnostics.to_json(),
     "files": files.to_json(),
+  }
+}
+
+///|
+fn BatchReview::options_json(self : BatchReview) -> Json {
+  {
+    "allow_missing_version": self.options.allow_missing_version.to_json(),
+    "deny_delete": self.options.deny_delete.to_json(),
+    "deny_clear": self.risk_policy.deny_clear.to_json(),
+    "deny_rename": self.risk_policy.deny_rename.to_json(),
+    "legacy_dn_spaces": self.legacy_dn_spaces.to_json(),
   }
 }
 
@@ -241,6 +246,7 @@ pub fn BatchReview::to_text(self : BatchReview) -> String {
   out.write_string(
     "Reports contain filenames and DNs, not attribute values. Files are checked independently, not as a combined transaction.\n",
   )
+  out.write_string("Options: " + self.options_json().stringify() + "\n")
   if self.requested == 0 || self.requested > 50 {
     out.write_string(
       "batch-file-count: expected 1 to 50 inputs; unreported inputs were not analysed.\n",
@@ -274,6 +280,9 @@ pub fn BatchReview::to_markdown(self : BatchReview) -> String {
     "/" +
     self.requested.to_string() +
     "\n\nFiles are checked independently; this is not a transaction or server import approval. Reports contain filenames and target DNs, not attribute values.\n\n",
+  )
+  out.write_string(
+    "Options: " + markdown_escape(self.options_json().stringify()) + "\n\n",
   )
   if self.exit_code() == 2 {
     out.write_string(
