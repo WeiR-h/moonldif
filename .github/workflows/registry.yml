@@ -1,0 +1,47 @@
+name: Verify released registry package
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Exact published module version
+        required: true
+        default: '0.1.0'
+permissions:
+  contents: read
+jobs:
+  registry:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    env:
+      MOONBIT_INSTALL_VERSION: 0.10.11+6ff76a5f9
+      REGISTRY_VERSION: ${{ inputs.version }}
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-python@v7.0.0
+        with:
+          python-version: '3.12'
+      - name: Install MoonBit on Windows
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          Invoke-RestMethod https://cli.moonbitlang.com/install/powershell.ps1 | Invoke-Expression
+          "$env:USERPROFILE\.moon\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+      - name: Install MoonBit on Ubuntu
+        if: runner.os == 'Linux'
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsSL https://cli.moonbitlang.com/install/unix.sh | bash -s -- "$MOONBIT_INSTALL_VERSION"
+          echo "$HOME/.moon/bin" >> "$GITHUB_PATH"
+      - name: Test exact registry dependency in isolated workspace
+        shell: bash
+        run: python scripts/registry-verify.py --version "$REGISTRY_VERSION"
+      - uses: actions/upload-artifact@v7.0.1
+        if: always()
+        with:
+          name: registry-${{ matrix.os }}
+          path: verification/local/registry-*.json

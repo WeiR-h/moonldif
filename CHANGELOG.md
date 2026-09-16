@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.0 — 2026-09-16
+
+- Freeze the dev.5 public library and local workbench as the initial stable baseline.
+- Add isolated, exact-version mooncakes consumer verification on Windows and Ubuntu.
+- Record preliminary application acceptance separately from final contest acceptance.
+
+
 ## 0.1.0-dev.5 — 2026-09-15
 
 GitHub delivery iteration; mooncakes not published.
