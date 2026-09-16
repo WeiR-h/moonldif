@@ -1,0 +1,279 @@
+{
+  "tool": "MoonLDIF",
+  "version": "0.3.0",
+  "kind": "batch-review",
+  "report_schema_version": 1,
+  "exit_code": 1,
+  "status": "complete",
+  "analysis_complete": true,
+  "requested_files": 3,
+  "reported_files": 3,
+  "unreported_files": 0,
+  "input_byte_budget_used": 811,
+  "passed_files": 1,
+  "blocked_files": 2,
+  "incomplete_or_error_files": 0,
+  "options": {
+    "allow_missing_version": false,
+    "deny_delete": true,
+    "deny_clear": true,
+    "deny_rename": true,
+    "legacy_dn_spaces": false
+  },
+  "diagnostics": [],
+  "files": [
+    {
+      "index": 0,
+      "label": "01-directory-export.ldif",
+      "report": {
+        "tool": "MoonLDIF",
+        "version": "0.3.0",
+        "status": "complete",
+        "exit_code": 0,
+        "mode": "content",
+        "record_count": 1,
+        "scope": "LDIF v1 supported structure and DN/RDN string syntax; not server import approval",
+        "names_checked": true,
+        "name_profile": "RFC 4514 string syntax",
+        "not_checked": [
+          "DN equality and schema matching",
+          "BER-hex assertion semantics",
+          "directory schema",
+          "server state and ACL",
+          "control semantics",
+          "external value contents"
+        ],
+        "diagnostics": [],
+        "review": {
+          "total_items": 0,
+          "truncated": false,
+          "analysis_complete": true,
+          "input_exit_code": 0,
+          "record_count": 1,
+          "scope": "File operation intent only; no LDAP execution or schema approval",
+          "items": []
+        },
+        "document": null,
+        "locations": null,
+        "report_schema_version": 1,
+        "source": {
+          "sha256": "400ba054c2cce09e7a5213fc4f4a364fda078075c9954b7dfd96a921a386f9f2",
+          "byte_length": 273,
+          "identity_scope": "Exact analysed bytes; not a signature or authenticity proof"
+        },
+        "options": {
+          "allow_missing_version": false,
+          "deny_delete": true,
+          "deny_clear": true,
+          "deny_rename": true,
+          "legacy_dn_spaces": false
+        },
+        "diagnostics_truncated": false
+      }
+    },
+    {
+      "index": 1,
+      "label": "02-account-changes.ldif",
+      "report": {
+        "tool": "MoonLDIF",
+        "version": "0.3.0",
+        "status": "complete",
+        "exit_code": 1,
+        "mode": "changes",
+        "record_count": 2,
+        "scope": "LDIF v1 supported structure and DN/RDN string syntax; not server import approval",
+        "names_checked": true,
+        "name_profile": "RFC 4514 string syntax",
+        "not_checked": [
+          "DN equality and schema matching",
+          "BER-hex assertion semantics",
+          "directory schema",
+          "server state and ACL",
+          "control semantics",
+          "external value contents"
+        ],
+        "diagnostics": [
+          {
+            "code": "delete-denied",
+            "severity": "policy",
+            "span": {
+              "line": 11,
+              "end_line": 12
+            },
+            "reason": "Entry deletion is blocked by --deny-delete."
+          },
+          {
+            "code": "clear-denied",
+            "severity": "policy",
+            "span": {
+              "line": 8,
+              "end_line": 9
+            },
+            "reason": "Removing all attribute values is blocked by --deny-clear."
+          }
+        ],
+        "review": {
+          "total_items": 3,
+          "truncated": false,
+          "analysis_complete": true,
+          "input_exit_code": 1,
+          "record_count": 2,
+          "scope": "File operation intent only; no LDAP execution or schema approval",
+          "items": [
+            {
+              "code": "attribute-replace",
+              "level": "caution",
+              "record_index": 0,
+              "dn": "uid=demo,ou=People,dc=example,dc=org",
+              "attribute": "mail",
+              "value_count": 1,
+              "span": {
+                "line": 5,
+                "end_line": 7
+              },
+              "title": "Replace attribute values",
+              "reason": "This replaces the entire value set rather than appending to it.",
+              "action": "Include any old values that must be retained in the replacement set."
+            },
+            {
+              "code": "attribute-delete-all",
+              "level": "high",
+              "record_index": 0,
+              "dn": "uid=demo,ou=People,dc=example,dc=org",
+              "attribute": "description",
+              "value_count": 0,
+              "span": {
+                "line": 8,
+                "end_line": 9
+              },
+              "title": "Delete entire attribute",
+              "reason": "No values were supplied, so this requests removal of the attribute and all its values.",
+              "action": "Confirm that all values should be removed and that the attribute is not required."
+            },
+            {
+              "code": "entry-delete",
+              "level": "high",
+              "record_index": 1,
+              "dn": "uid=retired,ou=People,dc=example,dc=org",
+              "attribute": null,
+              "value_count": 0,
+              "span": {
+                "line": 11,
+                "end_line": 12
+              },
+              "title": "Delete directory entry",
+              "reason": "Requests deletion of this DN. The server state and effects of attached controls are unknown.",
+              "action": "Verify the target and recovery plan. The optional deletion policy can block this file."
+            }
+          ]
+        },
+        "document": null,
+        "locations": null,
+        "report_schema_version": 1,
+        "source": {
+          "sha256": "bf8e94f2616e98f6383f8d39062dbe074941ee8252a9c87af7e127c436e1e9d0",
+          "byte_length": 265,
+          "identity_scope": "Exact analysed bytes; not a signature or authenticity proof"
+        },
+        "options": {
+          "allow_missing_version": false,
+          "deny_delete": true,
+          "deny_clear": true,
+          "deny_rename": true,
+          "legacy_dn_spaces": false
+        },
+        "diagnostics_truncated": false
+      }
+    },
+    {
+      "index": 2,
+      "label": "03-migration-plan.ldif",
+      "report": {
+        "tool": "MoonLDIF",
+        "version": "0.3.0",
+        "status": "complete",
+        "exit_code": 1,
+        "mode": "changes",
+        "record_count": 2,
+        "scope": "LDIF v1 supported structure and DN/RDN string syntax; not server import approval",
+        "names_checked": true,
+        "name_profile": "RFC 4514 string syntax",
+        "not_checked": [
+          "DN equality and schema matching",
+          "BER-hex assertion semantics",
+          "directory schema",
+          "server state and ACL",
+          "control semantics",
+          "external value contents"
+        ],
+        "diagnostics": [
+          {
+            "code": "rename-denied",
+            "severity": "policy",
+            "span": {
+              "line": 9,
+              "end_line": 13
+            },
+            "reason": "Renaming or moving a directory entry is blocked by --deny-rename."
+          }
+        ],
+        "review": {
+          "total_items": 2,
+          "truncated": false,
+          "analysis_complete": true,
+          "input_exit_code": 1,
+          "record_count": 2,
+          "scope": "File operation intent only; no LDAP execution or schema approval",
+          "items": [
+            {
+              "code": "entry-add",
+              "level": "notice",
+              "record_index": 0,
+              "dn": "uid=demo,ou=People,dc=example,dc=org",
+              "attribute": null,
+              "value_count": 4,
+              "span": {
+                "line": 2,
+                "end_line": 7
+              },
+              "title": "Add directory entry",
+              "reason": "Requests a new entry with the supplied attribute values.",
+              "action": "Check the parent, object classes and required attributes against the target directory schema."
+            },
+            {
+              "code": "entry-move",
+              "level": "high",
+              "record_index": 1,
+              "dn": "uid=demo,ou=People,dc=example,dc=org",
+              "attribute": null,
+              "value_count": 0,
+              "span": {
+                "line": 9,
+                "end_line": 13
+              },
+              "title": "Rename with a new parent DN",
+              "reason": "New RDN: uid=demo-renamed. Requests removal of the old RDN attribute values. New parent DN: ou=Archive,dc=example,dc=org.",
+              "action": "Review dependent names and child entries; confirm target-parent and permission requirements on the server."
+            }
+          ]
+        },
+        "document": null,
+        "locations": null,
+        "report_schema_version": 1,
+        "source": {
+          "sha256": "0686d441672d8ead71b481bf49eab77b9ddd5c806c2ec10f033fcbf3f70ea64e",
+          "byte_length": 273,
+          "identity_scope": "Exact analysed bytes; not a signature or authenticity proof"
+        },
+        "options": {
+          "allow_missing_version": false,
+          "deny_delete": true,
+          "deny_clear": true,
+          "deny_rename": true,
+          "legacy_dn_spaces": false
+        },
+        "diagnostics_truncated": false
+      }
+    }
+  ]
+}

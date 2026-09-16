@@ -1,4 +1,20 @@
-# 最终验收对照表
+# 0.3.0 当前验收对照
+
+| 交付项 | 实际证据 |
+|---|---|
+| 批量核心与公共 API | [BatchReview](../src/batch.mbt)、[核心边界测试](../src/batch_wbtest.mbt)、[使用说明](BATCH.md) |
+| 实际 CI 接入 | [示例](../examples/ci/README.md)、[报告保存程序](../examples/ci/check-plan.mjs)、[真实文件回归](../tests/cli.test.mjs) |
+| 正式源双平台与浏览器 | [CI 35090176346](https://github.com/WeiR-h/moonldif/actions/runs/35090176346) |
+| 正式标签及 Pages | [CI 35090424644](https://github.com/WeiR-h/moonldif/actions/runs/35090424644) |
+| 指定版本注册表安装 | [CI 35090551586](https://github.com/WeiR-h/moonldif/actions/runs/35090551586)，Windows/Ubuntu、JS/Wasm GC、新 API 通过 |
+| GitHub / mooncakes | [v0.3.0 Release](https://github.com/WeiR-h/moonldif/releases/tag/v0.3.0)、[注册表 API](https://mooncakes.io/docs/WeiR-h/moonldif@0.3.0) |
+| 同版本公开网页 | [工作台](https://weir-h.github.io/moonldif/)，Chromium/Firefox 下载与 CLI 往返通过 |
+| 证据与合成报告 | [0.3.0 快照](../verification/2026-09-16-v0.3.0/README.md) |
+| 个人/官方最终验收 | 待参赛者独立操作、待组委会最终结果；不由自测代替 |
+
+以下保留 0.2.0 历史基线，最新发布以本节为准。
+
+# 0.2.0 历史验收对照表
 
 日期：2026-09-16。此表区分代码验证、公开发布、个人验收和组委会验收。
 

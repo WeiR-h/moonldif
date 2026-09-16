@@ -1,0 +1,42 @@
+{
+  "started": "2026-09-16T11:28:06.081593+00:00",
+  "method": "fresh local workspace importing extracted moon package archive; not registry installation",
+  "status": "passed",
+  "steps": [
+    {
+      "command": [
+        "/home/runner/.moon/bin/moon",
+        "package"
+      ],
+      "exit_code": 0,
+      "output": "Running moon check ...\nFinished. moon: ran 5 tasks, now up to date\nCheck passed\nPackage to /home/runner/work/moonldif/moonldif/_build/publish/WeiR-h-moonldif-0.3.0.zip\n"
+    },
+    {
+      "command": [
+        "/home/runner/.moon/bin/moon",
+        "test",
+        "-p",
+        "local/moonldif_consumer",
+        "--target",
+        "js"
+      ],
+      "exit_code": 0,
+      "output": "Total tests: 2, passed: 2, failed: 0.\nWarning: [0029]\n   \u256d\u2500[ /home/runner/work/moonldif/moonldif/.tools/package-consumers/consumer-j73dv_1i/consumer/moon.pkg:1:10 ]\n   \u2502\n 1 \u2502 import { \"WeiR-h/moonldif\" @ldif }\n   \u2502          \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500  \n   \u2502                  \u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 Warning (unused_package): Unused package 'WeiR-h/moonldif'\n\u2500\u2500\u2500\u256f\nWarning: [0029]\n   \u256d\u2500[ /home/runner/work/moonldif/moonldif/.tools/package-consumers/consumer-j73dv_1i/consumer/moon.pkg:1:28 ]\n   \u2502\n 1 \u2502 import { \"WeiR-h/moonldif\" @ldif }\n   \u2502                            \u2500\u2500\u252c\u2500\u2500  \n   \u2502                              \u2570\u2500\u2500\u2500\u2500 Warning (unused_package): Unused package alias 'ldif'\n\u2500\u2500\u2500\u256f\n"
+    },
+    {
+      "command": [
+        "/home/runner/.moon/bin/moon",
+        "test",
+        "-p",
+        "local/moonldif_consumer",
+        "--target",
+        "wasm-gc"
+      ],
+      "exit_code": 0,
+      "output": "Total tests: 2, passed: 2, failed: 0.\nWarning: [0029]\n   \u256d\u2500[ /home/runner/work/moonldif/moonldif/.tools/package-consumers/consumer-j73dv_1i/consumer/moon.pkg:1:10 ]\n   \u2502\n 1 \u2502 import { \"WeiR-h/moonldif\" @ldif }\n   \u2502          \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500  \n   \u2502                  \u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 Warning (unused_package): Unused package 'WeiR-h/moonldif'\n\u2500\u2500\u2500\u256f\nWarning: [0029]\n   \u256d\u2500[ /home/runner/work/moonldif/moonldif/.tools/package-consumers/consumer-j73dv_1i/consumer/moon.pkg:1:28 ]\n   \u2502\n 1 \u2502 import { \"WeiR-h/moonldif\" @ldif }\n   \u2502                            \u2500\u2500\u252c\u2500\u2500  \n   \u2502                              \u2570\u2500\u2500\u2500\u2500 Warning (unused_package): Unused package alias 'ldif'\n\u2500\u2500\u2500\u256f\n"
+    }
+  ],
+  "archive": "WeiR-h-moonldif-0.3.0.zip",
+  "sha256": "a931fc04008dcc24d5e014666c0496f07ab6262d6c01d90ec67c77b75165284c",
+  "finished": "2026-09-16T11:28:07.159700+00:00"
+}
