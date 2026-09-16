@@ -1,0 +1,40 @@
+{
+  "version": "0.1.0",
+  "started": "2026-09-16T10:14:34.995508+00:00",
+  "method": "exact mooncakes dependency in a new external temporary directory; no local overrides",
+  "platform": "nt",
+  "status": "passed",
+  "steps": [
+    {
+      "command": [
+        "C:\\Users\\<USER>\\Desktop\\Competition\\MoonBit \u9ed1\u5ba2\u677e\\MoonAPI Check\\.tools\\moon\\bin\\moon.exe",
+        "add",
+        "WeiR-h/moonldif@0.1.0"
+      ],
+      "exit_code": 0,
+      "output": "Registry index updated successfully\nSymbols updated successfully\nDownloading WeiR-h/moonldif@0.1.0\n"
+    },
+    {
+      "command": [
+        "C:\\Users\\<USER>\\Desktop\\Competition\\MoonBit \u9ed1\u5ba2\u677e\\MoonAPI Check\\.tools\\moon\\bin\\moon.exe",
+        "test",
+        "--target",
+        "js"
+      ],
+      "exit_code": 0,
+      "output": "Total tests: 1, passed: 1, failed: 0.\nWarning: [0029]\n   \u256d\u2500[ C:\\Users\\<USER>\\AppData\\Local\\Temp\\moonldif-registry-x0kb1u_c\\moon.pkg:1:10 ]\n   \u2502\n 1 \u2502 import { \"WeiR-h/moonldif\" @ldif }\n   \u2502          \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500  \n   \u2502                  \u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 Warning (unused_package): Unused package 'WeiR-h/moonldif'\n\u2500\u2500\u2500\u256f\nWarning: [0029]\n   \u256d\u2500[ C:\\Users\\<USER>\\AppData\\Local\\Temp\\moonldif-registry-x0kb1u_c\\moon.pkg:1:28 ]\n   \u2502\n 1 \u2502 import { \"WeiR-h/moonldif\" @ldif }\n   \u2502                            \u2500\u2500\u252c\u2500\u2500  \n   \u2502                              \u2570\u2500\u2500\u2500\u2500 Warning (unused_package): Unused package alias 'ldif'\n\u2500\u2500\u2500\u256f\n"
+    },
+    {
+      "command": [
+        "C:\\Users\\<USER>\\Desktop\\Competition\\MoonBit \u9ed1\u5ba2\u677e\\MoonAPI Check\\.tools\\moon\\bin\\moon.exe",
+        "test",
+        "--target",
+        "wasm-gc"
+      ],
+      "exit_code": 0,
+      "output": "Total tests: 1, passed: 1, failed: 0.\nWarning: [0029]\n   \u256d\u2500[ C:\\Users\\<USER>\\AppData\\Local\\Temp\\moonldif-registry-x0kb1u_c\\moon.pkg:1:10 ]\n   \u2502\n 1 \u2502 import { \"WeiR-h/moonldif\" @ldif }\n   \u2502          \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500  \n   \u2502                  \u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 Warning (unused_package): Unused package 'WeiR-h/moonldif'\n\u2500\u2500\u2500\u256f\nWarning: [0029]\n   \u256d\u2500[ C:\\Users\\<USER>\\AppData\\Local\\Temp\\moonldif-registry-x0kb1u_c\\moon.pkg:1:28 ]\n   \u2502\n 1 \u2502 import { \"WeiR-h/moonldif\" @ldif }\n   \u2502                            \u2500\u2500\u252c\u2500\u2500  \n   \u2502                              \u2570\u2500\u2500\u2500\u2500 Warning (unused_package): Unused package alias 'ldif'\n\u2500\u2500\u2500\u256f\n"
+    }
+  ],
+  "installed_manifest": "name = \"WeiR-h/moonldif\"\n\nversion = \"0.1.0\"\n\nsource = \"src\"\n\nreadme = \"README.md\"\n\nlicense = \"Apache-2.0\"\n\nrepository = \"https://github.com/WeiR-h/moonldif\"\n\nkeywords = [ \"ldif\", \"ldap\", \"parser\", \"validation\" ]\n\ndescription = \"LDIF byte-preserving records and offline structural checks in MoonBit\"\n\npreferred_target = \"js\"\n",
+  "finished": "2026-09-16T10:14:51.452754+00:00"
+}

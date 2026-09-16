@@ -30,3 +30,14 @@ test "adapter rejects controls, content and incomplete reports" {
     assert_true(match to_messages(@ldif.parse_text(source)) { Err(_) => true; Ok(_) => false })
   }
 }
+
+///|
+test "adapter refuses clear and rename policies" {
+  for source in [
+    "version: 1\ndn: cn=Demo\nchangetype: modify\nreplace: mail\n-\n",
+    "version: 1\ndn: cn=Demo\nchangetype: moddn\nnewrdn: cn=New\ndeleteoldrdn: 1\n",
+  ] {
+    let report = @ldif.check_text(source, risk_policy={deny_clear: true, deny_rename: true})
+    assert_true(match to_messages(report) { Err(_) => true; Ok(_) => false })
+  }
+}

@@ -5,6 +5,7 @@ import { mkdtempSync, writeFileSync, readFileSync, existsSync, rmSync } from 'no
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createHash } from 'node:crypto';
 import { workbench } from '../dist/core.mjs';
 
 const cli = fileURLToPath(new URL('../dist/moonldif.js', import.meta.url));
@@ -14,6 +15,45 @@ function withFiles(fn) {
   try { return fn(dir); } finally { rmSync(dir, { recursive: true, force: true }); }
 }
 const content = 'version: 1\ndn: cn=A\ncn: A\nphoto:: /wBB\n';
+
+test('risk policies, source identity and Markdown review are consistent', () => withFiles(dir => {
+  const input = join(dir, '个人 文件.ldif');
+  const source = 'version: 1\r\ndn: cn=[demo]&user\r\nchangetype: modify\r\nreplace: description\r\ndescription: secret-value-not-for-report\r\n-\r\nreplace: mail\r\n-\r\n\r\ndn: cn=Demo\r\nchangetype: modrdn\r\nnewrdn: cn=New\r\ndeleteoldrdn: 1\r\n';
+  writeFileSync(input, source);
+  const args = ['review', input, '--deny-clear', '--deny-rename'];
+  const result = run(...args, '--format', 'json');
+  assert.equal(result.status, 1);
+  const report = JSON.parse(result.stdout);
+  assert.equal(report.source.sha256, createHash('sha256').update(source).digest('hex'));
+  assert.equal(report.source.byte_length, Buffer.byteLength(source));
+  assert.equal(report.options.deny_clear, true);
+  assert.equal(report.options.deny_rename, true);
+  assert.equal(report.document, null);
+  assert.deepEqual(report.diagnostics.map(d => d.code), ['clear-denied', 'rename-denied']);
+  assert.equal(result.stdout, run(...args, '--format', 'json').stdout);
+  const md = run(...args, '--format', 'markdown');
+  assert.equal(md.status, 1);
+  assert.match(md.stdout, /&#91;demo&#93;&#38;user/);
+  for (const output of [result.stdout, md.stdout]) {
+    assert.ok(!output.includes('secret-value-not-for-report'));
+    assert.ok(!output.includes(dir));
+    assert.ok(!output.includes('个人 文件'));
+  }
+  assert.equal(run('check', input).status, 0);
+  assert.equal(run('check', input, '--deny-clear').status, 1);
+  assert.equal(run('check', input, '--deny-rename').status, 1);
+  const target = join(dir, 'refused.ldif');
+  assert.equal(run('format', input, '--output', target, '--deny-clear').status, 1);
+  assert.ok(!existsSync(target));
+  assert.equal(run('check', input, '--format', 'markdown').status, 2);
+  assert.equal(run('check', input, '--deny-clear', '--deny-clear').status, 2);
+  assert.equal(run('check', input, '--deny-rename', '--deny-rename').status, 2);
+  writeFileSync(input, source + '\r\ndn: cn=Photo\r\nchangetype: add\r\nphoto:< file:///private-secret\r\n');
+  const incomplete = run(...args, '--format', 'json');
+  assert.equal(incomplete.status, 2);
+  assert.ok(JSON.parse(incomplete.stdout).diagnostics.some(d => d.code === 'clear-denied'));
+  assert.ok(!incomplete.stdout.includes('file:///private-secret'));
+}));
 
 test('help, version and command failures are predictable', () => {
   assert.equal(run('--help').status, 0);

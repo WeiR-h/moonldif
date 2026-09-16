@@ -1,9 +1,18 @@
 ///|
-fn envelope(code : Int, output : String, written? : String? = None) -> String {
+fn envelope(
+  code : Int,
+  output : String,
+  written? : String? = None,
+  markdown? : String? = None,
+) -> String {
   let result : Json = {
     "action": "report",
     "exit_code": code.to_json(),
     "output": output.to_json(),
+    "markdown": match markdown {
+      Some(s) => s.to_json()
+      None => Json::null()
+    },
     "written": match written {
       Some(s) => s.to_json()
       None => Json::null()
@@ -42,7 +51,7 @@ pub fn host_error(message : String, format : String) -> String {
 fn help() -> String {
   "MoonLDIF " +
   @ldif.version() +
-  "\nUsage:\n  node dist/moonldif.js check INPUT [--format text|json] [--compat] [--deny-delete] [--legacy-dn-spaces]\n  node dist/moonldif.js review INPUT [--format text|json] [--compat] [--deny-delete] [--legacy-dn-spaces]\n  node dist/moonldif.js inspect INPUT [--format text|json] [--compat] [--deny-delete] [--legacy-dn-spaces]\n  node dist/moonldif.js format INPUT --output NEW_FILE [--format text|json] [--compat] [--deny-delete] [--legacy-dn-spaces]\n  node dist/moonldif.js --help | --version\nUse -- before an input filename starting with '-'.\nExit: 0 complete; 1 deletion policy blocked; 2 invalid, incomplete or execution failure.\nFiles are local, maximum 8 MiB. URL values are never fetched. Format refuses overwrites.\nChecks cover supported LDIF structure and DN/RDN syntax, not directory schema or server acceptance. --compat only permits a missing version; --legacy-dn-spaces permits separator padding with warnings and preserves the original names.\n"
+  "\nUsage:\n  node dist/moonldif.js check INPUT [--format text|json] [--compat] [--deny-delete] [--deny-clear] [--deny-rename] [--legacy-dn-spaces]\n  node dist/moonldif.js review INPUT [--format text|json|markdown] [--compat] [--deny-delete] [--deny-clear] [--deny-rename] [--legacy-dn-spaces]\n  node dist/moonldif.js inspect INPUT [--format text|json] [--compat] [--deny-delete] [--deny-clear] [--deny-rename] [--legacy-dn-spaces]\n  node dist/moonldif.js format INPUT --output NEW_FILE [--format text|json] [--compat] [--deny-delete] [--deny-clear] [--deny-rename] [--legacy-dn-spaces]\n  node dist/moonldif.js --help | --version\nUse -- before an input filename starting with '-'.\nExit: 0 complete; 1 risk policy blocked; 2 invalid, incomplete or execution failure.\nFiles are local, maximum 8 MiB. URL values are never fetched. Format refuses overwrites.\nChecks cover supported LDIF structure and DN/RDN syntax, not directory schema or server acceptance. --compat only permits a missing version; --legacy-dn-spaces permits separator padding with warnings and preserves the original names.\n"
 }
 
 ///|
@@ -83,6 +92,8 @@ pub fn cli_plan(args_json : String) -> String {
   let mut output : String? = None
   let mut compat = false
   let mut deny = false
+  let mut deny_clear = false
+  let mut deny_rename = false
   let mut legacy_spaces = false
   let mut positional = false
   let mut i = 1
@@ -101,6 +112,16 @@ pub fn cli_plan(args_json : String) -> String {
         return host_error("Duplicate --deny-delete.", format)
       }
       deny = true
+    } else if !positional && arg == "--deny-clear" {
+      if deny_clear {
+        return host_error("Duplicate --deny-clear.", format)
+      }
+      deny_clear = true
+    } else if !positional && arg == "--deny-rename" {
+      if deny_rename {
+        return host_error("Duplicate --deny-rename.", format)
+      }
+      deny_rename = true
     } else if !positional && arg == "--legacy-dn-spaces" {
       if legacy_spaces {
         return host_error("Duplicate --legacy-dn-spaces.", format)
@@ -112,7 +133,7 @@ pub fn cli_plan(args_json : String) -> String {
       }
       i = i + 1
       if arg == "--format" {
-        if seen_format || !["text", "json"].contains(args[i]) {
+        if seen_format || !["text", "json", "markdown"].contains(args[i]) {
           return host_error("Invalid or duplicate --format.", format)
         }
         seen_format = true
@@ -142,6 +163,9 @@ pub fn cli_plan(args_json : String) -> String {
       format,
     )
   }
+  if format == "markdown" && args[0] != "review" {
+    return host_error("Markdown is supported only by review.", format)
+  }
   let result : Json = {
     "action": "read",
     "command": args[0].to_json(),
@@ -153,6 +177,8 @@ pub fn cli_plan(args_json : String) -> String {
     "format": format.to_json(),
     "compat": compat.to_json(),
     "deny_delete": deny.to_json(),
+    "deny_clear": deny_clear.to_json(),
+    "deny_rename": deny_rename.to_json(),
     "legacy_dn_spaces": legacy_spaces.to_json(),
   }
   result.stringify()
@@ -225,5 +251,69 @@ pub fn workbench(
     envelope(0, output, written=Some(written))
   } else {
     envelope(report.exit_code(), output)
+  }
+}
+
+///|
+#export_name("analyse_v2")
+pub fn analyse_v2(
+  encoded : String,
+  command : String,
+  format : String,
+  compat : Bool,
+  deny_delete : Bool,
+  legacy_dn_spaces : Bool,
+  deny_clear : Bool,
+  deny_rename : Bool,
+  input_sha256 : String,
+) -> String {
+  let bytes = @base64.decode(encoded[:], ignore_whitespace=false) catch {
+    _ => return host_error("Invalid input transport.", format)
+  }
+  if input_sha256.length() != 64 ||
+    !input_sha256
+    .iter()
+    .all(c => (c >= '0' && c <= '9') || (c >= 'a' && c <= 'f')) {
+    return host_error("Invalid source SHA-256 transport.", format)
+  }
+  let options : @ldif.Options = { allow_missing_version: compat, deny_delete, }
+  let risk_policy : @ldif.RiskPolicy = { deny_clear, deny_rename, }
+  let report = @ldif.check(bytes, options~, legacy_dn_spaces~, risk_policy~)
+  let metadata : @ldif.ReviewMetadata = {
+    input_sha256,
+    input_byte_length: bytes.length(),
+    options,
+    legacy_dn_spaces,
+    risk_policy,
+  }
+  let is_review = command == "review" ||
+    command == "workbench" ||
+    command == "workbench-write"
+  let json = if is_review {
+    report.review_json(metadata)
+  } else {
+    report.to_json(include_records=command == "inspect")
+  }
+  let markdown = if is_review {
+    Some(report.review_markdown(metadata))
+  } else {
+    None
+  }
+  let output = if format == "markdown" {
+    markdown.unwrap()
+  } else if format == "json" {
+    json.stringify(indent=2) + "\n"
+  } else {
+    report.to_text(include_records=command == "inspect") +
+    (if is_review { report.review().to_text() } else { "" })
+  }
+  if (command == "format" || command == "workbench-write") &&
+    report.exit_code() == 0 {
+    let written = report.format() catch {
+      _ => return host_error("Writer rejected this document.", format)
+    }
+    envelope(0, output, written=Some(written), markdown~)
+  } else {
+    envelope(report.exit_code(), output, markdown~)
   }
 }

@@ -348,6 +348,7 @@ pub fn check(
   data : Bytes,
   options? : Options = Options::default(),
   legacy_dn_spaces? : Bool = false,
+  risk_policy? : RiskPolicy = RiskPolicy::default(),
 ) -> Report {
   let report = parse(data, options~)
   let ds = report.diagnostics.copy()
@@ -388,6 +389,7 @@ pub fn check(
       _ => ()
     }
   }
+  check_risks(report.document, ds, risk_policy)
   { document: report.document, diagnostics: ds, names_checked: true, }
 }
 
@@ -396,6 +398,7 @@ pub fn check_text(
   text : String,
   options? : Options = Options::default(),
   legacy_dn_spaces? : Bool = false,
+  risk_policy? : RiskPolicy = RiskPolicy::default(),
 ) -> Report {
-  check(@utf8.encode(text[:]), options~, legacy_dn_spaces~)
+  check(@utf8.encode(text[:]), options~, legacy_dn_spaces~, risk_policy~)
 }
