@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.2.0 — 2026-09-16
+
+- Add opt-in attribute-clear and rename/move policies while preserving Options and prior calls. Scan every parsed record, independent of the review display limit.
+- Add deterministic MoonBit Markdown/JSON review reports with host-computed source SHA-256, byte length, options, diagnostics and truncation. Reports omit attribute values but include target DNs.
+- Add browser policy controls and report downloads for completed pass, blocked and incomplete outcomes; stale, running and failed tasks cannot download old results.
+- Fix source selection offsets for CRLF files in the browser.
+- Add Chromium/Firefox desktop and mobile-viewport checks, timeout and stale-response injection, downloaded-LDIF CLI verification, and stable-tag-only GitHub Pages deployment.
+- Retain bounded offline processing, independent interoperability checks, Apache-2.0, and exact registry consumer verification.
+
+
 ## 0.1.0 — 2026-09-16
 
 - Freeze the dev.5 public library and local workbench as the initial stable baseline.

@@ -15,6 +15,8 @@ const url = process.argv[2] || 'http://127.0.0.1:4188/moonldif/';
 const output = resolve(root, 'verification/local', url.startsWith('https:') ? 'browser-public' : 'browser-local');
 mkdirSync(output, { recursive: true });
 const evidence = { url, status: 'running', browser_path: 'Browser plugin not available; regular Playwright', cases: [] };
+const expectedVersion = JSON.parse(readFileSync(resolve(root, 'package.json'), 'utf8')).version;
+evidence.expected_version = expectedVersion;
 const sha = text => createHash('sha256').update(text).digest('hex');
 const inspect = file => {
   const r = spawnSync(process.execPath, [resolve(root, 'dist/moonldif.js'), 'inspect', file, '--format', 'json'], { encoding: 'utf8' });
@@ -57,6 +59,7 @@ try {
       console.log('Loaded: ' + name);
       await ready(page);
       assert.match(await page.title(), /MoonLDIF/);
+      assert.ok((await page.locator('footer').innerText()).includes('MoonLDIF ' + expectedVersion));
       assert.equal(await page.getByRole('heading', { name: '检查文件，再执行变更' }).count(), 1);
       assert.equal(await page.locator('vite-error-overlay').count(), 0);
       assert.equal(await page.getByRole('button', { name: '导出新文件', exact: true }).isEnabled(), false);
@@ -125,7 +128,7 @@ try {
       assert.deepEqual(errors, []);
       assert.deepEqual(badResponses, []);
       assert.ok(requests.every(r => r.method === 'GET' && r.url.startsWith(new URL(url).origin)));
-      evidence.cases.push({ browser: name, status: 'passed', checks: ['identity', 'nonblank', 'no-overlay', 'no-console-errors', 'CRLF-source-hash', 'clear-policy', 'rename-policy', 'stale-invalidation', 'partial-report', 'markdown-escaping', 'private-attribute-omission', 'source-navigation', 'download-cli-roundtrip', 'oversize', 'bad-encoding', 'mobile-no-overflow'], requests, errors, warnings, badResponses });
+      evidence.cases.push({ browser: name, browser_version: browser.version(), status: 'passed', checks: ['identity', 'nonblank', 'no-overlay', 'no-console-errors', 'CRLF-source-hash', 'clear-policy', 'rename-policy', 'stale-invalidation', 'partial-report', 'markdown-escaping', 'private-attribute-omission', 'source-navigation', 'download-cli-roundtrip', 'oversize', 'bad-encoding', 'mobile-no-overflow'], requests, errors, warnings, badResponses });
       if (name === 'chromium') {
         const racePage = await context.newPage();
         await racePage.addInitScript(() => {
@@ -148,7 +151,7 @@ try {
         await timed.getByText('分析超过 20 秒', { exact: false }).waitFor({ timeout: 25000 });
         await disabled(timed);
         await timed.close();
-        evidence.cases.push({ browser: name, status: 'passed', checks: ['delayed-old-response', 'worker-timeout-no-stale-export'], fault_injection: true });
+        evidence.cases.push({ browser: name, browser_version: browser.version(), status: 'passed', checks: ['delayed-old-response', 'worker-timeout-no-stale-export'], fault_injection: true });
       }
       console.log('Checks passed: ' + name);
       await context.close();

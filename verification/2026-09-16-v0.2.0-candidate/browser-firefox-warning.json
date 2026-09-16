@@ -1,0 +1,103 @@
+{
+  "url": "http://127.0.0.1:4188/moonldif/",
+  "status": "failed",
+  "browser_path": "Browser plugin not available; regular Playwright",
+  "cases": [
+    {
+      "browser": "chromium",
+      "status": "passed",
+      "checks": [
+        "identity",
+        "nonblank",
+        "no-overlay",
+        "no-console-errors",
+        "CRLF-source-hash",
+        "clear-policy",
+        "rename-policy",
+        "stale-invalidation",
+        "partial-report",
+        "markdown-escaping",
+        "private-attribute-omission",
+        "source-navigation",
+        "download-cli-roundtrip",
+        "oversize",
+        "bad-encoding",
+        "mobile-no-overflow"
+      ],
+      "requests": [
+        {
+          "url": "http://127.0.0.1:4188/moonldif/",
+          "method": "GET",
+          "type": "document"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/index-mK-3SIes.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/index-C66cXnL5.css",
+          "method": "GET",
+          "type": "stylesheet"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-K2cCqt0N.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-K2cCqt0N.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-K2cCqt0N.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-K2cCqt0N.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-K2cCqt0N.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-K2cCqt0N.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-K2cCqt0N.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-K2cCqt0N.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-K2cCqt0N.js",
+          "method": "GET",
+          "type": "script"
+        }
+      ],
+      "errors": [],
+      "badResponses": []
+    },
+    {
+      "browser": "chromium",
+      "status": "passed",
+      "checks": [
+        "delayed-old-response",
+        "worker-timeout-no-stale-export"
+      ],
+      "fault_injection": true
+    }
+  ],
+  "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ [\n+   '[JavaScript Warning: \"This site appears to use a scroll-linked positioning effect. This may not work well with asynchronous panning; see https://firefox-source-docs.mozilla.org/performance/scroll-linked_effects.html for further details and to join the discussion on related tools and features!\" {file: \"http://127.0.0.1:4188/moonldif/\" line: 0}]'\n+ ]\n- []\n\n    at file:///C:/Users/<USER>/Desktop/Competition/MoonBit%20%E9%BB%91%E5%AE%A2%E6%9D%BE/MoonLDIF/scripts/browser-verify.mjs:125:14"
+}

@@ -1,0 +1,103 @@
+{
+  "url": "http://127.0.0.1:4188/moonldif/",
+  "status": "failed",
+  "browser_path": "Browser plugin not available; regular Playwright",
+  "cases": [
+    {
+      "browser": "chromium",
+      "status": "passed",
+      "checks": [
+        "identity",
+        "nonblank",
+        "no-overlay",
+        "no-console-errors",
+        "CRLF-source-hash",
+        "clear-policy",
+        "rename-policy",
+        "stale-invalidation",
+        "partial-report",
+        "markdown-escaping",
+        "private-attribute-omission",
+        "source-navigation",
+        "download-cli-roundtrip",
+        "oversize",
+        "bad-encoding",
+        "mobile-no-overflow"
+      ],
+      "requests": [
+        {
+          "url": "http://127.0.0.1:4188/moonldif/",
+          "method": "GET",
+          "type": "document"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/index-HOG2Aneq.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/index-C66cXnL5.css",
+          "method": "GET",
+          "type": "stylesheet"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-x-k7d2k-.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-x-k7d2k-.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-x-k7d2k-.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-x-k7d2k-.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-x-k7d2k-.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-x-k7d2k-.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-x-k7d2k-.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-x-k7d2k-.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-x-k7d2k-.js",
+          "method": "GET",
+          "type": "script"
+        }
+      ],
+      "errors": [],
+      "badResponses": []
+    },
+    {
+      "browser": "chromium",
+      "status": "passed",
+      "checks": [
+        "delayed-old-response",
+        "worker-timeout-no-stale-export"
+      ],
+      "fault_injection": true
+    }
+  ],
+  "error": "browserType.launch: Timeout 180000ms exceeded.\nCall log:\n\u001b[2m  - <launching> C:\\Users\\<USER>\\Desktop\\Competition\\MoonBit 黑客松\\MoonLDIF\\.tools\\browsers\\firefox-1538\\firefox\\firefox.exe -no-remote -headless -profile C:\\Users\\<USER>\\AppData\\Local\\Temp\\playwright_firefoxdev_profile-IJwiQ1 -juggler-pipe -silent\u001b[22m\n\u001b[2m  - <launched> pid=49860\u001b[22m\n\u001b[2m  - [pid=49860][err] *** You are running in headless mode.\u001b[22m\n\u001b[2m  - [pid=49860][out] Crash Annotation GraphicsCriticalError: |[0][GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt (t=3.47774) [GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt\u001b[22m\n\n    at C:\\Users\\<USER>\\Desktop\\Competition\\MoonBit 黑客松\\MoonLDIF\\scripts\\browser-verify.mjs:43:34"
+}

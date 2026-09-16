@@ -1,0 +1,7 @@
+{
+  "url": "http://127.0.0.1:4188/moonldif/",
+  "status": "failed",
+  "browser_path": "Browser plugin not available; regular Playwright",
+  "cases": [],
+  "error": "AssertionError [ERR_ASSERTION]: The input did not match the regular expression /replace: mail/. Input:\n\n'e: mail\\n-\\n'\n\n    at file:///C:/Users/<USER>/Desktop/Competition/MoonBit%20%E9%BB%91%E5%AE%A2%E6%9D%BE/MoonLDIF/scripts/browser-verify.mjs:79:14"
+}

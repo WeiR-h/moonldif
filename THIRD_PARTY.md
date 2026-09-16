@@ -13,3 +13,7 @@
 - 浏览器界面使用 React / React DOM 19.3.0（MIT），构建使用 Vite 8.3.0（MIT）；实际直接与传递依赖版本固定于 `web/package-lock.json`，来源为 npm 官方包注册表。项目 Apache-2.0 许可不替代依赖许可；浏览器发行物应附带依赖许可文本。
 - 工作台设计参照由内置 Image Gen 生成，记录于 `web/docs/design/`；界面通过 HTML/CSS/React 与自有 SVG 图标实现，未把生成图片作为产品 UI 或第三方用户案例。
 - 实施使用 AI 辅助编写、调试和文档整理；可复验的结果单独记录。原创性陈述仅指本项目文件模型、解析、诊断、写回和适配代码，不能据此推出生态中绝无同类项目。
+
+## 浏览器回归工具
+
+Playwright 1.62.1（https://github.com/microsoft/playwright，Apache-2.0）仅用于开发与 CI 验证，锁定在 web/package-lock.json；浏览器运行资产不包含 Playwright。Chromium / Firefox 测试浏览器由 Playwright 官方安装流程取得，不随发行包上传。SHA-256 使用 Node.js crypto / 浏览器 Web Crypto 标准平台接口，解析规则和报告正文属于 MoonBit 核心。
