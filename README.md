@@ -2,7 +2,7 @@
 
 MoonBit 原生 LDIF 读写与离线结构预检库。
 
-版本：`0.2.0`，已完成 [GitHub Release](https://github.com/WeiR-h/moonldif/releases/tag/v0.2.0)、[mooncakes 发布](https://mooncakes.io/docs/WeiR-h/moonldif@0.2.0)、双平台注册表安装和 [公开工作台](https://weir-h.github.io/moonldif/) 复验。2026-09-16 已收到报名初审通过通知（参赛者提供），最终验收尚未完成。详见 [交付状态](docs/STATUS.md) 和 [验收对照表](docs/ACCEPTANCE.md)。
+开发版本：`0.3.0`，本轮增加批量离线预检与可复用 CI 示例。正式发布状态见 [交付状态](docs/STATUS.md)。上一版 [v0.2.0](https://github.com/WeiR-h/moonldif/releases/tag/v0.2.0) 已完成 GitHub、mooncakes、双平台注册表和公开网页复验。2026-09-16 已收到报名初审通过通知，最终验收与奖项待确认。
 
 范围：LDIF 内容与基本变更记录、字节属性、源位置、确定性写回和结构报告。目录 Schema、DN 语义相等、权限及真实服务器执行结果不在检查范围内。
 
@@ -23,9 +23,17 @@ MoonBit 原生 LDIF 读写与离线结构预检库。
 
 核心解析、规则、写回、报告和参数判断都用 MoonBit 实现。Node.js 只负责本地文件操作、参数传输、源字节 SHA-256 和进程退出；浏览器负责文件、SHA-256 和下载。规则和报告正文由 MoonBit 生成。Python 只在独立验证或下载测试依赖时使用。
 
+## 一次检查多份文件
+
+```text
+node dist/moonldif.js batch examples/01-directory-export.ldif examples/02-account-changes.ldif examples/03-migration-plan.ldif --deny-delete --deny-clear --deny-rename --format json
+```
+
+此合成例预期返回 1。任一文件错误/不完整优先返回 2，并继续保留其他文件风险。报告包含文件基本名、DN、源字节指纹和逐文件结果；不会读取外部 URL。最多 50 份、单份 8 MiB、累计 32 MiB。详见 [批量说明与库 API](docs/BATCH.md)、[可复用 CI 示例](examples/ci/README.md)。
+
 ## 安装 MoonBit 库
 
-在自己的 MoonBit 工程执行 `moon add WeiR-h/moonldif@0.2.0`，并在 `moon.pkg` 导入 `"WeiR-h/moonldif" @ldif`。注册表安装验证使用 `python scripts/registry-verify.py --version 0.2.0`，创建没有本地覆盖的独立消费工程。
+在自己的 MoonBit 工程执行 `moon add WeiR-h/moonldif@0.3.0`，并在 `moon.pkg` 导入 `"WeiR-h/moonldif" @ldif`。注册表安装验证使用 `python scripts/registry-verify.py --version 0.3.0`，创建没有本地覆盖的独立消费工程。
 
 安装 MoonBit 库不会安装 Node.js CLI。CLI 使用下文的源码构建方式；浏览器工作台另按以下步骤启动。
 
@@ -83,7 +91,7 @@ npm test
 npm run verify
 ```
 
-核心与 CLI 无需安装 npm 依赖；浏览器工作台的依赖由 `web/package-lock.json` 固定。`verify` 包含格式、类型、JS / Wasm GC 两个目标的 38 个核心测试、构建、10 组 CLI 集成测试和三个场景；实际输出与时间记录在 `verification/local/`。[远端双平台 CI](https://github.com/WeiR-h/moonldif/actions/workflows/ci.yml) 已执行通过，另包含工作台构建、归档公共 API、独立参考和生态适配验证；对应提交和完整证据见 [公开交付记录](docs/PUBLICATION.md)。
+核心与 CLI 无需安装 npm 依赖；浏览器工作台的依赖由 `web/package-lock.json` 固定。`verify` 包含格式、类型、JS / Wasm GC 两个目标的 42 个核心测试、构建、14 组 CLI 集成测试和三个场景；实际输出与时间记录在 `verification/local/`。[远端双平台 CI](https://github.com/WeiR-h/moonldif/actions/workflows/ci.yml) 已执行通过，另包含工作台构建、归档公共 API、独立参考和生态适配验证；对应提交和完整证据见 [公开交付记录](docs/PUBLICATION.md)。
 
 本机使用忽略提交的 `.local-toolchain.json` 指向已有 MoonBit 工具链；它不是项目源代码依赖。换机器时安装工具链即可，不需要 MoonAPI Check 工程。
 

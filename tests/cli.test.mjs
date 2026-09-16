@@ -244,3 +244,19 @@ test('batch cumulative byte budget retains earlier results and refuses unread co
   assert.equal(b.files[8].report.source, null);
   assert.equal(b.files[8].report.status, 'unavailable');
 }));
+
+
+test('documented CI helper saves blocked/error reports and never overwrites evidence', () => withFiles(dir => {
+  const helper = fileURLToPath(new URL('../examples/ci/check-plan.mjs', import.meta.url));
+  const input = join(dir, 'plan.ldif'); const output = join(dir, 'report.json');
+  writeFileSync(input, 'version: 1\ndn: cn=Demo\nchangetype: delete\n');
+  const r = spawnSync(process.execPath, [helper, output, input], { encoding: 'utf8' });
+  assert.equal(r.status, 1); assert.equal(JSON.parse(readFileSync(output, 'utf8')).exit_code, 1);
+  const original = readFileSync(output, 'utf8');
+  assert.equal(spawnSync(process.execPath, [helper, output, input]).status, 2);
+  assert.equal(readFileSync(output, 'utf8'), original);
+  const missingReport = join(dir, 'missing-report.json');
+  assert.equal(spawnSync(process.execPath, [helper, missingReport, input, join(dir, 'missing.ldif')]).status, 2);
+  const b = JSON.parse(readFileSync(missingReport, 'utf8'));
+  assert.deepEqual(b.files.map(f => f.report.exit_code), [1, 2]);
+}));

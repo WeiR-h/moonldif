@@ -80,6 +80,17 @@ test "public API from packaged archive" {
   assert_eq(external.exit_code(), 2)
 }
 ''', encoding='utf8')
+    with (consumer / 'consumer_test.mbt').open('a', encoding='utf8') as tests:
+        tests.write(r'''///|
+test "packaged batch API" {
+  let batch = @ldif.BatchReview::new(options={allow_missing_version: false, deny_delete: true})
+  batch.add_bytes("delete.ldif", b"version: 1\ndn: cn=Demo\nchangetype: delete\n", "a".repeat(64))
+  assert_eq(batch.exit_code(), 1)
+  assert_true(batch.to_json().stringify().contains("delete-denied"))
+  batch.add_unavailable("missing.ldif")
+  assert_eq(batch.exit_code(), 2)
+}
+''')
     for target in ['js', 'wasm-gc']:
         run([moon, 'test', '-p', 'local/moonldif_consumer', '--target', target], cwd=workspace, env=env)
     evidence['status'] = 'passed'
