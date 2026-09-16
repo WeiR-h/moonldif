@@ -1,0 +1,1 @@
+A new all-inputs-unavailable assertion first expected a literal underscore in Markdown source. The renderer correctly escaped it as &#95;. The assertion was corrected to inspect escaped Markdown. This was a test expectation error, not a policy omission after the implementation fix. First run: 41/42; final result recorded separately.

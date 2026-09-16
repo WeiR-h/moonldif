@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "version": "0.3.0",
+  "file_count": 177,
+  "size_bytes": 1861161,
+  "sha256": "f0c8008f0777f9b7f553e59e5d07a1acd1396fd9666090288a21180fbe60cfdb",
+  "excluded_private_materials_and_caches": true,
+  "batch_core_and_ci_example_present": true
+}

@@ -2,7 +2,7 @@
 
 MoonBit 原生 LDIF 读写与离线结构预检库。
 
-开发版本：`0.3.0`，本轮增加批量离线预检与可复用 CI 示例。正式发布状态见 [交付状态](docs/STATUS.md)。上一版 [v0.2.0](https://github.com/WeiR-h/moonldif/releases/tag/v0.2.0) 已完成 GitHub、mooncakes、双平台注册表和公开网页复验。2026-09-16 已收到报名初审通过通知，最终验收与奖项待确认。
+版本：`0.3.0`。已完成 [GitHub Release](https://github.com/WeiR-h/moonldif/releases/tag/v0.3.0)、[mooncakes 发布](https://mooncakes.io/docs/WeiR-h/moonldif@0.3.0)、Windows/Ubuntu 注册表安装和同版本公开网页复验。本版新增批量离线预检与可复用 CI 示例，详见 [交付状态](docs/STATUS.md) 和 [本轮证据](verification/2026-09-16-v0.3.0/README.md)。报名初审已通过，个人验收与组委会最终结果仍待确认。
 
 范围：LDIF 内容与基本变更记录、字节属性、源位置、确定性写回和结构报告。目录 Schema、DN 语义相等、权限及真实服务器执行结果不在检查范围内。
 
@@ -39,7 +39,7 @@ node dist/moonldif.js batch examples/01-directory-export.ldif examples/02-accoun
 
 ## 浏览器试用
 
-公开入口：[MoonLDIF 工作台](https://weir-h.github.io/moonldif/)。只部署通过双平台与浏览器 CI 的正式版本；当前在线版本为 0.2.0，公开 Chromium/Firefox 流程已验证。页面提供整条删除、属性清空、改名与移动、不完整输入四类合成示例。
+公开入口：[MoonLDIF 工作台](https://weir-h.github.io/moonldif/)。只部署通过双平台与浏览器 CI 的正式版本；当前在线版本为 0.3.0，公开 Chromium/Firefox 流程已验证。页面提供整条删除、属性清空、改名与移动、不完整输入四类合成示例。
 
 从项目根目录执行以下命令，再打开 `http://127.0.0.1:4178/`：
 

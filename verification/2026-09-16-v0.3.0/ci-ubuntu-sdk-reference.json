@@ -1,0 +1,187 @@
+{
+  "oracle": "UnboundID LDAP SDK 7.0.5",
+  "sha256": "463f0ee93f8046c6f72766f111fc27b18ab4727541968b9fa72699023e1b0ff0",
+  "source": "https://repo.maven.apache.org/maven2/com/unboundid/unboundid-ldapsdk/7.0.5/unboundid-ldapsdk-7.0.5.jar",
+  "version": "0.3.0",
+  "status": "passed",
+  "cases": [
+    {
+      "name": "01-directory-export",
+      "parse": "passed",
+      "sdk_writer_to_moonldif": "passed",
+      "moonldif_writer_to_sdk": "passed"
+    },
+    {
+      "name": "02-account-changes",
+      "parse": "passed",
+      "sdk_writer_to_moonldif": "passed",
+      "moonldif_writer_to_sdk": "passed"
+    },
+    {
+      "name": "03-migration-plan",
+      "parse": "passed",
+      "sdk_writer_to_moonldif": "passed",
+      "moonldif_writer_to_sdk": "passed"
+    },
+    {
+      "name": "empty-root-entry",
+      "parse": "passed",
+      "sdk_writer_to_moonldif": "passed",
+      "moonldif_writer_to_sdk": "passed"
+    },
+    {
+      "name": "modify-empty-delete-replace",
+      "parse": "passed",
+      "sdk_writer_to_moonldif": "passed",
+      "moonldif_writer_to_sdk": "passed"
+    },
+    {
+      "name": "ordered-repeated-modifications",
+      "parse": "passed",
+      "sdk_writer_to_moonldif": "passed",
+      "moonldif_writer_to_sdk": "passed"
+    },
+    {
+      "name": "rename-without-superior",
+      "parse": "passed",
+      "sdk_writer_to_moonldif": "passed",
+      "moonldif_writer_to_sdk": "passed"
+    },
+    {
+      "name": "move-to-root",
+      "parse": "passed",
+      "sdk_writer_to_moonldif": "passed",
+      "moonldif_writer_to_sdk": "passed"
+    },
+    {
+      "name": "controls-absent-empty-binary",
+      "parse": "passed",
+      "sdk_writer_to_moonldif": "passed_after_control_extension_conversion",
+      "moonldif_writer_to_sdk": "passed"
+    },
+    {
+      "name": "attribute-options-case",
+      "parse": "passed",
+      "sdk_writer_to_moonldif": "passed",
+      "moonldif_writer_to_sdk": "passed"
+    },
+    {
+      "name": "escaped-dn-folded-value",
+      "parse": "passed",
+      "sdk_writer_to_moonldif": "passed",
+      "moonldif_writer_to_sdk": "passed"
+    },
+    {
+      "name": "binary-add-1",
+      "parse": "passed",
+      "sdk_writer_to_moonldif": "passed",
+      "moonldif_writer_to_sdk": "passed"
+    },
+    {
+      "name": "binary-modify-38",
+      "parse": "passed",
+      "sdk_writer_to_moonldif": "passed",
+      "moonldif_writer_to_sdk": "passed"
+    },
+    {
+      "name": "binary-add-75",
+      "parse": "passed",
+      "sdk_writer_to_moonldif": "passed",
+      "moonldif_writer_to_sdk": "passed"
+    },
+    {
+      "name": "binary-modify-112",
+      "parse": "passed",
+      "sdk_writer_to_moonldif": "passed",
+      "moonldif_writer_to_sdk": "passed"
+    },
+    {
+      "name": "binary-add-149",
+      "parse": "passed",
+      "sdk_writer_to_moonldif": "passed",
+      "moonldif_writer_to_sdk": "passed"
+    },
+    {
+      "name": "binary-modify-186",
+      "parse": "passed",
+      "sdk_writer_to_moonldif": "passed",
+      "moonldif_writer_to_sdk": "passed"
+    },
+    {
+      "name": "binary-add-223",
+      "parse": "passed",
+      "sdk_writer_to_moonldif": "passed",
+      "moonldif_writer_to_sdk": "passed"
+    },
+    {
+      "name": "binary-modify-260",
+      "parse": "passed",
+      "sdk_writer_to_moonldif": "passed",
+      "moonldif_writer_to_sdk": "passed"
+    },
+    {
+      "name": "binary-add-297",
+      "parse": "passed",
+      "sdk_writer_to_moonldif": "passed",
+      "moonldif_writer_to_sdk": "passed"
+    },
+    {
+      "name": "binary-modify-334",
+      "parse": "passed",
+      "sdk_writer_to_moonldif": "passed",
+      "moonldif_writer_to_sdk": "passed"
+    },
+    {
+      "name": "binary-add-371",
+      "parse": "passed",
+      "sdk_writer_to_moonldif": "passed",
+      "moonldif_writer_to_sdk": "passed"
+    },
+    {
+      "name": "binary-modify-408",
+      "parse": "passed",
+      "sdk_writer_to_moonldif": "passed",
+      "moonldif_writer_to_sdk": "passed"
+    },
+    {
+      "name": "binary-add-445",
+      "parse": "passed",
+      "sdk_writer_to_moonldif": "passed",
+      "moonldif_writer_to_sdk": "passed"
+    },
+    {
+      "name": "binary-modify-482",
+      "parse": "passed",
+      "sdk_writer_to_moonldif": "passed",
+      "moonldif_writer_to_sdk": "passed"
+    },
+    {
+      "name": "binary-add-519",
+      "parse": "passed",
+      "sdk_writer_to_moonldif": "passed",
+      "moonldif_writer_to_sdk": "passed"
+    },
+    {
+      "name": "binary-modify-556",
+      "parse": "passed",
+      "sdk_writer_to_moonldif": "passed",
+      "moonldif_writer_to_sdk": "passed"
+    }
+  ],
+  "scope": "LDIF byte values and ordered changes; no server or schema validation",
+  "profile_differences": [
+    {
+      "case": "empty-plain-control-value",
+      "moonldif": "accepted as empty bytes",
+      "sdk": "StringIndexOutOfBoundsException",
+      "writer": "uses equivalent empty Base64 form",
+      "sdk_exit": 1
+    },
+    {
+      "case": "controls-absent-empty-binary",
+      "sdk_writer": "whole control Base64 extension",
+      "moonldif": "strict profile rejects with exit 2",
+      "test_adapter": "decodes whole control to RFC control grammar before comparing"
+    }
+  ]
+}
