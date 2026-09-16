@@ -1,6 +1,6 @@
 # 可选风险策略
 
-在 0.2.0 开发版中，`--deny-clear` 拦截 modify 的无值 delete / replace；给定一个空字节值仍是“给定值”，不是清空。`--deny-rename` 拦截 moddn/modrdn 及移动。原 `--deny-delete` 只拦截整条删除。
+在 0.2.0 中，`--deny-clear` 拦截 modify 的无值 delete / replace；给定一个空字节值仍是“给定值”，不是清空。`--deny-rename` 拦截 moddn/modrdn 及移动。原 `--deny-delete` 只拦截整条删除。
 
 库入口：`check` / `check_text` 的可选 `risk_policy` 参数接收 `RiskPolicy { deny_clear, deny_rename }`，默认均为 false，原 `Options` 保持不变。`parse` 仍是结构解析入口，不执行新增策略。
 

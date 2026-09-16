@@ -2,7 +2,7 @@
 
 MoonBit 原生 LDIF 读写与离线结构预检库。
 
-状态：`0.1.0`，[GitHub 源码已公开](https://github.com/WeiR-h/moonldif)，[Windows / Ubuntu CI 已通过](https://github.com/WeiR-h/moonldif/actions/runs/34963017480)。2026-09-16 已收到报名初审通过通知；最终验收尚未完成。mooncakes 正式发布及注册表验证进行中，实际状态见交付状态页。开发与验证结果记录在 [交付状态](docs/STATUS.md)。
+版本：`0.2.0`。2026-09-16 已收到报名初审通过通知（参赛者提供），最终验收尚未完成。已发布并完成双平台注册表安装的基线为 [v0.1.0](https://github.com/WeiR-h/moonldif/releases/tag/v0.1.0)；0.2.0 的发布、同版本网页及安装结果以 [交付状态](docs/STATUS.md) 和 [验收对照表](docs/ACCEPTANCE.md) 为准。
 
 范围：LDIF 内容与基本变更记录、字节属性、源位置、确定性写回和结构报告。目录 Schema、DN 语义相等、权限及真实服务器执行结果不在检查范围内。
 
@@ -15,21 +15,23 @@ MoonBit 原生 LDIF 读写与离线结构预检库。
 - 读取目录导出的 LDIF 内容文件，包括中文、二进制属性、多值属性、空值与折行。
 - 解析新增、删除、修改、重命名计划；给出错误代码与物理行号，保留修改顺序。
 - 检查 DN/RDN 转义和组成，定位原始行；旧分隔空格需显式兼容，名称不自动改写。
-- 运行 `--deny-delete`，在导入前发现删除整条记录的计划并返回非零退出码。
+- 可分别启用 `--deny-delete`、`--deny-clear`、`--deny-rename`，拦截整条删除、属性清空、改名与移动；错误或不完整结果优先返回 2。
 - 安全整理为新文件：写出后重新读取比较，保留属性字节和操作顺序，拒绝覆盖已有文件。
 - 可选接入 `hbYlj/moonldap 0.3.0` 的操作模型，已做离线 BER 编解码往返测试。
 - 审阅删除指定值、删除整个属性、清空、替换、移动和控制项；保留操作顺序与位置，不展开属性值。
-- 在浏览器中打开文件、定位问题、编辑复检和导出新文件；处理留在本机，过期或不完整结果禁止导出。
+- 在浏览器中打开文件、定位问题、编辑复检和导出新文件；处理留在本机，过期结果禁止下载；完成的 0/1/2 结果可下载审阅报告，只有 0 可导出整理后的 LDIF。
 
-核心解析、规则、写回、报告和参数判断都用 MoonBit 实现。Node.js 只负责读取本地文件、传递参数、写出文件和设置进程退出码。Python 只在独立验证或下载测试依赖时使用。
+核心解析、规则、写回、报告和参数判断都用 MoonBit 实现。Node.js 只负责本地文件操作、参数传输、源字节 SHA-256 和进程退出；浏览器负责文件、SHA-256 和下载。规则和报告正文由 MoonBit 生成。Python 只在独立验证或下载测试依赖时使用。
 
 ## 安装 MoonBit 库
 
-正式版本发布后，在自己的 MoonBit 工程执行 `moon add WeiR-h/moonldif@0.1.0`，并在 `moon.pkg` 导入 `"WeiR-h/moonldif" @ldif`。注册表安装验证使用 `python scripts/registry-verify.py --version 0.1.0`，创建没有本地覆盖的独立消费工程。
+在自己的 MoonBit 工程执行 `moon add WeiR-h/moonldif@0.2.0`，并在 `moon.pkg` 导入 `"WeiR-h/moonldif" @ldif`。注册表安装验证使用 `python scripts/registry-verify.py --version 0.2.0`，创建没有本地覆盖的独立消费工程。
 
 安装 MoonBit 库不会安装 Node.js CLI。CLI 使用下文的源码构建方式；浏览器工作台另按以下步骤启动。
 
 ## 浏览器试用
+
+公开入口：[MoonLDIF 工作台](https://weir-h.github.io/moonldif/)。只部署通过双平台与浏览器 CI 的正式版本；当前可用性与发布版本见交付状态页。页面提供整条删除、属性清空、改名与移动、不完整输入四类合成示例。
 
 从项目根目录执行以下命令，再打开 `http://127.0.0.1:4178/`：
 
@@ -39,7 +41,7 @@ npm --prefix web run build
 npm --prefix web run preview
 ```
 
-默认合成示例展示删除拦截。点击“定位原文”，修订内容后重新检查；检查完成且策略允许时导出新文件。浏览器入口上限 1 MiB / 10,000 行。详见 [工作台说明](web/README.md) 与 [本轮浏览器验证](verification/2026-09-15-dev.3/browser-qa.json)。React 仅负责界面，分析和写回使用同一个 MoonBit 核心。
+默认合成示例展示删除拦截。点击“定位原文”，修订内容后重新检查；检查完成且策略允许时导出新文件。浏览器入口上限 1 MiB / 10,000 行。详见 [工作台说明](web/README.md) 与 [浏览器验证说明](docs/BROWSER_QA.md)。React 仅负责界面，分析和写回使用同一个 MoonBit 核心。
 
 ## 本机立即试用
 
@@ -54,7 +56,7 @@ node scripts/demo.mjs
 ```text
 node dist/moonldif.js check examples/01-directory-export.ldif
 node dist/moonldif.js inspect examples/03-migration-plan.ldif --format json
-node dist/moonldif.js review examples/02-account-changes.ldif --deny-delete
+node dist/moonldif.js review examples/02-account-changes.ldif --deny-delete --deny-clear --format markdown
 node dist/moonldif.js check examples/02-account-changes.ldif --deny-delete
 node dist/moonldif.js format examples/01-directory-export.ldif --output normalized.ldif
 ```
@@ -64,7 +66,7 @@ node dist/moonldif.js format examples/01-directory-export.ldif --output normaliz
 | 退出码 | 解释 |
 |---|---|
 | 0 | 支持范围内检查完成，启用的策略未拦截 |
-| 1 | 检查完成，删除策略拦截 |
+| 1 | 检查完成，启用的风险策略拦截 |
 | 2 | 输入或运行错误，或存在未能完整分析的结构/外部值；优先于 1 |
 
 **检查通过不等于服务器能成功导入。** DN/RDN 字符串语法已检查；目录 Schema、名称匹配语义、权限、服务端状态和控制语义未检查。URL 引用绝不读取，会使结果为 incomplete。详见 [支持矩阵与边界](docs/SUPPORT.md)。
@@ -81,7 +83,7 @@ npm test
 npm run verify
 ```
 
-核心与 CLI 无需安装 npm 依赖；浏览器工作台的依赖由 `web/package-lock.json` 固定。`verify` 包含格式、类型、JS / Wasm GC 两个目标的 32 个核心测试、构建、9 组 CLI 集成测试和三个场景；实际输出与时间记录在 `verification/local/`。[远端双平台 CI](https://github.com/WeiR-h/moonldif/actions/runs/34963017480) 已执行通过，另包含工作台构建、归档公共 API、独立参考和生态适配验证；对应提交和完整证据见 [公开交付记录](docs/PUBLICATION.md)。
+核心与 CLI 无需安装 npm 依赖；浏览器工作台的依赖由 `web/package-lock.json` 固定。`verify` 包含格式、类型、JS / Wasm GC 两个目标的 38 个核心测试、构建、10 组 CLI 集成测试和三个场景；实际输出与时间记录在 `verification/local/`。[远端双平台 CI](https://github.com/WeiR-h/moonldif/actions/workflows/ci.yml) 已执行通过，另包含工作台构建、归档公共 API、独立参考和生态适配验证；对应提交和完整证据见 [公开交付记录](docs/PUBLICATION.md)。
 
 本机使用忽略提交的 `.local-toolchain.json` 指向已有 MoonBit 工具链；它不是项目源代码依赖。换机器时安装工具链即可，不需要 MoonAPI Check 工程。
 
@@ -100,15 +102,15 @@ python scripts/prepare-moonldap.py
 node scripts/test-moonldap.mjs
 ```
 
-Python 对照覆盖七组内容数据和一组 modify 顺序；新增 Java/JDK 17+ 的 SDK 对照覆盖四类变更等 27 组输入，其中一组的 SDK 输出需显式转换扩展语法，其余 26 组三个方向直接通过。七个 RFC 示例分别记录原刊与修订结果，外部值不记为完整通过。详见 [互操作证据](docs/INTEROPERABILITY.md) 和 [规范覆盖表](docs/CONFORMANCE.md)。moonldap 适配另有两个测试：四种实际模型及 BER 往返、拒绝不支持的输入。适配是单独的本地工作区，普通核心构建不下载这些依赖。
+Python 对照覆盖七组内容数据和一组 modify 顺序；新增 Java/JDK 17+ 的 SDK 对照覆盖四类变更等 27 组输入，其中一组的 SDK 输出需显式转换扩展语法，其余 26 组三个方向直接通过。七个 RFC 示例分别记录原刊与修订结果，外部值不记为完整通过。详见 [互操作证据](docs/INTEROPERABILITY.md) 和 [规范覆盖表](docs/CONFORMANCE.md)。moonldap 适配另有三个测试：四种实际模型及 BER 往返、拒绝不支持的输入、拒绝新增风险策略拦截的报告。适配是单独的本地工作区，普通核心构建不下载这些依赖。
 
 ## MoonBit 库接口
 
 dev.4 增加 [OpenLDAP 原始测试样本验证](docs/OPENLDAP.md)：六份固定文件不做修订，四份在显式 `--compat` 下通过独立 Python 三方向对照，两份保留拒绝和写出阻断。此验证发现并修正了未知修改操作被错误解释成替换的审阅问题；不代表支持全部 OpenLDAP 输入或服务器导入。
 
-尚未发布到 mooncakes，当前通过本地 `moon.work` 引用模块 `WeiR-h/moonldif`。可选适配工作区提供了实际示例。
+mooncakes 模块为 `WeiR-h/moonldif`。默认按上面的指定版本从注册表安装；可选 MoonLDAP 适配工作区单独提供实际示例。
 
-`package-verify.py` 将实际发行归档解压到新工作区，以公共 API 在 JS/Wasm GC 两个目标验证字节写回、操作审阅、策略和不完整状态。它没有从注册表下载，不代替未来的 mooncakes 安装验收。
+`package-verify.py` 将实际发行归档解压到新工作区，以公共 API 在 JS/Wasm GC 两个目标验证字节写回、操作审阅、策略和不完整状态。它没有从注册表下载，不代替 `registry-verify.py` 的注册表安装验收。
 
 ```moonbit
 let report = @ldif.check_text("version: 1\ndn: cn=Demo\ncn: Demo\n")
@@ -130,5 +132,5 @@ if report.exit_code() == 0 {
 - [三分钟演示与个人复验](docs/DEMO.md)、[核心实现解释](docs/ARCHITECTURE.md)、[生态互补复查](docs/ECOSYSTEM.md)。
 - [三个使用场景](docs/SCENARIOS.md)：用户问题、输入、操作、预期结果。
 - [交付状态](docs/STATUS.md)：完成、验证和未完成事项。
-- [下一轮计划](docs/NEXT.md)：完善为可申报候选的优先顺序。
+- [风险策略与报告](docs/RISK_POLICY.md)、[初审后计划](docs/POST_REVIEW_PLAN.md)、[最终验收对照表](docs/ACCEPTANCE.md)。
 - [来源声明](THIRD_PARTY.md)、[变更记录](CHANGELOG.md)、[许可证](LICENSE)。
