@@ -1,0 +1,9 @@
+{
+  "version": "0.2.0",
+  "archive": "WeiR-h-moonldif-0.2.0.zip",
+  "files": 157,
+  "sha256": "bacf66f5e6d9c04ab34b2ea1e47032aed2c42b3f46ee94b927895b41f6449c73",
+  "excluded_toolchains_caches_private_materials": true,
+  "private_contact_scan": "not found",
+  "status": "passed"
+}

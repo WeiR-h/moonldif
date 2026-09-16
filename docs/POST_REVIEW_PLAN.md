@@ -7,3 +7,5 @@
 GitHub：WeiR-h/moonldif；mooncakes：WeiR-h/moonldif；Pages：https://weir-h.github.io/moonldif/ 。公开页面只包含合成样例，文件在浏览器本地处理。
 
 保留原 API、退出码优先级、资源上限及离线边界。个人验收由参赛者独立完成；无代发消息或自动提交验收。
+
+2026-09-16 工程交付结果：四轮对应的正式基线、风险策略、审阅报告/Pages、0.2.0 发布与公开复验均完成，证据见 ACCEPTANCE.md。参赛者个人验收及后续官方最终验收不在自动完成状态内。9 月 23 日冻结新增功能。
