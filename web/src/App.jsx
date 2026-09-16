@@ -1,4 +1,5 @@
-import React, { useRef } from 'react';
+import manifest from '../package.json';
+import React, { useRef, useState } from 'react';
 import { useWorkbench } from './useWorkbench.js';
 import { Editor } from './Editor.jsx';
 import { Results } from './Results.jsx';
@@ -7,13 +8,13 @@ import { Icon } from './Icon.jsx';
 function Status({ analysis }) {
   const report = analysis.report;
   const ready = analysis.phase === 'ready';
-  const blocked = report?.diagnostics?.filter(d => d.code === 'delete-denied').length || 0;
+  const blocked = report?.diagnostics?.filter(d => d.severity === 'policy').length || 0;
   const warnings = report?.diagnostics?.filter(d => d.severity === 'warning').length || 0;
   let title = analysis.message || '内容已更改，请重新检查';
   let tone = 'neutral';
   if (ready) {
     if (report.exit_code === 2) { title = report.status === 'incomplete' ? '分析不完整，暂不能导出' : '发现输入问题，暂不能导出'; tone = 'danger'; }
-    else if (report.exit_code === 1) { title = `已拦截 ${blocked} 项删除操作`; tone = 'danger'; }
+    else if (report.exit_code === 1) { title = `已拦截 ${blocked} 项风险操作`; tone = 'danger'; }
     else if (warnings) { title = `检查完成，另有 ${warnings} 条警告`; tone = 'caution'; }
     else { title = '支持范围内检查通过'; tone = 'success'; }
   }
@@ -23,6 +24,7 @@ function Status({ analysis }) {
 export default function App() {
   const state = useWorkbench();
   const fileInput = useRef(null);
+  const [reportFormat, setReportFormat] = useState('markdown');
   const running = state.analysis.phase === 'running' || state.analysis.phase === 'loading';
   return <div className="app-shell">
     <header className="app-header"><div className="brand"><span>MoonLDIF</span><span className="brand-separator" /><span className="brand-subtitle">目录文件预检工作台</span></div><div className="privacy"><Icon name="lock" /><span>文件仅在本机处理</span></div></header>
@@ -35,12 +37,19 @@ export default function App() {
       </div></div>
       <div className="settings" aria-label="检查选项">
         <label><input type="checkbox" checked={state.options.denyDelete} onChange={e => state.setOption('denyDelete', e.target.checked)} />拦截整条删除</label>
+        <label><input type="checkbox" checked={state.options.denyClear} onChange={e => state.setOption('denyClear', e.target.checked)} />拦截属性清空</label>
+        <label><input type="checkbox" checked={state.options.denyRename} onChange={e => state.setOption('denyRename', e.target.checked)} />拦截改名与移动</label>
         <label><input type="checkbox" checked={state.options.compat} onChange={e => state.setOption('compat', e.target.checked)} />允许缺版本头</label>
         <label><input type="checkbox" checked={state.options.legacySpaces} onChange={e => state.setOption('legacySpaces', e.target.checked)} />允许旧 DN 空格</label>
       </div>
       <Status analysis={state.analysis} />
+      <div className="report-tools">
+        <label>审阅报告 <select aria-label="审阅报告格式" value={reportFormat} onChange={e => setReportFormat(e.target.value)}><option value="markdown">Markdown</option><option value="json">JSON</option></select></label>
+        <button onClick={() => state.exportReport(reportFormat)} disabled={!state.canExportReport}><Icon name="download" />下载审阅报告</button>
+        <p>报告包含目标 DN 和内容指纹，不包含原始属性值；可记录拦截或不完整结果。</p>
+      </div>
       <div className="workspace"><Editor document={state.document} edit={state.edit} loadSample={state.loadSample} loadFile={state.loadFile} selection={state.selection} /><Results analysis={state.analysis} locate={span => state.setSelection({ ...span, focus: true })} selected={state.selection} /></div>
     </main>
-    <footer className="app-footer"><span>核心由 MoonBit 实现</span><span>检查通过不等于导入成功</span></footer>
+    <footer className="app-footer"><span>MoonLDIF {manifest.version} · 核心由 MoonBit 实现</span><a href="https://github.com/WeiR-h/moonldif" target="_blank" rel="noreferrer">源码</a><a href="https://github.com/WeiR-h/moonldif/blob/main/docs/SUPPORT.md" target="_blank" rel="noreferrer">支持范围</a><span>检查通过不等于导入成功</span></footer>
   </div>;
 }

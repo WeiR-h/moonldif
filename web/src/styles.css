@@ -7,3 +7,7 @@
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 
 @media(min-width:1450px){.page-intro h1{font-size:36px}.page-intro p{font-size:20px}.page-intro{margin-bottom:18px}.main-actions{align-self:flex-start;margin-top:6px}.settings{min-height:69px}.editor-toolbar{min-height:72px}.editor-toolbar select{margin-left:48px;width:276px;max-width:276px;font-size:15px}.filename{font-size:15px;max-width:190px}.code-area textarea{font-size:17px;padding-left:18px}.gutter{font-size:16px}.result-tabs{height:72px}.result-tabs button{font-size:18px}.row-heading h3{font-size:20px}.result-row .item-target{font-size:17px}.result-row p{font-size:16px}.locate{font-size:14px}.panel-footer{font-size:15px}.result-row .raw-detail{font-size:14px}}
+
+/* Report downloads remain separate from checked LDIF export. */
+.settings{flex-wrap:wrap;gap:14px 24px}.report-tools{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin:0 0 18px}.report-tools label{display:flex;align-items:center;gap:10px;font-size:15px}.report-tools select{padding:10px}.report-tools p{margin:0;color:#596b75;font-size:13px;flex:1;min-width:220px}.app-footer{flex-wrap:wrap;gap:12px}.app-footer a{color:var(--teal)}
+@media(max-width:640px){.report-tools p{flex-basis:100%}.settings{gap:14px}.report-tools button{padding:10px}.app-footer{justify-content:flex-start}}

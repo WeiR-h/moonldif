@@ -14,8 +14,11 @@ export function Editor({ document, edit, loadSample, loadFile, selection }) {
   };
   useEffect(() => {
     if (!selection || !input.current) return;
-    const start = lines.slice(0, selection.line - 1).join('\n').length + (selection.line > 1 ? 1 : 0);
-    const end = lines.slice(0, selection.end_line).join('\n').length;
+    // Textareas normalise CRLF for display. Selection offsets must use DOM text,
+    // while the original document bytes remain untouched for analysis/hash.
+    const displayLines = input.current.value.split('\n');
+    const start = displayLines.slice(0, selection.line - 1).join('\n').length + (selection.line > 1 ? 1 : 0);
+    const end = displayLines.slice(0, selection.end_line).join('\n').length;
     if (selection.focus) {
       input.current.focus({ preventScroll: true });
       input.current.setSelectionRange(start, end);
