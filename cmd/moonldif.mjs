@@ -1,6 +1,7 @@
 #!/usr/bin/env node
-// Host responsibilities: bounded local byte I/O and process status only.
+// Host responsibilities: bounded local byte I/O, source SHA-256 and process status.
 import { openSync, fstatSync, readSync, closeSync, writeFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import * as core from './core.mjs';
 
 function readBounded(path) {
@@ -28,13 +29,13 @@ try {
   else {
     format = plan.format;
     const bytes = readBounded(plan.input);
-    result = JSON.parse(core.analyse(bytes.toString('base64'), plan.command, plan.format, plan.compat, plan.deny_delete, plan.legacy_dn_spaces));
+    result = JSON.parse(core.analyse_v2(bytes.toString('base64'), plan.command, plan.format, plan.compat, plan.deny_delete, plan.legacy_dn_spaces, plan.deny_clear, plan.deny_rename, createHash('sha256').update(bytes).digest('hex')));
     if (result.written !== null && result.exit_code === 0) {
       writeFileSync(plan.output_path, result.written, { encoding: 'utf8', flag: 'wx', mode: 0o600 });
     }
   }
 } catch (error) {
-  result = JSON.parse(core.host_error(error.message, format));
+  result = JSON.parse(core.host_error('Local file operation failed' + (typeof error.code === 'string' && /^[A-Z0-9_]+$/.test(error.code) ? ': ' + error.code : '.'), format));
 }
 process.stdout.write(result.output);
 process.exitCode = result.exit_code;

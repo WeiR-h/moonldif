@@ -6,9 +6,9 @@ import {
 }
 
 // Values
-pub fn check(Bytes, options? : Options, legacy_dn_spaces? : Bool) -> Report
+pub fn check(Bytes, options? : Options, legacy_dn_spaces? : Bool, risk_policy? : RiskPolicy) -> Report
 
-pub fn check_text(String, options? : Options, legacy_dn_spaces? : Bool) -> Report
+pub fn check_text(String, options? : Options, legacy_dn_spaces? : Bool, risk_policy? : RiskPolicy) -> Report
 
 pub fn document_json(Document) -> Json
 
@@ -119,6 +119,8 @@ pub fn Report::exit_code(Self) -> Int
 pub fn Report::format(Self) -> String raise WriteError
 pub fn Report::not_checked(Self) -> Array[String]
 pub fn Report::review(Self) -> Review
+pub fn Report::review_json(Self, ReviewMetadata) -> Json
+pub fn Report::review_markdown(Self, ReviewMetadata) -> String
 pub fn Report::status(Self) -> String
 pub fn Report::to_json(Self, include_records? : Bool, include_review? : Bool) -> Json
 pub fn Report::to_text(Self, include_records? : Bool) -> String
@@ -146,6 +148,20 @@ pub(all) struct ReviewItem {
   reason : String
   action : String
 } derive(Eq)
+
+pub(all) struct ReviewMetadata {
+  input_sha256 : String
+  input_byte_length : Int
+  options : Options
+  legacy_dn_spaces : Bool
+  risk_policy : RiskPolicy
+} derive(Eq)
+
+pub(all) struct RiskPolicy {
+  deny_clear : Bool
+  deny_rename : Bool
+} derive(Eq, ToJson)
+pub fn RiskPolicy::default() -> Self
 
 pub(all) struct Span {
   line : Int

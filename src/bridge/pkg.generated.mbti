@@ -4,6 +4,8 @@ package "WeiR-h/moonldif/bridge"
 // Values
 pub fn analyse(String, String, String, Bool, Bool, Bool) -> String
 
+pub fn analyse_v2(String, String, String, Bool, Bool, Bool, Bool, Bool, String) -> String
+
 pub fn cli_plan(String) -> String
 
 pub fn host_error(String, String) -> String
