@@ -1,6 +1,6 @@
 name = "WeiR-h/moonldif"
 
-version = "0.1.0-dev.5"
+version = "0.1.0"
 
 source = "src"
 

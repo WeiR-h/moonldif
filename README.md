@@ -2,7 +2,7 @@
 
 MoonBit 原生 LDIF 读写与离线结构预检库。
 
-状态：`0.1.0-dev.5`，[GitHub 源码已公开](https://github.com/WeiR-h/moonldif)，[Windows / Ubuntu CI 已通过](https://github.com/WeiR-h/moonldif/actions/runs/34963017480)。mooncakes 尚未发布，赛事尚未提交。开发与验证结果记录在 [交付状态](docs/STATUS.md)。
+状态：`0.1.0`，[GitHub 源码已公开](https://github.com/WeiR-h/moonldif)，[Windows / Ubuntu CI 已通过](https://github.com/WeiR-h/moonldif/actions/runs/34963017480)。2026-09-16 已收到报名初审通过通知；最终验收尚未完成。mooncakes 正式发布及注册表验证进行中，实际状态见交付状态页。开发与验证结果记录在 [交付状态](docs/STATUS.md)。
 
 范围：LDIF 内容与基本变更记录、字节属性、源位置、确定性写回和结构报告。目录 Schema、DN 语义相等、权限及真实服务器执行结果不在检查范围内。
 
@@ -22,6 +22,12 @@ MoonBit 原生 LDIF 读写与离线结构预检库。
 - 在浏览器中打开文件、定位问题、编辑复检和导出新文件；处理留在本机，过期或不完整结果禁止导出。
 
 核心解析、规则、写回、报告和参数判断都用 MoonBit 实现。Node.js 只负责读取本地文件、传递参数、写出文件和设置进程退出码。Python 只在独立验证或下载测试依赖时使用。
+
+## 安装 MoonBit 库
+
+正式版本发布后，在自己的 MoonBit 工程执行 `moon add WeiR-h/moonldif@0.1.0`，并在 `moon.pkg` 导入 `"WeiR-h/moonldif" @ldif`。注册表安装验证使用 `python scripts/registry-verify.py --version 0.1.0`，创建没有本地覆盖的独立消费工程。
+
+安装 MoonBit 库不会安装 Node.js CLI。CLI 使用下文的源码构建方式；浏览器工作台另按以下步骤启动。
 
 ## 浏览器试用
 
