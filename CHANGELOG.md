@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.0 — 2026-09-16
+
+- Add ordered multi-file offline preflight with the reusable, opaque BatchReview MoonBit API. Preserve individual reports and 2-over-1 exit priority across missing, invalid, incomplete and policy-blocked files.
+- Add batch text/JSON/Markdown reports with per-file source identity, safe display basenames, input ordinals and explicit coverage counts. No cross-file LDAP transaction is inferred.
+- Bound batches to 50 inputs, 8 MiB per file and 32 MiB of cumulative accepted bytes. Empty batches and unanalysed tails fail closed.
+- Add a tested CI integration example that saves blocked/error reports while preserving status and refusing overwrites. Extend fresh archive and registry consumers to exercise the batch public API.
+
+
 ## 0.2.0 — 2026-09-16
 
 - Add opt-in attribute-clear and rename/move policies while preserving Options and prior calls. Scan every parsed record, independent of the review display limit.

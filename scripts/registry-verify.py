@@ -69,6 +69,19 @@ test "released risk policy" {
   assert_eq(report.exit_code(), 1)
 }
 '''
+    if tuple(map(int, args.version.split('.'))) >= (0, 3, 0):
+        test += r'''///|
+test "released batch API" {
+  let batch = @ldif.BatchReview::new(risk_policy={deny_clear: true, deny_rename: true})
+  batch.add_bytes("clear.ldif", b"version: 1\ndn: cn=Demo\nchangetype: modify\nreplace: mail\n-\n", "a".repeat(64))
+  assert_eq(batch.exit_code(), 1)
+  assert_true(batch.to_json().stringify().contains("clear-denied"))
+  assert_true(batch.to_markdown().contains("File 1"))
+  batch.add_unavailable("missing.ldif")
+  assert_eq(batch.exit_code(), 2)
+  assert_true(batch.to_text().contains("clear-denied"))
+}
+'''
     (workspace / 'consumer_test.mbt').write_text(test, encoding='utf8')
     for target in ['js', 'wasm-gc']:
         run([moon, 'test', '--target', target])
