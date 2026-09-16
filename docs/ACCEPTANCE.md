@@ -7,17 +7,21 @@
 | 源码与有效历史 | https://github.com/WeiR-h/moonldif | 按真实开发阶段提交；Apache-2.0，来源声明完整 |
 | 基线正式发行 | https://github.com/WeiR-h/moonldif/releases/tag/v0.1.0 | 已发布 |
 | 基线注册表 | https://mooncakes.io/docs/WeiR-h/moonldif@0.1.0 | 页面可访问，双平台指定安装完成；CI 35083934784 |
-| 0.2.0 正式发行 | https://github.com/WeiR-h/moonldif/releases/tag/v0.2.0 | 待发布及复验，见后续公开交付记录 |
-| 0.2.0 注册表 | https://mooncakes.io/docs/WeiR-h/moonldif@0.2.0 | 待发布、Windows/Ubuntu 安装复验 |
-| 公开工作台 | https://weir-h.github.io/moonldif/ | 等待正式标签通过 CI 后部署及公开复验 |
-| 跨平台及浏览器 CI | https://github.com/WeiR-h/moonldif/actions/workflows/ci.yml | 发布候选正在远端验证 |
-| 三类策略与 201 项后风险 | src/policy.mbt、src/policy_wbtest.mbt | 本地 JS/Wasm GC、CLI 通过 |
-| 报告字节指纹、稳定性与隐私 | src/review_report.mbt、tests/cli.test.mjs | 本地通过；MoonBit 生成正文，宿主计算指纹 |
-| 浏览器与过期导出保护 | scripts/browser-verify.mjs、docs/BROWSER_QA.md | 本地 Chromium/Firefox 通过；公开地址待复验 |
-| 独立对照与生态接入 | docs/INTEROPERABILITY.md、docs/OPENLDAP.md、integrations/moonldap | 本地对照通过，远端继续复核；不连接 LDAP |
-| 演示与支持边界 | docs/DEMO.md、docs/SUPPORT.md | 演示步骤已更新；尚未录制视频 |
+| 0.2.0 正式发行 | https://github.com/WeiR-h/moonldif/releases/tag/v0.2.0 | 已发布；正式提交 b3b19b0c95de8cf2358b9a8f0423d36ac7891e3b |
+| 0.2.0 注册表 | https://mooncakes.io/docs/WeiR-h/moonldif@0.2.0 | 已发布且页面可访问；[双平台 JS/Wasm GC 注册表 CI](https://github.com/WeiR-h/moonldif/actions/runs/35087330813) 通过 |
+| 公开工作台 | https://weir-h.github.io/moonldif/ | 0.2.0 已上线；公开 Chromium/Firefox 流程和下载 CLI 往返通过 |
+| 跨平台及浏览器 CI | https://github.com/WeiR-h/moonldif/actions/workflows/ci.yml | [正式提交 CI](https://github.com/WeiR-h/moonldif/actions/runs/35087024388) 与 [标签部署 CI](https://github.com/WeiR-h/moonldif/actions/runs/35087217741) 通过 |
+| 三类策略与 201 项后风险 | [策略实现](../src/policy.mbt)、[边界回归](../src/policy_wbtest.mbt) | 本地 JS/Wasm GC、CLI 通过 |
+| 报告字节指纹、稳定性与隐私 | [报告实现](../src/review_report.mbt)、[CLI 回归](../tests/cli.test.mjs) | 本地通过；MoonBit 生成正文，宿主计算指纹 |
+| 浏览器与过期导出保护 | [浏览器回归](../scripts/browser-verify.mjs)、[验证说明](BROWSER_QA.md) | 本地、Ubuntu CI 和公开地址 Chromium/Firefox 通过 |
+| 独立对照与生态接入 | [互操作](INTEROPERABILITY.md)、[OpenLDAP](OPENLDAP.md)、[MoonLDAP 适配](../integrations/moonldap) | 本地对照通过，远端继续复核；不连接 LDAP |
+| 演示与支持边界 | [三分钟演示](DEMO.md)、[支持范围](SUPPORT.md) | 演示步骤已更新；尚未录制视频 |
 | 初审通知 | 参赛者提供，原文在仓库外 | 初审通过；不代替最终验收 |
 | 个人验收/真实反馈 | 仓库外个人验证资料 | 待参赛者独立执行；暂无第三方试用 |
 | 最终验收、奖金、优秀项目 | 以组委会后续结果为准 | 未确认 |
 
 历史证据不可冒称新版本结果。发布后补充精确提交与 CI 链接，不覆盖原失败记录或改写原申报材料。安装与发布遵循 [MoonBit 官方流程](https://docs.moonbitlang.com/en/latest/toolchain/moon/package-manage-tour.html)，Pages 子路径及产物配置依据 [Vite 官方说明](https://vite.dev/guide/static-deploy.html#github-pages)。
+
+## 最终证据快照
+
+[0.2.0 交付证据](../verification/2026-09-16-v0.2.0/README.md) 包含精确 CI、双平台指定版本安装记录、公开网页请求、合成报告、下载 LDIF 和截图。首次 Pages 部署的环境规则拒绝已记录并修复。原申报材料未覆盖。

@@ -2,7 +2,7 @@
 
 MoonBit 原生 LDIF 读写与离线结构预检库。
 
-版本：`0.2.0`。2026-09-16 已收到报名初审通过通知（参赛者提供），最终验收尚未完成。已发布并完成双平台注册表安装的基线为 [v0.1.0](https://github.com/WeiR-h/moonldif/releases/tag/v0.1.0)；0.2.0 的发布、同版本网页及安装结果以 [交付状态](docs/STATUS.md) 和 [验收对照表](docs/ACCEPTANCE.md) 为准。
+版本：`0.2.0`，已完成 [GitHub Release](https://github.com/WeiR-h/moonldif/releases/tag/v0.2.0)、[mooncakes 发布](https://mooncakes.io/docs/WeiR-h/moonldif@0.2.0)、双平台注册表安装和 [公开工作台](https://weir-h.github.io/moonldif/) 复验。2026-09-16 已收到报名初审通过通知（参赛者提供），最终验收尚未完成。详见 [交付状态](docs/STATUS.md) 和 [验收对照表](docs/ACCEPTANCE.md)。
 
 范围：LDIF 内容与基本变更记录、字节属性、源位置、确定性写回和结构报告。目录 Schema、DN 语义相等、权限及真实服务器执行结果不在检查范围内。
 
@@ -31,7 +31,7 @@ MoonBit 原生 LDIF 读写与离线结构预检库。
 
 ## 浏览器试用
 
-公开入口：[MoonLDIF 工作台](https://weir-h.github.io/moonldif/)。只部署通过双平台与浏览器 CI 的正式版本；当前可用性与发布版本见交付状态页。页面提供整条删除、属性清空、改名与移动、不完整输入四类合成示例。
+公开入口：[MoonLDIF 工作台](https://weir-h.github.io/moonldif/)。只部署通过双平台与浏览器 CI 的正式版本；当前在线版本为 0.2.0，公开 Chromium/Firefox 流程已验证。页面提供整条删除、属性清空、改名与移动、不完整输入四类合成示例。
 
 从项目根目录执行以下命令，再打开 `http://127.0.0.1:4178/`：
 
