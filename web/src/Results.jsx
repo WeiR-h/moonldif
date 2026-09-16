@@ -15,7 +15,7 @@ const reviewCopy = {
   'operation-control': ['操作控制项需人工审阅', '仅识别控制项是否存在，不解释其值与服务端执行效果。'],
 };
 const diagnosticTitles = {
-  'delete-denied': '删除策略已拦截此操作', 'external-value-unresolved': '外部值尚未解析',
+  'clear-denied': '属性清空策略已拦截此操作', 'rename-denied': '改名与移动策略已拦截此操作', 'delete-denied': '删除策略已拦截此操作', 'external-value-unresolved': '外部值尚未解析',
   'name-empty-component': '名称包含空组件', 'name-invalid-attribute': '名称属性类型无效',
   'name-expected-rdn': '新名称必须是一个 RDN', 'name-trailing-space': '名称值尾部空格需要转义',
   'name-unescaped-character': '名称含未转义字符', 'missing-version': '缺少版本头',
@@ -51,12 +51,12 @@ export function Results({ analysis, locate, selected }) {
           {items.length === 0 ? <div className="empty-state"><Icon name="check" /><h3>{report?.mode === 'content' ? '这是目录内容文件' : '暂无已识别的变更项'}</h3><p>{report?.mode === 'content' ? '内容记录不会自动当作新增操作。请在“诊断”中查看检查结果。' : '请结合文件内容与诊断判断，不能将此视为无风险。'}</p></div> : items.map((item, index) => {
             const copy = reviewCopy[item.code] || [item.title, item.reason];
             const isSelected = selected?.line === item.span.line;
-            const blockedDeletion = item.code === 'entry-delete' && diagnostics.some(d => d.code === 'delete-denied' && d.span?.line === item.span.line);
+            const blockedDeletion = diagnostics.some(d => d.severity === 'policy' && d.span?.line === item.span.line);
             return <article className={`result-row ${isSelected ? 'selected' : ''}`} key={`${item.record_index}-${index}`}>
               <div className="row-heading"><h3>{copy[0]}</h3><span className="line-label">{lineLabel(item.span)}</span><button className="locate" onClick={() => locate({ ...item.span })} aria-label={`定位${copy[0]}，${lineLabel(item.span)}`}><Icon name="arrow" />定位原文</button></div>
               <p className="item-target" title={item.dn}>{item.attribute || item.dn}{item.attribute && item.value_count > 0 ? ` · ${item.value_count} 个值` : ''}</p>
               {item.attribute && <p className="raw-detail">目标 DN：{item.dn || '空 DN（根目录）'}</p>}
-              <p>{blockedDeletion ? '删除策略已拦截；请核对目标条目后再决定。' : copy[1]}</p>
+              <p>{blockedDeletion ? '风险策略已拦截；请核对目标和操作后再决定。' : copy[1]}</p>
               {['entry-move', 'entry-rename', 'operation-control', 'unsupported-modification'].includes(item.code) && <p className="raw-detail">{item.reason}</p>}
             </article>;
           })}

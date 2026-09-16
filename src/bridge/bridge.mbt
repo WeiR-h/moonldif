@@ -305,7 +305,27 @@ pub fn analyse_v2(
     json.stringify(indent=2) + "\n"
   } else {
     report.to_text(include_records=command == "inspect") +
-    (if is_review { report.review().to_text() } else { "" })
+    (if is_review {
+      "Source SHA-256: " +
+      input_sha256 +
+      "; bytes: " +
+      bytes.length().to_string() +
+      "\n" +
+      "Options: compat=" +
+      compat.to_string() +
+      "; legacy_dn_spaces=" +
+      legacy_dn_spaces.to_string() +
+      "; deny_delete=" +
+      deny_delete.to_string() +
+      "; deny_clear=" +
+      deny_clear.to_string() +
+      "; deny_rename=" +
+      deny_rename.to_string() +
+      "\n" +
+      report.review().to_text()
+    } else {
+      ""
+    })
   }
   if (command == "format" || command == "workbench-write") &&
     report.exit_code() == 0 {

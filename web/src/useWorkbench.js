@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { samples } from './samples.js';
 
-const initialOptions = { denyDelete: true, compat: false, legacySpaces: false };
+const initialOptions = { denyDelete: true, denyClear: false, denyRename: false, compat: false, legacySpaces: false };
 export function useWorkbench() {
   const [document, setDocument] = useState(samples[0]);
   const [options, setOptions] = useState(initialOptions);
@@ -49,8 +49,8 @@ export function useWorkbench() {
         setTimeout(() => URL.revokeObjectURL(url), 1000);
         message = '已生成新文件，原文未修改。请在浏览器下载记录中查看。';
       }
-      setAnalysis({ phase: 'ready', report: data.report, message });
-      const deletion = data.report.diagnostics?.find(d => d.code === 'delete-denied');
+      setAnalysis({ phase: 'ready', report: data.report, markdown: data.envelope.markdown, message });
+      const deletion = data.report.diagnostics?.find(d => d.severity === 'policy');
       setSelection(deletion?.span || null);
     };
     worker.postMessage({ text: doc.text, options: flags, write });
@@ -82,5 +82,15 @@ export function useWorkbench() {
   const recheck = () => { active.current.fileSerial++; run(document, options); };
   const canExport = analysis.phase === 'ready' && analysis.report?.exit_code === 0;
   const exportFile = () => { if (canExport) run(document, options, true); };
-  return { document, options, analysis, selection, setSelection, edit, setOption, loadSample, loadFile, recheck, canExport, exportFile };
+  const canExportReport = analysis.phase === 'ready' && Boolean(analysis.report?.source?.sha256) && typeof analysis.markdown === 'string';
+  const exportReport = format => {
+    if (!canExportReport || !['json', 'markdown'].includes(format)) return;
+    const content = format === 'json' ? JSON.stringify(analysis.report, null, 2) + '\n' : analysis.markdown;
+    const url = URL.createObjectURL(new Blob([content], { type: format === 'json' ? 'application/json;charset=utf-8' : 'text/markdown;charset=utf-8' }));
+    const link = window.document.createElement('a');
+    link.href = url; link.download = 'moonldif-review.' + (format === 'json' ? 'json' : 'md');
+    window.document.body.append(link); link.click(); link.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  };
+  return { canExportReport, exportReport, document, options, analysis, selection, setSelection, edit, setOption, loadSample, loadFile, recheck, canExport, exportFile };
 }
