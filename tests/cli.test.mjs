@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
-import { mkdtempSync, writeFileSync, readFileSync, existsSync, rmSync } from 'node:fs';
+import { mkdtempSync, writeFileSync, readFileSync, existsSync, rmSync, mkdirSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -182,3 +182,65 @@ test('browser bridge uses the actual core writer and refuses policy or incomplet
   assert.equal(unknown.written, null);
   assert.equal(JSON.parse(unknown.output).review.items[0].code, 'unsupported-modification');
 });
+
+
+test('batch preserves single reports, failed file slots, names and stable fingerprints', () => withFiles(dir => {
+  const safe = join(dir, '中文 [目录]&.ldif');
+  const risk = join(dir, 'same.ldif');
+  const other = join(dir, 'nested'); mkdirSync(other);
+  const missing = join(other, 'same.ldif');
+  const source = 'version: 1\r\ndn: cn=Demo\r\nchangetype: modify\r\nreplace: description\r\ndescription: secret-batch-attribute\r\n-\r\nreplace: mail\r\n-\r\n';
+  writeFileSync(safe, content); writeFileSync(risk, source);
+  const flags = ['--deny-delete', '--deny-clear', '--deny-rename'];
+  const args = ['batch', safe, missing, risk, ...flags, '--format', 'json'];
+  const result = run(...args); assert.equal(result.status, 2);
+  const batch = JSON.parse(result.stdout);
+  assert.equal(batch.requested_files, 3); assert.equal(batch.reported_files, 3);
+  assert.deepEqual(batch.files.map(f => f.report.exit_code), [0, 2, 1]);
+  assert.deepEqual(batch.files.map(f => f.index), [0, 1, 2]);
+  assert.deepEqual(batch.files.map(f => f.label), ['中文 [目录]&.ldif', 'same.ldif', 'same.ldif']);
+  assert.equal(batch.files[1].report.source, null);
+  for (const [index, file] of [[0, safe], [2, risk]]) {
+    assert.deepEqual(batch.files[index].report, JSON.parse(run('review', file, ...flags, '--format', 'json').stdout));
+  }
+  assert.equal(batch.files[2].report.source.sha256, createHash('sha256').update(source).digest('hex'));
+  assert.equal(batch.input_byte_budget_used, Buffer.byteLength(content) + Buffer.byteLength(source));
+  assert.equal(result.stdout, run(...args).stdout);
+  const md = run('batch', safe, missing, risk, ...flags, '--format', 'markdown');
+  assert.equal(md.status, 2); assert.match(md.stdout, /&#91;目录&#93;&#38;/);
+  assert.match(md.stdout, /Incomplete batch/);
+  for (const output of [result.stdout, md.stdout, run('batch', risk, ...flags).stdout]) {
+    assert.ok(!output.includes(dir)); assert.ok(!output.includes('secret-batch-attribute'));
+  }
+  assert.equal(run('batch', safe, risk, ...flags).status, 1);
+  assert.equal(run('batch', safe, risk).status, 0);
+  writeFileSync(risk, source + '\r\ndn: cn=External\r\nchangetype: add\r\nphoto:< file:///never-fetch\r\n');
+  const mixed = JSON.parse(run('batch', risk, ...flags, '--format', 'json').stdout);
+  assert.equal(mixed.exit_code, 2);
+  assert.ok(mixed.files[0].report.diagnostics.some(d => d.code === 'clear-denied'));
+}));
+
+test('batch empty, argument, directory, file-count and late danger boundaries fail closed', () => withFiles(dir => {
+  const safe = join(dir, 'safe.ldif'); const risk = join(dir, 'danger.ldif');
+  writeFileSync(safe, content); writeFileSync(risk, 'version: 1\ndn: cn=Demo\nchangetype: delete\n');
+  for (const args of [['batch'], ['batch', safe, '--output', join(dir, 'out')], ['batch', safe, '--deny-clear', '--deny-clear'], ['batch', ...Array(51).fill(safe)], ['batch', dir], ['batch', join(dir, '*.ldif')]]) assert.equal(run(...args).status, 2);
+  const late = run('batch', ...Array(49).fill(safe), risk, '--deny-delete', '--format', 'json');
+  assert.equal(late.status, 1); assert.equal(JSON.parse(late.stdout).files[49].report.exit_code, 1);
+  const hyphen = join(dir, '-option.ldif'); writeFileSync(hyphen, content);
+  const positional = spawnSync(process.execPath, [cli, 'batch', '--format', 'json', '--', '-option.ldif'], { cwd: dir, encoding: 'utf8' });
+  assert.equal(positional.status, 0);
+}));
+
+test('batch cumulative byte budget retains earlier results and refuses unread content', () => withFiles(dir => {
+  const file = join(dir, 'four-mib.ldif');
+  const parts = [content]; let left = 4 * 1024 * 1024 - Buffer.byteLength(content);
+  while (left > 0) { const n = Math.min(left, 512 * 1024); parts.push(n === 1 ? '\n' : '#' + 'x'.repeat(n - 2) + '\n'); left -= n; }
+  writeFileSync(file, parts.join(''));
+  const r = run('batch', ...Array(9).fill(file), '--format', 'json');
+  assert.equal(r.status, 2, r.stderr);
+  const b = JSON.parse(r.stdout);
+  assert.equal(b.input_byte_budget_used, 32 * 1024 * 1024);
+  assert.deepEqual(b.files.map(f => f.report.exit_code), [0,0,0,0,0,0,0,0,2]);
+  assert.equal(b.files[8].report.source, null);
+  assert.equal(b.files[8].report.status, 'unavailable');
+}));

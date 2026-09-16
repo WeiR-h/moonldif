@@ -1,10 +1,24 @@
 // Generated using `moon info`, DON'T EDIT IT
 package "WeiR-h/moonldif/bridge"
 
+import {
+  "WeiR-h/moonldif",
+}
+
 // Values
 pub fn analyse(String, String, String, Bool, Bool, Bool) -> String
 
 pub fn analyse_v2(String, String, String, Bool, Bool, Bool, Bool, Bool, String) -> String
+
+pub fn batch_add(@moonldif.BatchReview, String, String, String) -> Unit
+
+pub fn batch_finish(@moonldif.BatchReview, String) -> String
+
+pub fn batch_remaining_bytes(@moonldif.BatchReview) -> Int
+
+pub fn batch_start(Bool, Bool, Bool, Bool, Bool) -> @moonldif.BatchReview
+
+pub fn batch_unavailable(@moonldif.BatchReview, String) -> Unit
 
 pub fn cli_plan(String) -> String
 
