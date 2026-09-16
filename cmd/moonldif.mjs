@@ -2,13 +2,16 @@
 // Host responsibilities: bounded local byte I/O, source SHA-256 and process status.
 import { openSync, fstatSync, readSync, closeSync, writeFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
+import { basename } from 'node:path';
 import * as core from './core.mjs';
 
-function readBounded(path) {
+function readBounded(path, budget = 8 * 1024 * 1024) {
   const fd = openSync(path, 'r');
   try {
-    if (!fstatSync(fd).isFile()) throw new Error('Input must be a regular file.');
-    const limit = 8 * 1024 * 1024;
+    const stat = fstatSync(fd);
+    if (!stat.isFile()) throw new Error('Input must be a regular file.');
+    const limit = Math.min(8 * 1024 * 1024, budget);
+    if (stat.size > limit) throw new Error('Input exceeds the file or batch limit.');
     const buffer = Buffer.alloc(limit + 1);
     let count = 0;
     while (count < buffer.length) {
@@ -26,7 +29,18 @@ let result;
 try {
   const plan = JSON.parse(core.cli_plan(JSON.stringify(process.argv.slice(2))));
   if (plan.action === 'report') result = plan;
-  else {
+  else if (plan.action === 'batch') {
+    format = plan.format;
+    const batch = core.batch_start(plan.compat, plan.deny_delete, plan.legacy_dn_spaces, plan.deny_clear, plan.deny_rename);
+    for (const input of plan.inputs) {
+      const label = basename(input);
+      let bytes;
+      try { bytes = readBounded(input, core.batch_remaining_bytes(batch)); }
+      catch { core.batch_unavailable(batch, label); continue; }
+      core.batch_add(batch, label, bytes.toString('base64'), createHash('sha256').update(bytes).digest('hex'));
+    }
+    result = JSON.parse(core.batch_finish(batch, format));
+  } else {
     format = plan.format;
     const bytes = readBounded(plan.input);
     result = JSON.parse(core.analyse_v2(bytes.toString('base64'), plan.command, plan.format, plan.compat, plan.deny_delete, plan.legacy_dn_spaces, plan.deny_clear, plan.deny_rename, createHash('sha256').update(bytes).digest('hex')));

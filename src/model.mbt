@@ -137,5 +137,5 @@ fn single_line(line : Int) -> Span {
 
 ///|
 pub fn version() -> String {
-  "0.2.0"
+  "0.3.0-dev.1"
 }

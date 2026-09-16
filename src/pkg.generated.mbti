@@ -38,6 +38,18 @@ pub(all) struct Attribute {
   span : Span
 } derive(Eq)
 
+pub struct BatchReview {
+  // private fields
+}
+pub fn BatchReview::add_bytes(Self, String, Bytes, String) -> Unit
+pub fn BatchReview::add_unavailable(Self, String) -> Unit
+pub fn BatchReview::exit_code(Self) -> Int
+pub fn BatchReview::new(options? : Options, risk_policy? : RiskPolicy, legacy_dn_spaces? : Bool) -> Self
+pub fn BatchReview::remaining_bytes(Self) -> Int
+pub fn BatchReview::to_json(Self) -> Json
+pub fn BatchReview::to_markdown(Self) -> String
+pub fn BatchReview::to_text(Self) -> String
+
 pub(all) enum Body {
   Entry(Array[Attribute])
   Add(Array[Attribute])
