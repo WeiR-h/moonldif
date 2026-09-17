@@ -91,6 +91,19 @@ test "packaged batch API" {
   assert_eq(batch.exit_code(), 2)
 }
 ''')
+    with (consumer / 'consumer_test.mbt').open('a', encoding='utf8') as tests:
+        tests.write(r'''///|
+test "snapshot public API" {
+  let a = b"version: 1\ndn: cn=Demo\ncn: Demo\nmail: before\n"
+  let b = b"version: 1\ndn: cn=Demo\ncn: Demo\nmail: after\n"
+  assert_eq(@ldif.compare_snapshots(a, a).exit_code(), 0)
+  let changed = @ldif.compare_snapshots(a, b)
+  assert_eq(changed.exit_code(), 1)
+  assert_true(changed.to_json().stringify().contains("values-changed"))
+  assert_true(changed.to_markdown().contains("Differences"))
+  assert_eq(@ldif.compare_snapshots(a, b"bad").exit_code(), 2)
+}
+''')
     for target in ['js', 'wasm-gc']:
         run([moon, 'test', '-p', 'local/moonldif_consumer', '--target', target], cwd=workspace, env=env)
     evidence['status'] = 'passed'

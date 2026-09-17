@@ -17,3 +17,7 @@
 ## 浏览器回归工具
 
 Playwright 1.62.1（https://github.com/microsoft/playwright，Apache-2.0）仅用于开发与 CI 验证，锁定在 web/package-lock.json；浏览器运行资产不包含 Playwright。Chromium / Firefox 测试浏览器由 Playwright 官方安装流程取得，不随发行包上传。SHA-256 使用 Node.js crypto / 浏览器 Web Crypto 标准平台接口，解析规则和报告正文属于 MoonBit 核心。
+
+## 0.4.0 快照比较验证
+
+快照核对由本项目 MoonBit 原创实现；不移植 Python LDIF 解析器。scripts/snapshot-verify.py 复用已有固定 SHA-256 的 python-ldap 测试依赖生成及解析合成输入，再用 Python 标准库 Counter 对照字节多重集合。该工具仅用于验证，不随运行库加载。RFC 4514/4512 链接及不实现目录匹配规则的边界见 docs/SNAPSHOTS.md。
