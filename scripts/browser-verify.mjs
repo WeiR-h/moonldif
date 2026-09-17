@@ -7,6 +7,7 @@ import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
+import { verifySnapshot, snapshotReady } from './snapshot-browser.mjs';
 const root = fileURLToPath(new URL('../', import.meta.url));
 if (!process.env.PLAYWRIGHT_BROWSERS_PATH && existsSync(resolve(root, '.tools/browsers'))) process.env.PLAYWRIGHT_BROWSERS_PATH = resolve(root, '.tools/browsers');
 const require = createRequire(new URL('../web/package.json', import.meta.url));
@@ -125,10 +126,11 @@ try {
       await page.setViewportSize({ width: 390, height: 844 });
       assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
       await page.screenshot({ path: resolve(output, name + '-mobile.png'), fullPage: true });
+      await verifySnapshot(page, output, name);
       assert.deepEqual(errors, []);
       assert.deepEqual(badResponses, []);
       assert.ok(requests.every(r => r.method === 'GET' && r.url.startsWith(new URL(url).origin)));
-      evidence.cases.push({ browser: name, browser_version: browser.version(), status: 'passed', checks: ['identity', 'nonblank', 'no-overlay', 'no-console-errors', 'CRLF-source-hash', 'clear-policy', 'rename-policy', 'stale-invalidation', 'partial-report', 'markdown-escaping', 'private-attribute-omission', 'source-navigation', 'download-cli-roundtrip', 'oversize', 'bad-encoding', 'mobile-no-overflow'], requests, errors, warnings, badResponses });
+      evidence.cases.push({ browser: name, browser_version: browser.version(), status: 'passed', checks: ['identity', 'nonblank', 'no-overlay', 'no-console-errors', 'CRLF-source-hash', 'clear-policy', 'rename-policy', 'stale-invalidation', 'partial-report', 'markdown-escaping', 'private-attribute-omission', 'source-navigation', 'download-cli-roundtrip', 'oversize', 'bad-encoding', 'mobile-no-overflow', 'snapshot-0-1-2', 'snapshot-source-hashes', 'snapshot-locations', 'snapshot-report-privacy', 'snapshot-stale-inputs', 'snapshot-resource-limits'], requests, errors, warnings, badResponses });
       if (name === 'chromium') {
         const racePage = await context.newPage();
         await racePage.addInitScript(() => {
@@ -144,14 +146,25 @@ try {
         await racePage.getByLabel('LDIF 源文件内容').fill('version: 1\n# changed before worker response\n');
         await racePage.waitForTimeout(650);
         await disabled(racePage);
+        await racePage.getByRole('button', { name: '迁移前后核对', exact: true }).click();
+        await racePage.getByRole('button', { name: '开始核对', exact: true }).click();
+        await snapshotReady(racePage);
+        await racePage.getByRole('button', { name: '开始核对', exact: true }).click();
+        await racePage.getByLabel('迁移后快照内容').fill('version: 1\n# changed before response\n');
+        await racePage.waitForTimeout(650);
+        assert.equal(await racePage.getByRole('button', { name: '下载核对报告', exact: true }).isEnabled(), false);
         await racePage.close();
         const timed = await context.newPage();
         await timed.addInitScript(() => { window.Worker = class { postMessage() {} terminate() {} }; });
         await timed.goto(url);
         await timed.getByText('分析超过 20 秒', { exact: false }).waitFor({ timeout: 25000 });
         await disabled(timed);
+        await timed.getByRole('button', { name: '迁移前后核对', exact: true }).click();
+        await timed.getByRole('button', { name: '开始核对', exact: true }).click();
+        await timed.getByText('核对超过 20 秒', { exact: false }).waitFor({ timeout: 25000 });
+        assert.equal(await timed.getByRole('button', { name: '下载核对报告', exact: true }).isEnabled(), false);
         await timed.close();
-        evidence.cases.push({ browser: name, browser_version: browser.version(), status: 'passed', checks: ['delayed-old-response', 'worker-timeout-no-stale-export'], fault_injection: true });
+        evidence.cases.push({ browser: name, browser_version: browser.version(), status: 'passed', checks: ['delayed-old-response', 'worker-timeout-no-stale-export', 'snapshot-delayed-response', 'snapshot-timeout'], fault_injection: true });
       }
       console.log('Checks passed: ' + name);
       await context.close();
