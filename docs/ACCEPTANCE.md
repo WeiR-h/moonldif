@@ -1,4 +1,16 @@
-# 0.3.0 当前验收对照
+# 0.4.0 当前验收对照
+
+| 项目 | 证据 |
+|---|---|
+| 可复用 MoonBit 核心 | [snapshot.mbt](../src/snapshot.mbt)、[边界测试](../src/snapshot_wbtest.mbt) |
+| CLI/浏览器完整体验 | [比较合同及使用说明](SNAPSHOTS.md)、[工作台](https://weir-h.github.io/moonldif/) |
+| 独立验证 | [固定种子模型对照程序](../scripts/snapshot-verify.py)、[实际结果](../verification/2026-09-17-v0.4.0/ci-ubuntu-snapshot-reference.json) |
+| 精确源码、发行、注册表、Pages | [统一证据入口](../verification/2026-09-17-v0.4.0/README.md) |
+| 个人/第三方/最终官方验收 | 仍待实际执行或收到结果，不以 AI 自测代替 |
+
+下面保留此前历史验收记录。
+
+# 0.3.0 历史验收对照
 
 | 交付项 | 实际证据 |
 |---|---|
