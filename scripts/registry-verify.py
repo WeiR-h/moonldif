@@ -82,6 +82,19 @@ test "released batch API" {
   assert_true(batch.to_text().contains("clear-denied"))
 }
 '''
+    if tuple(map(int, args.version.split('.'))) >= (0, 4, 0):
+        test += r'''///|
+test "snapshot public API" {
+  let a = b"version: 1\ndn: cn=Demo\ncn: Demo\nmail: before\n"
+  let b = b"version: 1\ndn: cn=Demo\ncn: Demo\nmail: after\n"
+  assert_eq(@ldif.compare_snapshots(a, a).exit_code(), 0)
+  let changed = @ldif.compare_snapshots(a, b)
+  assert_eq(changed.exit_code(), 1)
+  assert_true(changed.to_json().stringify().contains("values-changed"))
+  assert_true(changed.to_markdown().contains("Differences"))
+  assert_eq(@ldif.compare_snapshots(a, b"bad").exit_code(), 2)
+}
+'''
     (workspace / 'consumer_test.mbt').write_text(test, encoding='utf8')
     for target in ['js', 'wasm-gc']:
         run([moon, 'test', '--target', target])

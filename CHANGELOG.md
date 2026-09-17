@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.0 — 2026-09-17
+
+- 新增 MoonBit compare_snapshots / SnapshotDiff 公共接口，比较两份内容导出；完整处理字节多重集合、精确 DN、属性描述、重复 DN 歧义和报告截断。
+- 新增 compare CLI 和浏览器双文件核对、双侧行号定位、Markdown/JSON 下载，延续 Worker、超时、资源上限及旧结果失效保护。
+- 增加独立 Python LDIF 写入/解析与 36 组固定种子模型对照、三档规模记录；不执行 LDAP 操作或生成补丁。
+- compare 退出码 0=当前规则下无差异，1=有差异，2=不完整/错误。现有检查策略接口保持不变。
+
+
 ## 0.3.0 — 2026-09-16
 
 - Add ordered multi-file offline preflight with the reusable, opaque BatchReview MoonBit API. Preserve individual reports and 2-over-1 exit priority across missing, invalid, incomplete and policy-blocked files.
