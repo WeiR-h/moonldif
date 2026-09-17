@@ -16,6 +16,43 @@ function withFiles(fn) {
 }
 const content = 'version: 1\ndn: cn=A\ncn: A\nphoto:: /wBB\n';
 
+test('snapshot CLI distinguishes representation, drift and incomplete input', () => withFiles(dir => {
+  const oldFile = join(dir, '迁移前 文件.ldif'), newFile = join(dir, '迁移后 文件.ldif');
+  const before = 'version: 1\r\ndn: cn=[demo]\r\nmail: synthetic-secret\r\nmail: second\r\n';
+  const equal = 'version: 1\ndn:: Y249W2RlbW9d\nMAIL: second\nmail:: c3ludGhldGljLXNlY3JldA==\n';
+  writeFileSync(oldFile, before); writeFileSync(newFile, equal);
+  let r = run('compare', oldFile, newFile, '--format', 'json');
+  assert.equal(r.status, 0, r.stdout);
+  assert.equal(JSON.parse(r.stdout).before.sha256, createHash('sha256').update(before).digest('hex'));
+  assert.equal(JSON.parse(r.stdout).after.byte_length, Buffer.byteLength(equal));
+  const changed = equal.replace('MAIL: second\n', ''); writeFileSync(newFile, changed);
+  r = run('compare', oldFile, newFile, '--format', 'json');
+  assert.equal(r.status, 1, r.stdout);
+  assert.equal(r.stdout, run('compare', oldFile, newFile, '--format', 'json').stdout);
+  const doc = JSON.parse(r.stdout); assert.equal(doc.changes[0].removed_value_count, 1);
+  assert.ok(!r.stdout.includes('synthetic-secret')); assert.ok(!r.stdout.includes(dir));
+  const md = run('compare', oldFile, newFile, '--format', 'markdown');
+  assert.equal(md.status, 1); assert.match(md.stdout, /&#91;demo&#93;/);
+  writeFileSync(newFile, 'version: 1\ndn: cn=[demo]\nphoto:< file:///never-read\n');
+  r = run('compare', oldFile, newFile, '--format', 'json');
+  assert.equal(r.status, 2); assert.equal(JSON.parse(r.stdout).comparison_performed, false);
+  assert.deepEqual(JSON.parse(r.stdout).changes, []);
+}));
+
+test('snapshot CLI refuses misapplied policies, missing/extra files and oversized inputs', () => withFiles(dir => {
+  const f = join(dir, 'a.ldif'); writeFileSync(f, content);
+  for (const args of [[], [f], [f,f,f], [f,f,'--deny-delete'], [f,f,'--deny-clear'], [f,f,'--deny-rename'], [f,f,'--output',join(dir,'x')], [f,join(dir,'missing')], [f,dir]]) {
+    const result = run('compare', ...args, '--format', 'json');
+    assert.equal(result.status, 2); assert.equal(JSON.parse(result.stdout).exit_code, 2);
+    assert.ok(!result.stdout.includes(dir));
+  }
+  const big = join(dir, 'big.ldif'); writeFileSync(big, Buffer.alloc(8 * 1024 * 1024 + 1, 65));
+  assert.equal(run('compare', f,big).status, 2);
+  const headerless = join(dir, 'old.ldif'); writeFileSync(headerless, content.replace('version: 1\n',''));
+  assert.equal(run('compare', headerless, f).status, 2);
+  assert.equal(run('compare', headerless, f, '--compat').status, 0);
+}));
+
 test('risk policies, source identity and Markdown review are consistent', () => withFiles(dir => {
   const input = join(dir, '个人 文件.ldif');
   const source = 'version: 1\r\ndn: cn=[demo]&user\r\nchangetype: modify\r\nreplace: description\r\ndescription: secret-value-not-for-report\r\n-\r\nreplace: mail\r\n-\r\n\r\ndn: cn=Demo\r\nchangetype: modrdn\r\nnewrdn: cn=New\r\ndeleteoldrdn: 1\r\n';

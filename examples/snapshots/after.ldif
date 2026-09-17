@@ -1,0 +1,8 @@
+version: 1
+dn: uid=alice,dc=example,dc=org
+CN:: QWxpY2U=
+memberOf: cn=staff,dc=example,dc=org
+
+dn: uid=carol,dc=example,dc=org
+cn: Carol
+mail: carol@example.org

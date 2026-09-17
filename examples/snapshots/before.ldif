@@ -1,0 +1,10 @@
+version: 1
+dn: uid=alice,dc=example,dc=org
+cn: Alice
+mail: alice@example.org
+memberOf: cn=staff,dc=example,dc=org
+memberOf: cn=reviewers,dc=example,dc=org
+
+dn: uid=bob,dc=example,dc=org
+cn: Bob
+mail: bob@example.org
