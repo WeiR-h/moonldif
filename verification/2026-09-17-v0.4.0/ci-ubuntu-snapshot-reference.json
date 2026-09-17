@@ -1,0 +1,209 @@
+{
+  "status": "passed",
+  "seed": 45122849,
+  "reference_sha256": "4bfd6cc743c4651e54a7a8e673586ccc42c5c632a0381f4775240aed4d7c080a",
+  "scope": "Synthetic export models; independent python-ldap writer/parser, Counter oracle; no server validation",
+  "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+  "checks": [
+    {
+      "case": 0,
+      "changes": 0,
+      "status": "passed"
+    },
+    {
+      "case": 1,
+      "changes": 6,
+      "status": "passed"
+    },
+    {
+      "case": 2,
+      "changes": 6,
+      "status": "passed"
+    },
+    {
+      "case": 3,
+      "changes": 0,
+      "status": "passed"
+    },
+    {
+      "case": 4,
+      "changes": 7,
+      "status": "passed"
+    },
+    {
+      "case": 5,
+      "changes": 7,
+      "status": "passed"
+    },
+    {
+      "case": 6,
+      "changes": 0,
+      "status": "passed"
+    },
+    {
+      "case": 7,
+      "changes": 7,
+      "status": "passed"
+    },
+    {
+      "case": 8,
+      "changes": 8,
+      "status": "passed"
+    },
+    {
+      "case": 9,
+      "changes": 0,
+      "status": "passed"
+    },
+    {
+      "case": 10,
+      "changes": 9,
+      "status": "passed"
+    },
+    {
+      "case": 11,
+      "changes": 7,
+      "status": "passed"
+    },
+    {
+      "case": 12,
+      "changes": 0,
+      "status": "passed"
+    },
+    {
+      "case": 13,
+      "changes": 8,
+      "status": "passed"
+    },
+    {
+      "case": 14,
+      "changes": 9,
+      "status": "passed"
+    },
+    {
+      "case": 15,
+      "changes": 0,
+      "status": "passed"
+    },
+    {
+      "case": 16,
+      "changes": 8,
+      "status": "passed"
+    },
+    {
+      "case": 17,
+      "changes": 9,
+      "status": "passed"
+    },
+    {
+      "case": 18,
+      "changes": 0,
+      "status": "passed"
+    },
+    {
+      "case": 19,
+      "changes": 8,
+      "status": "passed"
+    },
+    {
+      "case": 20,
+      "changes": 8,
+      "status": "passed"
+    },
+    {
+      "case": 21,
+      "changes": 0,
+      "status": "passed"
+    },
+    {
+      "case": 22,
+      "changes": 9,
+      "status": "passed"
+    },
+    {
+      "case": 23,
+      "changes": 8,
+      "status": "passed"
+    },
+    {
+      "case": 24,
+      "changes": 0,
+      "status": "passed"
+    },
+    {
+      "case": 25,
+      "changes": 8,
+      "status": "passed"
+    },
+    {
+      "case": 26,
+      "changes": 8,
+      "status": "passed"
+    },
+    {
+      "case": 27,
+      "changes": 0,
+      "status": "passed"
+    },
+    {
+      "case": 28,
+      "changes": 6,
+      "status": "passed"
+    },
+    {
+      "case": 29,
+      "changes": 6,
+      "status": "passed"
+    },
+    {
+      "case": 30,
+      "changes": 0,
+      "status": "passed"
+    },
+    {
+      "case": 31,
+      "changes": 6,
+      "status": "passed"
+    },
+    {
+      "case": 32,
+      "changes": 7,
+      "status": "passed"
+    },
+    {
+      "case": 33,
+      "changes": 0,
+      "status": "passed"
+    },
+    {
+      "case": 34,
+      "changes": 7,
+      "status": "passed"
+    },
+    {
+      "case": 35,
+      "changes": 9,
+      "status": "passed"
+    }
+  ],
+  "scale_observations": [
+    {
+      "records_per_side": 100,
+      "seconds_including_node_startup": 0.0931,
+      "input_bytes": 5002,
+      "status": "passed"
+    },
+    {
+      "records_per_side": 1000,
+      "seconds_including_node_startup": 0.1596,
+      "input_bytes": 51802,
+      "status": "passed"
+    },
+    {
+      "records_per_side": 5000,
+      "seconds_including_node_startup": 0.3157,
+      "input_bytes": 267802,
+      "status": "passed"
+    }
+  ]
+}

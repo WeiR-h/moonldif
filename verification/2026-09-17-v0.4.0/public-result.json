@@ -1,0 +1,263 @@
+{
+  "url": "https://weir-h.github.io/moonldif/",
+  "status": "passed",
+  "browser_path": "Browser plugin not available; regular Playwright",
+  "cases": [
+    {
+      "browser": "chromium",
+      "browser_version": "151.0.7922.34",
+      "status": "passed",
+      "checks": [
+        "identity",
+        "nonblank",
+        "no-overlay",
+        "no-console-errors",
+        "CRLF-source-hash",
+        "clear-policy",
+        "rename-policy",
+        "stale-invalidation",
+        "partial-report",
+        "markdown-escaping",
+        "private-attribute-omission",
+        "source-navigation",
+        "download-cli-roundtrip",
+        "oversize",
+        "bad-encoding",
+        "mobile-no-overflow",
+        "snapshot-0-1-2",
+        "snapshot-source-hashes",
+        "snapshot-locations",
+        "snapshot-report-privacy",
+        "snapshot-stale-inputs",
+        "snapshot-resource-limits"
+      ],
+      "requests": [
+        {
+          "url": "https://weir-h.github.io/moonldif/",
+          "method": "GET",
+          "type": "document"
+        },
+        {
+          "url": "https://weir-h.github.io/moonldif/assets/index-NLsPDWUm.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "https://weir-h.github.io/moonldif/assets/index-CT_tJISa.css",
+          "method": "GET",
+          "type": "stylesheet"
+        },
+        {
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-DgfK2nmf.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-DgfK2nmf.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-DgfK2nmf.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-DgfK2nmf.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-DgfK2nmf.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-DgfK2nmf.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-DgfK2nmf.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-DgfK2nmf.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-DgfK2nmf.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "https://weir-h.github.io/moonldif/assets/snapshot.worker-D0R1aqa_.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "https://weir-h.github.io/moonldif/assets/snapshot.worker-D0R1aqa_.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "https://weir-h.github.io/moonldif/assets/snapshot.worker-D0R1aqa_.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "https://weir-h.github.io/moonldif/assets/snapshot.worker-D0R1aqa_.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "https://weir-h.github.io/moonldif/assets/snapshot.worker-D0R1aqa_.js",
+          "method": "GET",
+          "type": "script"
+        }
+      ],
+      "errors": [],
+      "warnings": [],
+      "badResponses": []
+    },
+    {
+      "browser": "chromium",
+      "browser_version": "151.0.7922.34",
+      "status": "passed",
+      "checks": [
+        "delayed-old-response",
+        "worker-timeout-no-stale-export",
+        "snapshot-delayed-response",
+        "snapshot-timeout"
+      ],
+      "fault_injection": true
+    },
+    {
+      "browser": "firefox",
+      "browser_version": "153.0",
+      "status": "passed",
+      "checks": [
+        "identity",
+        "nonblank",
+        "no-overlay",
+        "no-console-errors",
+        "CRLF-source-hash",
+        "clear-policy",
+        "rename-policy",
+        "stale-invalidation",
+        "partial-report",
+        "markdown-escaping",
+        "private-attribute-omission",
+        "source-navigation",
+        "download-cli-roundtrip",
+        "oversize",
+        "bad-encoding",
+        "mobile-no-overflow",
+        "snapshot-0-1-2",
+        "snapshot-source-hashes",
+        "snapshot-locations",
+        "snapshot-report-privacy",
+        "snapshot-stale-inputs",
+        "snapshot-resource-limits"
+      ],
+      "requests": [
+        {
+          "url": "https://weir-h.github.io/moonldif/",
+          "method": "GET",
+          "type": "document"
+        },
+        {
+          "url": "https://weir-h.github.io/moonldif/assets/index-NLsPDWUm.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "https://weir-h.github.io/moonldif/assets/index-CT_tJISa.css",
+          "method": "GET",
+          "type": "stylesheet"
+        },
+        {
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-DgfK2nmf.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-DgfK2nmf.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-DgfK2nmf.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-DgfK2nmf.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-DgfK2nmf.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-DgfK2nmf.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-DgfK2nmf.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-DgfK2nmf.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-DgfK2nmf.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "https://weir-h.github.io/moonldif/assets/snapshot.worker-D0R1aqa_.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "https://weir-h.github.io/moonldif/assets/snapshot.worker-D0R1aqa_.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "https://weir-h.github.io/moonldif/assets/snapshot.worker-D0R1aqa_.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "https://weir-h.github.io/moonldif/assets/snapshot.worker-D0R1aqa_.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "https://weir-h.github.io/moonldif/assets/snapshot.worker-D0R1aqa_.js",
+          "method": "GET",
+          "type": "script"
+        }
+      ],
+      "errors": [],
+      "warnings": [
+        {
+          "text": "[JavaScript Warning: \"This site appears to use a scroll-linked positioning effect. This may not work well with asynchronous panning; see https://firefox-source-docs.mozilla.org/performance/scroll-linked_effects.html for further details and to join the discussion on related tools and features!\" {file: \"https://weir-h.github.io/moonldif/\" line: 0}]",
+          "explanation": "Line numbers and source highlight intentionally follow textarea scrolling; selection and visual alignment are verified."
+        }
+      ],
+      "badResponses": []
+    }
+  ],
+  "expected_version": "0.4.0"
+}

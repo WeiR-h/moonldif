@@ -1,0 +1,132 @@
+{
+  "url": "http://127.0.0.1:4190/moonldif/",
+  "status": "failed",
+  "browser_path": "Browser plugin not available; regular Playwright",
+  "cases": [
+    {
+      "browser": "chromium",
+      "browser_version": "151.0.7922.34",
+      "status": "passed",
+      "checks": [
+        "identity",
+        "nonblank",
+        "no-overlay",
+        "no-console-errors",
+        "CRLF-source-hash",
+        "clear-policy",
+        "rename-policy",
+        "stale-invalidation",
+        "partial-report",
+        "markdown-escaping",
+        "private-attribute-omission",
+        "source-navigation",
+        "download-cli-roundtrip",
+        "oversize",
+        "bad-encoding",
+        "mobile-no-overflow"
+      ],
+      "requests": [
+        {
+          "url": "http://127.0.0.1:4190/moonldif/",
+          "method": "GET",
+          "type": "document"
+        },
+        {
+          "url": "http://127.0.0.1:4190/moonldif/assets/index-Cz3bZ2u3.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4190/moonldif/assets/index-CT_tJISa.css",
+          "method": "GET",
+          "type": "stylesheet"
+        },
+        {
+          "url": "http://127.0.0.1:4190/moonldif/assets/analysis.worker-CMNw69Sv.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4190/moonldif/assets/analysis.worker-CMNw69Sv.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4190/moonldif/assets/analysis.worker-CMNw69Sv.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4190/moonldif/assets/analysis.worker-CMNw69Sv.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4190/moonldif/assets/analysis.worker-CMNw69Sv.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4190/moonldif/assets/analysis.worker-CMNw69Sv.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4190/moonldif/assets/analysis.worker-CMNw69Sv.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4190/moonldif/assets/analysis.worker-CMNw69Sv.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4190/moonldif/assets/analysis.worker-CMNw69Sv.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4190/moonldif/assets/snapshot.worker-p-iJvpVS.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4190/moonldif/assets/snapshot.worker-p-iJvpVS.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4190/moonldif/assets/snapshot.worker-p-iJvpVS.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4190/moonldif/assets/snapshot.worker-p-iJvpVS.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4190/moonldif/assets/snapshot.worker-p-iJvpVS.js",
+          "method": "GET",
+          "type": "script"
+        }
+      ],
+      "errors": [],
+      "warnings": [],
+      "badResponses": []
+    },
+    {
+      "browser": "chromium",
+      "browser_version": "151.0.7922.34",
+      "status": "passed",
+      "checks": [
+        "delayed-old-response",
+        "worker-timeout-no-stale-export"
+      ],
+      "fault_injection": true
+    }
+  ],
+  "expected_version": "0.3.0",
+  "error": "page.goto: Navigation to \"http://127.0.0.1:4190/moonldif/\" is interrupted by another navigation to \"http://127.0.0.1:4190/moonldif/\"\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:4190/moonldif/\", waiting until \"load\"\u001b[22m\n\n    at C:\\Users\\何浩然\\Desktop\\Competition\\MoonBit 黑客松\\MoonLDIF\\scripts\\browser-verify.mjs:59:18"
+}
