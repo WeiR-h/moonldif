@@ -4,6 +4,7 @@ import { useWorkbench } from './useWorkbench.js';
 import { Editor } from './Editor.jsx';
 import { Results } from './Results.jsx';
 import { Icon } from './Icon.jsx';
+import { SnapshotPanel } from './SnapshotPanel.jsx';
 
 function Status({ analysis }) {
   const report = analysis.report;
@@ -24,11 +25,15 @@ function Status({ analysis }) {
 export default function App() {
   const state = useWorkbench();
   const fileInput = useRef(null);
+  const [mode, setMode] = useState('review');
+  const [snapshotOpened, setSnapshotOpened] = useState(false);
   const [reportFormat, setReportFormat] = useState('markdown');
   const running = state.analysis.phase === 'running' || state.analysis.phase === 'loading';
   return <div className="app-shell">
     <header className="app-header"><div className="brand"><span>MoonLDIF</span><span className="brand-separator" /><span className="brand-subtitle">目录文件预检工作台</span></div><div className="privacy"><Icon name="lock" /><span>文件仅在本机处理</span></div></header>
     <main>
+      <nav className="workspace-mode" aria-label="工作模式"><button aria-pressed={mode === 'review'} onClick={() => setMode('review')}>文件预检</button><button aria-pressed={mode === 'snapshot'} onClick={() => { setSnapshotOpened(true); setMode('snapshot'); }}>迁移前后核对</button></nav>
+      <div hidden={mode !== 'review'}>
       <div className="page-intro"><div><h1>检查文件，再执行变更</h1><p>读取、定位问题、审阅影响，并导出经过复检的新文件。</p></div><div className="main-actions">
         <input ref={fileInput} type="file" accept=".ldif,.txt" aria-label="打开本地 LDIF 文件" tabIndex={-1} className="visually-hidden" onChange={e => { state.loadFile(e.target.files[0]); e.target.value = ''; }} />
         <button onClick={() => fileInput.current.click()}><Icon name="folder" />打开 LDIF</button>
@@ -49,6 +54,8 @@ export default function App() {
         <p>报告包含目标 DN 和内容指纹，不包含原始属性值；可记录拦截或不完整结果。</p>
       </div>
       <div className="workspace"><Editor document={state.document} edit={state.edit} loadSample={state.loadSample} loadFile={state.loadFile} selection={state.selection} /><Results analysis={state.analysis} locate={span => state.setSelection({ ...span, focus: true })} selected={state.selection} /></div>
+      </div>
+      {snapshotOpened && <div hidden={mode !== 'snapshot'}><SnapshotPanel /></div>}
     </main>
     <footer className="app-footer"><span>MoonLDIF {manifest.version} · 核心由 MoonBit 实现</span><a href="https://github.com/WeiR-h/moonldif" target="_blank" rel="noreferrer">源码</a><a href="https://github.com/WeiR-h/moonldif/blob/main/docs/SUPPORT.md" target="_blank" rel="noreferrer">支持范围</a><span>检查通过不等于导入成功</span></footer>
   </div>;
