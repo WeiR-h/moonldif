@@ -10,6 +10,8 @@ pub fn check(Bytes, options? : Options, legacy_dn_spaces? : Bool, risk_policy? :
 
 pub fn check_text(String, options? : Options, legacy_dn_spaces? : Bool, risk_policy? : RiskPolicy) -> Report
 
+pub fn compare_snapshots(Bytes, Bytes, allow_missing_version? : Bool, legacy_dn_spaces? : Bool, before_sha256? : String?, after_sha256? : String?) -> SnapshotDiff
+
 pub fn document_json(Document) -> Json
 
 pub fn parse(Bytes, options? : Options) -> Report
@@ -174,6 +176,14 @@ pub(all) struct RiskPolicy {
   deny_rename : Bool
 } derive(Eq, ToJson)
 pub fn RiskPolicy::default() -> Self
+
+pub struct SnapshotDiff {
+  // private fields
+}
+pub fn SnapshotDiff::exit_code(Self) -> Int
+pub fn SnapshotDiff::to_json(Self) -> Json
+pub fn SnapshotDiff::to_markdown(Self) -> String
+pub fn SnapshotDiff::to_text(Self) -> String
 
 pub(all) struct Span {
   line : Int

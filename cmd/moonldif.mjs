@@ -29,6 +29,14 @@ let result;
 try {
   const plan = JSON.parse(core.cli_plan(JSON.stringify(process.argv.slice(2))));
   if (plan.action === 'report') result = plan;
+  else if (plan.action === 'compare') {
+    format = plan.format;
+    const before = readBounded(plan.inputs[0]);
+    const after = readBounded(plan.inputs[1]);
+    result = JSON.parse(core.compare_exports(before.toString('base64'), after.toString('base64'),
+      createHash('sha256').update(before).digest('hex'), createHash('sha256').update(after).digest('hex'),
+      plan.compat, plan.legacy_dn_spaces, format));
+  }
   else if (plan.action === 'batch') {
     format = plan.format;
     const batch = core.batch_start(plan.compat, plan.deny_delete, plan.legacy_dn_spaces, plan.deny_clear, plan.deny_rename);

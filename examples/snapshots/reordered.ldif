@@ -1,0 +1,11 @@
+# Same bytes after LDIF decoding, different order and representation.
+version: 1
+dn: uid=bob,dc=example,dc=org
+MAIL: bob@example.org
+CN: Bob
+
+dn: uid=alice,dc=example,dc=org
+memberOf: cn=reviewers,dc=example,dc=org
+MAIL: alice@example.org
+CN:: QWxpY2U=
+memberOf: cn=staff,dc=example,dc=org
