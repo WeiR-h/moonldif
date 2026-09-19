@@ -58,7 +58,7 @@ def export(model, reorder=False):
     assert actual == {dn: {key: Counter(values) for key, values in attrs.items()} for dn, attrs in model.items()}
     return text
 
-def expected(a, b):
+def expected(a, b, ignored=()):
     changes = set()
     for dn in a.keys() | b.keys():
         if dn not in a:
@@ -66,6 +66,8 @@ def expected(a, b):
         if dn not in b:
             changes.add(('entry-removed',dn,None,0,0)); continue
         for key in a[dn].keys() | b[dn].keys():
+            if key in ignored:
+                continue
             old, new = Counter(a[dn].get(key, [])), Counter(b[dn].get(key, []))
             removed, added = sum((old-new).values()), sum((new-old).values())
             code = 'attribute-added' if key not in a[dn] else 'attribute-removed' if key not in b[dn] else 'values-changed'
@@ -102,6 +104,19 @@ try:
             assert report['before']['sha256'] == hashlib.sha256(a.encode()).hexdigest()
             assert report['after']['sha256'] == hashlib.sha256(b.encode()).hexdigest()
             evidence['checks'].append({'case':case,'changes':len(want),'status':'passed'})
+            ignored = ['data'] if case % 2 else ['cn', 'description']
+            command = ['node', str(ROOT/'dist/moonldif.js'), 'compare', str(first), str(second), '--format', 'json']
+            for attribute in ignored:
+                command.extend(['--ignore-attribute', attribute.upper()])
+            filtered = subprocess.run(command, capture_output=True, encoding='utf8', timeout=30)
+            narrowed = json.loads(filtered.stdout)
+            want_filtered = expected(old, new, ignored)
+            actual_filtered = {(x['code'],x['dn'],x['attribute'],x['removed_value_count'],x['added_value_count']) for x in narrowed['changes']}
+            assert actual_filtered == want_filtered, (case, actual_filtered ^ want_filtered)
+            assert filtered.returncode == int(bool(want_filtered))
+            assert set(narrowed['options']['ignored_attributes']) == set(ignored)
+            assert narrowed['excluded_attribute_occurrences'] == {side: sum(len(values) for attrs in model.values() for key,values in attrs.items() if key in ignored) for side,model in [('before',old),('after',new)]}
+            evidence['checks'].append({'case':case,'ignored':ignored,'changes':len(want_filtered),'status':'passed'})
         for size in [100,1000,5000]:
             first.write_text('version: 1\n' + ''.join(f'dn: cn=user{i}\nmail: old\n\n' for i in range(size)),encoding='utf8',newline='')
             second.write_text('version: 1\n' + ''.join(f'dn: cn=user{i}\nmail: new\n\n' for i in range(size)),encoding='utf8',newline='')

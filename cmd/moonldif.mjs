@@ -33,9 +33,9 @@ try {
     format = plan.format;
     const before = readBounded(plan.inputs[0]);
     const after = readBounded(plan.inputs[1]);
-    result = JSON.parse(core.compare_exports(before.toString('base64'), after.toString('base64'),
+    result = JSON.parse(core.compare_exports_v2(before.toString('base64'), after.toString('base64'),
       createHash('sha256').update(before).digest('hex'), createHash('sha256').update(after).digest('hex'),
-      plan.compat, plan.legacy_dn_spaces, format));
+      plan.compat, plan.legacy_dn_spaces, format, JSON.stringify(plan.ignored_attributes)));
   }
   else if (plan.action === 'batch') {
     format = plan.format;

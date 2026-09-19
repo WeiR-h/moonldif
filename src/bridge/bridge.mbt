@@ -51,7 +51,7 @@ pub fn host_error(message : String, format : String) -> String {
 fn help() -> String {
   "MoonLDIF " +
   @ldif.version() +
-  "\nUsage:\n  node dist/moonldif.js check INPUT [--format text|json] [--compat] [--deny-delete] [--deny-clear] [--deny-rename] [--legacy-dn-spaces]\n  node dist/moonldif.js review INPUT [--format text|json|markdown] [--compat] [--deny-delete] [--deny-clear] [--deny-rename] [--legacy-dn-spaces]\n  node dist/moonldif.js inspect INPUT [--format text|json] [--compat] [--deny-delete] [--deny-clear] [--deny-rename] [--legacy-dn-spaces]\n  node dist/moonldif.js format INPUT --output NEW_FILE [--format text|json] [--compat] [--deny-delete] [--deny-clear] [--deny-rename] [--legacy-dn-spaces]\n  node dist/moonldif.js batch INPUT... [--format text|json|markdown] [--compat] [--deny-delete] [--deny-clear] [--deny-rename] [--legacy-dn-spaces]\n  node dist/moonldif.js compare BEFORE AFTER [--format text|json|markdown] [--compat] [--legacy-dn-spaces]\n  node dist/moonldif.js --help | --version\nUse -- before an input filename starting with '-'.\nExit: 0 complete; 1 risk policy blocked; 2 invalid, incomplete or execution failure. Compare: 0 no differences, 1 differences, 2 incomplete/error. Exact DN strings and byte values, not LDAP matching or an executable patch.\nFiles are local, maximum 8 MiB. Batch accepts 1-50 explicit files, 32 MiB analysed bytes, in argument order; no glob or directory expansion. Batch reports include basenames and DNs. URL values are never fetched. Format refuses overwrites.\nChecks cover supported LDIF structure and DN/RDN syntax, not directory schema or server acceptance. --compat only permits a missing version; --legacy-dn-spaces permits separator padding with warnings and preserves the original names.\n"
+  "\nUsage:\n  node dist/moonldif.js check INPUT [--format text|json] [--compat] [--deny-delete] [--deny-clear] [--deny-rename] [--legacy-dn-spaces]\n  node dist/moonldif.js review INPUT [--format text|json|markdown] [--compat] [--deny-delete] [--deny-clear] [--deny-rename] [--legacy-dn-spaces]\n  node dist/moonldif.js inspect INPUT [--format text|json] [--compat] [--deny-delete] [--deny-clear] [--deny-rename] [--legacy-dn-spaces]\n  node dist/moonldif.js format INPUT --output NEW_FILE [--format text|json] [--compat] [--deny-delete] [--deny-clear] [--deny-rename] [--legacy-dn-spaces]\n  node dist/moonldif.js batch INPUT... [--format text|json|markdown] [--compat] [--deny-delete] [--deny-clear] [--deny-rename] [--legacy-dn-spaces]\n  node dist/moonldif.js compare BEFORE AFTER [--format text|json|markdown] [--compat] [--legacy-dn-spaces] [--ignore-attribute DESCRIPTION]...\n  node dist/moonldif.js --help | --version\nUse -- before an input filename starting with '-'.\nExit: 0 complete; 1 risk policy blocked; 2 invalid, incomplete or execution failure. Compare: 0 no differences, 1 differences, 2 incomplete/error. Exact DN strings and byte values, not LDAP matching or an executable patch.\nCompare exclusions match exact canonical attribute descriptions including options; none by default, at most 64. They never skip input validation or whole-entry changes.\nFiles are local, maximum 8 MiB. Batch accepts 1-50 explicit files, 32 MiB analysed bytes, in argument order; no glob or directory expansion. Batch reports include basenames and DNs. URL values are never fetched. Format refuses overwrites.\nChecks cover supported LDIF structure and DN/RDN syntax, not directory schema or server acceptance. --compat only permits a missing version; --legacy-dn-spaces permits separator padding with warnings and preserves the original names.\n"
 }
 
 ///|
@@ -101,6 +101,7 @@ pub fn cli_plan(args_json : String) -> String {
   let mut positional = false
   let mut i = 1
   let mut seen_format = false
+  let ignored_attributes : Array[String] = []
   while i < args.length() {
     let arg = args[i]
     if !positional && arg == "--" {
@@ -147,6 +148,17 @@ pub fn cli_plan(args_json : String) -> String {
         }
         output = Some(args[i])
       }
+    } else if !positional && arg == "--ignore-attribute" {
+      if args[0] != "compare" ||
+        i + 1 >= args.length() ||
+        ignored_attributes.length() >= 64 {
+        return host_error(
+          "--ignore-attribute requires compare and one attribute description (at most 64 occurrences).",
+          format,
+        )
+      }
+      i += 1
+      ignored_attributes.push(args[i])
     } else if !positional && arg.has_prefix("-") {
       return host_error("Unknown option: " + arg, format)
     } else {
@@ -207,6 +219,7 @@ pub fn cli_plan(args_json : String) -> String {
     "deny_clear": deny_clear.to_json(),
     "deny_rename": deny_rename.to_json(),
     "legacy_dn_spaces": legacy_spaces.to_json(),
+    "ignored_attributes": ignored_attributes.to_json(),
   }
   result.stringify()
 }
@@ -392,6 +405,39 @@ pub fn compare_exports(
   legacy_dn_spaces : Bool,
   format : String,
 ) -> String {
+  compare_exports_v2(
+    before, after, before_sha256, after_sha256, compat, legacy_dn_spaces, format,
+    "[]",
+  )
+}
+
+///|
+#export_name("compare_exports_v2")
+pub fn compare_exports_v2(
+  before : String,
+  after : String,
+  before_sha256 : String,
+  after_sha256 : String,
+  compat : Bool,
+  legacy_dn_spaces : Bool,
+  format : String,
+  ignored_json : String,
+) -> String {
+  let ignored_attributes : Array[String] = []
+  let parsed = @json.parse(ignored_json) catch {
+    _ => return host_error("Invalid exclusion transport.", format)
+  }
+  if parsed is Array(items) {
+    for item in items {
+      if item is String(s) {
+        ignored_attributes.push(s)
+      } else {
+        return host_error("Invalid exclusion transport.", format)
+      }
+    }
+  } else {
+    return host_error("Invalid exclusion transport.", format)
+  }
   let a = @base64.decode(before[:], ignore_whitespace=false) catch {
     _ => return host_error("Invalid before-byte transport.", format)
   }
@@ -405,6 +451,7 @@ pub fn compare_exports(
     legacy_dn_spaces~,
     before_sha256=Some(before_sha256),
     after_sha256=Some(after_sha256),
+    ignored_attributes~,
   )
   envelope(
     result.exit_code(),

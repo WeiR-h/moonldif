@@ -12,18 +12,32 @@ pub fn SnapshotDiff::exit_code(self : SnapshotDiff) -> Int {
 
 ///|
 pub fn SnapshotDiff::to_json(self : SnapshotDiff) -> Json {
-  self.result
+  snapshot_copy_json(self.result)
+}
+
+///|
+fn snapshot_copy_json(value : Json) -> Json {
+  match value {
+    Array(items) => Json::array(items.map(snapshot_copy_json))
+    Object(fields) => {
+      let copy : Map[String, Json] = Map([])
+      for key, item in fields {
+        copy[key] = snapshot_copy_json(item)
+      }
+      Json::object(copy)
+    }
+    _ => value
+  }
 }
 
 ///|
 fn snapshot_attribute_key(name : String) -> String {
   let parts = ascii_lower(name).split(";").map(p => p.to_owned()).to_array()
-  let options : Array[String] = []
+  let unique : Map[String, Bool] = Map([])
   for i in 1..<parts.length() {
-    if !options.contains(parts[i]) {
-      options.push(parts[i])
-    }
+    unique[parts[i]] = true
   }
+  let options = unique.keys().to_array()
   options.sort()
   if options.is_empty() {
     parts[0]
@@ -40,11 +54,17 @@ priv struct SnapshotAttribute {
 }
 
 ///|
-fn snapshot_attributes(record : Record) -> Map[String, SnapshotAttribute] {
+fn snapshot_attributes(
+  record : Record,
+  ignored : Map[String, Bool],
+) -> Map[String, SnapshotAttribute] {
   let result : Map[String, SnapshotAttribute] = Map([])
   if record.body is Entry(attributes) {
     for a in attributes {
       let key = snapshot_attribute_key(a.name)
+      if ignored.contains(key) {
+        continue
+      }
       let group = match result.get(key) {
         Some(group) => group
         None => {
@@ -125,6 +145,9 @@ fn snapshot_source(report : Report, length : Int, sha : String?) -> Json {
 /// Attribute descriptions ignore ASCII case/option order. Values are byte
 /// multisets (duplicates counted); order, wrapping and Base64 spelling do not
 /// matter. Host-computed SHA-256 is optional and never an authenticity proof.
+/// Exclusions match exact canonical attribute descriptions (options included),
+/// never DN keys, whole-entry changes or input validation. Default: no exclusions.
+/// At most 64 descriptions of 256 characters each; invalid lists fail closed.
 /// 0 = no differences, 1 = differences, 2 = incomplete/invalid, with 2 priority.
 pub fn compare_snapshots(
   before : Bytes,
@@ -133,12 +156,31 @@ pub fn compare_snapshots(
   legacy_dn_spaces? : Bool = false,
   before_sha256? : String? = None,
   after_sha256? : String? = None,
+  ignored_attributes? : Array[String] = [],
 ) -> SnapshotDiff {
   let options : Options = { allow_missing_version, deny_delete: false, }
   let old = check(before, options~, legacy_dn_spaces~)
   let new = check(after, options~, legacy_dn_spaces~)
   let diagnostics : Array[Json] = []
   let mut failed = old.exit_code() == 2 || new.exit_code() == 2
+  let ignored : Map[String, Bool] = Map([])
+  let invalid_ignored = ignored_attributes.length() > 64 ||
+    ignored_attributes.any(s => {
+      s.length() > 256 || !valid_attribute(s) || ascii_lower(s) == "dn"
+    })
+  if invalid_ignored {
+    failed = true
+    diagnostics.push({
+      "code": "snapshot-invalid-exclusion",
+      "reason": "Use at most 64 attribute descriptions, each at most 256 characters. DN cannot be excluded. No wildcards or whitespace are allowed.",
+    })
+  } else {
+    for attr in ignored_attributes {
+      ignored[snapshot_attribute_key(attr)] = true
+    }
+  }
+  let ignored_names = ignored.keys().to_array()
+  ignored_names.sort()
   for pair in [("before", old), ("after", new)] {
     let (side, report) = pair
     if report.document.mode != "content" && report.document.mode != "empty" {
@@ -176,6 +218,7 @@ pub fn compare_snapshots(
   let mut total = 0
   let mut ambiguous = 0
   let mut compared = 0
+  let excluded_counts : Map[String, Int] = { "before": 0, "after": 0 }
   fn add_item(
     code : String,
     dn : String,
@@ -203,6 +246,19 @@ pub fn compare_snapshots(
     }
   }
   if can_compare {
+    // Count occurrences over all entries, including ambiguous or whole-entry keys.
+    for pair in [("before", old), ("after", new)] {
+      let (side, report) = pair
+      for record in report.document.records {
+        if record.body is Entry(attributes) {
+          for attr in attributes {
+            if ignored.contains(snapshot_attribute_key(attr.name)) {
+              excluded_counts[side] = excluded_counts.get(side).unwrap_or(0) + 1
+            }
+          }
+        }
+      }
+    }
     let old_index = snapshot_index(old)
     let new_index = snapshot_index(new)
     for dn in snapshot_union(old_index, new_index) {
@@ -238,8 +294,8 @@ pub fn compare_snapshots(
       } else if bb.is_empty() {
         add_item("entry-removed", dn, None, Some(aa[0].span), None, 0, 0)
       } else {
-        let a_attrs = snapshot_attributes(aa[0])
-        let b_attrs = snapshot_attributes(bb[0])
+        let a_attrs = snapshot_attributes(aa[0], ignored)
+        let b_attrs = snapshot_attributes(bb[0], ignored)
         for attr in snapshot_union(a_attrs, b_attrs) {
           match (a_attrs.get(attr), b_attrs.get(attr)) {
             (None, Some(b)) =>
@@ -312,7 +368,14 @@ pub fn compare_snapshots(
       "options": {
         "allow_missing_version": allow_missing_version.to_json(),
         "legacy_dn_spaces": legacy_dn_spaces.to_json(),
+        "ignored_attributes": ignored_names.to_json(),
       },
+      "excluded_attribute_occurrences": if can_compare {
+        excluded_counts.to_json()
+      } else {
+        Json::null()
+      },
+      "exclusion_scope": "Exact canonical attribute description, including options. Counts cover all parsed entry attribute occurrences, not differences. Entry additions/removals and all input checks remain active.",
       "before": snapshot_source(old, before.length(), before_sha256),
       "after": snapshot_source(new, after.length(), after_sha256),
       "diagnostics": diagnostics.to_json(),
@@ -370,6 +433,7 @@ pub fn SnapshotDiff::to_markdown(self : SnapshotDiff) -> String {
     key in [
       "analysis_complete", "comparison_performed", "options", "counts", "total_changes",
       "reported_changes", "truncated", "ambiguous_dn_count", "diagnostics_truncated",
+      "excluded_attribute_occurrences", "exclusion_scope",
     ] {
     out.write_string(
       "- " +

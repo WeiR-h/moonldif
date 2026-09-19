@@ -164,3 +164,140 @@ test "snapshot compatibility and optional source identity are explicit" {
   )
   assert_true(changed.to_markdown().contains("&#91;demo&#93;"))
 }
+
+///|
+test "snapshot exclusions are explicit exact descriptions with complete counts" {
+  let a = b"version: 1\ndn: cn=A\nmodifyTimestamp: old\nmail;lang-en;binary: old\nmail: unchanged\nmail;lang-fr: old\n"
+  let b = b"version: 1\ndn: cn=A\nmodifyTimestamp: new\nMAIL;BINARY;LANG-EN: new\nmail: unchanged\nmail;lang-fr: new\n"
+  let r = compare_snapshots(a, b, ignored_attributes=[
+    "MODIFYTIMESTAMP", "mail;BINARY;lang-en", "modifytimestamp",
+  ])
+  assert_eq(r.exit_code(), 1)
+  assert_true(
+    r.to_json()
+    is {
+      "options": {
+        "ignored_attributes": Array(
+          [String("modifytimestamp"), String("mail;binary;lang-en")]
+        ),
+        ..
+      },
+      "excluded_attribute_occurrences": {
+        "before": Number(2, ..),
+        "after": Number(2, ..),
+        ..
+      },
+      "total_changes": Number(1, ..),
+      "changes": Array([{ "attribute": String("mail;lang-fr"), .. }]),
+      ..
+    },
+  )
+  assert_true(
+    r.to_markdown().contains(markdown_escape("excluded_attribute_occurrences")),
+  )
+  assert_eq(compare_snapshots(a, b, ignored_attributes=["mail"]).exit_code(), 1)
+  assert_eq(
+    compare_snapshots(a, b, ignored_attributes=[
+      "modifyTimestamp", "mail;binary;lang-en", "mail;lang-fr",
+    ]).exit_code(),
+    0,
+  )
+}
+
+///|
+test "snapshot exclusion validation fails closed and does not expose supplied invalid text" {
+  let a = b"version: 1\ndn: cn=A\nmail: a\n"
+  for
+    invalid in [
+      "",
+      "*",
+      "mail ",
+      "dn",
+      "DN",
+      "mail;",
+      "<secret>",
+      "a".repeat(257),
+    ] {
+    let r = compare_snapshots(a, a, ignored_attributes=[invalid])
+    assert_eq(r.exit_code(), 2)
+    assert_true(
+      r.to_json()
+      is {
+        "comparison_performed": False,
+        "excluded_attribute_occurrences": Null,
+        ..
+      },
+    )
+    assert_true(r.to_text().contains("snapshot-invalid-exclusion"))
+    assert_false(r.to_text().contains("<secret>"))
+  }
+  assert_eq(
+    compare_snapshots(a, a, ignored_attributes=Array::make(65, "mail")).exit_code(),
+    2,
+  )
+  assert_eq(
+    compare_snapshots(a, a, ignored_attributes=Array::make(64, "mail")).exit_code(),
+    0,
+  )
+}
+
+///|
+test "excluded attributes do not hide malformed external or ambiguous snapshots" {
+  let a = b"version: 1\ndn: cn=A\nmail: a\n"
+  for
+    b in [
+      b"version: 1\ndn: cn=A\nmail:< file:///secret\n", b"version: 1\ndn: cn=A\nmail:: invalid!\n",
+      b"version: 1\ndn: cn=A\nmail: a\n\ndn: cn=A\nmail: b\n",
+    ] {
+    let r = compare_snapshots(a, b, ignored_attributes=["mail"])
+    assert_eq(r.exit_code(), 2)
+    assert_false(r.to_text().contains("file:///secret"))
+  }
+  let removed = compare_snapshots(a, b"version: 1\ndn: cn=B\nmail: b\n", ignored_attributes=[
+    "mail",
+  ])
+  assert_eq(removed.exit_code(), 1)
+  assert_true(
+    removed.to_json()
+    is { "counts": { "entry-removed": Number(1, ..), .. }, .. },
+  )
+}
+
+///|
+test "snapshot result JSON is detached from reusable report" {
+  let r = compare_snapshots(
+    b"version: 1\ndn: cn=A\nmail: a\n", b"version: 1\ndn: cn=A\nmail: b\n",
+  )
+  let expected = r.to_text()
+  let json = r.to_json()
+  if json is Object(fields) {
+    fields["exit_code"] = (99).to_json()
+    if fields.get("changes") is Some(Array(items)) {
+      if items[0] is Object(item) {
+        item["dn"] = "tampered".to_json()
+      }
+      items.clear()
+    }
+  }
+  assert_eq(r.exit_code(), 1)
+  assert_eq(r.to_text(), expected)
+  assert_false(r.to_markdown().contains("tampered"))
+}
+
+///|
+test "snapshot options deduplicate many canonical attribute options" {
+  let parts : Array[String] = []
+  for i in 0..<3000 {
+    parts.push("o" + i.to_string())
+  }
+  let forward = parts.join(";")
+  for i in 0..<1500 {
+    let saved = parts[i]
+    parts[i] = parts[2999 - i]
+    parts[2999 - i] = saved
+  }
+  let reverse = parts.join(";")
+  let a = @utf8.encode("version: 1\ndn: cn=A\nmail;" + forward + ": a\n")
+  let b = @utf8.encode("version: 1\ndn: cn=A\nMAIL;" + reverse + ";o1: a\n")
+  assert_eq(compare_snapshots(a, b).exit_code(), 0)
+}

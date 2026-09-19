@@ -50,3 +50,18 @@ println(diff.to_markdown())
 核心双目标测试覆盖表示等价、五类差异、值重复次数、二进制、空值、重复 DN、无效/不完整输入和超过 200 项变化。CLI 使用真实文件核对 SHA-256、中文路径、选项误用、超限和稳定性。
 
 `python scripts/reference-verify.py` 后执行 `python scripts/snapshot-verify.py`：使用固定版本 python-ldap 独立写入/解析 36 组固定种子模型，再用 Python Counter 的差集核对 MoonBit 输出。另记录每侧 100/1000/5000 条记录的单次耗时（含 Node 启动，不是吞吐量基准或服务器性能证明）。参考源码不加入项目，实现逻辑没有依赖 Python。
+## 显式排除易变属性（0.5.0）
+
+导出时间戳等字段可能每次变化。仅在已确认用途后，显式排除对应的属性描述：
+
+```text
+node dist/moonldif.js compare before.ldif after.ldif --ignore-attribute modifyTimestamp --ignore-attribute entryCSN --format markdown
+```
+
+MoonBit：`compare_snapshots(before, after, ignored_attributes=["modifyTimestamp", "entryCSN"])`。旧调用保持有效，默认不排除。
+
+- 描述按 ASCII 大小写、选项顺序和重复选项规范化；精确匹配整个描述。`mail` 不会排除 `mail;lang-en`；不支持通配符、属性别名或服务端 Schema 推断。
+- 最多 64 个描述，每个最多 256 字符。空白、非法描述或 `dn` 返回 2，绝不静默忽略；所有输入仍完整解析，外部值、无效 Base64 和重复 DN 仍会阻止通过。
+- 报告 `options.ignored_attributes` 保留规范化去重列表；`excluded_attribute_occurrences` 计数两侧所有已解析条目的命中属性出现次数，包含重复值行与后来排除的重复 DN，**不是忽略了多少差异**。输入不满足比较前提时为 null。
+- 整条条目新增或缺失仍会报告；排除所有属性并不隐藏缺失条目。退出 0 只表示在报告注明的比较范围内没有差异。
+- JSON 返回独立副本，调用者修改已返回的数组或对象不会改变后续报告与退出码。

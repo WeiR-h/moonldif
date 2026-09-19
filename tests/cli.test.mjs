@@ -297,3 +297,22 @@ test('documented CI helper saves blocked/error reports and never overwrites evid
   const b = JSON.parse(readFileSync(missingReport, 'utf8'));
   assert.deepEqual(b.files.map(f => f.report.exit_code), [1, 2]);
 }));
+test('snapshot exclusions are repeatable, audited and fail closed', () => withFiles(dir => {
+  const a = join(dir, 'before.ldif'), b = join(dir, 'after.ldif');
+  const input = 'version: 1\ndn: cn=A\nmodifyTimestamp: before\nmail: same\n';
+  writeFileSync(a, input); writeFileSync(b, input.replace('before', 'after'));
+  assert.equal(run('compare', a, b).status, 1);
+  const args = ['compare', a, b, '--ignore-attribute', 'MODIFYTIMESTAMP', '--ignore-attribute', 'modifyTimestamp', '--format', 'json'];
+  const output = run(...args); assert.equal(output.status, 0);
+  const report = JSON.parse(output.stdout);
+  assert.deepEqual(report.options.ignored_attributes, ['modifytimestamp']);
+  assert.deepEqual(report.excluded_attribute_occurrences, { before: 1, after: 1 });
+  assert.equal(output.stdout, run(...args).stdout);
+  assert.equal(report.before.sha256, createHash('sha256').update(input).digest('hex'));
+  for (const invalid of ['', '*', 'dn', 'mail ', 'a'.repeat(257)]) assert.equal(run('compare', a, b, '--ignore-attribute', invalid).status, 2);
+  for (const command of ['check', 'review', 'batch', 'inspect']) assert.equal(run(command, a, '--ignore-attribute', 'mail').status, 2);
+  assert.equal(run('compare', a, b, '--ignore-attribute').status, 2);
+  assert.equal(run('compare', a, b, ...Array(65).fill(['--ignore-attribute', 'mail']).flat()).status, 2);
+  writeFileSync(b, input.replace('modifyTimestamp: before', 'modifyTimestamp:< file:///secret'));
+  assert.equal(run(...args).status, 2);
+}));

@@ -24,6 +24,8 @@ pub fn cli_plan(String) -> String
 
 pub fn compare_exports(String, String, String, String, Bool, Bool, String) -> String
 
+pub fn compare_exports_v2(String, String, String, String, Bool, Bool, String, String) -> String
+
 pub fn host_error(String, String) -> String
 
 pub fn workbench(String, Bool, Bool, Bool, Bool) -> String
