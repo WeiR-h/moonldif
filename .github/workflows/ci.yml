@@ -59,6 +59,8 @@ jobs:
       - name: Verify published RFC examples and documented variants
         run: python scripts/rfc-verify.py
       - name: Prepare pinned ecosystem dependencies
+        run: python scripts/test_pinned_download.py
+      - name: Download verified ecosystem dependencies
         run: python scripts/prepare-moonldap.py
       - name: Verify offline moonldap mapping
         run: node scripts/test-moonldap.mjs

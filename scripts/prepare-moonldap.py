@@ -7,8 +7,8 @@ import hashlib
 import json
 from pathlib import Path, PurePosixPath
 import stat
-import urllib.request
 import zipfile
+from pinned_download import download_pinned
 
 ROOT = Path(__file__).resolve().parents[1]
 ARCHIVES = ROOT / ".tools/dependency-archives"
@@ -22,8 +22,7 @@ provenance = []
 for name, version, owner, expected in PACKAGES:
     url = f"https://download.mooncakes.io/user/{owner}%2F{name}%2F{version}.zip"
     archive = ARCHIVES / f"{name}-{version}.zip"
-    if not archive.exists():
-        archive.write_bytes(urllib.request.urlopen(url, timeout=35).read())
+    download_pinned(url, archive, expected)
     actual = hashlib.sha256(archive.read_bytes()).hexdigest()
     if actual != expected:
         raise SystemExit(f"Hash mismatch for {name}; refusing extraction.")
