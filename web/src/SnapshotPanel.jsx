@@ -12,6 +12,9 @@ export function SnapshotPanel() {
   const [flags, setFlags] = useState({ compat: false, legacySpaces: false });
   const [result, setResult] = useState({ phase: 'stale' });
   const [format, setFormat] = useState('markdown');
+  const [ignoredText, setIgnoredText] = useState('');
+  const [query, setQuery] = useState('');
+  const [kind, setKind] = useState('all');
   const inputs = useRef({});
   const active = useRef({ serial: 0, files: 0, worker: null, timer: null });
   function stop() {
@@ -52,7 +55,7 @@ export function SnapshotPanel() {
         if (data.error) { fail(data.error); return; }
         stop(); setResult({ phase: 'ready', ...data });
       };
-      worker.postMessage({ ...texts, ...flags });
+      worker.postMessage({ ...texts, ...flags, ignoredAttributes: ignoredText.trim() === '' ? [] : ignoredText.split(',').map(value => value.trim()) });
     } catch { fail('无法启动核对线程，请重新加载或使用 CLI。'); }
   }
   function locate(side, span) {
@@ -64,6 +67,8 @@ export function SnapshotPanel() {
   }
   const ready = result.phase === 'ready';
   const report = ready ? result.report : null;
+  const needle = query.trim().toLowerCase();
+  const visibleChanges = report?.changes.filter(item => (kind === 'all' || item.code === kind) && (!needle || item.dn.toLowerCase().includes(needle) || item.attribute?.toLowerCase().includes(needle))) || [];
   function download() {
     if (!ready || !report || !result.markdown) return;
     const text = format === 'json' ? JSON.stringify(report, null, 2) + '\n' : result.markdown;
@@ -73,16 +78,21 @@ export function SnapshotPanel() {
   }
   const title = report ? report.exit_code === 2 ? '核对不完整，请先处理输入或歧义' : report.exit_code === 1 ? `发现 ${report.total_changes} 项差异` : '当前比较规则下未发现差异' : result.message || '请核对当前两份内容';
   return <section aria-label="迁移前后核对" className="snapshot-panel">
-    <div className="page-intro"><div><h1>迁移前后，少了什么？</h1><p>核对目录导出，排除折行、编码表示与排列顺序的干扰。</p></div><div className="main-actions"><button onClick={() => { invalidate(); setTexts(samples); }}>载入合成迁移示例</button><button className="primary" onClick={run} disabled={['running','loading'].includes(result.phase)}>开始核对</button></div></div>
+    <div className="page-intro"><div><h1>迁移前后，少了什么？</h1><p>核对目录导出，排除折行、编码表示与排列顺序的干扰。</p></div><div className="main-actions"><button onClick={() => { invalidate(); setTexts(samples); setIgnoredText(''); setQuery(''); setKind('all'); }}>载入合成迁移示例</button><button className="primary" onClick={run} disabled={['running','loading'].includes(result.phase)}>开始核对</button>{['running','loading'].includes(result.phase) && <button onClick={() => { invalidate(); setResult({phase: 'stale', message: '已停止，本次结果不可下载。'}); }}>停止核对</button>}</div></div>
     <p className="snapshot-scope">按解码后的 DN 原字符串匹配，属性值按字节及重复次数比较。DN 改写会显示为新增与缺失，不推断重命名或服务器语义相等，也不生成执行脚本。</p>
     <div className="settings"><label><input type="checkbox" checked={flags.compat} onChange={e => { invalidate(); setFlags(f => ({ ...f, compat: e.target.checked })); }} />核对时允许缺版本头</label><label><input type="checkbox" checked={flags.legacySpaces} onChange={e => { invalidate(); setFlags(f => ({ ...f, legacySpaces: e.target.checked })); }} />核对时允许旧 DN 空格</label></div>
+    <div className="snapshot-exclusions"><label htmlFor="snapshot-exclusions">排除指定属性（可选）</label><input id="snapshot-exclusions" type="text" maxLength={16447} value={ignoredText} onChange={e => { invalidate(); setIgnoredText(e.target.value); }} placeholder="例如 modifyTimestamp, entryCSN" aria-describedby="exclusion-help" /><p id="exclusion-help">默认不排除。用英文逗号分隔，最多 64 项；属性选项需精确匹配。排除项会写入报告，格式错误、外部值、重复 DN 与整条增减仍会检查。</p></div>
     <div className="snapshot-editors">{['before','after'].map(side => <section className="panel" key={side}><div className="editor-toolbar"><h2>{names[side]}快照</h2><label className="snapshot-file">打开文件<input type="file" disabled={result.phase === 'loading'} accept=".ldif,.txt" aria-label={`打开${names[side]}快照`} onChange={e => { load(side, e.target.files[0]); e.target.value = ''; }} /></label></div><textarea ref={element => { inputs.current[side] = element; }} aria-label={`${names[side]}快照内容`} disabled={result.phase === 'loading'} spellCheck={false} wrap="off" value={texts[side]} onChange={e => edit(side,e.target.value)} /><div className="panel-footer">每份上限 1 MiB / 10,000 行 · 编辑后需重新核对</div></section>)}</div>
     <div className={`status-strip ${report?.exit_code === 0 ? 'success' : report || result.phase === 'error' ? 'caution' : 'neutral'}`} role="status"><div><strong>{title}</strong><p>{report ? `已展示 ${report.reported_changes} / ${report.total_changes} 项差异 · 排除 ${report.ambiguous_dn_count} 个重复 DN` : '过期、读取中、运行失败的结果不可下载。'}</p>{report?.truncated && <p>列表已截断；总数涵盖全部可比较条目。</p>}</div></div>
     <div className="report-tools"><label>核对报告 <select aria-label="核对报告格式" value={format} onChange={e => setFormat(e.target.value)}><option value="markdown">Markdown</option><option value="json">JSON</option></select></label><button disabled={!ready} onClick={download}>下载核对报告</button><p>报告包含 DN、属性名称、行号与两份内容指纹，不包含原始属性值。指纹不是签名。</p></div>
     {report && <div className="panel snapshot-results">
       <div className="snapshot-counts">{Object.entries(report.counts).map(([code,count]) => <span key={code}>{codes[code]} <strong>{count}</strong></span>)}</div>
+      {report.options.ignored_attributes.length > 0 && <div className="partial-note"><strong>本次比较已排除：{report.options.ignored_attributes.join(', ')}</strong><p>{report.excluded_attribute_occurrences ? `命中属性行：迁移前 ${report.excluded_attribute_occurrences.before}，迁移后 ${report.excluded_attribute_occurrences.after}。这是出现次数，不是被忽略的差异数。` : '输入不满足比较前提，未统计排除命中数。'}</p></div>}
       {[...report.diagnostics.map(d => ({...d, side:d.side})), ...['before','after'].flatMap(side => report[side].diagnostics.map(d => ({ ...d, side })))].map((d,i) => <div key={i} className="partial-note"><strong>{names[d.side] || '核对'} · {d.code}</strong><p>{d.reason}{d.dn ? ` DN: ${d.dn}` : ''}</p>{d.span && <button onClick={() => locate(d.side,d.span)}>定位问题行</button>}</div>)}
-      {report.changes.map((item,i) => <article className="result-row" key={i}><div className="row-heading"><h3>{codes[item.code]}</h3>{item.attribute && <span className="line-label">{item.attribute}</span>}</div><p className="snapshot-target">{item.dn || '(根 DN)'}</p><p>{item.code.startsWith('entry-') ? '整条目录记录发生增减，属性值不展开。' : `减少 ${item.removed_value_count} 个属性值；增加 ${item.added_value_count} 个属性值`}</p><div className="snapshot-locations">{['before','after'].map(side => item[side + '_span'] && <button key={side} onClick={() => locate(side,item[side + '_span'])}>{`定位${names[side]}第 ${item[side + '_span'].line} 行`}</button>)}</div></article>)}
+      <div className="snapshot-filters"><label>查找 DN 或属性<input type="search" maxLength={256} value={query} onChange={e => setQuery(e.target.value)} placeholder="例如 alice 或 mail" /></label><label>差异类型<select value={kind} onChange={e => setKind(e.target.value)}><option value="all">全部类型</option>{Object.entries(codes).map(([code,label]) => <option key={code} value={code}>{label}</option>)}</select></label><button onClick={() => {setQuery(''); setKind('all');}}>清除筛选</button></div>
+      <p className="snapshot-filter-summary" role="status">当前显示 {visibleChanges.length} / {report.reported_changes} 项已保留差异；总计 {report.total_changes} 项。筛选仅影响列表，下载报告保留全部已报告内容。{report.truncated ? '报告仅保留前 200 项，未保留项目不参与查找。' : ''}</p>
+      {visibleChanges.length === 0 && report.total_changes > 0 && <p className="partial-note">当前筛选下没有匹配项，不代表两份内容相同。</p>}
+      {visibleChanges.map((item,i) => <article className="result-row" key={i}><div className="row-heading"><h3>{codes[item.code]}</h3>{item.attribute && <span className="line-label">{item.attribute}</span>}</div><p className="snapshot-target">{item.dn || '(根 DN)'}</p><p>{item.code.startsWith('entry-') ? '整条目录记录发生增减，属性值不展开。' : `减少 ${item.removed_value_count} 个属性值；增加 ${item.added_value_count} 个属性值`}</p><div className="snapshot-locations">{['before','after'].map(side => item[side + '_span'] && <button key={side} onClick={() => locate(side,item[side + '_span'])}>{`定位${names[side]}第 ${item[side + '_span'].line} 行`}</button>)}</div></article>)}
       {report.exit_code === 0 && <p>两份输入在当前比较规则下相同。仍需独立确认导出范围一致，以及服务端 Schema、权限与目录状态。</p>}
     </div>}
   </section>;

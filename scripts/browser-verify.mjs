@@ -153,6 +153,11 @@ try {
         await racePage.getByLabel('迁移后快照内容').fill('version: 1\n# changed before response\n');
         await racePage.waitForTimeout(650);
         assert.equal(await racePage.getByRole('button', { name: '下载核对报告', exact: true }).isEnabled(), false);
+        await racePage.getByRole('button', { name: '开始核对', exact: true }).click();
+        await racePage.getByRole('button', { name: '停止核对', exact: true }).click();
+        await racePage.waitForTimeout(650);
+        await racePage.getByText('已停止，本次结果不可下载。', { exact: true }).waitFor();
+        assert.equal(await racePage.getByRole('button', { name: '下载核对报告', exact: true }).isEnabled(), false);
         await racePage.close();
         const timed = await context.newPage();
         await timed.addInitScript(() => { window.Worker = class { postMessage() {} terminate() {} }; });

@@ -1,4 +1,4 @@
-import { compare_exports } from '../../dist/core.mjs';
+import { compare_exports_v2 } from '../../dist/core.mjs';
 
 async function source(text) {
   const bytes = new TextEncoder().encode(text);
@@ -11,7 +11,7 @@ async function source(text) {
 self.onmessage = async ({ data }) => {
   try {
     const [before, after] = await Promise.all([source(data.before), source(data.after)]);
-    const envelope = JSON.parse(compare_exports(before.encoded, after.encoded, before.sha, after.sha, data.compat, data.legacySpaces, 'json'));
+    const envelope = JSON.parse(compare_exports_v2(before.encoded, after.encoded, before.sha, after.sha, data.compat, data.legacySpaces, 'json', JSON.stringify(data.ignoredAttributes || [])));
     self.postMessage({ report: JSON.parse(envelope.output), markdown: envelope.markdown });
   } catch {
     self.postMessage({ error: '核对失败：请确认每份内容不超过 1 MiB、10,000 行，或改用 CLI。' });
