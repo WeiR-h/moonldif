@@ -1,3 +1,16 @@
+# 0.5.0 当前验收对照
+
+| 验收项 | 可核对入口 |
+|---|---|
+| 核心范围及兼容性 | [snapshot.mbt](../src/snapshot.mbt)、[公共 API](../src/pkg.generated.mbti)、[范围说明](SNAPSHOTS.md) |
+| CLI 与浏览器实用流程 | [CLI](../cmd/moonldif.mjs)、[工作台](https://weir-h.github.io/moonldif/)、[浏览器证据](../verification/2026-09-20-v0.5.0/BROWSER-QA.md) |
+| 下载与稳定性 | [固定依赖恢复说明](DEPENDENCY-RELIABILITY.md)、[故障注入](../scripts/test_pinned_download.py) |
+| 代码质量与对照 | [双平台正式源 CI](https://github.com/WeiR-h/moonldif/actions/runs/35480884482)、[独立模型](../scripts/snapshot-verify.py) |
+| 发布、安装、许可 | [版本证据](../verification/2026-09-20-v0.5.0/README.md)、[Apache-2.0](../LICENSE)、[来源](../THIRD_PARTY.md) |
+| 演示与本人验收 | [三分钟脚本](DEMO.md)；仓库外 0.5.0 个人验收清单，待本人执行 |
+
+工程交付已完成，不代表组委会最终验收或获奖。以下是历史验收记录。
+
 # 0.4.0 当前验收对照
 
 | 项目 | 证据 |

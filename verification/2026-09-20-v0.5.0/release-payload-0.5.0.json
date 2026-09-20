@@ -1,0 +1,10 @@
+{
+  "archive": "WeiR-h-moonldif-0.5.0.zip",
+  "file_count": 237,
+  "bytes": 2324044,
+  "sha256": "f2f36beb931ded8c2d75271e72b659874f3d394131d1fce22cf117c731bdb875",
+  "forbidden_paths": [],
+  "credential_pattern_hits": [],
+  "scope": "Finite pattern and path checks, not proof that all secrets are impossible",
+  "manifest": "name = \"WeiR-h/moonldif\"\n\nversion = \"0.5.0\"\n\nsource = \"src\"\n\nreadme = \"README.md\"\n\nlicense = \"Apache-2.0\"\n\nrepository = \"https://github.com/WeiR-h/moonldif\"\n\nkeywords = [ \"ldif\", \"ldap\", \"parser\", \"validation\" ]\n\ndescription = \"LDIF byte-preserving records and offline structural checks in MoonBit\"\n\npreferred_target = \"js\"\n"
+}

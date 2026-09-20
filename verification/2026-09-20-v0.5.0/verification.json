@@ -1,0 +1,100 @@
+{
+  "started": "2026-09-20T00:02:28.378Z",
+  "node": "v24.13.0",
+  "platform": "win32",
+  "status": "passed",
+  "steps": [
+    {
+      "name": "toolchain",
+      "status": "passed",
+      "exit_code": 0,
+      "args": [
+        "scripts/moon.mjs",
+        "version",
+        "--all"
+      ]
+    },
+    {
+      "name": "format",
+      "status": "passed",
+      "exit_code": 0,
+      "args": [
+        "scripts/moon.mjs",
+        "fmt",
+        "--check"
+      ]
+    },
+    {
+      "name": "check",
+      "status": "passed",
+      "exit_code": 0,
+      "args": [
+        "scripts/moon.mjs",
+        "check",
+        "--target",
+        "js",
+        "--deny-warn"
+      ]
+    },
+    {
+      "name": "moonbit-tests",
+      "status": "passed",
+      "exit_code": 0,
+      "args": [
+        "scripts/moon.mjs",
+        "test",
+        "--target",
+        "js"
+      ]
+    },
+    {
+      "name": "wasm-gc-check",
+      "status": "passed",
+      "exit_code": 0,
+      "args": [
+        "scripts/moon.mjs",
+        "check",
+        "--target",
+        "wasm-gc",
+        "--deny-warn"
+      ]
+    },
+    {
+      "name": "wasm-gc-tests",
+      "status": "passed",
+      "exit_code": 0,
+      "args": [
+        "scripts/moon.mjs",
+        "test",
+        "--target",
+        "wasm-gc"
+      ]
+    },
+    {
+      "name": "build",
+      "status": "passed",
+      "exit_code": 0,
+      "args": [
+        "scripts/build.mjs"
+      ]
+    },
+    {
+      "name": "cli-tests",
+      "status": "passed",
+      "exit_code": 0,
+      "args": [
+        "--test",
+        "tests/cli.test.mjs"
+      ]
+    },
+    {
+      "name": "scenarios",
+      "status": "passed",
+      "exit_code": 0,
+      "args": [
+        "scripts/demo.mjs"
+      ]
+    }
+  ],
+  "finished": "2026-09-20T00:03:10.175Z"
+}

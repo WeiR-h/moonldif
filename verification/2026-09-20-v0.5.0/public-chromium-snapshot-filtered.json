@@ -1,0 +1,103 @@
+{
+  "tool": "MoonLDIF",
+  "version": "0.5.0",
+  "kind": "snapshot-diff",
+  "report_schema_version": 1,
+  "exit_code": 1,
+  "status": "complete",
+  "analysis_complete": true,
+  "comparison_performed": true,
+  "matching": "Exact decoded DN string; ASCII-insensitive attribute descriptions; byte multiset values",
+  "scope": "Export comparison only; not LDAP semantic equality, rename detection or an executable patch. Reports contain DNs, not attribute values.",
+  "options": {
+    "allow_missing_version": false,
+    "legacy_dn_spaces": false,
+    "ignored_attributes": []
+  },
+  "excluded_attribute_occurrences": {
+    "before": 0,
+    "after": 0
+  },
+  "exclusion_scope": "Exact canonical attribute description, including options. Counts cover all parsed entry attribute occurrences, not differences. Entry additions/removals and all input checks remain active.",
+  "before": {
+    "byte_length": 216,
+    "sha256": "f0266fb2a65f18ebdb787d388c64010f2110aebbc95bab88145ae6d5680facd8",
+    "status": "complete",
+    "record_count": 2,
+    "diagnostics": []
+  },
+  "after": {
+    "byte_length": 161,
+    "sha256": "6558c8297a3ba31c6d0b91794e44174fdb39ca2f3e29690513691324f8ee7e68",
+    "status": "complete",
+    "record_count": 2,
+    "diagnostics": []
+  },
+  "diagnostics": [],
+  "diagnostics_truncated": false,
+  "ambiguous_dn_count": 0,
+  "compared_dn_count": 3,
+  "counts": {
+    "entry-added": 1,
+    "entry-removed": 1,
+    "attribute-added": 0,
+    "attribute-removed": 1,
+    "values-changed": 1
+  },
+  "total_changes": 4,
+  "reported_changes": 4,
+  "truncated": false,
+  "changes": [
+    {
+      "code": "entry-removed",
+      "dn": "uid=bob,dc=example,dc=org",
+      "attribute": null,
+      "before_span": {
+        "line": 8,
+        "end_line": 10
+      },
+      "after_span": null,
+      "removed_value_count": 0,
+      "added_value_count": 0
+    },
+    {
+      "code": "attribute-removed",
+      "dn": "uid=alice,dc=example,dc=org",
+      "attribute": "mail",
+      "before_span": {
+        "line": 4,
+        "end_line": 4
+      },
+      "after_span": null,
+      "removed_value_count": 1,
+      "added_value_count": 0
+    },
+    {
+      "code": "values-changed",
+      "dn": "uid=alice,dc=example,dc=org",
+      "attribute": "memberof",
+      "before_span": {
+        "line": 5,
+        "end_line": 6
+      },
+      "after_span": {
+        "line": 4,
+        "end_line": 4
+      },
+      "removed_value_count": 1,
+      "added_value_count": 0
+    },
+    {
+      "code": "entry-added",
+      "dn": "uid=carol,dc=example,dc=org",
+      "attribute": null,
+      "before_span": null,
+      "after_span": {
+        "line": 6,
+        "end_line": 8
+      },
+      "removed_value_count": 0,
+      "added_value_count": 0
+    }
+  ]
+}

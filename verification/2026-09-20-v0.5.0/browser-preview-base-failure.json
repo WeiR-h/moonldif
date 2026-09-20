@@ -1,0 +1,8 @@
+{
+  "url": "http://127.0.0.1:4188/moonldif/",
+  "status": "failed",
+  "browser_path": "Browser plugin not available; regular Playwright",
+  "cases": [],
+  "expected_version": "0.4.0",
+  "error": "page.waitForFunction: Timeout 15000ms exceeded.\n    at ready (C:\\Users\\<USER>\\Desktop\\Competition\\MoonBit 黑客松\\MoonLDIF\\scripts\\browser-verify.mjs:30:14)\n    at C:\\Users\\<USER>\\Desktop\\Competition\\MoonBit 黑客松\\MoonLDIF\\scripts\\browser-verify.mjs:61:13"
+}

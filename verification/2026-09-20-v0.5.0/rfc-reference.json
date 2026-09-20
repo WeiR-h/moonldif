@@ -1,0 +1,478 @@
+{
+  "source": "https://www.rfc-editor.org/rfc/rfc2849.txt",
+  "sha256": "ce2f125a7a765b1cd19ff23e14517ee4148f3ed29a825e3d22a57a3f119acb07",
+  "version": "0.5.0",
+  "status": "passed",
+  "examples": [
+    {
+      "example": 1,
+      "preparation": [],
+      "name_profile": "explicit legacy separator-space mode, no DN rewrite",
+      "published": {
+        "exit_code": 0,
+        "status": "complete",
+        "records": 2,
+        "diagnostics": [
+          {
+            "code": "legacy-name-separator-spaces",
+            "severity": "warning",
+            "span": {
+              "line": 2,
+              "end_line": 2
+            },
+            "reason": "dn: accepted ASCII spaces after DN/RDN separators by explicit legacy mode. The original value is preserved; this is not strict RFC 4514 syntax."
+          },
+          {
+            "code": "legacy-name-separator-spaces",
+            "severity": "warning",
+            "span": {
+              "line": 14,
+              "end_line": 14
+            },
+            "reason": "dn: accepted ASCII spaces after DN/RDN separators by explicit legacy mode. The original value is preserved; this is not strict RFC 4514 syntax."
+          }
+        ],
+        "sha256": "b1c91ead94fbc2993f7ed2919645053bd8ccec28438c992d423dd28dbca916e5"
+      },
+      "prepared": {
+        "exit_code": 0,
+        "status": "complete",
+        "records": 2,
+        "diagnostics": [
+          {
+            "code": "legacy-name-separator-spaces",
+            "severity": "warning",
+            "span": {
+              "line": 2,
+              "end_line": 2
+            },
+            "reason": "dn: accepted ASCII spaces after DN/RDN separators by explicit legacy mode. The original value is preserved; this is not strict RFC 4514 syntax."
+          },
+          {
+            "code": "legacy-name-separator-spaces",
+            "severity": "warning",
+            "span": {
+              "line": 14,
+              "end_line": 14
+            },
+            "reason": "dn: accepted ASCII spaces after DN/RDN separators by explicit legacy mode. The original value is preserved; this is not strict RFC 4514 syntax."
+          }
+        ],
+        "sha256": "b1c91ead94fbc2993f7ed2919645053bd8ccec28438c992d423dd28dbca916e5"
+      }
+    },
+    {
+      "example": 2,
+      "preparation": [],
+      "name_profile": "explicit legacy separator-space mode, no DN rewrite",
+      "published": {
+        "exit_code": 0,
+        "status": "complete",
+        "records": 1,
+        "diagnostics": [
+          {
+            "code": "legacy-name-separator-spaces",
+            "severity": "warning",
+            "span": {
+              "line": 2,
+              "end_line": 2
+            },
+            "reason": "dn: accepted ASCII spaces after DN/RDN separators by explicit legacy mode. The original value is preserved; this is not strict RFC 4514 syntax."
+          }
+        ],
+        "sha256": "b159a6c202c1d0e224e8a2012410e308b99f6e41ba2c012946d02b1cdd0adb21"
+      },
+      "prepared": {
+        "exit_code": 0,
+        "status": "complete",
+        "records": 1,
+        "diagnostics": [
+          {
+            "code": "legacy-name-separator-spaces",
+            "severity": "warning",
+            "span": {
+              "line": 2,
+              "end_line": 2
+            },
+            "reason": "dn: accepted ASCII spaces after DN/RDN separators by explicit legacy mode. The original value is preserved; this is not strict RFC 4514 syntax."
+          }
+        ],
+        "sha256": "b159a6c202c1d0e224e8a2012410e308b99f6e41ba2c012946d02b1cdd0adb21"
+      }
+    },
+    {
+      "example": 3,
+      "preparation": [
+        "Add one continuation space to three Base64 continuation lines, per erratum 2258 (Held for Document Update)."
+      ],
+      "name_profile": "explicit legacy separator-space mode, no DN rewrite",
+      "published": {
+        "exit_code": 2,
+        "status": "invalid",
+        "records": 1,
+        "diagnostics": [
+          {
+            "code": "missing-value-separator",
+            "severity": "error",
+            "span": {
+              "line": 12,
+              "end_line": 12
+            },
+            "reason": "Expected an attribute name followed by ':'."
+          },
+          {
+            "code": "missing-value-separator",
+            "severity": "error",
+            "span": {
+              "line": 13,
+              "end_line": 13
+            },
+            "reason": "Expected an attribute name followed by ':'."
+          },
+          {
+            "code": "missing-value-separator",
+            "severity": "error",
+            "span": {
+              "line": 14,
+              "end_line": 14
+            },
+            "reason": "Expected an attribute name followed by ':'."
+          },
+          {
+            "code": "legacy-name-separator-spaces",
+            "severity": "warning",
+            "span": {
+              "line": 2,
+              "end_line": 2
+            },
+            "reason": "dn: accepted ASCII spaces after DN/RDN separators by explicit legacy mode. The original value is preserved; this is not strict RFC 4514 syntax."
+          }
+        ],
+        "sha256": "cd73c108f643397a6e8de504fac8229a54891e42b6528051cadf874c5cedb936"
+      },
+      "prepared": {
+        "exit_code": 0,
+        "status": "complete",
+        "records": 1,
+        "diagnostics": [
+          {
+            "code": "legacy-name-separator-spaces",
+            "severity": "warning",
+            "span": {
+              "line": 2,
+              "end_line": 2
+            },
+            "reason": "dn: accepted ASCII spaces after DN/RDN separators by explicit legacy mode. The original value is preserved; this is not strict RFC 4514 syntax."
+          }
+        ],
+        "sha256": "fb94a6420b1f26abcbc7e61a304b7428392cca922f4f7e0b2a1e6d92420ef99b"
+      }
+    },
+    {
+      "example": 4,
+      "preparation": [
+        "Prefix the stranded JapaneseGivenname comment continuation with '# '; project editorial repair, not a verified erratum."
+      ],
+      "name_profile": "explicit legacy separator-space mode, no DN rewrite",
+      "published": {
+        "exit_code": 2,
+        "status": "invalid",
+        "records": 2,
+        "diagnostics": [
+          {
+            "code": "missing-value-separator",
+            "severity": "error",
+            "span": {
+              "line": 43,
+              "end_line": 43
+            },
+            "reason": "Expected an attribute name followed by ':'."
+          }
+        ],
+        "sha256": "f14cbdfc8e84c695d4b5cc8e5fb17f45c366856787e882cfd89b566d06856114"
+      },
+      "prepared": {
+        "exit_code": 0,
+        "status": "complete",
+        "records": 2,
+        "diagnostics": [],
+        "sha256": "1b82ede6848d2f09741f4635b2f4c1b400592f302a9b631b6d66a45b074b5ea2"
+      }
+    },
+    {
+      "example": 5,
+      "preparation": [
+        "Remove the blank line splitting the Horatio cn attributes; project editorial repair. Keep the external file value unresolved."
+      ],
+      "name_profile": "explicit legacy separator-space mode, no DN rewrite",
+      "published": {
+        "exit_code": 2,
+        "status": "invalid",
+        "records": 1,
+        "diagnostics": [
+          {
+            "code": "missing-dn",
+            "severity": "error",
+            "span": {
+              "line": 8,
+              "end_line": 8
+            },
+            "reason": "Each record must start with dn."
+          },
+          {
+            "code": "legacy-name-separator-spaces",
+            "severity": "warning",
+            "span": {
+              "line": 2,
+              "end_line": 2
+            },
+            "reason": "dn: accepted ASCII spaces after DN/RDN separators by explicit legacy mode. The original value is preserved; this is not strict RFC 4514 syntax."
+          }
+        ],
+        "sha256": "308fc0863f5ac3158232072c539edd202e18fa03ec114b8865c39b3df4826bf6"
+      },
+      "prepared": {
+        "exit_code": 2,
+        "status": "incomplete",
+        "records": 1,
+        "diagnostics": [
+          {
+            "code": "external-value-unresolved",
+            "severity": "unsupported",
+            "span": {
+              "line": 11,
+              "end_line": 11
+            },
+            "reason": "URL value is preserved but will not be read."
+          },
+          {
+            "code": "legacy-name-separator-spaces",
+            "severity": "warning",
+            "span": {
+              "line": 2,
+              "end_line": 2
+            },
+            "reason": "dn: accepted ASCII spaces after DN/RDN separators by explicit legacy mode. The original value is preserved; this is not strict RFC 4514 syntax."
+          }
+        ],
+        "sha256": "a12536ddf52c49aab4c8dd8ced2be6e9e005dd850cc4275d4a16c174018f2623"
+      }
+    },
+    {
+      "example": 6,
+      "preparation": [
+        "Remove the blank line between the postaladdress modification terminator and delete: description; project editorial repair. Keep the external file value unresolved."
+      ],
+      "name_profile": "explicit legacy separator-space mode, no DN rewrite",
+      "published": {
+        "exit_code": 2,
+        "status": "invalid",
+        "records": 6,
+        "diagnostics": [
+          {
+            "code": "external-value-unresolved",
+            "severity": "unsupported",
+            "span": {
+              "line": 12,
+              "end_line": 12
+            },
+            "reason": "URL value is preserved but will not be read."
+          },
+          {
+            "code": "missing-dn",
+            "severity": "error",
+            "span": {
+              "line": 42,
+              "end_line": 42
+            },
+            "reason": "Each record must start with dn."
+          },
+          {
+            "code": "legacy-name-separator-spaces",
+            "severity": "warning",
+            "span": {
+              "line": 3,
+              "end_line": 3
+            },
+            "reason": "dn: accepted ASCII spaces after DN/RDN separators by explicit legacy mode. The original value is preserved; this is not strict RFC 4514 syntax."
+          },
+          {
+            "code": "legacy-name-separator-spaces",
+            "severity": "warning",
+            "span": {
+              "line": 15,
+              "end_line": 15
+            },
+            "reason": "dn: accepted ASCII spaces after DN/RDN separators by explicit legacy mode. The original value is preserved; this is not strict RFC 4514 syntax."
+          },
+          {
+            "code": "legacy-name-separator-spaces",
+            "severity": "warning",
+            "span": {
+              "line": 19,
+              "end_line": 19
+            },
+            "reason": "dn: accepted ASCII spaces after DN/RDN separators by explicit legacy mode. The original value is preserved; this is not strict RFC 4514 syntax."
+          },
+          {
+            "code": "legacy-name-separator-spaces",
+            "severity": "warning",
+            "span": {
+              "line": 26,
+              "end_line": 26
+            },
+            "reason": "dn: accepted ASCII spaces after DN/RDN separators by explicit legacy mode. The original value is preserved; this is not strict RFC 4514 syntax."
+          },
+          {
+            "code": "legacy-name-separator-spaces",
+            "severity": "warning",
+            "span": {
+              "line": 30,
+              "end_line": 30
+            },
+            "reason": "newsuperior: accepted ASCII spaces after DN/RDN separators by explicit legacy mode. The original value is preserved; this is not strict RFC 4514 syntax."
+          },
+          {
+            "code": "legacy-name-separator-spaces",
+            "severity": "warning",
+            "span": {
+              "line": 36,
+              "end_line": 36
+            },
+            "reason": "dn: accepted ASCII spaces after DN/RDN separators by explicit legacy mode. The original value is preserved; this is not strict RFC 4514 syntax."
+          },
+          {
+            "code": "legacy-name-separator-spaces",
+            "severity": "warning",
+            "span": {
+              "line": 57,
+              "end_line": 57
+            },
+            "reason": "dn: accepted ASCII spaces after DN/RDN separators by explicit legacy mode. The original value is preserved; this is not strict RFC 4514 syntax."
+          }
+        ],
+        "sha256": "e9ab21d40a8d1cc0bcc847d6a09f22a97c402cbc50209107f57de8320af6a9e6"
+      },
+      "prepared": {
+        "exit_code": 2,
+        "status": "incomplete",
+        "records": 6,
+        "diagnostics": [
+          {
+            "code": "external-value-unresolved",
+            "severity": "unsupported",
+            "span": {
+              "line": 12,
+              "end_line": 12
+            },
+            "reason": "URL value is preserved but will not be read."
+          },
+          {
+            "code": "legacy-name-separator-spaces",
+            "severity": "warning",
+            "span": {
+              "line": 3,
+              "end_line": 3
+            },
+            "reason": "dn: accepted ASCII spaces after DN/RDN separators by explicit legacy mode. The original value is preserved; this is not strict RFC 4514 syntax."
+          },
+          {
+            "code": "legacy-name-separator-spaces",
+            "severity": "warning",
+            "span": {
+              "line": 15,
+              "end_line": 15
+            },
+            "reason": "dn: accepted ASCII spaces after DN/RDN separators by explicit legacy mode. The original value is preserved; this is not strict RFC 4514 syntax."
+          },
+          {
+            "code": "legacy-name-separator-spaces",
+            "severity": "warning",
+            "span": {
+              "line": 19,
+              "end_line": 19
+            },
+            "reason": "dn: accepted ASCII spaces after DN/RDN separators by explicit legacy mode. The original value is preserved; this is not strict RFC 4514 syntax."
+          },
+          {
+            "code": "legacy-name-separator-spaces",
+            "severity": "warning",
+            "span": {
+              "line": 26,
+              "end_line": 26
+            },
+            "reason": "dn: accepted ASCII spaces after DN/RDN separators by explicit legacy mode. The original value is preserved; this is not strict RFC 4514 syntax."
+          },
+          {
+            "code": "legacy-name-separator-spaces",
+            "severity": "warning",
+            "span": {
+              "line": 30,
+              "end_line": 30
+            },
+            "reason": "newsuperior: accepted ASCII spaces after DN/RDN separators by explicit legacy mode. The original value is preserved; this is not strict RFC 4514 syntax."
+          },
+          {
+            "code": "legacy-name-separator-spaces",
+            "severity": "warning",
+            "span": {
+              "line": 36,
+              "end_line": 36
+            },
+            "reason": "dn: accepted ASCII spaces after DN/RDN separators by explicit legacy mode. The original value is preserved; this is not strict RFC 4514 syntax."
+          },
+          {
+            "code": "legacy-name-separator-spaces",
+            "severity": "warning",
+            "span": {
+              "line": 56,
+              "end_line": 56
+            },
+            "reason": "dn: accepted ASCII spaces after DN/RDN separators by explicit legacy mode. The original value is preserved; this is not strict RFC 4514 syntax."
+          }
+        ],
+        "sha256": "155f428873a3e2cc65c86fd6c898cb48ec00c4796d728a4f4e8ddd3b28bcd055"
+      }
+    },
+    {
+      "example": 7,
+      "preparation": [],
+      "name_profile": "explicit legacy separator-space mode, no DN rewrite",
+      "published": {
+        "exit_code": 0,
+        "status": "complete",
+        "records": 1,
+        "diagnostics": [
+          {
+            "code": "legacy-name-separator-spaces",
+            "severity": "warning",
+            "span": {
+              "line": 6,
+              "end_line": 6
+            },
+            "reason": "dn: accepted ASCII spaces after DN/RDN separators by explicit legacy mode. The original value is preserved; this is not strict RFC 4514 syntax."
+          }
+        ],
+        "sha256": "6fd819391f551a59e88bca53aaf42b63549573412091056b13a275f0cad0937a"
+      },
+      "prepared": {
+        "exit_code": 0,
+        "status": "complete",
+        "records": 1,
+        "diagnostics": [
+          {
+            "code": "legacy-name-separator-spaces",
+            "severity": "warning",
+            "span": {
+              "line": 6,
+              "end_line": 6
+            },
+            "reason": "dn: accepted ASCII spaces after DN/RDN separators by explicit legacy mode. The original value is preserved; this is not strict RFC 4514 syntax."
+          }
+        ],
+        "sha256": "6fd819391f551a59e88bca53aaf42b63549573412091056b13a275f0cad0937a"
+      }
+    }
+  ],
+  "external_resolution": "never attempted"
+}

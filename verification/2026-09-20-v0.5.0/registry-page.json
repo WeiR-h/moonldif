@@ -1,0 +1,11 @@
+{
+  "url": "https://mooncakes.io/docs/WeiR-h/moonldif@0.5.0",
+  "method": "Read public mooncakes page in Codex in-app browser after publication",
+  "observed_date": "2026-09-20",
+  "version_selector": "0.5.0 (latest)",
+  "install": "moon add WeiR-h/moonldif@0.5.0",
+  "license": "Apache-2.0",
+  "new_api_parameter": "compare_snapshots(..., ignored_attributes?: Array[String])",
+  "publication_process_exit": 0,
+  "publication_server_status": "200 OK"
+}

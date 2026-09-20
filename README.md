@@ -101,7 +101,7 @@ npm test
 npm run verify
 ```
 
-核心与 CLI 无需安装 npm 依赖；浏览器工作台的依赖由 `web/package-lock.json` 固定。`verify` 包含格式、类型、JS / Wasm GC 两个目标的 49 个核心测试、构建、16 组 CLI 集成测试和三个场景；实际输出与时间记录在 `verification/local/`。[远端双平台 CI](https://github.com/WeiR-h/moonldif/actions/workflows/ci.yml) 已执行通过，另包含工作台构建、归档公共 API、独立参考和生态适配验证；对应提交和完整证据见 [公开交付记录](docs/PUBLICATION.md)。
+核心与 CLI 无需安装 npm 依赖；浏览器工作台的依赖由 `web/package-lock.json` 固定。`verify` 包含格式、类型、JS / Wasm GC 两个目标的核心回归测试、构建、CLI 集成测试和三个场景；实际输出与时间记录在 `verification/local/`。[远端双平台 CI](https://github.com/WeiR-h/moonldif/actions/workflows/ci.yml) 已执行通过，另包含工作台构建、归档公共 API、独立参考和生态适配验证；对应提交和完整证据见 [公开交付记录](docs/PUBLICATION.md)。
 
 本机使用忽略提交的 `.local-toolchain.json` 指向已有 MoonBit 工具链；它不是项目源代码依赖。换机器时安装工具链即可，不需要 MoonAPI Check 工程。
 
