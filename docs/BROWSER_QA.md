@@ -1,5 +1,9 @@
 # 浏览器验证
 
+本地验证 Pages 子路径时，构建和预览进程都需设置 `PAGES_BASE=/moonldif/`，预览端口为 4188。PowerShell 在各自终端先执行 `$env:PAGES_BASE='/moonldif/'`，再分别运行 `npm --prefix web run build` 和 `npm --prefix web run preview -- --port 4188`。仅构建设置而预览漏设会导致资源 404；CI 两者共享同一环境。不要使用 Firefox 限制的 4190 端口。
+
+0.5.0 新增交互：排除字段使旧结果失效并将范围写入下载报告；按 DN / 属性及类型筛选不改变下载；无匹配提示不等于无差异；停止任务后延迟回调仍不可恢复下载。仍检查页面标识、非空、无框架错误、控制台、网络与桌面 / 手机尺寸截图。
+
 执行 `node scripts/browser-verify.mjs` 验证生产预览的 `/moonldif/` 子路径；执行 `node scripts/browser-verify.mjs https://weir-h.github.io/moonldif/` 验证公开页面。先构建 CLI 与工作台；测试依赖为锁定的 Playwright，浏览器可用 `node web/node_modules/playwright/cli.js install chromium firefox` 安装。
 
 - Chromium、Firefox 桌面：打开 CRLF 文件、实际字节指纹、策略切换、准确源行定位、编辑后旧结果失效、0/1/2 报告、Markdown 转义、隐私属性值省略、导出 LDIF 后 CLI 重新解析比较。

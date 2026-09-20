@@ -2,7 +2,7 @@
 
 MoonBit 原生 LDIF 读写与离线结构预检库。
 
-版本：`0.4.0`。已完成 [GitHub Release](https://github.com/WeiR-h/moonldif/releases/tag/v0.4.0)、[mooncakes 发布](https://mooncakes.io/docs/WeiR-h/moonldif@0.4.0)、双平台注册表安装和同版本公开网页复验。本版新增迁移前后快照核对，详见 [完整证据](verification/2026-09-17-v0.4.0/README.md)。报名初审已通过，个人验收和组委会最终结果仍分别待确认。
+版本：`0.5.0`。新增可审计的属性排除、工作台差异筛选与停止任务，以及固定依赖下载恢复。正式发布、注册表安装和公开网页结果以[最新交付状态](https://github.com/WeiR-h/moonldif/blob/main/docs/STATUS.md)为准。报名初审已通过，个人验收和组委会最终结果分别记录。
 
 范围：LDIF 内容与基本变更记录、字节属性、源位置、确定性写回和结构报告。目录 Schema、DN 语义相等、权限及真实服务器执行结果不在检查范围内。
 
@@ -31,6 +31,8 @@ node dist/moonldif.js compare examples/snapshots/before.ldif examples/snapshots/
 
 预期退出 1，定位缺失条目、缺失邮箱、成员值减少和新增条目。将 after.ldif 换成 reordered.ldif 返回 0，忽略顺序和编码表示变化。浏览器点击“迁移前后核对”可体验同一核心。两侧输入的行号和 SHA-256 随报告保存，不附加属性原值。[比较合同、库 API 与边界](docs/SNAPSHOTS.md)。compare 的 1 表示发现差异；2 表示核对不完整，优先于 1。
 
+排除已经确认不需要核对的易变字段时，可重复使用 `--ignore-attribute modifyTimestamp`。默认不排除；报告保留排除列表及命中次数。工作台支持同样选项，以及差异类型 / DN / 属性查找；显示筛选不会改变下载报告。
+
 ## 一次检查多份文件
 
 ```text
@@ -41,13 +43,13 @@ node dist/moonldif.js batch examples/01-directory-export.ldif examples/02-accoun
 
 ## 安装 MoonBit 库
 
-在自己的 MoonBit 工程执行 `moon add WeiR-h/moonldif@0.4.0`，并在 `moon.pkg` 导入 `"WeiR-h/moonldif" @ldif`。注册表安装验证使用 `python scripts/registry-verify.py --version 0.4.0`，创建没有本地覆盖的独立消费工程。
+在自己的 MoonBit 工程执行 `moon add WeiR-h/moonldif@0.5.0`，并在 `moon.pkg` 导入 `"WeiR-h/moonldif" @ldif`。注册表安装验证使用 `python scripts/registry-verify.py --version 0.5.0`，创建没有本地覆盖的独立消费工程。
 
 安装 MoonBit 库不会安装 Node.js CLI。CLI 使用下文的源码构建方式；浏览器工作台另按以下步骤启动。
 
 ## 浏览器试用
 
-公开入口：[MoonLDIF 工作台](https://weir-h.github.io/moonldif/)。只部署通过双平台与浏览器 CI 的正式版本；当前在线版本为 0.4.0，公开 Chromium/Firefox 流程已验证。页面提供整条删除、属性清空、改名与移动、不完整输入四类合成示例。
+公开入口：[MoonLDIF 工作台](https://weir-h.github.io/moonldif/)。只部署通过双平台与浏览器 CI 的正式版本；在线版本以页脚和[发布证据](https://github.com/WeiR-h/moonldif/blob/main/docs/STATUS.md)为准。页面提供整条删除、属性清空、改名与移动、不完整输入四类合成示例。
 
 从项目根目录执行以下命令，再打开 `http://127.0.0.1:4178/`：
 

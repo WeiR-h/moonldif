@@ -60,6 +60,8 @@ node dist/moonldif.js compare before.ldif after.ldif --ignore-attribute modifyTi
 
 MoonBit：`compare_snapshots(before, after, ignored_attributes=["modifyTimestamp", "entryCSN"])`。旧调用保持有效，默认不排除。
 
+可复现实例：将两份输入换成 `examples/snapshots/volatile-before.ldif` 和 `volatile-after.ldif`。默认有 2 项差异；仅排除 `modifyTimestamp` 后仍返回 1 并保留邮箱差异。示例是合成数据。
+
 - 描述按 ASCII 大小写、选项顺序和重复选项规范化；精确匹配整个描述。`mail` 不会排除 `mail;lang-en`；不支持通配符、属性别名或服务端 Schema 推断。
 - 最多 64 个描述，每个最多 256 字符。空白、非法描述或 `dn` 返回 2，绝不静默忽略；所有输入仍完整解析，外部值、无效 Base64 和重复 DN 仍会阻止通过。
 - 报告 `options.ignored_attributes` 保留规范化去重列表；`excluded_attribute_occurrences` 计数两侧所有已解析条目的命中属性出现次数，包含重复值行与后来排除的重复 DN，**不是忽略了多少差异**。输入不满足比较前提时为 null。

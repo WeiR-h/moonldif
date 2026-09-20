@@ -95,6 +95,17 @@ test "snapshot public API" {
   assert_eq(@ldif.compare_snapshots(a, b"bad").exit_code(), 2)
 }
 '''
+    if tuple(map(int, args.version.split('.'))) >= (0, 5, 0):
+        test += r'''///|
+test "released snapshot scope" {
+  let a = b"version: 1\ndn: cn=Demo\nmail: before\n"
+  let b = b"version: 1\ndn: cn=Demo\nmail: after\n"
+  let r = @ldif.compare_snapshots(a, b, ignored_attributes=["MAIL"])
+  assert_eq(r.exit_code(), 0)
+  assert_true(r.to_json().stringify().contains("excluded_attribute_occurrences"))
+  assert_eq(@ldif.compare_snapshots(a, b, ignored_attributes=["dn"]).exit_code(), 2)
+}
+'''
     (workspace / 'consumer_test.mbt').write_text(test, encoding='utf8')
     for target in ['js', 'wasm-gc']:
         run([moon, 'test', '--target', target])

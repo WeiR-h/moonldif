@@ -134,6 +134,23 @@ test "snapshot limits findings but keeps complete totals" {
       ..
     },
   )
+  let excluded = compare_snapshots(
+    @utf8.encode(a.to_string()),
+    @utf8.encode(b.to_string()),
+    ignored_attributes=["mail"],
+  )
+  assert_eq(excluded.exit_code(), 0)
+  assert_true(
+    excluded.to_json()
+    is {
+      "excluded_attribute_occurrences": {
+        "before": Number(230, ..),
+        "after": Number(230, ..),
+        ..
+      },
+      ..
+    },
+  )
 }
 
 ///|

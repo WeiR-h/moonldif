@@ -1,0 +1,6 @@
+# Synthetic export: timestamp noise and a meaningful mail change.
+version: 1
+dn: uid=alice,dc=example,dc=org
+cn: Alice
+mail: alice@example.org
+modifyTimestamp: 20260919080000Z

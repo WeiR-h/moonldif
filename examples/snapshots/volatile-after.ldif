@@ -1,0 +1,6 @@
+# Synthetic export; these are not real directory records.
+version: 1
+dn: uid=alice,dc=example,dc=org
+cn: Alice
+mail: alice-new@example.org
+modifyTimestamp: 20260920080000Z

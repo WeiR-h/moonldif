@@ -97,6 +97,7 @@ test "snapshot public API" {
   let a = b"version: 1\ndn: cn=Demo\ncn: Demo\nmail: before\n"
   let b = b"version: 1\ndn: cn=Demo\ncn: Demo\nmail: after\n"
   assert_eq(@ldif.compare_snapshots(a, a).exit_code(), 0)
+  assert_eq(@ldif.compare_snapshots(a, b, ignored_attributes=["mail"]).exit_code(), 0)
   let changed = @ldif.compare_snapshots(a, b)
   assert_eq(changed.exit_code(), 1)
   assert_true(changed.to_json().stringify().contains("values-changed"))
