@@ -16,6 +16,8 @@ jobs:
       MOONBIT_INSTALL_VERSION: 0.10.11+6ff76a5f9
     steps:
       - uses: actions/checkout@v7.0.1
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v7.0.0
         with:
           node-version: '24'
@@ -42,6 +44,10 @@ jobs:
           echo "$HOME/.moon/bin" >> "$GITHUB_PATH"
       - name: Verify core, CLI and scenarios
         run: node scripts/verify.mjs
+      - name: Compare exact released baseline outputs
+        run: python scripts/baseline-verify.py
+      - name: Observe performance without shared-runner timing thresholds
+        run: node scripts/benchmark.mjs
       - name: Install locked workbench dependencies
         run: npm --prefix web ci
       - name: Build browser workbench with the MoonBit core

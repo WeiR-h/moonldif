@@ -40,8 +40,8 @@ export function useWorkbench() {
       if (data.error) { fail(data.error); return; }
       stop();
       let message = '';
-      if (write && data.envelope.exit_code === 0 && typeof data.envelope.written === 'string') {
-        const url = URL.createObjectURL(new Blob([data.envelope.written], { type: 'application/ldif;charset=utf-8' }));
+      if (write && data.exit_code === 0 && typeof data.written === 'string') {
+        const url = URL.createObjectURL(new Blob([data.written], { type: 'application/ldif;charset=utf-8' }));
         const link = window.document.createElement('a');
         link.href = url;
         link.download = doc.filename.replace(/\.[^.]*$/, '').replace(/[<>:"/\\|?*\u0000-\u001f]/g, '_') + '-normalized.ldif';
@@ -49,7 +49,7 @@ export function useWorkbench() {
         setTimeout(() => URL.revokeObjectURL(url), 1000);
         message = '已生成新文件，原文未修改。请在浏览器下载记录中查看。';
       }
-      setAnalysis({ phase: 'ready', report: data.report, markdown: data.envelope.markdown, message });
+      setAnalysis({ phase: 'ready', report: data.report, markdown: data.markdown, message });
       const deletion = data.report.diagnostics?.find(d => d.severity === 'policy');
       setSelection(deletion?.span || null);
     };

@@ -11,7 +11,8 @@ self.onmessage = async ({ data }) => {
     const digest = await crypto.subtle.digest("SHA-256", bytes);
     const sha256 = Array.from(new Uint8Array(digest), value => value.toString(16).padStart(2, "0")).join("");
     const envelope = JSON.parse(analyse_v2(btoa(chunks.join('')), data.write ? 'workbench-write' : 'workbench', 'json', compat, denyDelete, legacySpaces, denyClear, denyRename, sha256));
-    self.postMessage({ envelope, report: JSON.parse(envelope.output) });
+    self.postMessage({ exit_code: envelope.exit_code, written: envelope.written,
+      markdown: envelope.markdown, report: JSON.parse(envelope.output) });
   } catch (error) {
     self.postMessage({ error: error instanceof Error ? error.message : '分析失败，请重新检查。' });
   }

@@ -8,6 +8,7 @@ import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
 import { verifySnapshot, snapshotReady } from './snapshot-browser.mjs';
+import { verifyStability } from './browser-stability.mjs';
 const root = fileURLToPath(new URL('../', import.meta.url));
 if (!process.env.PLAYWRIGHT_BROWSERS_PATH && existsSync(resolve(root, '.tools/browsers'))) process.env.PLAYWRIGHT_BROWSERS_PATH = resolve(root, '.tools/browsers');
 const require = createRequire(new URL('../web/package.json', import.meta.url));
@@ -41,7 +42,7 @@ async function downloadReport(page, format, file) {
   await download.saveAs(file);
   return readFileSync(file, 'utf8');
 }
-const watchdog = setTimeout(() => { evidence.status = 'failed'; evidence.error = 'Browser QA exceeded 180 seconds'; writeFileSync(resolve(output, 'result.json'), JSON.stringify(evidence, null, 2)); process.exit(1); }, 180000);
+const watchdog = setTimeout(() => { evidence.status = 'failed'; evidence.error = 'Browser QA exceeded 300 seconds'; writeFileSync(resolve(output, 'result.json'), JSON.stringify(evidence, null, 2)); process.exit(1); }, 300000);
 try {
   for (const [name, engine] of [['chromium', chromium], ['firefox', firefox]]) {
     console.log('Browser start: ' + name);
@@ -131,7 +132,7 @@ try {
       assert.deepEqual(badResponses, []);
       assert.ok(requests.every(r => r.method === 'GET' && r.url.startsWith(new URL(url).origin)));
       evidence.cases.push({ browser: name, browser_version: browser.version(), status: 'passed', checks: ['identity', 'nonblank', 'no-overlay', 'no-console-errors', 'CRLF-source-hash', 'clear-policy', 'rename-policy', 'stale-invalidation', 'partial-report', 'markdown-escaping', 'private-attribute-omission', 'source-navigation', 'download-cli-roundtrip', 'oversize', 'bad-encoding', 'mobile-no-overflow', 'snapshot-0-1-2', 'snapshot-source-hashes', 'snapshot-locations', 'snapshot-report-privacy', 'snapshot-stale-inputs', 'snapshot-resource-limits'], requests, errors, warnings, badResponses });
-      if (name === 'chromium') {
+      {
         const racePage = await context.newPage();
         await racePage.addInitScript(() => {
           const OriginalWorker = window.Worker;
@@ -171,6 +172,8 @@ try {
         await timed.close();
         evidence.cases.push({ browser: name, browser_version: browser.version(), status: 'passed', checks: ['delayed-old-response', 'worker-timeout-no-stale-export', 'snapshot-delayed-response', 'snapshot-timeout'], fault_injection: true });
       }
+      await verifyStability(context, url, output, name);
+      evidence.cases.push({ browser: name, status: 'passed', checks: ['50-analyses', '50-cancellations', 'no-duplicate-report-payload', 'one-live-worker', 'no-stale-exports'], memory: 'main-realm heap observation only; excludes workers and process RSS' });
       console.log('Checks passed: ' + name);
       await context.close();
     } finally { await Promise.race([browser.close(), new Promise(resolve => setTimeout(resolve, 10000))]); }
