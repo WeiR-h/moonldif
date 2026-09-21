@@ -1,28 +1,10 @@
 #!/usr/bin/env node
 // Host responsibilities: bounded local byte I/O, source SHA-256 and process status.
-import { openSync, fstatSync, readSync, closeSync, writeFileSync } from 'node:fs';
+import { writeFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { basename } from 'node:path';
 import * as core from './core.mjs';
-
-function readBounded(path, budget = 8 * 1024 * 1024) {
-  const fd = openSync(path, 'r');
-  try {
-    const stat = fstatSync(fd);
-    if (!stat.isFile()) throw new Error('Input must be a regular file.');
-    const limit = Math.min(8 * 1024 * 1024, budget);
-    if (stat.size > limit) throw new Error('Input exceeds the file or batch limit.');
-    const buffer = Buffer.alloc(limit + 1);
-    let count = 0;
-    while (count < buffer.length) {
-      const n = readSync(fd, buffer, count, buffer.length - count, null);
-      if (!n) break;
-      count += n;
-    }
-    if (count > limit) throw new Error('Input exceeds 8 MiB.');
-    return buffer.subarray(0, count);
-  } finally { closeSync(fd); }
-}
+import { readBounded } from './read-bounded.mjs';
 
 let format = 'text';
 let result;

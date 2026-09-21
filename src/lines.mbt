@@ -25,7 +25,8 @@ fn logical_lines(data : Bytes, ds : Array[Diagnostic]) -> Array[Line] {
   }
   let mut start = 0
   let mut line_number = 1
-  let mut pending = StringBuilder()
+  let mut plain = ""
+  let mut pending : StringBuilder? = None
   let mut active = false
   let mut logical_size = 0
   let mut first_line = 1
@@ -79,19 +80,31 @@ fn logical_lines(data : Bytes, ds : Array[Diagnostic]) -> Array[Line] {
             )
             return lines
           }
-          pending.write_string(text[1:].to_owned())
+          let builder = match pending {
+            Some(builder) => builder
+            None => {
+              let builder = StringBuilder()
+              builder.write_string(plain)
+              pending = Some(builder)
+              builder
+            }
+          }
+          builder.write_string(text[1:].to_owned())
           logical_size = logical_size + end - start - 1
           last_line = line_number
         }
       } else {
         if active {
           lines.push({
-            text: pending.to_string(),
+            text: match pending {
+              Some(builder) => builder.to_string()
+              None => plain
+            },
             span: { line: first_line, end_line: last_line, },
           })
         }
-        pending = StringBuilder()
-        pending.write_string(text)
+        pending = None
+        plain = text
         active = true
         logical_size = end - start
         first_line = line_number
@@ -103,7 +116,10 @@ fn logical_lines(data : Bytes, ds : Array[Diagnostic]) -> Array[Line] {
   }
   if active {
     lines.push({
-      text: pending.to_string(),
+      text: match pending {
+        Some(builder) => builder.to_string()
+        None => plain
+      },
       span: { line: first_line, end_line: last_line, },
     })
   }

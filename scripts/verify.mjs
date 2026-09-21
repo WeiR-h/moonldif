@@ -12,6 +12,7 @@ const steps = [
   ['wasm-gc-tests', ['scripts/moon.mjs', 'test', '--target', 'wasm-gc']],
   ['build', ['scripts/build.mjs']],
   ['cli-tests', ['--test', 'tests/cli.test.mjs']],
+  ['bounded-reader-tests', ['--test', 'tests/read-bounded.test.mjs']],
   ['scenarios', ['scripts/demo.mjs']],
 ];
 const folder = resolve(root, 'verification/local');

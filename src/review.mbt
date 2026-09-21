@@ -90,8 +90,22 @@ pub fn Report::review(self : Report) -> Review {
   let mut count = 0
   for i in 0..<self.document.records.length() {
     let r = self.document.records[i]
+    // Once the retained list is full, only count intent items. Policy checking
+    // already traversed every record in check(); no risk decision is skipped.
+    if items.length() >= 200 {
+      count += r.controls.length()
+      count += match r.body {
+        Entry(_) => 0
+        Modify(mods) => mods.length()
+        _ => 1
+      }
+      continue
+    }
     for c in r.controls {
       count = count + 1
+      if items.length() >= 200 {
+        continue
+      }
       push_review(
         items,
         "operation-control",
@@ -150,6 +164,9 @@ pub fn Report::review(self : Report) -> Review {
       Modify(mods) =>
         for m in mods {
           count = count + 1
+          if items.length() >= 200 {
+            continue
+          }
           let empty = m.values.is_empty()
           let (code, level, title, reason, action) = match m.operation {
             "add" =>
