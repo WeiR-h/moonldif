@@ -1,3 +1,8 @@
+# 2026-09-21 0.5.1 正式交付
+
+已完成 [GitHub Release](https://github.com/WeiR-h/moonldif/releases/tag/v0.5.1)、[mooncakes](https://mooncakes.io/docs/WeiR-h/moonldif@0.5.1)、Windows / Ubuntu 的 JS / Wasm GC 独立注册表安装，以及同版本 Pages 的公开双浏览器复验。[完整证据](../verification/2026-09-21-v0.5.1/README.md)记录精确源码、包指纹、CI 和实际下载结果。发布后补充证据不重写正式标签。
+
+
 # 2026-09-20 0.5.0 正式交付
 
 已完成 GitHub Release、mooncakes、精确版本双系统独立安装、Pages 与公开浏览器回归。[完整证据](../verification/2026-09-20-v0.5.0/README.md)包含源提交、CI、包指纹及实际输出。账号身份保持 WeiR-h，不改变其他项目的默认 GitHub 登录。下文保留历史记录。

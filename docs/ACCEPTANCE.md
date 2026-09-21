@@ -1,4 +1,17 @@
-# 0.5.0 当前验收对照
+# 0.5.1 当前验收对照
+
+| 验收项 | 可复核入口 |
+|---|---|
+| 核心与输出兼容 | [正式源 CI](https://github.com/WeiR-h/moonldif/actions/runs/35553887038)、[完整输出对照](../scripts/compatibility-verify.mjs) |
+| 性能与读取边界 | [性能实测](PERFORMANCE.md)、[有界读取](../cmd/read-bounded.mjs) |
+| 浏览器与重复任务 | [公开验证](../verification/2026-09-21-v0.5.1/BROWSER-QA.md)、[工作台](https://weir-h.github.io/moonldif/) |
+| 发行、包及安装 | [发布链与证据](../verification/2026-09-21-v0.5.1/README.md)、[双平台注册表 CI](https://github.com/WeiR-h/moonldif/actions/runs/35554828779) |
+| 开源与来源 | [Apache-2.0](../LICENSE)、[来源声明](../THIRD_PARTY.md) |
+| 本人验收与演示 | 仓库外《0.5.1 个人验收与展示》15 分钟清单，待本人执行；[演示脚本](DEMO.md) |
+
+工程交付已完成。本人验收、第三方反馈及组委会最终结果仍待实际执行或收到通知。以下为历史记录。
+
+# 0.5.0 历史验收对照
 
 | 验收项 | 可核对入口 |
 |---|---|

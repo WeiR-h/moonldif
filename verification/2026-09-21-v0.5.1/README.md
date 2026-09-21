@@ -1,21 +1,32 @@
-# MoonLDIF 0.5.1 验证证据
+# MoonLDIF 0.5.1 正式交付证据
 
-本轮保留公共接口和输出合同，优化有界读取、折行复制、审阅说明构造与浏览器重复报告传递。
+2026-09-21：代码、正式发行、注册表安装和同版本公开网页验证已完成。初审通过按参赛者提供的通知记录；本人独立验收、演示录制、真实第三方试用及组委会最终结论仍待完成或收到结果。
 
-基线是 v0.5.0 精确源码 `0907c053b1c2d44e4b407c06dfe3524e5e886e90`，由同一工具链重新构建。`scripts/baseline-verify.py` 可复现；不使用注册表本地覆盖。
+## 可复核的发布链
 
-性能使用相同脚本、合成输入和固定指纹，独立进程预热一次再测量七次。批处理测真实 CLI，包含启动和文件 I/O；其子进程内存未测量。其他场景记录 RSS 前后值，不是峰值。
+| 项目 | 实际结果 |
+|---|---|
+| 正式源码 | `98d7dd03e95474fb44c7da6c42808c902ad44866`，不可变标签 v0.5.1 |
+| Windows / Ubuntu / 浏览器 | [正式源 CI](https://github.com/WeiR-h/moonldif/actions/runs/35553887038) 与 [标签 CI / Pages](https://github.com/WeiR-h/moonldif/actions/runs/35553887067) 成功 |
+| GitHub 发行 | [v0.5.1 Release](https://github.com/WeiR-h/moonldif/releases/tag/v0.5.1)，[发行元数据](github-release-0.5.1.json) |
+| mooncakes | [WeiR-h/moonldif@0.5.1](https://mooncakes.io/docs/WeiR-h/moonldif@0.5.1)，[页面核对](registry-page.json)，发布返回 200 OK |
+| 注册表安装 | [双平台 CI](https://github.com/WeiR-h/moonldif/actions/runs/35554828779)，[Windows](registry-windows.json)、[Ubuntu](registry-ubuntu.json)、[本机](registry-0.5.1.json) |
+| 公开工作台 | [Pages](https://weir-h.github.io/moonldif/)，[实际浏览器结果](public-result.json)、[验证说明](BROWSER-QA.md) |
 
-公开发布及安装结果在完成后补充；当前以 [STATUS](../../docs/STATUS.md) 为准。个人独立验收和组委会最终结果仍待确认。
+发行 ZIP 为 2,800,465 字节、303 个文件，SHA-256 `3d867df6e281876292d15d9ee360606a4e20daf2606021b512f88cb6fe2ad6cc`。GitHub 资产指纹与实际发布前检查的归档一致，见 [包检查](release-payload-0.5.1.json)。凭据、工具链和依赖缓存未包含。发布后的证据文档提交不改变正式标签、包或网页代码。
 
-开发失败和环境问题见 [development-notes.md](development-notes.md)。
+注册表验证均使用仓库之外新建的独立消费工程，无本地依赖覆盖，指定安装 0.5.1；JS 与 Wasm GC 各通过 5 个公共 API 用例，覆盖读写、风险、批处理、快照和排除范围。MoonBit 对只有测试使用的包导入给出 unused_package 警告，测试本身已实际执行并通过，原始输出完整保留。
 
-## 已完成的发布前验证
+## 正确性与稳定性
 
-- [候选源 CI](https://github.com/WeiR-h/moonldif/actions/runs/35553582957)：Windows、Ubuntu、Chromium/Firefox 全部通过。候选源码为 `321e364709a87421590ae30a6e4848452b8b55a6`，后续只补充测量工具选项与发布证据。
-- 核心 JS/Wasm GC、17 组 CLI、5 组注入读取回归、228 组完整输出对照通过。未增加或改变公共 MoonBit API。
-- Python、Java SDK、OpenLDAP、RFC、72 次完整/排除模型核对及 MoonLDAP 适配全部通过。
-- 双浏览器各 50 次真实检查及 50 次取消，延迟旧回调与 20 秒超时验证通过。手机尺寸为桌面浏览器模拟，不是真机。
-- 所有配对性能原始读数及触发门槛后的复测均保留；见 [性能说明](../../docs/PERFORMANCE.md)。
+保持公共 API、参数、报告字段、退出码和资源限制。核心 JS/Wasm GC 各 57 个测试、17 组 CLI、5 组可注入读取回归通过；228 组完整输出与 v0.5.0 比较仅归一化版本号，包括诊断顺序、JSON、Markdown 及整理 LDIF。Python、Java SDK、OpenLDAP、RFC、快照模型与 MoonLDAP 对照继续通过。双平台原始结果以 `ci-windows-*` / `ci-ubuntu-*` 保存，不以测试数量代替边界说明。
 
-正式标签、发行包、注册表与公开工作台证据在发布完成后补充，实时状态以主分支 docs/STATUS.md 为准。
+Chromium / Firefox 公网流程、下载后 CLI 复核、旧任务回调与超时验证通过；两种浏览器分别完成 50 次真实检查和 50 次取消。手机尺寸只是桌面视口模拟。内存观察不是峰值，也不构成无泄漏证明。
+
+## 性能复现与失败记录
+
+基线是 v0.5.0 精确源码 `0907c053b1c2d44e4b407c06dfe3524e5e886e90`，同机同工具链重建。每个场景独立进程，预热一次、测量七次，三轮交替先后顺序；哈希、版本、环境及 RSS 前后值完整保留。真实 CLI 批处理包含启动及文件 I/O，子进程内存未测量。
+
+50 个合成小文件批处理中位耗时约减少 25%；多数核心场景接近原版。check-1000 首轮配对 +11.8%，三对复测 +3.8%，未持续超过 10% 门槛。较慢读数未删除，不宣称普遍提速。见 [性能说明](../../docs/PERFORMANCE.md)、[完整配对](performance-paired.json)、[触发后复测](performance-paired-recheck.json)。
+
+开发失败、环境问题、首次部署和身份问题及其解决均见 [development-notes.md](development-notes.md)。所有示例和浏览器输入为合成数据，不是企业采用或第三方试用记录。

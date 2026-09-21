@@ -1,0 +1,56 @@
+{
+  "status": "passed",
+  "scope": "Seven synthetic content cases (three directions) and one ordered modify case; no LDAP server validation",
+  "reference_commit": "7ffae5b4f16eed9dae4ed3ab682396cd678acd5d",
+  "reference_sha256": "4bfd6cc743c4651e54a7a8e673586ccc42c5c632a0381f4775240aed4d7c080a",
+  "reference_url": "https://raw.githubusercontent.com/python-ldap/python-ldap/7ffae5b4f16eed9dae4ed3ab682396cd678acd5d/Lib/ldif.py",
+  "external_url_access": "blocked",
+  "checks": [
+    {
+      "case": "fold-empty-binary-multivalue",
+      "parse_comparison": "passed",
+      "our_writer_reference_reader": "passed",
+      "reference_writer_our_reader": "passed"
+    },
+    {
+      "case": "crlf",
+      "parse_comparison": "passed",
+      "our_writer_reference_reader": "passed",
+      "reference_writer_our_reader": "passed"
+    },
+    {
+      "case": "project-export",
+      "parse_comparison": "passed",
+      "our_writer_reference_reader": "passed",
+      "reference_writer_our_reader": "passed"
+    },
+    {
+      "case": "initial-and-trailing-spaces",
+      "parse_comparison": "passed",
+      "our_writer_reference_reader": "passed",
+      "reference_writer_our_reader": "passed"
+    },
+    {
+      "case": "empty-root-dn",
+      "parse_comparison": "passed",
+      "our_writer_reference_reader": "passed",
+      "reference_writer_our_reader": "passed"
+    },
+    {
+      "case": "multiple-entries",
+      "parse_comparison": "passed",
+      "our_writer_reference_reader": "passed",
+      "reference_writer_our_reader": "passed"
+    },
+    {
+      "case": "deterministic-byte-corpus",
+      "parse_comparison": "passed",
+      "our_writer_reference_reader": "passed",
+      "reference_writer_our_reader": "passed"
+    },
+    {
+      "case": "ordered-modify",
+      "parse_comparison": "passed"
+    }
+  ]
+}

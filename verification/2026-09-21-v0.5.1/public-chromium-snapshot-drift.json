@@ -1,0 +1,67 @@
+{
+  "tool": "MoonLDIF",
+  "version": "0.5.1",
+  "kind": "snapshot-diff",
+  "report_schema_version": 1,
+  "exit_code": 1,
+  "status": "complete",
+  "analysis_complete": true,
+  "comparison_performed": true,
+  "matching": "Exact decoded DN string; ASCII-insensitive attribute descriptions; byte multiset values",
+  "scope": "Export comparison only; not LDAP semantic equality, rename detection or an executable patch. Reports contain DNs, not attribute values.",
+  "options": {
+    "allow_missing_version": false,
+    "legacy_dn_spaces": false,
+    "ignored_attributes": []
+  },
+  "excluded_attribute_occurrences": {
+    "before": 0,
+    "after": 0
+  },
+  "exclusion_scope": "Exact canonical attribute description, including options. Counts cover all parsed entry attribute occurrences, not differences. Entry additions/removals and all input checks remain active.",
+  "before": {
+    "byte_length": 63,
+    "sha256": "067de0379baff1aa367bc0b058fc0b69ef68fbc965b13ced263f46b76aaf61fe",
+    "status": "complete",
+    "record_count": 1,
+    "diagnostics": []
+  },
+  "after": {
+    "byte_length": 70,
+    "sha256": "b374a1a0ef7649c23f3bb87b8408fe4cce32606e0da856f586573f8f9ab4676d",
+    "status": "complete",
+    "record_count": 1,
+    "diagnostics": []
+  },
+  "diagnostics": [],
+  "diagnostics_truncated": false,
+  "ambiguous_dn_count": 0,
+  "compared_dn_count": 1,
+  "counts": {
+    "entry-added": 0,
+    "entry-removed": 0,
+    "attribute-added": 0,
+    "attribute-removed": 0,
+    "values-changed": 1
+  },
+  "total_changes": 1,
+  "reported_changes": 1,
+  "truncated": false,
+  "changes": [
+    {
+      "code": "values-changed",
+      "dn": "cn=[demo]",
+      "attribute": "photo",
+      "before_span": {
+        "line": 4,
+        "end_line": 4
+      },
+      "after_span": {
+        "line": 3,
+        "end_line": 3
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1
+    }
+  ]
+}

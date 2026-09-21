@@ -1,0 +1,11 @@
+{
+  "version": "0.5.1",
+  "source_commit": "98d7dd03e95474fb44c7da6c42808c902ad44866",
+  "archive": "WeiR-h-moonldif-0.5.1.zip",
+  "sha256": "3d867df6e281876292d15d9ee360606a4e20daf2606021b512f88cb6fe2ad6cc",
+  "bytes": 2800465,
+  "files": 303,
+  "excluded_paths_found": [],
+  "checked_secret_patterns_found": [],
+  "status": "passed"
+}

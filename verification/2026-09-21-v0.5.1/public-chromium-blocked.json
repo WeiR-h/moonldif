@@ -1,0 +1,86 @@
+{
+  "tool": "MoonLDIF",
+  "version": "0.5.1",
+  "status": "complete",
+  "exit_code": 1,
+  "mode": "changes",
+  "record_count": 1,
+  "scope": "LDIF v1 supported structure and DN/RDN string syntax; not server import approval",
+  "names_checked": true,
+  "name_profile": "RFC 4514 string syntax",
+  "not_checked": [
+    "DN equality and schema matching",
+    "BER-hex assertion semantics",
+    "directory schema",
+    "server state and ACL",
+    "control semantics",
+    "external value contents"
+  ],
+  "diagnostics": [
+    {
+      "code": "clear-denied",
+      "severity": "policy",
+      "span": {
+        "line": 7,
+        "end_line": 8
+      },
+      "reason": "Removing all attribute values is blocked by --deny-clear."
+    }
+  ],
+  "review": {
+    "total_items": 2,
+    "truncated": false,
+    "analysis_complete": true,
+    "input_exit_code": 1,
+    "record_count": 1,
+    "scope": "File operation intent only; no LDAP execution or schema approval",
+    "items": [
+      {
+        "code": "attribute-replace",
+        "level": "caution",
+        "record_index": 0,
+        "dn": "cn=[demo]&user",
+        "attribute": "description",
+        "value_count": 1,
+        "span": {
+          "line": 4,
+          "end_line": 6
+        },
+        "title": "Replace attribute values",
+        "reason": "This replaces the entire value set rather than appending to it.",
+        "action": "Include any old values that must be retained in the replacement set."
+      },
+      {
+        "code": "attribute-clear",
+        "level": "high",
+        "record_index": 0,
+        "dn": "cn=[demo]&user",
+        "attribute": "mail",
+        "value_count": 0,
+        "span": {
+          "line": 7,
+          "end_line": 8
+        },
+        "title": "Clear attribute values",
+        "reason": "An empty replace requests removal of this attribute's values.",
+        "action": "Confirm that an empty replacement is intentional and permitted by the schema."
+      }
+    ]
+  },
+  "document": null,
+  "locations": null,
+  "report_schema_version": 1,
+  "source": {
+    "sha256": "c59bf60d2cc48035ee1576d0d79e19ce6ec8c5f7d8c7fb87ebc801d203ebfb2a",
+    "byte_length": 137,
+    "identity_scope": "Exact analysed bytes; not a signature or authenticity proof"
+  },
+  "options": {
+    "allow_missing_version": false,
+    "deny_delete": true,
+    "deny_clear": true,
+    "deny_rename": false,
+    "legacy_dn_spaces": false
+  },
+  "diagnostics_truncated": false
+}

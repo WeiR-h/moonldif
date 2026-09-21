@@ -1,0 +1,15 @@
+{
+  "date": "2026-09-21",
+  "method": "visible registry page inspected using in-app browser",
+  "url": "https://mooncakes.io/docs/WeiR-h/moonldif@0.5.1",
+  "version": "0.5.1",
+  "owner": "WeiR-h",
+  "license": "Apache-2.0",
+  "observations": [
+    "0.5.1 shown as latest",
+    "README and public API displayed",
+    "versioned installation command displayed"
+  ],
+  "publish_server_status": "200 OK",
+  "archive_sha256": "3d867df6e281876292d15d9ee360606a4e20daf2606021b512f88cb6fe2ad6cc"
+}
