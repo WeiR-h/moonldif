@@ -24,6 +24,8 @@ jobs:
       - uses: actions/setup-python@v7.0.0
         with:
           python-version: '3.12'
+      - name: Check public source privacy
+        run: python scripts/publication-privacy.py
       - uses: actions/setup-java@v6.0.1
         with:
           distribution: 'temurin'

@@ -10,3 +10,7 @@ __pycache__/
 !verification/2026-09-15-dev.3/*.log
 !verification/2026-09-15-dev.4/*.log
 verification/local/
+private/
+**/*申报书*
+**/*个人验收*
+**/*联系方式*
