@@ -6,14 +6,14 @@
 
 | 项目 | 实际结果 |
 |---|---|
-| 正式源码 | `98d7dd03e95474fb44c7da6c42808c902ad44866`，不可变标签 v0.5.1 |
+| 正式源码 | `3dbe27b707797f7425895b6c1cc116d3a840f21a`，标签 v0.5.1 |
 | Windows / Ubuntu / 浏览器 | [正式源 CI](https://github.com/WeiR-h/moonldif/actions/runs/35553887038) 与 [标签 CI / Pages](https://github.com/WeiR-h/moonldif/actions/runs/35553887067) 成功 |
 | GitHub 发行 | [v0.5.1 Release](https://github.com/WeiR-h/moonldif/releases/tag/v0.5.1)，[发行元数据](github-release-0.5.1.json) |
 | mooncakes | [WeiR-h/moonldif@0.5.1](https://mooncakes.io/docs/WeiR-h/moonldif@0.5.1)，[页面核对](registry-page.json)，发布返回 200 OK |
 | 注册表安装 | [双平台 CI](https://github.com/WeiR-h/moonldif/actions/runs/35554828779)，[Windows](registry-windows.json)、[Ubuntu](registry-ubuntu.json)、[本机](registry-0.5.1.json) |
 | 公开工作台 | [Pages](https://weir-h.github.io/moonldif/)，[实际浏览器结果](public-result.json)、[验证说明](BROWSER-QA.md) |
 
-发行 ZIP 为 2,800,465 字节、303 个文件，SHA-256 `3d867df6e281876292d15d9ee360606a4e20daf2606021b512f88cb6fe2ad6cc`。GitHub 资产指纹与实际发布前检查的归档一致，见 [包检查](release-payload-0.5.1.json)。凭据、工具链和依赖缓存未包含。发布后的证据文档提交不改变正式标签、包或网页代码。
+当前 GitHub 发行 ZIP 为 2,810,011 字节，SHA-256 `c2810f0071916e87c2767dd9e10701a96694e48c262cc2cf18f2243c23be01d6`。各版本下载地址、源码与发行包指纹见 [发行清单](../distributions.json)。历史测试结果保留运行时的版本、提交及包标识；当前分支验证见 [CI](https://github.com/WeiR-h/moonldif/actions/runs/35557000611)。
 
 注册表验证均使用仓库之外新建的独立消费工程，无本地依赖覆盖，指定安装 0.5.1；JS 与 Wasm GC 各通过 5 个公共 API 用例，覆盖读写、风险、批处理、快照和排除范围。MoonBit 对只有测试使用的包导入给出 unused_package 警告，测试本身已实际执行并通过，原始输出完整保留。
 

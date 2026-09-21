@@ -1,6 +1,6 @@
 # 当前交付状态：0.5.1
 
-2026-09-21：性能与稳定性迭代已正式交付。GitHub Release、mooncakes 0.5.1、Windows / Ubuntu 独立注册表安装、同版本 Pages 与公开 Chromium / Firefox 验证全部完成。精确源码 `98d7dd03e95474fb44c7da6c42808c902ad44866`，见[发布及验证证据](../verification/2026-09-21-v0.5.1/README.md)。
+2026-09-21：性能与稳定性迭代已正式交付。GitHub Release、mooncakes 0.5.1、Windows / Ubuntu 独立注册表安装、同版本 Pages 与公开 Chromium / Firefox 验证全部完成。精确源码 `3dbe27b707797f7425895b6c1cc116d3a840f21a`，见[发布及验证证据](../verification/2026-09-21-v0.5.1/README.md)。
 
 减少有界读取分配、折行复制、截断列表后的说明构造和 Worker 重复报告传输。公共 API、报告字段、退出码与资源上限保持兼容。完整输出与 0.5.0 对照通过；性能改善仅按[实测范围](PERFORMANCE.md)描述。
 
