@@ -1,0 +1,9 @@
+# 开发与失败记录
+
+- 基线测试脚本最初对 10,000 次重命名同时启用拦截，却期待退出 1。实际达到 100 条诊断上限后正确返回 2；保留 baseline-harness-failure.json。规模审阅场景改为不启用策略，检查 10,000 项总数及前 200 项，风险策略另由核心/CLI 测试完整验证。未放宽诊断限制。
+- 新增 MoonBit 测试最初使用 assert_eq 比较未实现 Debug 的 Span/Value，改为 assert_true 的等值断言；测试里直接写中文属性被严格配置正确拒绝，已改为合法 Base64 中文测试，同时差分输入继续覆盖非法明文中文。
+- 独立 Java SDK 在沙箱内读取已缓存 JAR 时 AccessDenied，正常权限复验 27 组通过；保留 sdk-sandbox-failure.json。
+- 第一轮浏览器测试 Chromium 通过，Firefox 在 newPage 阶段失败；保留 browser-sandbox-failure.json。后续在正常权限复验，不把这次失败计作通过。
+- 100 条 check 的首次计时恶化超过 10%，安排相同场景的新进程配对复测，保留两次原始数据。性能不以共享 CI 的毫秒阈值判定，不选择性丢弃较慢读数。
+
+所有数据均为合成数据。进程 RSS 前后值不是峰值；浏览器主线程堆观察不包含 Worker，不能据此宣称无泄漏。

@@ -1,0 +1,319 @@
+{
+  "url": "http://127.0.0.1:4188/moonldif/",
+  "status": "passed",
+  "browser_path": "Browser plugin not available; regular Playwright",
+  "cases": [
+    {
+      "browser": "chromium",
+      "browser_version": "151.0.7922.34",
+      "status": "passed",
+      "checks": [
+        "identity",
+        "nonblank",
+        "no-overlay",
+        "no-console-errors",
+        "CRLF-source-hash",
+        "clear-policy",
+        "rename-policy",
+        "stale-invalidation",
+        "partial-report",
+        "markdown-escaping",
+        "private-attribute-omission",
+        "source-navigation",
+        "download-cli-roundtrip",
+        "oversize",
+        "bad-encoding",
+        "mobile-no-overflow",
+        "snapshot-0-1-2",
+        "snapshot-source-hashes",
+        "snapshot-locations",
+        "snapshot-report-privacy",
+        "snapshot-stale-inputs",
+        "snapshot-resource-limits"
+      ],
+      "requests": [
+        {
+          "url": "http://127.0.0.1:4188/moonldif/",
+          "method": "GET",
+          "type": "document"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/index-BTwHMRTD.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/index-RrWRfxtY.css",
+          "method": "GET",
+          "type": "stylesheet"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Dlx4njh0.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Dlx4njh0.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Dlx4njh0.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Dlx4njh0.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Dlx4njh0.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Dlx4njh0.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Dlx4njh0.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Dlx4njh0.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Dlx4njh0.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/snapshot.worker-BHgRKUy5.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/snapshot.worker-BHgRKUy5.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/snapshot.worker-BHgRKUy5.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/snapshot.worker-BHgRKUy5.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/snapshot.worker-BHgRKUy5.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/snapshot.worker-BHgRKUy5.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/snapshot.worker-BHgRKUy5.js",
+          "method": "GET",
+          "type": "script"
+        }
+      ],
+      "errors": [],
+      "warnings": [],
+      "badResponses": []
+    },
+    {
+      "browser": "chromium",
+      "browser_version": "151.0.7922.34",
+      "status": "passed",
+      "checks": [
+        "delayed-old-response",
+        "worker-timeout-no-stale-export",
+        "snapshot-delayed-response",
+        "snapshot-timeout"
+      ],
+      "fault_injection": true
+    },
+    {
+      "browser": "chromium",
+      "status": "passed",
+      "checks": [
+        "50-analyses",
+        "50-cancellations",
+        "no-duplicate-report-payload",
+        "one-live-worker",
+        "no-stale-exports"
+      ],
+      "memory": "main-realm heap observation only; excludes workers and process RSS"
+    },
+    {
+      "browser": "firefox",
+      "browser_version": "153.0",
+      "status": "passed",
+      "checks": [
+        "identity",
+        "nonblank",
+        "no-overlay",
+        "no-console-errors",
+        "CRLF-source-hash",
+        "clear-policy",
+        "rename-policy",
+        "stale-invalidation",
+        "partial-report",
+        "markdown-escaping",
+        "private-attribute-omission",
+        "source-navigation",
+        "download-cli-roundtrip",
+        "oversize",
+        "bad-encoding",
+        "mobile-no-overflow",
+        "snapshot-0-1-2",
+        "snapshot-source-hashes",
+        "snapshot-locations",
+        "snapshot-report-privacy",
+        "snapshot-stale-inputs",
+        "snapshot-resource-limits"
+      ],
+      "requests": [
+        {
+          "url": "http://127.0.0.1:4188/moonldif/",
+          "method": "GET",
+          "type": "document"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/index-BTwHMRTD.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/index-RrWRfxtY.css",
+          "method": "GET",
+          "type": "stylesheet"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Dlx4njh0.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Dlx4njh0.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Dlx4njh0.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Dlx4njh0.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Dlx4njh0.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Dlx4njh0.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Dlx4njh0.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Dlx4njh0.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Dlx4njh0.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/snapshot.worker-BHgRKUy5.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/snapshot.worker-BHgRKUy5.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/snapshot.worker-BHgRKUy5.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/snapshot.worker-BHgRKUy5.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/snapshot.worker-BHgRKUy5.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/snapshot.worker-BHgRKUy5.js",
+          "method": "GET",
+          "type": "script"
+        },
+        {
+          "url": "http://127.0.0.1:4188/moonldif/assets/snapshot.worker-BHgRKUy5.js",
+          "method": "GET",
+          "type": "script"
+        }
+      ],
+      "errors": [],
+      "warnings": [
+        {
+          "text": "[JavaScript Warning: \"This site appears to use a scroll-linked positioning effect. This may not work well with asynchronous panning; see https://firefox-source-docs.mozilla.org/performance/scroll-linked_effects.html for further details and to join the discussion on related tools and features!\" {file: \"http://127.0.0.1:4188/moonldif/\" line: 0}]",
+          "explanation": "Line numbers and source highlight intentionally follow textarea scrolling; selection and visual alignment are verified."
+        }
+      ],
+      "badResponses": []
+    },
+    {
+      "browser": "firefox",
+      "browser_version": "153.0",
+      "status": "passed",
+      "checks": [
+        "delayed-old-response",
+        "worker-timeout-no-stale-export",
+        "snapshot-delayed-response",
+        "snapshot-timeout"
+      ],
+      "fault_injection": true
+    },
+    {
+      "browser": "firefox",
+      "status": "passed",
+      "checks": [
+        "50-analyses",
+        "50-cancellations",
+        "no-duplicate-report-payload",
+        "one-live-worker",
+        "no-stale-exports"
+      ],
+      "memory": "main-realm heap observation only; excludes workers and process RSS"
+    }
+  ],
+  "expected_version": "0.5.1"
+}
