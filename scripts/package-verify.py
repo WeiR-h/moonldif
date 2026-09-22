@@ -105,6 +105,23 @@ test "snapshot public API" {
   assert_eq(@ldif.compare_snapshots(a, b"bad").exit_code(), 2)
 }
 ''')
+    with (consumer / 'consumer_test.mbt').open('a', encoding='utf8') as tests:
+        tests.write(r'''///|
+test "paged public API and complete report" {
+  let s = @ldif.ReviewSession::new(b"version: 1\ndn: cn=Demo\nchangetype: delete\n", options={allow_missing_version: false, deny_delete: true})
+  assert_eq(s.exit_code(), 1)
+  assert_true(s.page(@ldif.PageQuery::default()).stringify().contains("entry-delete"))
+  let cursor = s.report("json")
+  let out = StringBuilder()
+  while true { match cursor.next() { Some(chunk) => out.write_string(chunk); None => break } }
+  assert_true(out.to_string().contains("selection"))
+  let before = b"version: 1\ndn: cn=Demo\nmail: before\n"
+  let after = b"version: 1\ndn: cn=Demo\nmail: after\n"
+  let compare = @ldif.SnapshotSession::new(before, after)
+  assert_eq(compare.exit_code(), 1)
+  assert_true(compare.page(@ldif.PageQuery::default()).stringify().contains("values-changed"))
+}
+''')
     for target in ['js', 'wasm-gc']:
         run([moon, 'test', '-p', 'local/moonldif_consumer', '--target', target], cwd=workspace, env=env)
     evidence['status'] = 'passed'

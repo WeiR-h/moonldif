@@ -106,6 +106,23 @@ test "released snapshot scope" {
   assert_eq(@ldif.compare_snapshots(a, b, ignored_attributes=["dn"]).exit_code(), 2)
 }
 '''
+    if tuple(map(int, args.version.split('.'))) >= (0, 6, 0):
+        test += r'''///|
+test "paged public API and complete report" {
+  let s = @ldif.ReviewSession::new(b"version: 1\ndn: cn=Demo\nchangetype: delete\n", options={allow_missing_version: false, deny_delete: true})
+  assert_eq(s.exit_code(), 1)
+  assert_true(s.page(@ldif.PageQuery::default()).stringify().contains("entry-delete"))
+  let cursor = s.report("json")
+  let out = StringBuilder()
+  while true { match cursor.next() { Some(chunk) => out.write_string(chunk); None => break } }
+  assert_true(out.to_string().contains("selection"))
+  let before = b"version: 1\ndn: cn=Demo\nmail: before\n"
+  let after = b"version: 1\ndn: cn=Demo\nmail: after\n"
+  let compare = @ldif.SnapshotSession::new(before, after)
+  assert_eq(compare.exit_code(), 1)
+  assert_true(compare.page(@ldif.PageQuery::default()).stringify().contains("values-changed"))
+}
+'''
     (workspace / 'consumer_test.mbt').write_text(test, encoding='utf8')
     for target in ['js', 'wasm-gc']:
         run([moon, 'test', '--target', target])

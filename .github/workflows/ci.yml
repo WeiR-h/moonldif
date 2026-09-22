@@ -50,6 +50,8 @@ jobs:
         run: python scripts/baseline-verify.py
       - name: Observe performance without shared-runner timing thresholds
         run: node scripts/benchmark.mjs
+      - name: Observe complete paging and export scale
+        run: node scripts/pagination-benchmark.mjs
       - name: Install locked workbench dependencies
         run: npm --prefix web ci
       - name: Build browser workbench with the MoonBit core

@@ -2,7 +2,7 @@
 
 MoonBit 原生 LDIF 读写与离线结构预检库。
 
-版本：`0.5.1`。本轮减少读取、折行解析和浏览器报告传递的额外开销，保持全部风险检查与安全写出核对。正式发布、注册表安装和公开网页结果以[最新交付状态](https://github.com/WeiR-h/moonldif/blob/main/docs/STATUS.md)为准。报名初审已通过，个人验收和组委会最终结果分别记录。
+版本：`0.6.0`。新增操作审阅与迁移差异的完整查找、分页及完整报告；旧 API 和默认 CLI 输出保持兼容。正式发布、注册表安装和公开网页结果以[最新交付状态](https://github.com/WeiR-h/moonldif/blob/main/docs/STATUS.md)为准。报名初审已通过，个人验收和组委会最终结果分别记录。
 
 范围：LDIF 内容与基本变更记录、字节属性、源位置、确定性写回和结构报告。目录 Schema、DN 语义相等、权限及真实服务器执行结果不在检查范围内。
 
@@ -41,9 +41,13 @@ node dist/moonldif.js batch examples/01-directory-export.ldif examples/02-accoun
 
 此合成例预期返回 1。任一文件错误/不完整优先返回 2，并继续保留其他文件风险。报告包含文件基本名、DN、源字节指纹和逐文件结果；不会读取外部 URL。最多 50 份、单份 8 MiB、累计 32 MiB。详见 [批量说明与库 API](docs/BATCH.md)、[可复用 CI 示例](examples/ci/README.md)。
 
+## 完整审阅与查找
+
+工作台支持全部已识别项目的查找、类型筛选、翻页、跳页和完整报告下载。CLI 使用 `review/compare --page N --query TEXT` 或 `--all`。筛选不改变风险和不完整状态；报告包含 DN，不展开原始属性值。完整输出上限 32 MiB，超过时明确失败。详见[分页及库 API](docs/PAGINATION.md)。
+
 ## 安装 MoonBit 库
 
-在自己的 MoonBit 工程执行 `moon add WeiR-h/moonldif@0.5.1`，并在 `moon.pkg` 导入 `"WeiR-h/moonldif" @ldif`。注册表安装验证使用 `python scripts/registry-verify.py --version 0.5.1`，创建没有本地覆盖的独立消费工程。
+在自己的 MoonBit 工程执行 `moon add WeiR-h/moonldif@0.6.0`，并在 `moon.pkg` 导入 `"WeiR-h/moonldif" @ldif`。注册表安装验证使用 `python scripts/registry-verify.py --version 0.6.0`，创建没有本地覆盖的独立消费工程。
 
 安装 MoonBit 库不会安装 Node.js CLI。CLI 使用下文的源码构建方式；浏览器工作台另按以下步骤启动。
 

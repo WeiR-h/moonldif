@@ -4,7 +4,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { createHash } from 'node:crypto';
 import { cases } from './performance-fixtures.mjs';
-const paths = { baseline: resolve('.tools/performance-baseline-0.5.0/dist/core.mjs'), candidate: resolve('dist/core.mjs') };
+const paths = { baseline: resolve('.tools/performance-baseline-0.5.1/dist/core.mjs'), candidate: resolve('dist/core.mjs') };
 const median = values => [...values].sort((a,b) => a-b)[Math.floor(values.length / 2)];
 const args = process.argv.slice(2);
 const option = (name, fallback) => args.includes(name) ? args[args.indexOf(name)+1] : fallback;
