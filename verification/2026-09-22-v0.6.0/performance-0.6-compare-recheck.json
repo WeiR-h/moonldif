@@ -1,0 +1,182 @@
+{
+  "method": "Three rounds, alternating baseline/candidate order, each fresh worker warms up once and measures seven runs; median of paired ratios. All observations retained, no forced GC.",
+  "hashes": {
+    "baseline": "5bb297550ae2fe3f5a868fcf39ac16b9c81e59ed0401ec4ebeb2c5767cb9c713",
+    "candidate": "64fb19706b98bc3bb2c9a07ec78b4c52c360cf0a5342946cd2bc47f2a1a90f75"
+  },
+  "cases": [
+    {
+      "id": "compare",
+      "ratio": 0.9320417030345364,
+      "regression": false,
+      "rounds": [
+        {
+          "baseline": {
+            "id": "compare",
+            "command": "compare",
+            "records": 5000,
+            "version": "0.5.1",
+            "input_bytes": 1091682,
+            "input_sha256": "686f0d29be0a2fe7c281608a767509a64b7ac93d8067158ae5ef96d0e563cb35",
+            "after_sha256": "9bf261e0a37d8bac4e0e84460ede2cb6d2b10f98dc9aee38a38c3a506c24ecf4",
+            "measured_runs": 7,
+            "measurements_ms": [
+              743.1655999999999,
+              669.5335000000002,
+              727.221,
+              652.7850999999996,
+              640.7006999999999,
+              719.4513999999999,
+              658.7361000000001
+            ],
+            "min_ms": 640.7006999999999,
+            "median_ms": 669.5335000000002,
+            "max_ms": 743.1655999999999,
+            "rss_before_bytes": 58814464,
+            "rss_after_bytes": 415264768,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "candidate": {
+            "id": "compare",
+            "command": "compare",
+            "records": 5000,
+            "version": "0.6.0",
+            "input_bytes": 1091682,
+            "input_sha256": "686f0d29be0a2fe7c281608a767509a64b7ac93d8067158ae5ef96d0e563cb35",
+            "after_sha256": "9bf261e0a37d8bac4e0e84460ede2cb6d2b10f98dc9aee38a38c3a506c24ecf4",
+            "measured_runs": 7,
+            "measurements_ms": [
+              735.8626999999999,
+              791.1867,
+              685.9726999999998,
+              652.8579,
+              634.7507,
+              630.7129999999997,
+              638.7401
+            ],
+            "min_ms": 630.7129999999997,
+            "median_ms": 652.8579,
+            "max_ms": 791.1867,
+            "rss_before_bytes": 59105280,
+            "rss_after_bytes": 394801152,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "ratio": 0.9750937033023735
+        },
+        {
+          "candidate": {
+            "id": "compare",
+            "command": "compare",
+            "records": 5000,
+            "version": "0.6.0",
+            "input_bytes": 1091682,
+            "input_sha256": "686f0d29be0a2fe7c281608a767509a64b7ac93d8067158ae5ef96d0e563cb35",
+            "after_sha256": "9bf261e0a37d8bac4e0e84460ede2cb6d2b10f98dc9aee38a38c3a506c24ecf4",
+            "measured_runs": 7,
+            "measurements_ms": [
+              667.2933,
+              667.9089000000001,
+              655.9591,
+              594.6421,
+              677.2444,
+              687.6251000000002,
+              625.0776999999998
+            ],
+            "min_ms": 594.6421,
+            "median_ms": 667.2933,
+            "max_ms": 687.6251000000002,
+            "rss_before_bytes": 59076608,
+            "rss_after_bytes": 423206912,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "baseline": {
+            "id": "compare",
+            "command": "compare",
+            "records": 5000,
+            "version": "0.5.1",
+            "input_bytes": 1091682,
+            "input_sha256": "686f0d29be0a2fe7c281608a767509a64b7ac93d8067158ae5ef96d0e563cb35",
+            "after_sha256": "9bf261e0a37d8bac4e0e84460ede2cb6d2b10f98dc9aee38a38c3a506c24ecf4",
+            "measured_runs": 7,
+            "measurements_ms": [
+              721.5821,
+              725.7694000000001,
+              715.9479000000001,
+              710.3615,
+              607.3523,
+              700.4089000000004,
+              750.1606000000002
+            ],
+            "min_ms": 607.3523,
+            "median_ms": 715.9479000000001,
+            "max_ms": 750.1606000000002,
+            "rss_before_bytes": 58695680,
+            "rss_after_bytes": 416346112,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "ratio": 0.9320417030345364
+        },
+        {
+          "baseline": {
+            "id": "compare",
+            "command": "compare",
+            "records": 5000,
+            "version": "0.5.1",
+            "input_bytes": 1091682,
+            "input_sha256": "686f0d29be0a2fe7c281608a767509a64b7ac93d8067158ae5ef96d0e563cb35",
+            "after_sha256": "9bf261e0a37d8bac4e0e84460ede2cb6d2b10f98dc9aee38a38c3a506c24ecf4",
+            "measured_runs": 7,
+            "measurements_ms": [
+              1035.4948000000002,
+              789.0457999999999,
+              845.9513999999999,
+              979.0477999999998,
+              970.5915999999997,
+              928.8755000000001,
+              727.1174000000001
+            ],
+            "min_ms": 727.1174000000001,
+            "median_ms": 928.8755000000001,
+            "max_ms": 1035.4948000000002,
+            "rss_before_bytes": 58712064,
+            "rss_after_bytes": 247332864,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "candidate": {
+            "id": "compare",
+            "command": "compare",
+            "records": 5000,
+            "version": "0.6.0",
+            "input_bytes": 1091682,
+            "input_sha256": "686f0d29be0a2fe7c281608a767509a64b7ac93d8067158ae5ef96d0e563cb35",
+            "after_sha256": "9bf261e0a37d8bac4e0e84460ede2cb6d2b10f98dc9aee38a38c3a506c24ecf4",
+            "measured_runs": 7,
+            "measurements_ms": [
+              808.6227,
+              759.2986000000001,
+              694.9745000000003,
+              698.297,
+              698.4191999999998,
+              728.4736000000003,
+              721.3404
+            ],
+            "min_ms": 694.9745000000003,
+            "median_ms": 721.3404,
+            "max_ms": 808.6227,
+            "rss_before_bytes": 58986496,
+            "rss_after_bytes": 415907840,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "ratio": 0.7765738250174539
+        }
+      ]
+    }
+  ],
+  "status": "passed"
+}
