@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Icon } from './Icon.jsx';
+import { Pager } from './Pager.jsx';
 
 const reviewCopy = {
   'attribute-replace': ['替换属性值', '替换整个属性值集合，请核对是否需要保留旧值。'],
@@ -24,7 +25,7 @@ const diagnosticTitles = {
   'unsupported-modification': '修改操作暂不支持',
 };
 function lineLabel(span) { return span ? `第 ${span.line}${span.end_line !== span.line ? `–${span.end_line}` : ''} 行` : '输入'; }
-export function Results({ analysis, locate, selected }) {
+export function Results({ analysis, locate, selected, queryPage }) {
   const [tab, setTab] = useState('review');
   const report = analysis.report;
   const items = report?.review?.items || [];
@@ -47,12 +48,12 @@ export function Results({ analysis, locate, selected }) {
       {!ready ? <div className="empty-state"><Icon name="refresh" /><h3>{analysis.phase === 'running' ? '正在分析当前内容' : '等待检查当前内容'}</h3><p>编辑内容或更改选项后，请重新检查。旧结果不会用于导出。</p></div> : <>
         {report?.exit_code === 2 && <p className="partial-note">输入存在错误或分析不完整。以下是已识别部分，不能据此判断其余内容没有影响。</p>}
         {tab === 'review' ? <>
-          {report?.review?.truncated && <p className="partial-note">共 {report.review.total_items} 项，仅显示前 200 项。请分段审阅文件。</p>}
-          {items.length === 0 ? <div className="empty-state"><Icon name="check" /><h3>{report?.mode === 'content' ? '这是目录内容文件' : '暂无已识别的变更项'}</h3><p>{report?.mode === 'content' ? '内容记录不会自动当作新增操作。请在“诊断”中查看检查结果。' : '请结合文件内容与诊断判断，不能将此视为无风险。'}</p></div> : items.map((item, index) => {
+          {report.page && <Pager page={report.page} busy={analysis.busy} exporting={analysis.exporting} onQuery={queryPage} kinds={Object.fromEntries(Object.entries(reviewCopy).map(([code,value])=>[code,value[0]]))} />}
+          {items.length === 0 ? <div className="empty-state"><Icon name="check" /><h3>{report?.mode === 'content' ? '这是目录内容文件' : '暂无已识别的变更项'}</h3><p>{report?.mode === 'content' ? '内容记录不会自动当作新增操作。请在“诊断”中查看检查结果。' : '请结合文件内容与诊断判断，不能将此视为无风险。'}</p></div> : (analysis.busy ? [] : items).map((item, index) => {
             const copy = reviewCopy[item.code] || [item.title, item.reason];
             const isSelected = selected?.line === item.span.line;
             const blockedDeletion = diagnostics.some(d => d.severity === 'policy' && d.span?.line === item.span.line);
-            return <article className={`result-row ${isSelected ? 'selected' : ''}`} key={`${item.record_index}-${index}`}>
+            return <article className={`result-row ${isSelected ? 'selected' : ''}`} key={item.item_index ?? `${item.record_index}-${index}`} >
               <div className="row-heading"><h3>{copy[0]}</h3><span className="line-label">{lineLabel(item.span)}</span><button className="locate" onClick={() => locate({ ...item.span })} aria-label={`定位${copy[0]}，${lineLabel(item.span)}`}><Icon name="arrow" />定位原文</button></div>
               <p className="item-target" title={item.dn}>{item.attribute || item.dn}{item.attribute && item.value_count > 0 ? ` · ${item.value_count} 个值` : ''}</p>
               {item.attribute && <p className="raw-detail">目标 DN：{item.dn || '空 DN（根目录）'}</p>}

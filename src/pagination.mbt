@@ -437,9 +437,7 @@ pub fn ReportCursor::next(self : ReportCursor) -> String? raise QueryError {
     if self.format == "json" {
       meta[:meta.length() - 1].to_owned() + ",\"items\":["
     } else if self.format == "markdown" {
-      "# MoonLDIF complete report\n\nAll known items; incomplete analysis remains incomplete. Target DNs are included.\n\n" +
-      markdown_escape(meta) +
-      "\n\n## Items\n\n"
+      report_heading(self.metadata)
     } else {
       "MoonLDIF complete report\n" + meta + "\n"
     }
@@ -450,11 +448,12 @@ pub fn ReportCursor::next(self : ReportCursor) -> String? raise QueryError {
       "\n"
     }
   } else {
-    let json = (self.item)(self.position).stringify()
+    let item = (self.item)(self.position)
+    let json = item.stringify()
     if self.format == "json" {
       (if self.position > 0 { "," } else { "" }) + json
     } else if self.format == "markdown" {
-      "- " + markdown_escape(json) + "\n"
+      report_item_markdown(item)
     } else {
       json + "\n"
     }
@@ -471,8 +470,81 @@ pub fn ReportCursor::next(self : ReportCursor) -> String? raise QueryError {
 ///|
 pub fn page_text(page : Json, markdown? : Bool = false) -> String {
   if markdown {
-    "# MoonLDIF page\n\n" + markdown_escape(page.stringify()) + "\n"
+    let out = StringBuilder()
+    out.write_string(report_heading(page))
+    if snapshot_field(page, "items") is Array(items) {
+      for item in items {
+        out.write_string(report_item_markdown(item))
+      }
+    }
+    out.to_string()
   } else {
     "MoonLDIF page\n" + page.stringify(indent=2) + "\n"
   }
+}
+
+///|
+fn report_heading(metadata : Json) -> String {
+  let out = StringBuilder()
+  let summary = snapshot_field(metadata, "summary")
+  out.write_string(
+    "# MoonLDIF review report\n\nAll known items in the selected range; incomplete analysis remains incomplete. Target DNs are included. No server execution or authenticity certification.\n\n",
+  )
+  for
+    key in [
+      "version", "status", "exit_code", "options", "scope", "matching", "diagnostics_truncated",
+    ] {
+    let value = snapshot_field(summary, key)
+    if value != Json::null() {
+      out.write_string(
+        "- " + key + ": " + markdown_escape(snapshot_display(value)) + "\n",
+      )
+    }
+  }
+  out.write_string(
+    "- Selection and counts: " +
+    markdown_escape(snapshot_field(metadata, "page").stringify()) +
+    "\n",
+  )
+  for
+    key in [
+      "source", "before", "after", "diagnostics", "counts", "excluded_attribute_occurrences",
+      "ambiguous_dn_count",
+    ] {
+    let value = snapshot_field(summary, key)
+    if value != Json::null() {
+      out.write_string(
+        "\n## " + key + "\n\n" + markdown_escape(snapshot_display(value)) + "\n",
+      )
+    }
+  }
+  out.write_string("\n## Items\n\n")
+  out.to_string()
+}
+
+///|
+fn report_item_markdown(item : Json) -> String {
+  let out = StringBuilder()
+  out.write_string(
+    "### " +
+    markdown_escape(snapshot_display(snapshot_field(item, "item_index"))) +
+    ": " +
+    markdown_escape(snapshot_display(snapshot_field(item, "code"))) +
+    "\n\n",
+  )
+  for
+    key in [
+      "title", "dn", "attribute", "level", "record_index", "span", "before_span",
+      "after_span", "value_count", "removed_value_count", "added_value_count", "reason",
+      "action",
+    ] {
+    let value = snapshot_field(item, key)
+    if value != Json::null() {
+      out.write_string(
+        "- " + key + ": " + markdown_escape(snapshot_display(value)) + "\n",
+      )
+    }
+  }
+  out.write_string("\n")
+  out.to_string()
 }

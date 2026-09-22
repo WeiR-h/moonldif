@@ -8,6 +8,7 @@ import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
 import { verifySnapshot, snapshotReady } from './snapshot-browser.mjs';
+import { verifyPagination } from './pagination-browser.mjs';
 import { verifyStability } from './browser-stability.mjs';
 const root = fileURLToPath(new URL('../', import.meta.url));
 if (!process.env.PLAYWRIGHT_BROWSERS_PATH && existsSync(resolve(root, '.tools/browsers'))) process.env.PLAYWRIGHT_BROWSERS_PATH = resolve(root, '.tools/browsers');
@@ -28,19 +29,24 @@ const inspect = file => {
 const source = 'version: 1\r\ndn: cn=[demo]&user\r\nchangetype: modify\r\nreplace: description\r\ndescription: synthetic-private-attribute\r\n-\r\nreplace: mail\r\n-\r\n';
 
 async function ready(page) {
-  await page.waitForFunction(() => [...document.querySelectorAll('button')].some(b => b.textContent.includes('下载审阅报告') && !b.disabled), null, { timeout: 15000 });
+  await page.waitForFunction(() => [...document.querySelectorAll('button')].some(b => b.textContent.includes('下载完整审阅报告') && !b.disabled), null, { timeout: 15000 });
 }
 async function disabled(page) {
-  assert.equal(await page.getByRole('button', { name: '下载审阅报告', exact: true }).isEnabled(), false);
+  assert.equal(await page.getByRole('button', { name: '下载完整审阅报告', exact: true }).isEnabled(), false);
   assert.equal(await page.getByRole('button', { name: '导出新文件', exact: true }).isEnabled(), false);
 }
 async function downloadReport(page, format, file) {
   await page.getByLabel('审阅报告格式').selectOption(format);
   const wait = page.waitForEvent('download');
-  await page.getByRole('button', { name: '下载审阅报告', exact: true }).click();
+  await page.getByRole('button', { name: '下载完整审阅报告', exact: true }).click();
   const download = await wait;
   await download.saveAs(file);
-  return readFileSync(file, 'utf8');
+  const text = readFileSync(file,'utf8');
+  if(format !== 'json') return text;
+  const all = JSON.parse(text);
+  assert.equal(all.report_schema_version,2);assert.equal(all.page.selection,'all');
+  assert.equal(all.items.length,all.page.total_items);assert.equal(all.page.has_more,false);
+  return JSON.stringify({...all.summary,review:{...all.summary.review,items:all.items}});
 }
 const watchdog = setTimeout(() => { evidence.status = 'failed'; evidence.error = 'Browser QA exceeded 300 seconds'; writeFileSync(resolve(output, 'result.json'), JSON.stringify(evidence, null, 2)); process.exit(1); }, 300000);
 try {
@@ -127,6 +133,7 @@ try {
       await page.setViewportSize({ width: 390, height: 844 });
       assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
       await page.screenshot({ path: resolve(output, name + '-mobile.png'), fullPage: true });
+      await verifyPagination(page, output, name);
       await verifySnapshot(page, output, name);
       assert.deepEqual(errors, []);
       assert.deepEqual(badResponses, []);
@@ -153,29 +160,31 @@ try {
         await racePage.getByRole('button', { name: '开始核对', exact: true }).click();
         await racePage.getByLabel('迁移后快照内容').fill('version: 1\n# changed before response\n');
         await racePage.waitForTimeout(650);
-        assert.equal(await racePage.getByRole('button', { name: '下载核对报告', exact: true }).isEnabled(), false);
+        assert.equal(await racePage.getByRole('button', { name: '下载完整核对报告', exact: true }).isEnabled(), false);
         await racePage.getByRole('button', { name: '开始核对', exact: true }).click();
         await racePage.getByRole('button', { name: '停止核对', exact: true }).click();
         await racePage.waitForTimeout(650);
         await racePage.getByText('已停止，本次结果不可下载。', { exact: true }).waitFor();
-        assert.equal(await racePage.getByRole('button', { name: '下载核对报告', exact: true }).isEnabled(), false);
+        assert.equal(await racePage.getByRole('button', { name: '下载完整核对报告', exact: true }).isEnabled(), false);
         await racePage.close();
         const timed = await context.newPage();
         await timed.addInitScript(() => { window.Worker = class { postMessage() {} terminate() {} }; });
         await timed.goto(url);
-        await timed.getByText('分析超过 20 秒', { exact: false }).waitFor({ timeout: 25000 });
+        await timed.getByText('处理超过 20 秒', { exact: false }).waitFor({ timeout: 25000 });
         await disabled(timed);
         await timed.getByRole('button', { name: '迁移前后核对', exact: true }).click();
         await timed.getByRole('button', { name: '开始核对', exact: true }).click();
-        await timed.getByText('核对超过 20 秒', { exact: false }).waitFor({ timeout: 25000 });
-        assert.equal(await timed.getByRole('button', { name: '下载核对报告', exact: true }).isEnabled(), false);
+        await timed.getByText('处理超过 20 秒', { exact: false }).waitFor({ timeout: 25000 });
+        assert.equal(await timed.getByRole('button', { name: '下载完整核对报告', exact: true }).isEnabled(), false);
         await timed.close();
         evidence.cases.push({ browser: name, browser_version: browser.version(), status: 'passed', checks: ['delayed-old-response', 'worker-timeout-no-stale-export', 'snapshot-delayed-response', 'snapshot-timeout'], fault_injection: true });
       }
-      await verifyStability(context, url, output, name);
+      await context.close();
+      const stabilityContext = await browser.newContext({viewport:{width:1440,height:1080},acceptDownloads:true});
+      await verifyStability(stabilityContext, url, output, name);
+      await stabilityContext.close();
       evidence.cases.push({ browser: name, status: 'passed', checks: ['50-analyses', '50-cancellations', 'no-duplicate-report-payload', 'one-live-worker', 'no-stale-exports'], memory: 'main-realm heap observation only; excludes workers and process RSS' });
       console.log('Checks passed: ' + name);
-      await context.close();
     } finally { await Promise.race([browser.close(), new Promise(resolve => setTimeout(resolve, 10000))]); }
   }
   evidence.status = 'passed';

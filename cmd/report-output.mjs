@@ -13,7 +13,7 @@ export function spoolReport(core, session, format, output = process.stdout) {
     let total = 0;
     for (;;) {
       const part = JSON.parse(core.paged_report_next(cursor));
-      if (part.error) throw new Error(part.error);
+      if (part.error) throw Object.assign(new Error(part.error), {code:'REPORT_LIMIT_OR_EXPORT_FAILURE'});
       if (part.done) break;
       const bytes = Buffer.from(part.chunk, 'utf8');
       total += bytes.length;

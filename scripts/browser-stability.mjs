@@ -24,7 +24,7 @@ export async function verifyStability(context, url, output, browser) {
       }
     };
   });
-  const ready = () => page.waitForFunction(() => [...document.querySelectorAll('button')].some(b => b.textContent.includes('下载审阅报告') && !b.disabled));
+  const ready = () => page.waitForFunction(() => [...document.querySelectorAll('button')].some(b => b.textContent.includes('下载完整审阅报告') && !b.disabled));
   const records = [];
   try {
     await page.goto(url); await ready();
@@ -36,9 +36,9 @@ export async function verifyStability(context, url, output, browser) {
       await page.getByRole('button', { name: '重新检查', exact: true }).click();
       await ready();
       const complete = await page.evaluate(() => window.__workerProbe);
-      assert.equal(complete.active, 0);
+      assert.equal(complete.active, 1);
       assert.equal(complete.last.sha256, createHash('sha256').update(text).digest('hex'));
-      assert.deepEqual(complete.last.keys, ['exit_code', 'markdown', 'report', 'written']);
+      assert.deepEqual(complete.last.keys, ['exit_code', 'report', 'request', 'type', 'written']);
       assert.equal(complete.last.exit, 0);
       const completedMs = performance.now() - start;
       const queuedBefore = await page.evaluate(() => { window.__workerProbe.delay = 200; return window.__workerProbe.queued; });
@@ -46,7 +46,7 @@ export async function verifyStability(context, url, output, browser) {
       await page.waitForFunction(n => window.__workerProbe.queued > n, queuedBefore);
       await page.getByLabel('LDIF 源文件内容').fill(text + '# edited before delivery\n');
       await page.waitForTimeout(250);
-      assert.equal(await page.getByRole('button', { name: '下载审阅报告', exact: true }).isEnabled(), false);
+      assert.equal(await page.getByRole('button', { name: '下载完整审阅报告', exact: true }).isEnabled(), false);
       assert.equal(await page.getByRole('button', { name: '导出新文件', exact: true }).isEnabled(), false);
       const state = await page.evaluate(() => ({ active: window.__workerProbe.active, maxActive: window.__workerProbe.maxActive,
         main_realm_heap_bytes: performance.memory?.usedJSHeapSize ?? null }));

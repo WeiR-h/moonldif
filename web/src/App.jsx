@@ -14,7 +14,7 @@ function Status({ analysis }) {
   let title = analysis.message || '内容已更改，请重新检查';
   let tone = 'neutral';
   if (ready) {
-    if (report.exit_code === 2) { title = report.status === 'incomplete' ? '分析不完整，暂不能导出' : '发现输入问题，暂不能导出'; tone = 'danger'; }
+    if (report.exit_code === 2) { title = report.status === 'incomplete' ? '分析不完整，不能导出整理文件' : '发现输入问题，不能导出整理文件'; tone = 'danger'; }
     else if (report.exit_code === 1) { title = `已拦截 ${blocked} 项风险操作`; tone = 'danger'; }
     else if (warnings) { title = `检查完成，另有 ${warnings} 条警告`; tone = 'caution'; }
     else { title = '支持范围内检查通过'; tone = 'success'; }
@@ -32,14 +32,14 @@ export default function App() {
   return <div className="app-shell">
     <header className="app-header"><div className="brand"><span>MoonLDIF</span><span className="brand-separator" /><span className="brand-subtitle">目录文件预检工作台</span></div><div className="privacy"><Icon name="lock" /><span>文件仅在本机处理</span></div></header>
     <main>
-      <nav className="workspace-mode" aria-label="工作模式"><button aria-pressed={mode === 'review'} onClick={() => setMode('review')}>文件预检</button><button aria-pressed={mode === 'snapshot'} onClick={() => { setSnapshotOpened(true); setMode('snapshot'); }}>迁移前后核对</button></nav>
+      <nav className="workspace-mode" aria-label="工作模式"><button aria-pressed={mode === 'review'} onClick={() => { setMode('review'); }}>文件预检</button><button aria-pressed={mode === 'snapshot'} onClick={() => { state.invalidate(); setSnapshotOpened(true); setMode('snapshot'); }}>迁移前后核对</button></nav>
       <div hidden={mode !== 'review'}>
       <div className="page-intro"><div><h1>检查文件，再执行变更</h1><p>读取、定位问题、审阅影响，并导出经过复检的新文件。</p></div><div className="main-actions">
         <input ref={fileInput} type="file" accept=".ldif,.txt" aria-label="打开本地 LDIF 文件" tabIndex={-1} className="visually-hidden" onChange={e => { state.loadFile(e.target.files[0]); e.target.value = ''; }} />
         <button onClick={() => fileInput.current.click()}><Icon name="folder" />打开 LDIF</button>
         <button className="primary" onClick={state.recheck} disabled={running}><Icon name="refresh" />{running ? '检查中…' : '重新检查'}</button>
         <button onClick={state.exportFile} disabled={!state.canExport}><Icon name="download" />导出新文件</button>
-      </div></div>
+      <button onClick={state.invalidate} disabled={!running && !state.analysis.busy}>停止检查</button></div></div>
       <div className="settings" aria-label="检查选项">
         <label><input type="checkbox" checked={state.options.denyDelete} onChange={e => state.setOption('denyDelete', e.target.checked)} />拦截整条删除</label>
         <label><input type="checkbox" checked={state.options.denyClear} onChange={e => state.setOption('denyClear', e.target.checked)} />拦截属性清空</label>
@@ -50,12 +50,12 @@ export default function App() {
       <Status analysis={state.analysis} />
       <div className="report-tools">
         <label>审阅报告 <select aria-label="审阅报告格式" value={reportFormat} onChange={e => setReportFormat(e.target.value)}><option value="markdown">Markdown</option><option value="json">JSON</option></select></label>
-        <button onClick={() => state.exportReport(reportFormat)} disabled={!state.canExportReport}><Icon name="download" />下载审阅报告</button>
+        <button onClick={() => state.exportReport(reportFormat)} disabled={!state.canExportReport}><Icon name="download" />下载完整审阅报告</button>
         <p>报告包含目标 DN 和内容指纹，不包含原始属性值；可记录拦截或不完整结果。</p>
       </div>
-      <div className="workspace"><Editor document={state.document} edit={state.edit} loadSample={state.loadSample} loadFile={state.loadFile} selection={state.selection} /><Results analysis={state.analysis} locate={span => state.setSelection({ ...span, focus: true })} selected={state.selection} /></div>
+      <div className="workspace"><Editor document={state.document} edit={state.edit} loadSample={state.loadSample} loadFile={state.loadFile} selection={state.selection} /><Results queryPage={state.queryPage} analysis={state.analysis} locate={span => state.setSelection({ ...span, focus: true })} selected={state.selection} /></div>
       </div>
-      {snapshotOpened && <div hidden={mode !== 'snapshot'}><SnapshotPanel /></div>}
+      {snapshotOpened && <div hidden={mode !== 'snapshot'}><SnapshotPanel enabled={mode === 'snapshot'} /></div>}
     </main>
     <footer className="app-footer"><span>MoonLDIF {manifest.version} · 核心由 MoonBit 实现</span><a href="https://github.com/WeiR-h/moonldif" target="_blank" rel="noreferrer">源码</a><a href="https://github.com/WeiR-h/moonldif/blob/main/docs/SUPPORT.md" target="_blank" rel="noreferrer">支持范围</a><span>检查通过不等于导入成功</span></footer>
   </div>;

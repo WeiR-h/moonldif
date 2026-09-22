@@ -3,32 +3,42 @@ import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { createHash } from 'node:crypto';
 const sha = s => createHash('sha256').update(s).digest('hex');
-const button = page => page.getByRole('button', { name: '下载核对报告', exact: true });
-export async function snapshotReady(page) { await button(page).waitFor(); await page.waitForFunction(() => [...document.querySelectorAll('button')].some(b => b.textContent === '下载核对报告' && !b.disabled)); }
+const button = page => page.getByRole('button', { name: '下载完整核对报告', exact: true });
+export async function snapshotReady(page) { await button(page).waitFor(); await page.waitForFunction(() => [...document.querySelectorAll('button')].some(b => b.textContent === '下载完整核对报告' && !b.disabled)); }
 async function download(page, output, name, format = 'json') {
   await page.getByLabel('核对报告格式').selectOption(format);
   const wait = page.waitForEvent('download'); await button(page).click(); const file = await wait;
   const path = resolve(output, name + '.' + (format === 'json' ? 'json' : 'md'));
-  await file.saveAs(path); return readFileSync(path, 'utf8');
+  await file.saveAs(path);
+  const text=readFileSync(path,'utf8');if(format!=='json')return text;
+  const all=JSON.parse(text);assert.equal(all.report_schema_version,2);assert.equal(all.page.selection,'all');
+  assert.equal(all.items.length,all.page.total_items);
+  return JSON.stringify({...all.summary,changes:all.items});
 }
 export async function verifySnapshot(page, output, browser) {
   await page.setViewportSize({ width: 1440, height: 1080 });
   await page.getByRole('button', { name: '迁移前后核对', exact: true }).click();
   assert.equal(await page.getByRole('heading',{name:'迁移前后，少了什么？'}).count(),1);
+  await page.getByRole('button',{name:'载入合成迁移示例',exact:true}).click();
   await page.getByRole('button',{name:'开始核对',exact:true}).click(); await snapshotReady(page);
   let report = JSON.parse(await download(page,output,browser+'-snapshot-demo'));
   assert.equal(report.total_changes,4); assert.equal(report.exit_code,1);
   assert.equal(report.counts['attribute-removed'],1);
   await page.getByLabel('查找 DN 或属性').fill('ALICE');
   await page.getByLabel('差异类型').selectOption('attribute-removed');
+  await page.waitForFunction(()=>document.querySelectorAll('.snapshot-results .result-row').length===1);
+  await snapshotReady(page);
   assert.equal(await page.locator('.snapshot-results .result-row').count(),1);
   assert.equal(await button(page).isEnabled(),true);
   const filteredDownload = JSON.parse(await download(page,output,browser+'-snapshot-filtered'));
   assert.deepEqual(filteredDownload,report);
   await page.getByLabel('查找 DN 或属性').fill('not-in-any-dn');
+  await page.waitForFunction(()=>document.querySelectorAll('.snapshot-results .result-row').length===0);
+  await snapshotReady(page);
   assert.equal(await page.locator('.snapshot-results .result-row').count(),0);
   await page.getByText('当前筛选下没有匹配项，不代表两份内容相同。',{exact:true}).waitFor();
   await page.getByRole('button',{name:'清除筛选',exact:true}).click();
+  await page.waitForFunction(()=>document.querySelectorAll('.snapshot-results .result-row').length===4);
   assert.equal(await page.locator('.snapshot-results .result-row').count(),4);
   await page.getByRole('button',{name:'定位迁移前第 4 行',exact:true}).click();
   assert.match(await page.getByLabel('迁移前快照内容').evaluate(e => e.value.slice(e.selectionStart,e.selectionEnd)),/mail:/);
