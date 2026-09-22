@@ -158,6 +158,29 @@ pub fn compare_snapshots(
   after_sha256? : String? = None,
   ignored_attributes? : Array[String] = [],
 ) -> SnapshotDiff {
+  snapshot_compare(
+    before,
+    after,
+    allow_missing_version~,
+    legacy_dn_spaces~,
+    before_sha256~,
+    after_sha256~,
+    ignored_attributes~,
+    retained=None,
+  )
+}
+
+///|
+fn snapshot_compare(
+  before : Bytes,
+  after : Bytes,
+  allow_missing_version? : Bool = false,
+  legacy_dn_spaces? : Bool = false,
+  before_sha256? : String? = None,
+  after_sha256? : String? = None,
+  ignored_attributes? : Array[String] = [],
+  retained~ : Array[SnapshotItem]?,
+) -> SnapshotDiff {
   let options : Options = { allow_missing_version, deny_delete: false, }
   let old = check(before, options~, legacy_dn_spaces~)
   let new = check(after, options~, legacy_dn_spaces~)
@@ -230,6 +253,17 @@ pub fn compare_snapshots(
   ) {
     total += 1
     counts[code] = counts.get(code).unwrap_or(0) + 1
+    if retained is Some(all) {
+      all.push({
+        code,
+        dn,
+        attribute: attr,
+        before_span: old_span,
+        after_span: new_span,
+        removed_value_count: removed,
+        added_value_count: added,
+      })
+    }
     if items.length() < 200 {
       items.push({
         "code": code.to_json(),

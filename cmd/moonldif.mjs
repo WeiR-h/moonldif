@@ -5,12 +5,26 @@ import { createHash } from 'node:crypto';
 import { basename } from 'node:path';
 import * as core from './core.mjs';
 import { readBounded } from './read-bounded.mjs';
+import { spoolReport } from './report-output.mjs';
 
 let format = 'text';
 let result;
 try {
   const plan = JSON.parse(core.cli_plan(JSON.stringify(process.argv.slice(2))));
   if (plan.action === 'report') result = plan;
+  else if (plan.paged) {
+    format = plan.format;
+    const before = readBounded(plan.inputs[0]);
+    const after = plan.command === 'compare' ? readBounded(plan.inputs[1]) : Buffer.alloc(0);
+    const session = core.paged_start(plan.command, before.toString('base64'), after.toString('base64'), JSON.stringify({
+      ...plan, before_sha256: createHash('sha256').update(before).digest('hex'),
+      after_sha256: createHash('sha256').update(after).digest('hex'),
+    }));
+    if (plan.all) {
+      spoolReport(core, session, format);
+      result = { output: '', exit_code: core.paged_exit_code(session) };
+    } else result = JSON.parse(core.paged_page(session, JSON.stringify(plan.page_query), format));
+  }
   else if (plan.action === 'compare') {
     format = plan.format;
     const before = readBounded(plan.inputs[0]);

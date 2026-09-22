@@ -28,11 +28,30 @@ pub fn compare_exports_v2(String, String, String, String, Bool, Bool, String, St
 
 pub fn host_error(String, String) -> String
 
+pub fn paged_exit_code(PagingSession) -> Int
+
+pub fn paged_page(PagingSession, String, String) -> String
+
+pub fn paged_report_next(PagingCursor) -> String
+
+pub fn paged_report_start(PagingSession, String) -> PagingCursor
+
+pub fn paged_start(String, String, String, String) -> PagingSession
+
 pub fn workbench(String, Bool, Bool, Bool, Bool) -> String
 
 // Errors
 
 // Types and methods
+pub struct PagingCursor {
+  // private fields
+}
+
+pub enum PagingSession {
+  Review(@moonldif.ReviewSession)
+  Snapshot(@moonldif.SnapshotSession)
+  Failed
+}
 
 // Type aliases
 

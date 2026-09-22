@@ -51,7 +51,7 @@ pub fn host_error(message : String, format : String) -> String {
 fn help() -> String {
   "MoonLDIF " +
   @ldif.version() +
-  "\nUsage:\n  node dist/moonldif.js check INPUT [--format text|json] [--compat] [--deny-delete] [--deny-clear] [--deny-rename] [--legacy-dn-spaces]\n  node dist/moonldif.js review INPUT [--format text|json|markdown] [--compat] [--deny-delete] [--deny-clear] [--deny-rename] [--legacy-dn-spaces]\n  node dist/moonldif.js inspect INPUT [--format text|json] [--compat] [--deny-delete] [--deny-clear] [--deny-rename] [--legacy-dn-spaces]\n  node dist/moonldif.js format INPUT --output NEW_FILE [--format text|json] [--compat] [--deny-delete] [--deny-clear] [--deny-rename] [--legacy-dn-spaces]\n  node dist/moonldif.js batch INPUT... [--format text|json|markdown] [--compat] [--deny-delete] [--deny-clear] [--deny-rename] [--legacy-dn-spaces]\n  node dist/moonldif.js compare BEFORE AFTER [--format text|json|markdown] [--compat] [--legacy-dn-spaces] [--ignore-attribute DESCRIPTION]...\n  node dist/moonldif.js --help | --version\nUse -- before an input filename starting with '-'.\nExit: 0 complete; 1 risk policy blocked; 2 invalid, incomplete or execution failure. Compare: 0 no differences, 1 differences, 2 incomplete/error. Exact DN strings and byte values, not LDAP matching or an executable patch.\nCompare exclusions match exact canonical attribute descriptions including options; none by default, at most 64. They never skip input validation or whole-entry changes.\nFiles are local, maximum 8 MiB. Batch accepts 1-50 explicit files, 32 MiB analysed bytes, in argument order; no glob or directory expansion. Batch reports include basenames and DNs. URL values are never fetched. Format refuses overwrites.\nChecks cover supported LDIF structure and DN/RDN syntax, not directory schema or server acceptance. --compat only permits a missing version; --legacy-dn-spaces permits separator padding with warnings and preserves the original names.\n"
+  "\nUsage:\n  node dist/moonldif.js check INPUT [--format text|json] [--compat] [--deny-delete] [--deny-clear] [--deny-rename] [--legacy-dn-spaces]\n  node dist/moonldif.js review INPUT [--format text|json|markdown] [--compat] [--deny-delete] [--deny-clear] [--deny-rename] [--legacy-dn-spaces]\n  node dist/moonldif.js inspect INPUT [--format text|json] [--compat] [--deny-delete] [--deny-clear] [--deny-rename] [--legacy-dn-spaces]\n  node dist/moonldif.js format INPUT --output NEW_FILE [--format text|json] [--compat] [--deny-delete] [--deny-clear] [--deny-rename] [--legacy-dn-spaces]\n  node dist/moonldif.js batch INPUT... [--format text|json|markdown] [--compat] [--deny-delete] [--deny-clear] [--deny-rename] [--legacy-dn-spaces]\n  node dist/moonldif.js compare BEFORE AFTER [--format text|json|markdown] [--compat] [--legacy-dn-spaces] [--ignore-attribute DESCRIPTION]...\n  node dist/moonldif.js --help | --version\nReview/compare: --page N --page-size 1..200 --query TEXT --kind CODE, or --all for a complete report (32 MiB maximum). Defaults remain first 200 items.\nUse -- before an input filename starting with '-'.\nExit: 0 complete; 1 risk policy blocked; 2 invalid, incomplete or execution failure. Compare: 0 no differences, 1 differences, 2 incomplete/error. Exact DN strings and byte values, not LDAP matching or an executable patch.\nCompare exclusions match exact canonical attribute descriptions including options; none by default, at most 64. They never skip input validation or whole-entry changes.\nFiles are local, maximum 8 MiB. Batch accepts 1-50 explicit files, 32 MiB analysed bytes, in argument order; no glob or directory expansion. Batch reports include basenames and DNs. URL values are never fetched. Format refuses overwrites.\nChecks cover supported LDIF structure and DN/RDN syntax, not directory schema or server acceptance. --compat only permits a missing version; --legacy-dn-spaces permits separator padding with warnings and preserves the original names.\n"
 }
 
 ///|
@@ -102,6 +102,8 @@ pub fn cli_plan(args_json : String) -> String {
   let mut i = 1
   let mut seen_format = false
   let ignored_attributes : Array[String] = []
+  let paging : Map[String, String] = Map([])
+  let mut all_items = false
   while i < args.length() {
     let arg = args[i]
     if !positional && arg == "--" {
@@ -159,6 +161,18 @@ pub fn cli_plan(args_json : String) -> String {
       }
       i += 1
       ignored_attributes.push(args[i])
+    } else if !positional && arg == "--all" {
+      if all_items {
+        return host_error("Duplicate --all.", format)
+      }
+      all_items = true
+    } else if !positional &&
+      ["--page", "--page-size", "--query", "--kind"].contains(arg) {
+      if i + 1 >= args.length() || paging.contains(arg) {
+        return host_error("Missing or duplicate paging option.", format)
+      }
+      i += 1
+      paging[arg] = args[i]
     } else if !positional && arg.has_prefix("-") {
       return host_error("Unknown option: " + arg, format)
     } else {
@@ -200,7 +214,61 @@ pub fn cli_plan(args_json : String) -> String {
       "Markdown is supported only by review, batch or compare.", format,
     )
   }
+  let paged = all_items || !paging.is_empty()
+  if paged && args[0] != "review" && args[0] != "compare" {
+    return host_error("Paging is supported only by review and compare.", format)
+  }
+  if all_items && !paging.is_empty() {
+    return host_error(
+      "--all cannot be combined with page or filter options.", format,
+    )
+  }
+  fn number_option(value : String) -> Int {
+    if value.is_empty() || value.length() > 9 {
+      return -1
+    }
+    let mut n = 0
+    for c in value.iter() {
+      if c < '0' || c > '9' {
+        return -1
+      }
+      n = n * 10 + c.to_int() - 48
+    }
+    n
+  }
+  let page = number_option(paging.get("--page").unwrap_or("1"))
+  let limit = number_option(paging.get("--page-size").unwrap_or("50"))
+  let query = paging.get("--query").unwrap_or("")
+  let kind = paging.get("--kind").unwrap_or("all")
+  let kinds = if args[0] == "compare" {
+    [
+      "all", "entry-added", "entry-removed", "attribute-added", "attribute-removed",
+      "values-changed",
+    ]
+  } else {
+    [
+      "all", "operation-control", "entry-add", "entry-delete", "attribute-add", "attribute-delete-all",
+      "attribute-delete-values", "attribute-clear", "attribute-replace", "unsupported-modification",
+      "entry-rename", "entry-move",
+    ]
+  }
+  if page < 1 ||
+    limit < 1 ||
+    limit > 200 ||
+    page > 2147483647 / limit ||
+    query.length() > 256 ||
+    !kinds.contains(kind) {
+    return host_error("Invalid page, page size, query or kind.", format)
+  }
   let result : Json = {
+    "paged": paged.to_json(),
+    "all": all_items.to_json(),
+    "page_query": {
+      "offset": ((page - 1) * limit).to_json(),
+      "limit": limit.to_json(),
+      "query": query.to_json(),
+      "kind": kind.to_json(),
+    },
     "action": (if args[0] == "batch" || args[0] == "compare" {
       args[0]
     } else {

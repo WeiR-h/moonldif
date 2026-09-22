@@ -14,6 +14,8 @@ pub fn compare_snapshots(Bytes, Bytes, allow_missing_version? : Bool, legacy_dn_
 
 pub fn document_json(Document) -> Json
 
+pub fn page_text(Json, markdown? : Bool) -> String
+
 pub fn parse(Bytes, options? : Options) -> Report
 
 pub fn parse_dn(String) -> Result[DistinguishedName, NameError]
@@ -29,6 +31,11 @@ pub fn version() -> String
 pub fn write(Document) -> String raise WriteError
 
 // Errors
+pub suberror QueryError {
+  InvalidQuery(String)
+  ExportLimit
+}
+
 pub suberror WriteError {
   InvalidDocument(String)
 } derive(@debug.Debug)
@@ -113,6 +120,14 @@ pub(all) struct Options {
 } derive(Eq)
 pub fn Options::default() -> Self
 
+pub(all) struct PageQuery {
+  offset : Int
+  limit : Int
+  query : String
+  kind : String
+} derive(Eq)
+pub fn PageQuery::default() -> Self
+
 pub(all) struct Record {
   dn : String
   controls : Array[Control]
@@ -138,6 +153,11 @@ pub fn Report::review_markdown(Self, ReviewMetadata) -> String
 pub fn Report::status(Self) -> String
 pub fn Report::to_json(Self, include_records? : Bool, include_review? : Bool) -> Json
 pub fn Report::to_text(Self, include_records? : Bool) -> String
+
+pub struct ReportCursor {
+  // private fields
+}
+pub fn ReportCursor::next(Self) -> String? raise QueryError
 
 pub(all) struct Review {
   items : Array[ReviewItem]
@@ -171,6 +191,14 @@ pub(all) struct ReviewMetadata {
   risk_policy : RiskPolicy
 } derive(Eq)
 
+pub struct ReviewSession {
+  // private fields
+}
+pub fn ReviewSession::exit_code(Self) -> Int
+pub fn ReviewSession::new(Bytes, options? : Options, legacy_dn_spaces? : Bool, risk_policy? : RiskPolicy, sha256? : String) -> Self raise QueryError
+pub fn ReviewSession::page(Self, PageQuery) -> Json raise QueryError
+pub fn ReviewSession::report(Self, String) -> ReportCursor raise QueryError
+
 pub(all) struct RiskPolicy {
   deny_clear : Bool
   deny_rename : Bool
@@ -184,6 +212,14 @@ pub fn SnapshotDiff::exit_code(Self) -> Int
 pub fn SnapshotDiff::to_json(Self) -> Json
 pub fn SnapshotDiff::to_markdown(Self) -> String
 pub fn SnapshotDiff::to_text(Self) -> String
+
+pub struct SnapshotSession {
+  // private fields
+}
+pub fn SnapshotSession::exit_code(Self) -> Int
+pub fn SnapshotSession::new(Bytes, Bytes, allow_missing_version? : Bool, legacy_dn_spaces? : Bool, before_sha256? : String?, after_sha256? : String?, ignored_attributes? : Array[String]) -> Self
+pub fn SnapshotSession::page(Self, PageQuery) -> Json raise QueryError
+pub fn SnapshotSession::report(Self, String) -> ReportCursor raise QueryError
 
 pub(all) struct Span {
   line : Int
