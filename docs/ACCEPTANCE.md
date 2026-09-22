@@ -1,4 +1,18 @@
-# 0.5.1 当前验收对照
+# 0.6.0 当前验收对照
+
+| 验收项 | 可复核入口 |
+|---|---|
+| 全量查找、分页、完整报告 | [接口说明](PAGINATION.md)、[MoonBit 核心](../src/pagination.mbt)、[尾部合成示例](../examples/complete-review/README.md) |
+| 风险与旧接口兼容 | [正式源 Windows / Ubuntu CI](https://github.com/WeiR-h/moonldif/actions/runs/35702850428)、[旧输出对照](../verification/2026-09-22-v0.6.0/compatibility.json) |
+| 性能与资源限制 | [配对测量](PERFORMANCE.md)、[分页集成验证](../tests/pagination.test.mjs) |
+| 公开工作台及失效恢复 | [在线入口](https://weir-h.github.io/moonldif/)、[双浏览器 QA](../verification/2026-09-22-v0.6.0/BROWSER-QA.md) |
+| 正式发行与独立消费 | [发布证据](../verification/2026-09-22-v0.6.0/README.md)、[双平台注册表 CI](https://github.com/WeiR-h/moonldif/actions/runs/35703485254) |
+| 开源与来源 | [Apache-2.0](../LICENSE)、[来源声明](../THIRD_PARTY.md) |
+| 个人验收及演示 | 仓库外 0.6.0 的 15 分钟清单，待本人执行；[三分钟脚本](DEMO.md) |
+
+工程交付完成；个人验收、第三方真实反馈、组委会最终验收及奖项分别记录，尚未完成的项目不以自动化验证代替。
+
+# 0.5.1 历史验收对照
 
 | 验收项 | 可复核入口 |
 |---|---|

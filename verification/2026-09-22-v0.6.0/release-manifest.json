@@ -1,0 +1,13 @@
+{
+  "assets": [
+    {
+      "browser_download_url": "https://github.com/WeiR-h/moonldif/releases/download/v0.6.0/WeiR-h-moonldif-0.6.0.zip",
+      "digest": "sha256:c25924e0fe2c43615a5a2e53900bfd14b3b901b5533a94a2ed23823c030fb555",
+      "name": "WeiR-h-moonldif-0.6.0.zip",
+      "size": 3287522
+    }
+  ],
+  "html_url": "https://github.com/WeiR-h/moonldif/releases/tag/v0.6.0",
+  "tag_name": "v0.6.0",
+  "target_commitish": "main"
+}
