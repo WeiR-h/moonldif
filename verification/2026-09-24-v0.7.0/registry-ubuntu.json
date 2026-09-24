@@ -1,0 +1,40 @@
+{
+  "version": "0.7.0",
+  "started": "2026-09-24T14:08:42.035062+00:00",
+  "method": "exact mooncakes dependency in a new external temporary directory; no local overrides",
+  "platform": "posix",
+  "status": "passed",
+  "steps": [
+    {
+      "command": [
+        "/home/runner/.moon/bin/moon",
+        "add",
+        "WeiR-h/moonldif@0.7.0"
+      ],
+      "exit_code": 0,
+      "output": "Registry index cloned successfully\nSymbols updated successfully\nDownloading WeiR-h/moonldif@0.7.0\n"
+    },
+    {
+      "command": [
+        "/home/runner/.moon/bin/moon",
+        "test",
+        "--target",
+        "js"
+      ],
+      "exit_code": 0,
+      "output": "Total tests: 7, passed: 7, failed: 0.\nWarning: [0029]\n   ╭─[ /tmp/moonldif-registry-j5z_4wuy/moon.pkg:1:10 ]\n   │\n 1 │ import { \"WeiR-h/moonldif\" @ldif }\n   │          ────────┬────────  \n   │                  ╰────────── Warning (unused_package): Unused package 'WeiR-h/moonldif'\n───╯\nWarning: [0029]\n   ╭─[ /tmp/moonldif-registry-j5z_4wuy/moon.pkg:1:28 ]\n   │\n 1 │ import { \"WeiR-h/moonldif\" @ldif }\n   │                            ──┬──  \n   │                              ╰──── Warning (unused_package): Unused package alias 'ldif'\n───╯\n"
+    },
+    {
+      "command": [
+        "/home/runner/.moon/bin/moon",
+        "test",
+        "--target",
+        "wasm-gc"
+      ],
+      "exit_code": 0,
+      "output": "Total tests: 7, passed: 7, failed: 0.\nWarning: [0029]\n   ╭─[ /tmp/moonldif-registry-j5z_4wuy/moon.pkg:1:10 ]\n   │\n 1 │ import { \"WeiR-h/moonldif\" @ldif }\n   │          ────────┬────────  \n   │                  ╰────────── Warning (unused_package): Unused package 'WeiR-h/moonldif'\n───╯\nWarning: [0029]\n   ╭─[ /tmp/moonldif-registry-j5z_4wuy/moon.pkg:1:28 ]\n   │\n 1 │ import { \"WeiR-h/moonldif\" @ldif }\n   │                            ──┬──  \n   │                              ╰──── Warning (unused_package): Unused package alias 'ldif'\n───╯\n"
+    }
+  ],
+  "installed_manifest": "name = \"WeiR-h/moonldif\"\n\nversion = \"0.7.0\"\n\nsource = \"src\"\n\nreadme = \"README.md\"\n\nlicense = \"Apache-2.0\"\n\nrepository = \"https://github.com/WeiR-h/moonldif\"\n\nkeywords = [ \"ldif\", \"ldap\", \"parser\", \"validation\" ]\n\ndescription = \"LDIF byte-preserving records and offline structural checks in MoonBit\"\n\npreferred_target = \"js\"\n",
+  "finished": "2026-09-24T14:08:45.771627+00:00"
+}

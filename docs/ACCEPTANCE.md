@@ -1,4 +1,17 @@
-# 0.6.0 当前验收对照
+# 0.7.0 当前验收对照
+
+| 验收项 | 证据 |
+|---|---|
+| 配置合同、数量规则与库复用 | [PROFILES.md](PROFILES.md)、[核心](../src/profile.mbt)、[三种场景](../examples/profiles/README.md) |
+| 旧输出兼容、独立对照与性能 | [306 组对照及实测](../verification/2026-09-24-v0.7.0/README.md)、[性能记录](PERFORMANCE.md) |
+| 双平台、发行、独立注册表安装 | [完整发布链](../verification/2026-09-24-v0.7.0/README.md) |
+| 在线操作和失效恢复 | [工作台](https://weir-h.github.io/moonldif/)、[公开 QA](../verification/2026-09-24-v0.7.0/BROWSER-QA.md) |
+| 开源与来源 | [Apache-2.0](../LICENSE)、[THIRD_PARTY.md](../THIRD_PARTY.md) |
+| 本人验收与演示 | 仓库外 0.7.0 个人验收清单，待本人执行；[演示脚本](DEMO.md) |
+
+工程交付已完成，个人/第三方/组委会结果继续分别记录。
+
+# 0.6.0 历史验收对照
 
 | 验收项 | 可复核入口 |
 |---|---|

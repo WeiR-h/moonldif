@@ -1,0 +1,40 @@
+{
+  "version": "0.7.0",
+  "started": "2026-09-24T14:08:58.908166+00:00",
+  "method": "exact mooncakes dependency in a new external temporary directory; no local overrides",
+  "platform": "nt",
+  "status": "passed",
+  "steps": [
+    {
+      "command": [
+        "C:\\Users\\<USER>\\.moon\\bin\\moon.EXE",
+        "add",
+        "WeiR-h/moonldif@0.7.0"
+      ],
+      "exit_code": 0,
+      "output": "Registry index cloned successfully\nSymbols updated successfully\nDownloading WeiR-h/moonldif@0.7.0\n"
+    },
+    {
+      "command": [
+        "C:\\Users\\<USER>\\.moon\\bin\\moon.EXE",
+        "test",
+        "--target",
+        "js"
+      ],
+      "exit_code": 0,
+      "output": "Total tests: 7, passed: 7, failed: 0.\nWarning: [0029]\n   ╭─[ C:\\Users\\<USER>\\AppData\\Local\\Temp\\moonldif-registry-u_81pav8\\moon.pkg:1:10 ]\n   │\n 1 │ import { \"WeiR-h/moonldif\" @ldif }\n   │          ────────┬────────  \n   │                  ╰────────── Warning (unused_package): Unused package 'WeiR-h/moonldif'\n───╯\nWarning: [0029]\n   ╭─[ C:\\Users\\<USER>\\AppData\\Local\\Temp\\moonldif-registry-u_81pav8\\moon.pkg:1:28 ]\n   │\n 1 │ import { \"WeiR-h/moonldif\" @ldif }\n   │                            ──┬──  \n   │                              ╰──── Warning (unused_package): Unused package alias 'ldif'\n───╯\n"
+    },
+    {
+      "command": [
+        "C:\\Users\\<USER>\\.moon\\bin\\moon.EXE",
+        "test",
+        "--target",
+        "wasm-gc"
+      ],
+      "exit_code": 0,
+      "output": "Total tests: 7, passed: 7, failed: 0.\nWarning: [0029]\n   ╭─[ C:\\Users\\<USER>\\AppData\\Local\\Temp\\moonldif-registry-u_81pav8\\moon.pkg:1:10 ]\n   │\n 1 │ import { \"WeiR-h/moonldif\" @ldif }\n   │          ────────┬────────  \n   │                  ╰────────── Warning (unused_package): Unused package 'WeiR-h/moonldif'\n───╯\nWarning: [0029]\n   ╭─[ C:\\Users\\<USER>\\AppData\\Local\\Temp\\moonldif-registry-u_81pav8\\moon.pkg:1:28 ]\n   │\n 1 │ import { \"WeiR-h/moonldif\" @ldif }\n   │                            ──┬──  \n   │                              ╰──── Warning (unused_package): Unused package alias 'ldif'\n───╯\n"
+    }
+  ],
+  "installed_manifest": "name = \"WeiR-h/moonldif\"\n\nversion = \"0.7.0\"\n\nsource = \"src\"\n\nreadme = \"README.md\"\n\nlicense = \"Apache-2.0\"\n\nrepository = \"https://github.com/WeiR-h/moonldif\"\n\nkeywords = [ \"ldif\", \"ldap\", \"parser\", \"validation\" ]\n\ndescription = \"LDIF byte-preserving records and offline structural checks in MoonBit\"\n\npreferred_target = \"js\"\n",
+  "finished": "2026-09-24T14:09:20.776327+00:00"
+}

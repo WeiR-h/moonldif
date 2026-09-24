@@ -1,6 +1,16 @@
 # 0.7.0 验证证据
 
-2026-09-24：本地候选已通过核心双目标、CLI、独立对照、浏览器与性能复验。正式发行、注册表安装及公开网页验证完成后补充发布收据；此时仍以 v0.6.0 为已交付基线。
+2026-09-24：v0.7.0 工程发布与安装复验已完成。个人验收、演示录制、第三方真实反馈与组委会最终结果仍待实际执行或收到通知。
+
+## 正式发行与安装复验
+
+- 正式源：`9c25eecd6ed2759b677dfe4698fe02662879a016`。
+- [GitHub v0.7.0](https://github.com/WeiR-h/moonldif/releases/tag/v0.7.0)、[mooncakes 0.7.0](https://mooncakes.io/docs/WeiR-h/moonldif@0.7.0/)、[同版本工作台](https://weir-h.github.io/moonldif/) 已上线。
+- [正式标签 CI](https://github.com/WeiR-h/moonldif/actions/runs/36009571956)：Windows、Ubuntu、双浏览器、Pages 构建与部署成功。
+- [注册表 CI](https://github.com/WeiR-h/moonldif/actions/runs/36010608640)：Windows / Ubuntu 各自在外部临时工程安装精确 0.7.0，并在 JS / Wasm GC 各通过 7 项公共接口用例；没有本地覆盖。本机首轮拉取注册表超过 180 秒超时，保留 [首次记录](registry-local-first-attempt.json)；新建消费工程重试后通过相同注册表复验。
+- 官方包页面 HTTP 200，0.7.0 和 Profile / check_with_profile / with_profile 接口可见。消费工程的 unused_package 警告源于仅在测试中使用导入，实际测试已执行通过。
+- 公开 Chromium / Firefox 配置、下载和失效恢复复验通过，见 [浏览器 QA](BROWSER-QA.md)。
+- 发行 ZIP：3,803,098 字节；SHA-256 `b750be931ccc71cc3a4f3b102163b9ce89dbb3a2ea004ce586d0c06419bbab3f`，GitHub 资产摘要一致。归档固定于正式源；发布后补充收据不改写标签或同版本归档。
 
 ## 已执行检查
 

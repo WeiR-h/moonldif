@@ -1,0 +1,9 @@
+{
+  "version": "0.7.0",
+  "started": "2026-09-24T14:08:42.931718+00:00",
+  "finished": "2026-09-24T14:11:42.969997+00:00",
+  "method": "exact mooncakes dependency in a new external temporary directory; no local overrides",
+  "platform": "nt",
+  "status": "failed",
+  "error": "Initial registry add did not complete within 180 seconds; no tests ran. A fresh-directory retry passed; see registry-local.json."
+}
