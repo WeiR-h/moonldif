@@ -6,12 +6,14 @@ import { basename } from 'node:path';
 import * as core from './core.mjs';
 import { readBounded } from './read-bounded.mjs';
 import { spoolReport } from './report-output.mjs';
+import { runProfile } from './profile-host.mjs';
 
 let format = 'text';
 let result;
 try {
   const plan = JSON.parse(core.cli_plan(JSON.stringify(process.argv.slice(2))));
   if (plan.action === 'report') result = plan;
+  else if (plan.profile_path) { format = plan.format; result = runProfile(plan); }
   else if (plan.paged) {
     format = plan.format;
     const before = readBounded(plan.inputs[0]);

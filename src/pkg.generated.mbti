@@ -10,6 +10,8 @@ pub fn check(Bytes, options? : Options, legacy_dn_spaces? : Bool, risk_policy? :
 
 pub fn check_text(String, options? : Options, legacy_dn_spaces? : Bool, risk_policy? : RiskPolicy) -> Report
 
+pub fn check_with_profile(Bytes, Profile) -> Report
+
 pub fn compare_snapshots(Bytes, Bytes, allow_missing_version? : Bool, legacy_dn_spaces? : Bool, before_sha256? : String?, after_sha256? : String?, ignored_attributes? : Array[String]) -> SnapshotDiff
 
 pub fn document_json(Document) -> Json
@@ -19,6 +21,8 @@ pub fn page_text(Json, markdown? : Bool) -> String
 pub fn parse(Bytes, options? : Options) -> Report
 
 pub fn parse_dn(String) -> Result[DistinguishedName, NameError]
+
+pub fn parse_profile(Bytes) -> Profile raise ProfileError
 
 pub fn parse_rdn(String) -> Result[RelativeName, NameError]
 
@@ -31,6 +35,10 @@ pub fn version() -> String
 pub fn write(Document) -> String raise WriteError
 
 // Errors
+pub suberror ProfileError {
+  InvalidProfile(String)
+}
+
 pub suberror QueryError {
   InvalidQuery(String)
   ExportLimit
@@ -58,6 +66,7 @@ pub fn BatchReview::remaining_bytes(Self) -> Int
 pub fn BatchReview::to_json(Self) -> Json
 pub fn BatchReview::to_markdown(Self) -> String
 pub fn BatchReview::to_text(Self) -> String
+pub fn BatchReview::with_profile(Profile, profile_source_sha256? : String, profile_effective_sha256? : String) -> Self raise QueryError
 
 pub(all) enum Body {
   Entry(Array[Attribute])
@@ -128,6 +137,13 @@ pub(all) struct PageQuery {
 } derive(Eq)
 pub fn PageQuery::default() -> Self
 
+pub struct Profile {
+  // private fields
+}
+pub fn Profile::canonical(Self) -> String
+pub fn Profile::effective_json(Self, String) -> Json raise ProfileError
+pub fn Profile::to_json(Self) -> Json
+
 pub(all) struct Record {
   dn : String
   controls : Array[Control]
@@ -195,9 +211,11 @@ pub struct ReviewSession {
   // private fields
 }
 pub fn ReviewSession::exit_code(Self) -> Int
+pub fn ReviewSession::format(Self) -> String raise WriteError
 pub fn ReviewSession::new(Bytes, options? : Options, legacy_dn_spaces? : Bool, risk_policy? : RiskPolicy, sha256? : String) -> Self raise QueryError
 pub fn ReviewSession::page(Self, PageQuery) -> Json raise QueryError
 pub fn ReviewSession::report(Self, String) -> ReportCursor raise QueryError
+pub fn ReviewSession::with_profile(Bytes, Profile, sha256? : String, profile_source_sha256? : String, profile_effective_sha256? : String) -> Self raise QueryError
 
 pub(all) struct RiskPolicy {
   deny_clear : Bool
@@ -220,6 +238,7 @@ pub fn SnapshotSession::exit_code(Self) -> Int
 pub fn SnapshotSession::new(Bytes, Bytes, allow_missing_version? : Bool, legacy_dn_spaces? : Bool, before_sha256? : String?, after_sha256? : String?, ignored_attributes? : Array[String]) -> Self
 pub fn SnapshotSession::page(Self, PageQuery) -> Json raise QueryError
 pub fn SnapshotSession::report(Self, String) -> ReportCursor raise QueryError
+pub fn SnapshotSession::with_profile(Bytes, Bytes, Profile, before_sha256? : String?, after_sha256? : String?, profile_source_sha256? : String, profile_effective_sha256? : String) -> Self raise QueryError
 
 pub(all) struct Span {
   line : Int

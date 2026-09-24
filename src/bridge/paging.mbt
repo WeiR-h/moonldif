@@ -56,6 +56,35 @@ fn start_session(
 ) -> PagingSession raise {
   let cfg = @json.parse(config)
   let a = @base64.decode(before[:], ignore_whitespace=false)
+  if field(cfg, "profile_encoded") is String(encoded) {
+    let profile = @ldif.parse_profile(
+      @base64.decode(encoded[:], ignore_whitespace=false),
+    )
+    let source_sha = string_field(cfg, "profile_source_sha256")
+    let effective_sha = string_field(cfg, "profile_effective_sha256")
+    if command == "compare" {
+      return Snapshot(
+        @ldif.SnapshotSession::with_profile(
+          a,
+          @base64.decode(after[:], ignore_whitespace=false),
+          profile,
+          before_sha256=Some(string_field(cfg, "before_sha256")),
+          after_sha256=Some(string_field(cfg, "after_sha256")),
+          profile_source_sha256=source_sha,
+          profile_effective_sha256=effective_sha,
+        ),
+      )
+    }
+    return Review(
+      @ldif.ReviewSession::with_profile(
+        a,
+        profile,
+        sha256=string_field(cfg, "before_sha256"),
+        profile_source_sha256=source_sha,
+        profile_effective_sha256=effective_sha,
+      ),
+    )
+  }
   if command == "compare" {
     let b = @base64.decode(after[:], ignore_whitespace=false)
     let ignored : Array[String] = []

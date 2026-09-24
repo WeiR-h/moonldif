@@ -38,6 +38,12 @@ pub fn paged_report_start(PagingSession, String) -> PagingCursor
 
 pub fn paged_start(String, String, String, String) -> PagingSession
 
+pub fn paged_write(PagingSession) -> String
+
+pub fn profile_batch_start(String, String, String) -> @moonldif.BatchReview?
+
+pub fn profile_validate(String) -> String
+
 pub fn workbench(String, Bool, Bool, Bool, Bool) -> String
 
 // Errors

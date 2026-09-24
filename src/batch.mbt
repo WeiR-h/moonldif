@@ -15,6 +15,8 @@ pub struct BatchReview {
   priv options : Options
   priv risk_policy : RiskPolicy
   priv legacy_dn_spaces : Bool
+  priv profile : Profile?
+  priv profile_meta : Json
   priv mut requested : Int
   priv mut input_bytes : Int
 }
@@ -27,6 +29,8 @@ pub fn BatchReview::new(
 ) -> BatchReview {
   {
     items: [],
+    profile: None,
+    profile_meta: Json::null(),
     options,
     risk_policy,
     legacy_dn_spaces,
@@ -141,6 +145,7 @@ pub fn BatchReview::add_bytes(
     risk_policy=self.risk_policy,
     legacy_dn_spaces=self.legacy_dn_spaces,
   )
+  let counts = self.profile.map(p => profile_evaluate(report, p))
   let metadata : ReviewMetadata = {
     input_sha256,
     input_byte_length: data.length(),
@@ -148,18 +153,30 @@ pub fn BatchReview::add_bytes(
     risk_policy: self.risk_policy,
     legacy_dn_spaces: self.legacy_dn_spaces,
   }
+  let json = report.review_json(metadata)
+  if self.profile is Some(_) && json is Object(fields) {
+    fields["report_schema_version"] = (3).to_json()
+    fields["profile"] = snapshot_copy_json(self.profile_meta)
+    fields["change_limits"] = counts.unwrap()
+  }
+  let extra = if counts is Some(c) {
+    "\nChange limits: " + c.stringify() + "\n"
+  } else {
+    ""
+  }
   self.items.push({
     label: batch_label(label),
     code: report.exit_code(),
-    report: report.review_json(metadata),
+    report: json,
     text: "Source SHA-256: " +
     input_sha256 +
     "; bytes: " +
     data.length().to_string() +
     "\n" +
     report.to_text() +
-    report.review().to_text(),
-    markdown: report.review_markdown(metadata),
+    report.review().to_text() +
+    extra,
+    markdown: report.review_markdown(metadata) + markdown_escape(extra),
   })
 }
 
@@ -194,7 +211,7 @@ pub fn BatchReview::to_json(self : BatchReview) -> Json {
       "report": item.report,
     })
   }
-  {
+  let json : Json = {
     "tool": "MoonLDIF",
     "version": version().to_json(),
     "kind": "batch-review",
@@ -216,6 +233,12 @@ pub fn BatchReview::to_json(self : BatchReview) -> Json {
     "diagnostics": diagnostics.to_json(),
     "files": files.to_json(),
   }
+  if self.profile is Some(_) && json is Object(fields) {
+    fields["report_schema_version"] = (3).to_json()
+    fields["profile"] = snapshot_copy_json(self.profile_meta)
+    fields["limit_scope"] = "per_file".to_json()
+  }
+  json
 }
 
 ///|
@@ -247,6 +270,11 @@ pub fn BatchReview::to_text(self : BatchReview) -> String {
     "Reports contain filenames and DNs, not attribute values. Files are checked independently, not as a combined transaction.\n",
   )
   out.write_string("Options: " + self.options_json().stringify() + "\n")
+  if self.profile is Some(_) {
+    out.write_string(
+      "Profile (per_file): " + self.profile_meta.stringify() + "\n",
+    )
+  }
   if self.requested == 0 || self.requested > 50 {
     out.write_string(
       "batch-file-count: expected 1 to 50 inputs; unreported inputs were not analysed.\n",
@@ -284,6 +312,13 @@ pub fn BatchReview::to_markdown(self : BatchReview) -> String {
   out.write_string(
     "Options: " + markdown_escape(self.options_json().stringify()) + "\n\n",
   )
+  if self.profile is Some(_) {
+    out.write_string(
+      "Profile (per_file): " +
+      markdown_escape(self.profile_meta.stringify()) +
+      "\n\n",
+    )
+  }
   if self.exit_code() == 2 {
     out.write_string(
       "**Incomplete batch: do not treat missing findings as approval.**\n\n",
@@ -311,4 +346,24 @@ pub fn BatchReview::to_markdown(self : BatchReview) -> String {
     out.write_string("\n")
   }
   out.to_string()
+}
+
+///|
+pub fn BatchReview::with_profile(
+  profile : Profile,
+  profile_source_sha256? : String = "",
+  profile_effective_sha256? : String = "",
+) -> BatchReview raise QueryError {
+  {
+    items: [],
+    options: profile.options,
+    risk_policy: profile.risk,
+    legacy_dn_spaces: profile.legacy,
+    profile: Some(profile),
+    profile_meta: profile_metadata(
+      profile, "review", profile_source_sha256, profile_effective_sha256,
+    ),
+    requested: 0,
+    input_bytes: 0,
+  }
 }

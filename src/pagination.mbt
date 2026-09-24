@@ -63,7 +63,12 @@ fn page_result(
   all? : Bool = false,
 ) -> Json {
   {
-    "report_schema_version": 2,
+    "report_schema_version": (if snapshot_field(summary, "profile") ==
+      Json::null() {
+      2
+    } else {
+      3
+    }).to_json(),
     "exit_code": code.to_json(),
     "summary": snapshot_copy_json(summary),
     "page": {
@@ -106,6 +111,49 @@ pub fn ReviewSession::new(
   risk_policy? : RiskPolicy = RiskPolicy::default(),
   sha256? : String = "",
 ) -> ReviewSession raise QueryError {
+  review_session(
+    input,
+    options,
+    legacy_dn_spaces,
+    risk_policy,
+    sha256,
+    None,
+    "",
+    "",
+  )
+}
+
+///|
+pub fn ReviewSession::with_profile(
+  input : Bytes,
+  profile : Profile,
+  sha256? : String = "",
+  profile_source_sha256? : String = "",
+  profile_effective_sha256? : String = "",
+) -> ReviewSession raise QueryError {
+  review_session(
+    input,
+    profile.options,
+    profile.legacy,
+    profile.risk,
+    sha256,
+    Some(profile),
+    profile_source_sha256,
+    profile_effective_sha256,
+  )
+}
+
+///|
+fn review_session(
+  input : Bytes,
+  options : Options,
+  legacy_dn_spaces : Bool,
+  risk_policy : RiskPolicy,
+  sha256 : String,
+  profile : Profile?,
+  profile_source_sha256 : String,
+  profile_effective_sha256 : String,
+) -> ReviewSession raise QueryError {
   if sha256 != "" &&
     (
       sha256.length() != 64 ||
@@ -114,6 +162,7 @@ pub fn ReviewSession::new(
     raise InvalidQuery("Invalid SHA-256.")
   }
   let report = check(input, options~, legacy_dn_spaces~, risk_policy~)
+  let counts = profile.map(p => profile_evaluate(report, p))
   let summary = report.review_json({
     input_sha256: sha256,
     input_byte_length: input.length(),
@@ -121,6 +170,15 @@ pub fn ReviewSession::new(
     legacy_dn_spaces,
     risk_policy,
   })
+  if profile is Some(p) {
+    if summary is Object(fields) {
+      fields["report_schema_version"] = (3).to_json()
+      fields["profile"] = profile_metadata(
+        p, "review", profile_source_sha256, profile_effective_sha256,
+      )
+      fields["change_limits"] = counts.unwrap()
+    }
+  }
   if snapshot_field(summary, "review") is Object(fields) {
     fields.remove("items") |> ignore
     fields.remove("truncated") |> ignore
@@ -509,7 +567,7 @@ fn report_heading(metadata : Json) -> String {
   for
     key in [
       "source", "before", "after", "diagnostics", "counts", "excluded_attribute_occurrences",
-      "ambiguous_dn_count",
+      "ambiguous_dn_count", "profile", "change_limits",
     ] {
     let value = snapshot_field(summary, key)
     if value != Json::null() {
@@ -547,4 +605,37 @@ fn report_item_markdown(item : Json) -> String {
   }
   out.write_string("\n")
   out.to_string()
+}
+
+///|
+pub fn ReviewSession::format(self : ReviewSession) -> String raise WriteError {
+  self.report.format()
+}
+
+///|
+pub fn SnapshotSession::with_profile(
+  before : Bytes,
+  after : Bytes,
+  profile : Profile,
+  before_sha256? : String? = None,
+  after_sha256? : String? = None,
+  profile_source_sha256? : String = "",
+  profile_effective_sha256? : String = "",
+) -> SnapshotSession raise QueryError {
+  let s = SnapshotSession::new(
+    before,
+    after,
+    allow_missing_version=profile.options.allow_missing_version,
+    legacy_dn_spaces=profile.legacy,
+    ignored_attributes=profile.ignored,
+    before_sha256~,
+    after_sha256~,
+  )
+  if s.summary is Object(fields) {
+    fields["report_schema_version"] = (3).to_json()
+    fields["profile"] = profile_metadata(
+      profile, "compare", profile_source_sha256, profile_effective_sha256,
+    )
+  }
+  s
 }

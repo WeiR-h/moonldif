@@ -8,4 +8,5 @@ copyFileSync(resolve(root, '_build/js/release/build/bridge/bridge.js'), resolve(
 copyFileSync(resolve(root, 'cmd/moonldif.mjs'), resolve(root, 'dist/moonldif.js'));
 copyFileSync(resolve(root, 'cmd/read-bounded.mjs'), resolve(root, 'dist/read-bounded.mjs'));
 copyFileSync(resolve(root, 'cmd/report-output.mjs'), resolve(root, 'dist/report-output.mjs'));
+copyFileSync(resolve(root, 'cmd/profile-host.mjs'), resolve(root, 'dist/profile-host.mjs'));
 console.log('Built MoonLDIF CLI.');

@@ -14,6 +14,7 @@ const steps = [
   ['cli-tests', ['--test', 'tests/cli.test.mjs']],
   ['bounded-reader-tests', ['--test', 'tests/read-bounded.test.mjs']],
   ['pagination-tests', ['--test', 'tests/pagination.test.mjs']],
+  ['profile-tests', ['--test', 'tests/profile.test.mjs']],
   ['scenarios', ['scripts/demo.mjs']],
 ];
 const folder = resolve(root, 'verification/local');

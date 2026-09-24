@@ -104,10 +104,17 @@ pub fn cli_plan(args_json : String) -> String {
   let ignored_attributes : Array[String] = []
   let paging : Map[String, String] = Map([])
   let mut all_items = false
+  let mut profile : String? = None
   while i < args.length() {
     let arg = args[i]
     if !positional && arg == "--" {
       positional = true
+    } else if !positional && arg == "--profile" {
+      if profile != None || i + 1 >= args.length() || args[i + 1].is_empty() {
+        return host_error("Missing or duplicate --profile.", format)
+      }
+      i += 1
+      profile = Some(args[i])
     } else if !positional && arg == "--compat" {
       if compat {
         return host_error("Duplicate --compat.", format)
@@ -199,6 +206,21 @@ pub fn cli_plan(args_json : String) -> String {
   if args[0] == "batch" && inputs.length() > 50 {
     return host_error("Batch accepts at most 50 explicit inputs.", format)
   }
+  if profile != None &&
+    (
+      args[0] == "inspect" ||
+      compat ||
+      deny ||
+      deny_clear ||
+      deny_rename ||
+      legacy_spaces ||
+      !ignored_attributes.is_empty()
+    ) {
+    return host_error(
+      "--profile cannot be combined with analysis flags or inspect. Use profile sections for analysis rules.",
+      format,
+    )
+  }
   if args[0] == "compare" &&
     (inputs.length() != 2 || deny || deny_clear || deny_rename) {
     return host_error(
@@ -288,6 +310,11 @@ pub fn cli_plan(args_json : String) -> String {
     "deny_rename": deny_rename.to_json(),
     "legacy_dn_spaces": legacy_spaces.to_json(),
     "ignored_attributes": ignored_attributes.to_json(),
+  }
+  if profile is Some(path) {
+    if result is Object(fields) {
+      fields["profile_path"] = path.to_json()
+    }
   }
   result.stringify()
 }
