@@ -1,4 +1,5 @@
 import manifest from '../package.json';
+import { ProfilePanel } from './ProfilePanel.jsx';
 import React, { useRef, useState } from 'react';
 import { useWorkbench } from './useWorkbench.js';
 import { Editor } from './Editor.jsx';
@@ -32,12 +33,12 @@ export default function App() {
   return <div className="app-shell">
     <header className="app-header"><div className="brand"><span>MoonLDIF</span><span className="brand-separator" /><span className="brand-subtitle">目录文件预检工作台</span></div><div className="privacy"><Icon name="lock" /><span>文件仅在本机处理</span></div></header>
     <main>
-      <nav className="workspace-mode" aria-label="工作模式"><button aria-pressed={mode === 'review'} onClick={() => { setMode('review'); }}>文件预检</button><button aria-pressed={mode === 'snapshot'} onClick={() => { state.invalidate(); setSnapshotOpened(true); setMode('snapshot'); }}>迁移前后核对</button></nav>
+      <nav className="workspace-mode" aria-label="工作模式"><button aria-pressed={mode === 'review'} onClick={() => { setMode('review'); }}>文件预检</button><button aria-pressed={mode === 'snapshot'} onClick={() => { state.profile.cancelPending(); state.invalidate(); setSnapshotOpened(true); setMode('snapshot'); }}>迁移前后核对</button></nav>
       <div hidden={mode !== 'review'}>
       <div className="page-intro"><div><h1>检查文件，再执行变更</h1><p>读取、定位问题、审阅影响，并导出经过复检的新文件。</p></div><div className="main-actions">
         <input ref={fileInput} type="file" accept=".ldif,.txt" aria-label="打开本地 LDIF 文件" tabIndex={-1} className="visually-hidden" onChange={e => { state.loadFile(e.target.files[0]); e.target.value = ''; }} />
         <button onClick={() => fileInput.current.click()}><Icon name="folder" />打开 LDIF</button>
-        <button className="primary" onClick={state.recheck} disabled={running}><Icon name="refresh" />{running ? '检查中…' : '重新检查'}</button>
+        <button className="primary" onClick={state.recheck} disabled={running||state.profile.loading||Boolean(state.profile.error)}><Icon name="refresh" />{running ? '检查中…' : '重新检查'}</button>
         <button onClick={state.exportFile} disabled={!state.canExport}><Icon name="download" />导出新文件</button>
       <button onClick={state.invalidate} disabled={!running && !state.analysis.busy}>停止检查</button></div></div>
       <div className="settings" aria-label="检查选项">
@@ -47,6 +48,7 @@ export default function App() {
         <label><input type="checkbox" checked={state.options.compat} onChange={e => state.setOption('compat', e.target.checked)} />允许缺版本头</label>
         <label><input type="checkbox" checked={state.options.legacySpaces} onChange={e => state.setOption('legacySpaces', e.target.checked)} />允许旧 DN 空格</label>
       </div>
+      <ProfilePanel profile={state.profile} mode="review" report={state.analysis.report} locate={span=>state.setSelection({...span,focus:true})} />
       <Status analysis={state.analysis} />
       <div className="report-tools">
         <label>审阅报告 <select aria-label="审阅报告格式" value={reportFormat} onChange={e => setReportFormat(e.target.value)}><option value="markdown">Markdown</option><option value="json">JSON</option></select></label>

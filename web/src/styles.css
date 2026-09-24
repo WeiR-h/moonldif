@@ -23,3 +23,13 @@
 .full-review-controls .snapshot-filters { flex-wrap: wrap; }
 .full-review-controls .snapshot-filters label { min-width: 0; }
 .main-actions { flex-wrap: wrap; }
+
+.profile-panel { margin: 1rem 0; padding: 1rem; background: white; border: 1px solid #d5dfe4; border-radius: 8px; }
+.profile-actions,.profile-limits,.profile-metrics { display:flex; flex-wrap:wrap; gap:1rem; align-items:center; }
+.profile-panel p { font-size:.85rem; color:#596d76; margin:.6rem 0; overflow-wrap:anywhere; }
+.profile-actions label { display:flex; flex-wrap:wrap; align-items:center; gap:.5rem; }
+.profile-actions input { max-width:100%; min-width:0; }
+.profile-limits label { display:flex; flex-direction:column; gap:.4rem; flex:1; min-width:150px; }
+.profile-limits input { width:100%; min-width:0; padding:.6rem; border:1px solid #bdcdd4; border-radius:5px; }
+.profile-metrics { margin-top:.8rem; padding:.6rem; background:#f1f7f6; font-size:.9rem; }
+.profile-panel [role=alert] { color:#a82629; }

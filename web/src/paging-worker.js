@@ -41,9 +41,17 @@ export function workerHandler(command) {
         const config = {compat:f.compat, legacy_dn_spaces:f.legacySpaces, deny_delete:f.denyDelete,
           deny_clear:f.denyClear, deny_rename:f.denyRename, ignored_attributes:data.ignoredAttributes || [],
           before_sha256:before.sha, after_sha256:after.sha};
+        if(data.profileEncoded) {
+          const validated=JSON.parse(core.profile_validate(data.profileEncoded));
+          if(validated.exit_code!==0)throw new Error(JSON.parse(validated.output).diagnostics[0].reason);
+          const digest=async bytes=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes)),v=>v.toString(16).padStart(2,'0')).join('');
+          config.profile_encoded=data.profileEncoded;
+          config.profile_effective_sha256=await digest(new TextEncoder().encode(command==='compare'?validated.canonical_compare:validated.canonical_review));
+          config.profile_source_sha256=data.profileSourceEncoded?await digest(Uint8Array.from(atob(data.profileSourceEncoded),c=>c.charCodeAt(0))):'';
+        }
         session = core.paged_start(command, before.encoded, after.encoded, JSON.stringify(config));
         if (data.write && command === 'review') {
-          const result = JSON.parse(core.analyse_v2(before.encoded,'workbench-write','json',f.compat,f.denyDelete,f.legacySpaces,f.denyClear,f.denyRename,before.sha));
+          const result = JSON.parse(data.profileEncoded?core.paged_write(session):core.analyse_v2(before.encoded,'workbench-write','json',f.compat,f.denyDelete,f.legacySpaces,f.denyClear,f.denyRename,before.sha));
           if (result.exit_code !== core.paged_exit_code(session)) throw new Error('复检结果不一致，未导出文件。');
           written = result.written;
         }

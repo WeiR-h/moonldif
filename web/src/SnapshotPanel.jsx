@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { usePagedSession } from './usePagedSession.js';
+import { ProfilePanel } from './ProfilePanel.jsx';
+import { useProfile } from './useProfile.js';
 import { Pager } from './Pager.jsx';
 
 const samples = {
@@ -19,7 +21,9 @@ export function SnapshotPanel({enabled}) {
   const inputs = useRef({});
   const active = useRef({files:0});
   function invalidate() {session.invalidate();active.current.files++;}
-  useEffect(() => {if(!enabled){session.invalidate();active.current.files++;}},[enabled,session.invalidate]);
+  const profile=useProfile('compare',invalidate,flags,setFlags,ignoredText,setIgnoredText);
+  const profileRef=useRef(profile);profileRef.current=profile;
+  useEffect(() => {if(!enabled){profileRef.current.cancelPending();session.invalidate();active.current.files++;}},[enabled,session.invalidate]);
   useEffect(() => () => {active.current.files++;},[]);
   function edit(side, text) { invalidate(); setTexts(previous => ({ ...previous, [side]: text })); }
   async function load(side, file) {
@@ -39,7 +43,8 @@ export function SnapshotPanel({enabled}) {
   }
   function run() {
     active.current.files++;
-    session.run({...texts,...flags,ignoredAttributes:ignoredText.trim()===''?[]:ignoredText.split(',').map(value=>value.trim())});
+    try {session.run({...texts,...flags,ignoredAttributes:ignoredText.trim()===''?[]:ignoredText.split(',').map(value=>value.trim()),...profile.payload()});}
+    catch(error){setResult({phase:'error',report:null,message:error.message});}
   }
   function locate(side, span) {
     const input = inputs.current[side]; if (!input || !span) return;
@@ -54,10 +59,11 @@ export function SnapshotPanel({enabled}) {
   function download() { session.exportReport(format,'moonldif-snapshot-diff'); }
   const title = report ? report.exit_code === 2 ? '核对不完整，请先处理输入或歧义' : report.exit_code === 1 ? `发现 ${report.total_changes} 项差异` : '当前比较规则下未发现差异' : result.message || '请核对当前两份内容';
   return <section aria-label="迁移前后核对" className="snapshot-panel">
-    <div className="page-intro"><div><h1>迁移前后，少了什么？</h1><p>核对目录导出，排除折行、编码表示与排列顺序的干扰。</p></div><div className="main-actions"><button onClick={() => { invalidate(); setTexts(samples); setIgnoredText('');  }}>载入合成迁移示例</button><button className="primary" onClick={run} disabled={['running','loading'].includes(result.phase)}>开始核对</button>{(['running','loading'].includes(result.phase) || result.busy) && <button onClick={() => { invalidate(); setResult({phase: 'stale', message: '已停止，本次结果不可下载。'}); }}>停止核对</button>}</div></div>
+    <div className="page-intro"><div><h1>迁移前后，少了什么？</h1><p>核对目录导出，排除折行、编码表示与排列顺序的干扰。</p></div><div className="main-actions"><button onClick={() => { invalidate(); setTexts(samples); setIgnoredText('');  }}>载入合成迁移示例</button><button className="primary" onClick={run} disabled={['running','loading'].includes(result.phase)||profile.loading||Boolean(profile.error)}>开始核对</button>{(['running','loading'].includes(result.phase) || result.busy) && <button onClick={() => { invalidate(); setResult({phase: 'stale', message: '已停止，本次结果不可下载。'}); }}>停止核对</button>}</div></div>
     <p className="snapshot-scope">按解码后的 DN 原字符串匹配，属性值按字节及重复次数比较。DN 改写会显示为新增与缺失，不推断重命名或服务器语义相等，也不生成执行脚本。</p>
-    <div className="settings"><label><input type="checkbox" checked={flags.compat} onChange={e => { invalidate(); setFlags(f => ({ ...f, compat: e.target.checked })); }} />核对时允许缺版本头</label><label><input type="checkbox" checked={flags.legacySpaces} onChange={e => { invalidate(); setFlags(f => ({ ...f, legacySpaces: e.target.checked })); }} />核对时允许旧 DN 空格</label></div>
-    <div className="snapshot-exclusions"><label htmlFor="snapshot-exclusions">排除指定属性（可选）</label><input id="snapshot-exclusions" type="text" maxLength={16447} value={ignoredText} onChange={e => { invalidate(); setIgnoredText(e.target.value); }} placeholder="例如 modifyTimestamp, entryCSN" aria-describedby="exclusion-help" /><p id="exclusion-help">默认不排除。用英文逗号分隔，最多 64 项；属性选项需精确匹配。排除项会写入报告，格式错误、外部值、重复 DN 与整条增减仍会检查。</p></div>
+    <div className="settings"><label><input type="checkbox" checked={flags.compat} onChange={e => { profile.dirty(); setFlags(f => ({ ...f, compat: e.target.checked })); }} />核对时允许缺版本头</label><label><input type="checkbox" checked={flags.legacySpaces} onChange={e => { profile.dirty(); setFlags(f => ({ ...f, legacySpaces: e.target.checked })); }} />核对时允许旧 DN 空格</label></div>
+    <div className="snapshot-exclusions"><label htmlFor="snapshot-exclusions">排除指定属性（可选）</label><input id="snapshot-exclusions" type="text" maxLength={16447} value={ignoredText} onChange={e => { profile.dirty(); setIgnoredText(e.target.value); }} placeholder="例如 modifyTimestamp, entryCSN" aria-describedby="exclusion-help" /><p id="exclusion-help">默认不排除。用英文逗号分隔，最多 64 项；属性选项需精确匹配。排除项会写入报告，格式错误、外部值、重复 DN 与整条增减仍会检查。</p></div>
+    <ProfilePanel profile={profile} mode="compare" />
     <div className="snapshot-editors">{['before','after'].map(side => <section className="panel" key={side}><div className="editor-toolbar"><h2>{names[side]}快照</h2><label className="snapshot-file">打开文件<input type="file" disabled={result.phase === 'loading'} accept=".ldif,.txt" aria-label={`打开${names[side]}快照`} onChange={e => { load(side, e.target.files[0]); e.target.value = ''; }} /></label></div><textarea ref={element => { inputs.current[side] = element; }} aria-label={`${names[side]}快照内容`} disabled={result.phase === 'loading'} spellCheck={false} wrap="off" value={texts[side]} onChange={e => edit(side,e.target.value)} /><div className="panel-footer">每份上限 1 MiB / 10,000 行 · 编辑后需重新核对</div></section>)}</div>
     <div className={`status-strip ${report?.exit_code === 0 ? 'success' : report || result.phase === 'error' ? 'caution' : 'neutral'}`} role="status"><div><strong>{title}</strong><p>{report ? `已展示 ${report.reported_changes} / ${report.total_changes} 项差异 · 排除 ${report.ambiguous_dn_count} 个重复 DN` : '过期、读取中、运行失败的结果不可下载。'}</p>{report?.truncated && <p>列表已截断；总数涵盖全部可比较条目。</p>}</div></div>
     <div className="report-tools"><label>核对报告 <select aria-label="核对报告格式" value={format} onChange={e => setFormat(e.target.value)}><option value="markdown">Markdown</option><option value="json">JSON</option></select></label><button disabled={!ready || result.busy} onClick={download}>下载完整核对报告</button><p>报告包含 DN、属性名称、行号与两份内容指纹，不包含原始属性值。指纹不是签名。</p></div>

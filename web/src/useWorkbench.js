@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { useProfile } from './useProfile.js';
 import { samples } from './samples.js';
 import { usePagedSession, downloadBlob } from './usePagedSession.js';
 
@@ -11,8 +12,12 @@ export function useWorkbench() {
   const [selection,setSelection] = useState(null);
   const active = useRef({fileSerial:0});
   const invalidate = useCallback(() => {active.current.fileSerial++;setSelection(null);session.invalidate();},[session.invalidate]);
+  const profile = useProfile('review',invalidate,options,setOptions);
+  const profileRef=useRef(profile);profileRef.current=profile;
   const run = useCallback((doc, flags, write=false) => {
-    session.run({text:doc.text,options:flags,write}, written => {
+    let configuration;
+    try {configuration=profileRef.current.payload();} catch(error){session.setResult({phase:'error',report:null,message:error.message});return;}
+    session.run({text:doc.text,options:flags,write,...configuration}, written => {
       downloadBlob(new Blob([written],{type:'application/ldif;charset=utf-8'}),doc.filename.replace(/\.[^.]*$/, '').replace(/[<>:"/\\|?*\u0000-\u001f]/g,'_')+'-normalized.ldif');
     });
   },[session.run]);
@@ -22,7 +27,7 @@ export function useWorkbench() {
 
   useEffect(() => { run(samples[0], initialOptions); return stop; }, [run, stop]);
   const edit = text => { invalidate(); setDocument(doc => ({ ...doc, id: '', text })); };
-  const setOption = (name, checked) => { invalidate(); setOptions(flags => ({ ...flags, [name]: checked })); };
+  const setOption = (name, checked) => { profile.dirty(); setOptions(flags => ({ ...flags, [name]: checked })); };
   const loadSample = id => { const sample = samples.find(s => s.id === id); if (!sample) return; invalidate(); setDocument(sample); run(sample, options); };
   const loadFile = async file => {
     if (!file) return;
@@ -48,5 +53,5 @@ export function useWorkbench() {
   const exportFile = () => { if (canExport) run(document, options, true); };
   const canExportReport = analysis.phase === 'ready' && !analysis.busy && Boolean(analysis.report?.source?.sha256);
   const exportReport = format => session.exportReport(format,'moonldif-review');
-  return {canExportReport,exportReport,document,options,analysis,selection,setSelection,edit,setOption,loadSample,loadFile,recheck,canExport,exportFile,invalidate,queryPage:session.queryPage};
+  return {profile,canExportReport,exportReport,document,options,analysis,selection,setSelection,edit,setOption,loadSample,loadFile,recheck,canExport,exportFile,invalidate,queryPage:session.queryPage};
 }

@@ -10,6 +10,7 @@ import { spawnSync } from 'node:child_process';
 import { verifySnapshot, snapshotReady } from './snapshot-browser.mjs';
 import { verifyPagination } from './pagination-browser.mjs';
 import { verifyStability } from './browser-stability.mjs';
+import { verifyProfiles } from './profile-browser.mjs';
 const root = fileURLToPath(new URL('../', import.meta.url));
 if (!process.env.PLAYWRIGHT_BROWSERS_PATH && existsSync(resolve(root, '.tools/browsers'))) process.env.PLAYWRIGHT_BROWSERS_PATH = resolve(root, '.tools/browsers');
 const require = createRequire(new URL('../web/package.json', import.meta.url));
@@ -135,6 +136,7 @@ try {
       await page.screenshot({ path: resolve(output, name + '-mobile.png'), fullPage: true });
       await verifyPagination(page, output, name);
       await verifySnapshot(page, output, name);
+      await verifyProfiles(page, output, name);
       assert.deepEqual(errors, []);
       assert.deepEqual(badResponses, []);
       assert.ok(requests.every(r => r.method === 'GET' && r.url.startsWith(new URL(url).origin)));
