@@ -41,3 +41,11 @@ test "adapter refuses clear and rename policies" {
     assert_true(match to_messages(report) { Err(_) => true; Ok(_) => false })
   }
 }
+
+///|
+test "adapter refuses profile change limits" {
+  let p = @ldif.parse_profile(b"{\"profile_version\":1,\"review\":{\"limits\":{\"max_delete_records\":0}}}")
+  let report = @ldif.check_with_profile(b"version: 1\ndn: cn=Demo\nchangetype: delete\n", p)
+  assert_eq(report.exit_code(), 1)
+  assert_true(match to_messages(report) { Err(_) => true; Ok(_) => false })
+}

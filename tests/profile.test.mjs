@@ -88,3 +88,32 @@ test('comparison uses only its section; CLI conflicting flags fail closed',()=>{
   assert.equal(run(['inspect',b,'--profile',pp]).status,2);
   assert.equal(run(['check',b,'--profile',pp,'--profile',pp]).status,2);
 });
+
+test('CI example retains 0/1/2 and refuses an existing output',()=>{
+  for(const [name,code] of [['within',0],['exceeded',1],['incomplete',2]]) {
+    const out=join(folder,`ci-${name}.json`);
+    const args=['examples/profiles/check-ci.mjs',out,'examples/profiles/rules.json',`examples/profiles/${name}.ldif`];
+    assert.equal(spawnSync(process.execPath,args,{encoding:'utf8'}).status,code);
+    assert.equal(JSON.parse(readFileSync(out,'utf8')).exit_code,code);
+    assert.equal(spawnSync(process.execPath,args,{encoding:'utf8'}).status,2);
+  }
+});
+
+test('all metrics survive diagnostic truncation and deny rules cannot be relaxed by limits',()=>{
+  const pp=join(folder,'deny.json');
+  writeFileSync(pp,JSON.stringify({profile_version:1,review:{deny_delete:true,limits:{max_delete_records:999}}}));
+  writeFileSync(file,input(1));
+  assert.equal(run(['check',file,'--profile',pp]).status,1);
+  writeFileSync(pp,JSON.stringify({profile_version:1,review:{deny_clear:true,limits:{max_change_records:0,max_clear_operations:200}}}));
+  writeFileSync(file,'version: 1\ndn: cn=a\nchangetype: modify\n'+'delete: mail\n-\n'.repeat(201));
+  const result=run(['review',file,'--profile',pp,'--format','json','--query','absent']);
+  assert.equal(result.status,2);
+  const doc=JSON.parse(result.stdout);
+  assert.equal(doc.summary.change_limits.metrics[0].actual,1);
+  assert.equal(doc.summary.change_limits.metrics[2].actual,201);
+  assert.ok(doc.summary.change_limits.metrics[2].first_exceeded_span);
+  assert.equal(doc.items.length,0);
+  writeFileSync(pp,Buffer.alloc(65537,32));
+  assert.equal(run(['check',file,'--profile',pp]).status,2);
+  assert.equal(run(['check',file,'--profile',folder]).status,2);
+});

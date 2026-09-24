@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.7.0 — 2026-09-24
+
+- MoonBit 新增不可变 Profile、严格配置校验、有效配置规范化和配置感知的库入口。拒绝重复键、未知字段、数字舍入歧义、超限与不适用配置。
+- CLI check/review/format/batch/compare 支持显式 --profile；三项数量限制遍历所有已解析变更，batch 明确按文件独立计算；旧接口与默认输出兼容。
+- 配置报告使用格式版本 3，保留实际源指纹、有效规则、数量/已知下界与首次越界位置。平台负责哈希，规则与正文由 MoonBit 实现。
+- 工作台支持加载、修改、下载配置；配置变化立即使旧结果失效。新增 CI 场景、配置竞态与双目标消费验证。发布与最终复验状态见 docs/STATUS.md。
+
 ## 0.6.0 — 2026-09-22
 
 - 新增 ReviewSession、SnapshotSession、PageQuery 与前向 ReportCursor；复用既有规则，按需生成条目说明。

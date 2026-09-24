@@ -1,0 +1,9 @@
+{
+  "profile_version": 1,
+  "review": {
+    "deny_clear": true,
+    "deny_rename": true,
+    "limits": {"max_change_records": 100, "max_delete_records": 5}
+  },
+  "compare": {"ignored_attributes": ["modifyTimestamp"]}
+}

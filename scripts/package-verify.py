@@ -122,6 +122,24 @@ test "paged public API and complete report" {
   assert_true(compare.page(@ldif.PageQuery::default()).stringify().contains("values-changed"))
 }
 ''')
+    with (consumer / 'consumer_test.mbt').open('a', encoding='utf8') as tests:
+        tests.write(r'''///|
+test "configuration policy public API" {
+  let p = @ldif.parse_profile(b"{\"profile_version\":1,\"review\":{\"limits\":{\"max_delete_records\":0}}}")
+  let data = b"version: 1\ndn: cn=Demo\nchangetype: delete\n"
+  let r = @ldif.check_with_profile(data, p)
+  assert_eq(r.exit_code(), 1)
+  let s = @ldif.ReviewSession::with_profile(data, p)
+  assert_eq(s.exit_code(), 1)
+  assert_true(s.page(@ldif.PageQuery::default()).stringify().contains("delete-record-limit"))
+  assert_true(p.effective_json("review").stringify().contains("max_delete_records"))
+  let b = @ldif.BatchReview::with_profile(p)
+  b.add_bytes("example.ldif", data, "a".repeat(64))
+  assert_eq(b.exit_code(), 1)
+  let content = b"version: 1\ndn: cn=Demo\ncn: Demo\n"
+  assert_eq(@ldif.SnapshotSession::with_profile(content, content, p).exit_code(), 0)
+}
+''')
     for target in ['js', 'wasm-gc']:
         run([moon, 'test', '-p', 'local/moonldif_consumer', '--target', target], cwd=workspace, env=env)
     evidence['status'] = 'passed'

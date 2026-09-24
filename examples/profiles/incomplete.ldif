@@ -1,0 +1,22 @@
+version: 1
+dn: cn=synthetic-0,dc=example,dc=org
+changetype: delete
+
+dn: cn=synthetic-1,dc=example,dc=org
+changetype: delete
+
+dn: cn=synthetic-2,dc=example,dc=org
+changetype: delete
+
+dn: cn=synthetic-3,dc=example,dc=org
+changetype: delete
+
+dn: cn=synthetic-4,dc=example,dc=org
+changetype: delete
+
+dn: cn=synthetic-5,dc=example,dc=org
+changetype: delete
+
+dn: cn=unknown
+changetype: future-operation
+

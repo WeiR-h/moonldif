@@ -2,7 +2,7 @@
 
 MoonBit 原生 LDIF 读写与离线结构预检库。
 
-版本：`0.6.0`。新增操作审阅与迁移差异的完整查找、分页及完整报告；旧 API 和默认 CLI 输出保持兼容。正式发布、注册表安装和公开网页结果以[最新交付状态](https://github.com/WeiR-h/moonldif/blob/main/docs/STATUS.md)为准。报名初审已通过，个人验收和组委会最终结果分别记录。
+版本：`0.7.0`。新增可复用 JSON 检查配置和每文件变更数量限制；旧 API 和默认 CLI 输出保持兼容。正式发布、注册表安装和公开网页结果以[最新交付状态](https://github.com/WeiR-h/moonldif/blob/main/docs/STATUS.md)为准。报名初审已通过，个人验收和组委会最终结果分别记录。
 
 范围：LDIF 内容与基本变更记录、字节属性、源位置、确定性写回和结构报告。目录 Schema、DN 语义相等、权限及真实服务器执行结果不在检查范围内。
 
@@ -16,6 +16,7 @@ MoonBit 原生 LDIF 读写与离线结构预检库。
 - 解析新增、删除、修改、重命名计划；给出错误代码与物理行号，保留修改顺序。
 - 检查 DN/RDN 转义和组成，定位原始行；旧分隔空格需显式兼容，名称不自动改写。
 - 可分别启用 `--deny-delete`、`--deny-clear`、`--deny-rename`，拦截整条删除、属性清空、改名与移动；错误或不完整结果优先返回 2。
+- 使用 `--profile` 复用工作台、CLI 与 CI 的规则，限制变更记录、整条删除和属性清空数量；见[配置说明](docs/PROFILES.md)与[可运行场景](examples/profiles/README.md)。
 - 安全整理为新文件：写出后重新读取比较，保留属性字节和操作顺序，拒绝覆盖已有文件。
 - 可选接入 `hbYlj/moonldap 0.3.0` 的操作模型，已做离线 BER 编解码往返测试。
 - 审阅删除指定值、删除整个属性、清空、替换、移动和控制项；保留操作顺序与位置，不展开属性值。
@@ -47,7 +48,7 @@ node dist/moonldif.js batch examples/01-directory-export.ldif examples/02-accoun
 
 ## 安装 MoonBit 库
 
-在自己的 MoonBit 工程执行 `moon add WeiR-h/moonldif@0.6.0`，并在 `moon.pkg` 导入 `"WeiR-h/moonldif" @ldif`。注册表安装验证使用 `python scripts/registry-verify.py --version 0.6.0`，创建没有本地覆盖的独立消费工程。
+在自己的 MoonBit 工程执行 `moon add WeiR-h/moonldif@0.7.0`，并在 `moon.pkg` 导入 `"WeiR-h/moonldif" @ldif`。注册表安装验证使用 `python scripts/registry-verify.py --version 0.7.0`，创建没有本地覆盖的独立消费工程。
 
 安装 MoonBit 库不会安装 Node.js CLI。CLI 使用下文的源码构建方式；浏览器工作台另按以下步骤启动。
 
