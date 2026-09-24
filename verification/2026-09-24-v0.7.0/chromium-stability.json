@@ -1,0 +1,408 @@
+{
+  "status": "passed",
+  "cycles": 50,
+  "method": "50 real analyses plus 50 edit cancellations with delayed queued replies. Main-realm browser heap when available, excludes Worker memory and is not process RSS or a leak proof. No forced GC. Delays are fault injection, not throughput measurements.",
+  "records": [
+    {
+      "cycle": 1,
+      "completed_ms": 159.42269999999553,
+      "cycle_ms": 540.8578999999881,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    },
+    {
+      "cycle": 2,
+      "completed_ms": 98.50099999998929,
+      "cycle_ms": 460.5792999999976,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    },
+    {
+      "cycle": 3,
+      "completed_ms": 136.6082000000024,
+      "cycle_ms": 519.9728000000032,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    },
+    {
+      "cycle": 4,
+      "completed_ms": 135.38229999999749,
+      "cycle_ms": 513.9587999999931,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    },
+    {
+      "cycle": 5,
+      "completed_ms": 112.59900000000198,
+      "cycle_ms": 497.04670000000624,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    },
+    {
+      "cycle": 6,
+      "completed_ms": 92.96929999999702,
+      "cycle_ms": 428.79299999999057,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    },
+    {
+      "cycle": 7,
+      "completed_ms": 92.89849999999569,
+      "cycle_ms": 458.497000000003,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    },
+    {
+      "cycle": 8,
+      "completed_ms": 121.14669999999751,
+      "cycle_ms": 536.1469999999972,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    },
+    {
+      "cycle": 9,
+      "completed_ms": 131.38550000000396,
+      "cycle_ms": 511.9678000000131,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    },
+    {
+      "cycle": 10,
+      "completed_ms": 119.05779999999504,
+      "cycle_ms": 483.39220000000205,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    },
+    {
+      "cycle": 11,
+      "completed_ms": 119.13920000000508,
+      "cycle_ms": 482.7569000000076,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    },
+    {
+      "cycle": 12,
+      "completed_ms": 100.96679999999469,
+      "cycle_ms": 461.71459999999206,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    },
+    {
+      "cycle": 13,
+      "completed_ms": 107.35430000000633,
+      "cycle_ms": 459.8475000000035,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    },
+    {
+      "cycle": 14,
+      "completed_ms": 79.23999999999069,
+      "cycle_ms": 421.71480000000156,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    },
+    {
+      "cycle": 15,
+      "completed_ms": 91.74350000001141,
+      "cycle_ms": 435.54490000000806,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    },
+    {
+      "cycle": 16,
+      "completed_ms": 90.01619999999821,
+      "cycle_ms": 435.5530999999901,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    },
+    {
+      "cycle": 17,
+      "completed_ms": 86.86109999999462,
+      "cycle_ms": 433.0801999999967,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    },
+    {
+      "cycle": 18,
+      "completed_ms": 103.71469999999681,
+      "cycle_ms": 453.51900000000023,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    },
+    {
+      "cycle": 19,
+      "completed_ms": 99.5506000000023,
+      "cycle_ms": 468.1241000000009,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    },
+    {
+      "cycle": 20,
+      "completed_ms": 114.97589999999036,
+      "cycle_ms": 473.3078999999998,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    },
+    {
+      "cycle": 21,
+      "completed_ms": 92.39770000000135,
+      "cycle_ms": 430.9247000000032,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    },
+    {
+      "cycle": 22,
+      "completed_ms": 76.98639999999432,
+      "cycle_ms": 413.9441999999981,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    },
+    {
+      "cycle": 23,
+      "completed_ms": 80.91449999999895,
+      "cycle_ms": 422.2804999999935,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    },
+    {
+      "cycle": 24,
+      "completed_ms": 74.93630000000121,
+      "cycle_ms": 420.5295999999944,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    },
+    {
+      "cycle": 25,
+      "completed_ms": 88.87359999999171,
+      "cycle_ms": 438.2862999999925,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    },
+    {
+      "cycle": 26,
+      "completed_ms": 99.91189999999187,
+      "cycle_ms": 432.96489999999176,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    },
+    {
+      "cycle": 27,
+      "completed_ms": 84.35880000000179,
+      "cycle_ms": 419.78310000000056,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    },
+    {
+      "cycle": 28,
+      "completed_ms": 80.46799999999348,
+      "cycle_ms": 416.3058999999921,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    },
+    {
+      "cycle": 29,
+      "completed_ms": 81.32129999999597,
+      "cycle_ms": 419.4823000000033,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    },
+    {
+      "cycle": 30,
+      "completed_ms": 94.06990000000224,
+      "cycle_ms": 434.48489999999583,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    },
+    {
+      "cycle": 31,
+      "completed_ms": 109.95119999999588,
+      "cycle_ms": 468.0100999999995,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    },
+    {
+      "cycle": 32,
+      "completed_ms": 94.40520000000834,
+      "cycle_ms": 445.2966000000015,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    },
+    {
+      "cycle": 33,
+      "completed_ms": 129.6527999999962,
+      "cycle_ms": 481.39229999999225,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    },
+    {
+      "cycle": 34,
+      "completed_ms": 97.79809999999998,
+      "cycle_ms": 453.4241000000038,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    },
+    {
+      "cycle": 35,
+      "completed_ms": 98.66150000000198,
+      "cycle_ms": 457.5825000000041,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    },
+    {
+      "cycle": 36,
+      "completed_ms": 104.86130000000412,
+      "cycle_ms": 466.6637000000046,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    },
+    {
+      "cycle": 37,
+      "completed_ms": 86.25279999998747,
+      "cycle_ms": 424.99099999999453,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    },
+    {
+      "cycle": 38,
+      "completed_ms": 95.49580000000424,
+      "cycle_ms": 450.74430000000575,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    },
+    {
+      "cycle": 39,
+      "completed_ms": 78.00909999999567,
+      "cycle_ms": 423.7344000000012,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    },
+    {
+      "cycle": 40,
+      "completed_ms": 89.92170000000624,
+      "cycle_ms": 450.4902000000002,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    },
+    {
+      "cycle": 41,
+      "completed_ms": 104.91890000000421,
+      "cycle_ms": 466.54349999999977,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    },
+    {
+      "cycle": 42,
+      "completed_ms": 105.1880999999994,
+      "cycle_ms": 468.4973000000027,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    },
+    {
+      "cycle": 43,
+      "completed_ms": 102.7896000000037,
+      "cycle_ms": 466.9618999999948,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    },
+    {
+      "cycle": 44,
+      "completed_ms": 104.07660000000033,
+      "cycle_ms": 481.91019999999844,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    },
+    {
+      "cycle": 45,
+      "completed_ms": 103.11750000000757,
+      "cycle_ms": 465.19890000000305,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    },
+    {
+      "cycle": 46,
+      "completed_ms": 105.0633000000089,
+      "cycle_ms": 458.96280000000843,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    },
+    {
+      "cycle": 47,
+      "completed_ms": 115.5628999999899,
+      "cycle_ms": 498.60809999999765,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    },
+    {
+      "cycle": 48,
+      "completed_ms": 114.98399999999674,
+      "cycle_ms": 461.9357000000018,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    },
+    {
+      "cycle": 49,
+      "completed_ms": 82.90729999999166,
+      "cycle_ms": 435.6386999999959,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    },
+    {
+      "cycle": 50,
+      "completed_ms": 84.70020000000659,
+      "cycle_ms": 435.20640000001004,
+      "active": 0,
+      "maxActive": 1,
+      "main_realm_heap_bytes": 10000000
+    }
+  ],
+  "errors": []
+}

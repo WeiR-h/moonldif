@@ -1,0 +1,42 @@
+{
+  "started": "2026-09-24T13:50:48.806697+00:00",
+  "method": "fresh local workspace importing extracted moon package archive; not registry installation",
+  "status": "passed",
+  "steps": [
+    {
+      "command": [
+        "C:\\Users\\<USER>\\Desktop\\Competition\\MoonBit 黑客松\\MoonAPI Check\\.tools\\moon\\bin\\moon.exe",
+        "package"
+      ],
+      "exit_code": 0,
+      "output": "Running moon check ...\nFinished. moon: ran 5 tasks, now up to date\nCheck passed\nPackage to C:\\Users\\<USER>\\Desktop\\Competition\\MoonBit 黑客松\\MoonLDIF\\_build\\publish\\WeiR-h-moonldif-0.7.0.zip\n"
+    },
+    {
+      "command": [
+        "C:\\Users\\<USER>\\Desktop\\Competition\\MoonBit 黑客松\\MoonAPI Check\\.tools\\moon\\bin\\moon.exe",
+        "test",
+        "-p",
+        "local/moonldif_consumer",
+        "--target",
+        "js"
+      ],
+      "exit_code": 0,
+      "output": "Total tests: 5, passed: 5, failed: 0.\nWarning: [0029]\n   ╭─[ C:\\Users\\<USER>\\Desktop\\Competition\\MoonBit 黑客松\\MoonLDIF\\.tools\\package-consumers\\consumer-xff6316h\\consumer\\moon.pkg:1:10 ]\n   │\n 1 │ import { \"WeiR-h/moonldif\" @ldif }\n   │          ────────┬────────  \n   │                  ╰────────── Warning (unused_package): Unused package 'WeiR-h/moonldif'\n───╯\nWarning: [0029]\n   ╭─[ C:\\Users\\<USER>\\Desktop\\Competition\\MoonBit 黑客松\\MoonLDIF\\.tools\\package-consumers\\consumer-xff6316h\\consumer\\moon.pkg:1:28 ]\n   │\n 1 │ import { \"WeiR-h/moonldif\" @ldif }\n   │                            ──┬──  \n   │                              ╰──── Warning (unused_package): Unused package alias 'ldif'\n───╯\n"
+    },
+    {
+      "command": [
+        "C:\\Users\\<USER>\\Desktop\\Competition\\MoonBit 黑客松\\MoonAPI Check\\.tools\\moon\\bin\\moon.exe",
+        "test",
+        "-p",
+        "local/moonldif_consumer",
+        "--target",
+        "wasm-gc"
+      ],
+      "exit_code": 0,
+      "output": "Total tests: 5, passed: 5, failed: 0.\nWarning: [0029]\n   ╭─[ C:\\Users\\<USER>\\Desktop\\Competition\\MoonBit 黑客松\\MoonLDIF\\.tools\\package-consumers\\consumer-xff6316h\\consumer\\moon.pkg:1:10 ]\n   │\n 1 │ import { \"WeiR-h/moonldif\" @ldif }\n   │          ────────┬────────  \n   │                  ╰────────── Warning (unused_package): Unused package 'WeiR-h/moonldif'\n───╯\nWarning: [0029]\n   ╭─[ C:\\Users\\<USER>\\Desktop\\Competition\\MoonBit 黑客松\\MoonLDIF\\.tools\\package-consumers\\consumer-xff6316h\\consumer\\moon.pkg:1:28 ]\n   │\n 1 │ import { \"WeiR-h/moonldif\" @ldif }\n   │                            ──┬──  \n   │                              ╰──── Warning (unused_package): Unused package alias 'ldif'\n───╯\n"
+    }
+  ],
+  "archive": "WeiR-h-moonldif-0.7.0.zip",
+  "sha256": "c7de248524e0a9d458d3b15380ed84a862e57176e187e00d05e7917a812731f2",
+  "finished": "2026-09-24T13:50:59.995221+00:00"
+}

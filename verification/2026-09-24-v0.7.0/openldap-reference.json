@@ -1,0 +1,244 @@
+{
+  "at": "2026-09-24T13:42:45.099610+00:00",
+  "status": "passed",
+  "version": "0.6.0",
+  "upstream_commit": "725ae5b0e583a1b2a3c3c445e6d3d45cf9fea972",
+  "source": "https://raw.githubusercontent.com/openldap/openldap/725ae5b0e583a1b2a3c3c445e6d3d45cf9fea972/",
+  "license": "OpenLDAP Public License 2.8",
+  "scope": "Unmodified upstream test fixtures; no enterprise users or server import claimed",
+  "cases": [
+    {
+      "file": "test.ldif",
+      "sha256": "32b4a60c1e3c62a4fc003cb8360c5a828b14fc6f2012e7754cb931d8c9dce01f",
+      "bytes": 19881,
+      "strict_exit": 2,
+      "compat_exit": 0,
+      "records": 19,
+      "diagnostics": [
+        {
+          "code": "missing-version",
+          "severity": "warning",
+          "span": {
+            "line": 1,
+            "end_line": 1
+          },
+          "reason": "Expected version: 1; --compat explicitly permits a missing version header."
+        }
+      ],
+      "comparison": [
+        "parse passed",
+        "MoonLDIF writer / Python reader passed",
+        "Python writer / MoonLDIF reader passed"
+      ]
+    },
+    {
+      "file": "test-dn.ldif",
+      "sha256": "32e41736aefc4b6acb89eb3393b4e3801f81dcb88eac8de37c6ff9eca401f115",
+      "bytes": 12551,
+      "strict_exit": 2,
+      "compat_exit": 2,
+      "records": 35,
+      "diagnostics": [
+        {
+          "code": "missing-version",
+          "severity": "warning",
+          "span": {
+            "line": 1,
+            "end_line": 1
+          },
+          "reason": "Expected version: 1; --compat explicitly permits a missing version header."
+        },
+        {
+          "code": "unsafe-initial-value",
+          "severity": "error",
+          "span": {
+            "line": 207,
+            "end_line": 207
+          },
+          "reason": "This initial character requires Base64 encoding."
+        },
+        {
+          "code": "unsafe-initial-value",
+          "severity": "error",
+          "span": {
+            "line": 208,
+            "end_line": 208
+          },
+          "reason": "This initial character requires Base64 encoding."
+        }
+      ],
+      "write": "blocked as expected"
+    },
+    {
+      "file": "test-lang.ldif",
+      "sha256": "ccfea61d80109a53dcc5bed56983a7af27a1745c33021af132ecc32d8c744168",
+      "bytes": 308,
+      "strict_exit": 2,
+      "compat_exit": 0,
+      "records": 1,
+      "diagnostics": [
+        {
+          "code": "missing-version",
+          "severity": "warning",
+          "span": {
+            "line": 1,
+            "end_line": 1
+          },
+          "reason": "Expected version: 1; --compat explicitly permits a missing version header."
+        }
+      ],
+      "comparison": [
+        "parse passed",
+        "MoonLDIF writer / Python reader passed",
+        "Python writer / MoonLDIF reader passed"
+      ]
+    },
+    {
+      "file": "test-modify.ldif",
+      "sha256": "d8de4245de88b7dec8ebce3204372936588ac11a2f90ddc980613e4bda1a8c4f",
+      "bytes": 2583,
+      "strict_exit": 2,
+      "compat_exit": 2,
+      "records": 8,
+      "diagnostics": [
+        {
+          "code": "missing-modification-terminator",
+          "severity": "error",
+          "span": {
+            "line": 20,
+            "end_line": 20
+          },
+          "reason": "Each modification must end with a '-' line."
+        },
+        {
+          "code": "missing-modification-terminator",
+          "severity": "error",
+          "span": {
+            "line": 30,
+            "end_line": 30
+          },
+          "reason": "Each modification must end with a '-' line."
+        },
+        {
+          "code": "missing-modification-terminator",
+          "severity": "error",
+          "span": {
+            "line": 53,
+            "end_line": 53
+          },
+          "reason": "Each modification must end with a '-' line."
+        },
+        {
+          "code": "missing-modification-terminator",
+          "severity": "error",
+          "span": {
+            "line": 72,
+            "end_line": 72
+          },
+          "reason": "Each modification must end with a '-' line."
+        },
+        {
+          "code": "unsupported-modification",
+          "severity": "unsupported",
+          "span": {
+            "line": 101,
+            "end_line": 101
+          },
+          "reason": "Only add, delete and replace modification operations are supported."
+        },
+        {
+          "code": "unsupported-modification",
+          "severity": "unsupported",
+          "span": {
+            "line": 104,
+            "end_line": 104
+          },
+          "reason": "Only add, delete and replace modification operations are supported."
+        },
+        {
+          "code": "missing-modification-terminator",
+          "severity": "error",
+          "span": {
+            "line": 104,
+            "end_line": 104
+          },
+          "reason": "Each modification must end with a '-' line."
+        },
+        {
+          "code": "empty-modify",
+          "severity": "warning",
+          "span": {
+            "line": 107,
+            "end_line": 107
+          },
+          "reason": "No modifications are present; server acceptance is not checked."
+        }
+      ],
+      "write": "blocked as expected",
+      "unsupported_review": [
+        {
+          "code": "unsupported-modification",
+          "span": {
+            "line": 101,
+            "end_line": 103
+          }
+        },
+        {
+          "code": "unsupported-modification",
+          "span": {
+            "line": 104,
+            "end_line": 105
+          }
+        }
+      ]
+    },
+    {
+      "file": "test-ordered.ldif",
+      "sha256": "4768177869d00ad1d0b488d80e078d7593ac4896e78fa16abd16e4e2372bddea",
+      "bytes": 19880,
+      "strict_exit": 2,
+      "compat_exit": 0,
+      "records": 19,
+      "diagnostics": [
+        {
+          "code": "missing-version",
+          "severity": "warning",
+          "span": {
+            "line": 1,
+            "end_line": 1
+          },
+          "reason": "Expected version: 1; --compat explicitly permits a missing version header."
+        }
+      ],
+      "comparison": [
+        "parse passed",
+        "MoonLDIF writer / Python reader passed",
+        "Python writer / MoonLDIF reader passed"
+      ]
+    },
+    {
+      "file": "rootdse.ldif",
+      "sha256": "d8f4ac11308e63bf80de1205f578356436b07369702e15b580436df699672dd9",
+      "bytes": 64,
+      "strict_exit": 2,
+      "compat_exit": 0,
+      "records": 1,
+      "diagnostics": [
+        {
+          "code": "missing-version",
+          "severity": "warning",
+          "span": {
+            "line": 1,
+            "end_line": 1
+          },
+          "reason": "Expected version: 1; --compat explicitly permits a missing version header."
+        }
+      ],
+      "comparison": [
+        "parse passed",
+        "MoonLDIF writer / Python reader passed",
+        "Python writer / MoonLDIF reader passed"
+      ]
+    }
+  ]
+}

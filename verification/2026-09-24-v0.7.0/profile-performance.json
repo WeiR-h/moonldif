@@ -1,0 +1,554 @@
+{
+  "profile_enabled": true,
+  "node": "v24.13.0",
+  "platform": "win32",
+  "cpu": "AMD Ryzen 7 5800H with Radeon Graphics         ",
+  "method": "Independent process per scenario; one warm-up and seven measured runs. Includes source hashing, Base64 transport, initial page, tail lookup, full search, chunk transport and full JSON parsing. RSS before/after is not peak or a leak proof; synthetic data.",
+  "cases": [
+    {
+      "mode": "review",
+      "records": 100,
+      "input_bytes": 6212,
+      "sha256": "44f0af8294c512c5d41495ce1bd028d8348cdd1fa2e3837f0acde4b37d24c366",
+      "version": "0.7.0",
+      "measurements": [
+        {
+          "analysis_ms": 15.748199999999997,
+          "tail_ms": 3.0069000000000017,
+          "search_ms": 0.9358000000000004,
+          "export_parse_ms": 6.467100000000016,
+          "total_ms": 26.158000000000015
+        },
+        {
+          "analysis_ms": 9.805099999999982,
+          "tail_ms": 2.334699999999998,
+          "search_ms": 0.6451000000000136,
+          "export_parse_ms": 5.680900000000008,
+          "total_ms": 18.4658
+        },
+        {
+          "analysis_ms": 14.394499999999994,
+          "tail_ms": 3.2908999999999935,
+          "search_ms": 0.9236000000000217,
+          "export_parse_ms": 10.063499999999976,
+          "total_ms": 28.672499999999985
+        },
+        {
+          "analysis_ms": 13.57929999999999,
+          "tail_ms": 1.4701000000000022,
+          "search_ms": 0.7347000000000037,
+          "export_parse_ms": 4.2851,
+          "total_ms": 20.069199999999995
+        },
+        {
+          "analysis_ms": 9.748500000000007,
+          "tail_ms": 2.5795999999999992,
+          "search_ms": 0.3044999999999902,
+          "export_parse_ms": 2.606700000000018,
+          "total_ms": 15.239300000000014
+        },
+        {
+          "analysis_ms": 10.16070000000002,
+          "tail_ms": 1.466799999999978,
+          "search_ms": 0.5921000000000163,
+          "export_parse_ms": 4.451400000000035,
+          "total_ms": 16.67100000000005
+        },
+        {
+          "analysis_ms": 10.35650000000004,
+          "tail_ms": 3.109899999999982,
+          "search_ms": 0.9932000000000016,
+          "export_parse_ms": 3.5871999999999957,
+          "total_ms": 18.04680000000002
+        }
+      ],
+      "medians": {
+        "analysis_ms": 10.35650000000004,
+        "tail_ms": 2.5795999999999992,
+        "search_ms": 0.7347000000000037,
+        "export_parse_ms": 4.451400000000035,
+        "total_ms": 18.4658
+      },
+      "rss_before": 50888704,
+      "rss_after": 64512000,
+      "status": "passed"
+    },
+    {
+      "mode": "review",
+      "records": 1000,
+      "input_bytes": 62012,
+      "sha256": "b57e1e6a67fa642f860571f2d92df3582aef7772355ad11ab7eba2157633f3a6",
+      "version": "0.7.0",
+      "measurements": [
+        {
+          "analysis_ms": 66.06899999999996,
+          "tail_ms": 1.3281000000000063,
+          "search_ms": 0.8980999999999995,
+          "export_parse_ms": 42.04849999999999,
+          "total_ms": 110.34369999999996
+        },
+        {
+          "analysis_ms": 62.0686,
+          "tail_ms": 9.2466,
+          "search_ms": 1.1836999999999875,
+          "export_parse_ms": 34.66040000000004,
+          "total_ms": 107.15930000000003
+        },
+        {
+          "analysis_ms": 48.63910000000004,
+          "tail_ms": 4.053999999999974,
+          "search_ms": 1.5983999999999696,
+          "export_parse_ms": 34.48120000000006,
+          "total_ms": 88.77270000000004
+        },
+        {
+          "analysis_ms": 42.97500000000002,
+          "tail_ms": 1.5412000000000035,
+          "search_ms": 0.9322999999999411,
+          "export_parse_ms": 37.07400000000007,
+          "total_ms": 82.52250000000004
+        },
+        {
+          "analysis_ms": 56.18979999999999,
+          "tail_ms": 2.094600000000014,
+          "search_ms": 1.1843999999999824,
+          "export_parse_ms": 34.95180000000005,
+          "total_ms": 94.42060000000004
+        },
+        {
+          "analysis_ms": 52.48090000000002,
+          "tail_ms": 2.8541999999999916,
+          "search_ms": 1.5561999999999898,
+          "export_parse_ms": 48.668100000000095,
+          "total_ms": 105.5594000000001
+        },
+        {
+          "analysis_ms": 72.11059999999998,
+          "tail_ms": 2.249900000000025,
+          "search_ms": 1.1533000000000584,
+          "export_parse_ms": 43.94459999999992,
+          "total_ms": 119.45839999999998
+        }
+      ],
+      "medians": {
+        "analysis_ms": 56.18979999999999,
+        "tail_ms": 2.249900000000025,
+        "search_ms": 1.1836999999999875,
+        "export_parse_ms": 37.07400000000007,
+        "total_ms": 105.5594000000001
+      },
+      "rss_before": 51494912,
+      "rss_after": 141115392,
+      "status": "passed"
+    },
+    {
+      "mode": "review",
+      "records": 5000,
+      "input_bytes": 310012,
+      "sha256": "612f9d794a7d5f300a90ac541840cf3aad9b7c78df1463d602c47be9e9a3b2a1",
+      "version": "0.7.0",
+      "measurements": [
+        {
+          "analysis_ms": 263.1701999999999,
+          "tail_ms": 4.601499999999987,
+          "search_ms": 7.512400000000071,
+          "export_parse_ms": 137.81960000000004,
+          "total_ms": 413.1037
+        },
+        {
+          "analysis_ms": 271.96590000000015,
+          "tail_ms": 2.5361999999997806,
+          "search_ms": 8.304400000000214,
+          "export_parse_ms": 204.53059999999982,
+          "total_ms": 487.33709999999996
+        },
+        {
+          "analysis_ms": 360.3802999999998,
+          "tail_ms": 3.128099999999904,
+          "search_ms": 11.132399999999961,
+          "export_parse_ms": 323.73860000000013,
+          "total_ms": 698.3793999999998
+        },
+        {
+          "analysis_ms": 512.2004000000002,
+          "tail_ms": 5.206000000000131,
+          "search_ms": 7.059499999999844,
+          "export_parse_ms": 395.48680000000013,
+          "total_ms": 919.9527000000003
+        },
+        {
+          "analysis_ms": 303.96039999999994,
+          "tail_ms": 4.938100000000304,
+          "search_ms": 6.673099999999977,
+          "export_parse_ms": 158.0605999999998,
+          "total_ms": 473.6322
+        },
+        {
+          "analysis_ms": 237.16640000000007,
+          "tail_ms": 1.8858000000000175,
+          "search_ms": 3.9990999999999985,
+          "export_parse_ms": 138.03290000000015,
+          "total_ms": 381.08420000000024
+        },
+        {
+          "analysis_ms": 250.80000000000018,
+          "tail_ms": 1.6965000000000146,
+          "search_ms": 3.2695000000003347,
+          "export_parse_ms": 134.05000000000018,
+          "total_ms": 389.8160000000007
+        }
+      ],
+      "medians": {
+        "analysis_ms": 271.96590000000015,
+        "tail_ms": 3.128099999999904,
+        "search_ms": 7.059499999999844,
+        "export_parse_ms": 158.0605999999998,
+        "total_ms": 473.6322
+      },
+      "rss_before": 53157888,
+      "rss_after": 279187456,
+      "status": "passed"
+    },
+    {
+      "mode": "review",
+      "records": 10000,
+      "input_bytes": 620012,
+      "sha256": "a269dede456ff6685b81399c188f5cbeb1d9b5d221791989cb04c5987d864e14",
+      "version": "0.7.0",
+      "measurements": [
+        {
+          "analysis_ms": 476.69950000000006,
+          "tail_ms": 15.495599999999968,
+          "search_ms": 7.847999999999956,
+          "export_parse_ms": 294.91380000000004,
+          "total_ms": 794.9569
+        },
+        {
+          "analysis_ms": 417.8535999999999,
+          "tail_ms": 3.853599999999915,
+          "search_ms": 6.41359999999986,
+          "export_parse_ms": 244.16370000000006,
+          "total_ms": 672.2844999999998
+        },
+        {
+          "analysis_ms": 446.50940000000037,
+          "tail_ms": 4.049199999999928,
+          "search_ms": 5.736199999999826,
+          "export_parse_ms": 248.3388,
+          "total_ms": 704.6336000000001
+        },
+        {
+          "analysis_ms": 408.53819999999996,
+          "tail_ms": 2.9036000000000968,
+          "search_ms": 11.23779999999988,
+          "export_parse_ms": 329.1360000000004,
+          "total_ms": 751.8156000000004
+        },
+        {
+          "analysis_ms": 371.90319999999974,
+          "tail_ms": 2.6606000000001586,
+          "search_ms": 6.914700000000266,
+          "export_parse_ms": 248.23530000000028,
+          "total_ms": 629.7138000000004
+        },
+        {
+          "analysis_ms": 378.9931999999999,
+          "tail_ms": 2.468499999999949,
+          "search_ms": 5.8672999999998865,
+          "export_parse_ms": 249.07380000000012,
+          "total_ms": 636.4027999999998
+        },
+        {
+          "analysis_ms": 444.84950000000026,
+          "tail_ms": 2.4484000000002197,
+          "search_ms": 12.92529999999988,
+          "export_parse_ms": 291.0111999999999,
+          "total_ms": 751.2344000000003
+        }
+      ],
+      "medians": {
+        "analysis_ms": 417.8535999999999,
+        "tail_ms": 2.9036000000000968,
+        "search_ms": 6.914700000000266,
+        "export_parse_ms": 249.07380000000012,
+        "total_ms": 704.6336000000001
+      },
+      "rss_before": 55066624,
+      "rss_after": 385736704,
+      "status": "passed"
+    },
+    {
+      "mode": "compare",
+      "records": 100,
+      "input_bytes": 2712,
+      "sha256": "0260205daebca0ac6c71c7a95bae55932cc1c849816e49c9397187e59f413d35",
+      "version": "0.7.0",
+      "measurements": [
+        {
+          "analysis_ms": 19.0728,
+          "tail_ms": 2.074799999999982,
+          "search_ms": 0.7410000000000139,
+          "export_parse_ms": 2.3057000000000016,
+          "total_ms": 24.1943
+        },
+        {
+          "analysis_ms": 11.982100000000003,
+          "tail_ms": 3.8843999999999994,
+          "search_ms": 1.1921999999999855,
+          "export_parse_ms": 6.734300000000019,
+          "total_ms": 23.793000000000006
+        },
+        {
+          "analysis_ms": 17.467399999999998,
+          "tail_ms": 3.0283000000000015,
+          "search_ms": 0.4988999999999919,
+          "export_parse_ms": 4.626300000000015,
+          "total_ms": 25.620900000000006
+        },
+        {
+          "analysis_ms": 15.87009999999998,
+          "tail_ms": 2.83280000000002,
+          "search_ms": 0.8452999999999804,
+          "export_parse_ms": 6.432900000000018,
+          "total_ms": 25.981099999999998
+        },
+        {
+          "analysis_ms": 9.380400000000009,
+          "tail_ms": 0.8799999999999955,
+          "search_ms": 0.331799999999987,
+          "export_parse_ms": 3.9770000000000323,
+          "total_ms": 14.569200000000023
+        },
+        {
+          "analysis_ms": 8.561000000000035,
+          "tail_ms": 1.7456999999999994,
+          "search_ms": 1.3845999999999776,
+          "export_parse_ms": 2.9365000000000236,
+          "total_ms": 14.627800000000036
+        },
+        {
+          "analysis_ms": 7.622500000000002,
+          "tail_ms": 1.4911000000000172,
+          "search_ms": 0.282799999999952,
+          "export_parse_ms": 1.3117000000000303,
+          "total_ms": 10.708100000000002
+        }
+      ],
+      "medians": {
+        "analysis_ms": 11.982100000000003,
+        "tail_ms": 2.074799999999982,
+        "search_ms": 0.7410000000000139,
+        "export_parse_ms": 3.9770000000000323,
+        "total_ms": 23.793000000000006
+      },
+      "rss_before": 50851840,
+      "rss_after": 64729088,
+      "status": "passed"
+    },
+    {
+      "mode": "compare",
+      "records": 1000,
+      "input_bytes": 27012,
+      "sha256": "6bdc19ab8a6ef38d27096083e9ec470ab8c86728fcd27baee3c15e55daa5336c",
+      "version": "0.7.0",
+      "measurements": [
+        {
+          "analysis_ms": 87.65070000000003,
+          "tail_ms": 1.042599999999993,
+          "search_ms": 1.247000000000014,
+          "export_parse_ms": 22.431600000000003,
+          "total_ms": 112.37190000000004
+        },
+        {
+          "analysis_ms": 81.71230000000003,
+          "tail_ms": 3.5051999999999452,
+          "search_ms": 5.0702,
+          "export_parse_ms": 23.811300000000074,
+          "total_ms": 114.09900000000005
+        },
+        {
+          "analysis_ms": 62.97900000000004,
+          "tail_ms": 0.9670999999999594,
+          "search_ms": 1.9285000000000991,
+          "export_parse_ms": 17.865699999999947,
+          "total_ms": 83.74030000000005
+        },
+        {
+          "analysis_ms": 50.31880000000001,
+          "tail_ms": 1.588700000000017,
+          "search_ms": 2.26419999999996,
+          "export_parse_ms": 21.900499999999965,
+          "total_ms": 76.07219999999995
+        },
+        {
+          "analysis_ms": 55.434999999999945,
+          "tail_ms": 1.338100000000054,
+          "search_ms": 1.72199999999998,
+          "export_parse_ms": 17.918800000000033,
+          "total_ms": 76.41390000000001
+        },
+        {
+          "analysis_ms": 58.77769999999998,
+          "tail_ms": 1.1975999999999658,
+          "search_ms": 0.6724000000000387,
+          "export_parse_ms": 18.717599999999948,
+          "total_ms": 79.36529999999993
+        },
+        {
+          "analysis_ms": 40.76609999999994,
+          "tail_ms": 0.7915000000000418,
+          "search_ms": 0.8355999999999995,
+          "export_parse_ms": 16.96760000000006,
+          "total_ms": 59.36080000000004
+        }
+      ],
+      "medians": {
+        "analysis_ms": 58.77769999999998,
+        "tail_ms": 1.1975999999999658,
+        "search_ms": 1.72199999999998,
+        "export_parse_ms": 18.717599999999948,
+        "total_ms": 79.36529999999993
+      },
+      "rss_before": 51167232,
+      "rss_after": 132464640,
+      "status": "passed"
+    },
+    {
+      "mode": "compare",
+      "records": 5000,
+      "input_bytes": 135012,
+      "sha256": "bd8f7c44f09152ca4ed03528ec1e7774e8fffd15546101211df0631ebf40fd7f",
+      "version": "0.7.0",
+      "measurements": [
+        {
+          "analysis_ms": 311.27780000000007,
+          "tail_ms": 2.417699999999968,
+          "search_ms": 8.952200000000062,
+          "export_parse_ms": 141.2799,
+          "total_ms": 463.9276000000001
+        },
+        {
+          "analysis_ms": 261.076,
+          "tail_ms": 2.5366999999998825,
+          "search_ms": 3.567199999999957,
+          "export_parse_ms": 96.23840000000018,
+          "total_ms": 363.41830000000004
+        },
+        {
+          "analysis_ms": 275.81920000000014,
+          "tail_ms": 2.1499999999998636,
+          "search_ms": 5.926800000000185,
+          "export_parse_ms": 100.86019999999985,
+          "total_ms": 384.75620000000004
+        },
+        {
+          "analysis_ms": 256.7187999999999,
+          "tail_ms": 1.5851999999999862,
+          "search_ms": 5.226700000000164,
+          "export_parse_ms": 85.67250000000013,
+          "total_ms": 349.20320000000015
+        },
+        {
+          "analysis_ms": 212.4980999999998,
+          "tail_ms": 1.2780000000002474,
+          "search_ms": 2.7782999999999447,
+          "export_parse_ms": 88.20539999999983,
+          "total_ms": 304.7597999999998
+        },
+        {
+          "analysis_ms": 247.40430000000015,
+          "tail_ms": 2.1010000000001128,
+          "search_ms": 5.6151999999997315,
+          "export_parse_ms": 88.09850000000006,
+          "total_ms": 343.21900000000005
+        },
+        {
+          "analysis_ms": 220.49139999999989,
+          "tail_ms": 2.43080000000009,
+          "search_ms": 4.814800000000105,
+          "export_parse_ms": 87.48680000000013,
+          "total_ms": 315.2238000000002
+        }
+      ],
+      "medians": {
+        "analysis_ms": 256.7187999999999,
+        "tail_ms": 2.1499999999998636,
+        "search_ms": 5.226700000000164,
+        "export_parse_ms": 88.20539999999983,
+        "total_ms": 349.20320000000015
+      },
+      "rss_before": 52477952,
+      "rss_after": 272293888,
+      "status": "passed"
+    },
+    {
+      "mode": "compare",
+      "records": 10000,
+      "input_bytes": 270012,
+      "sha256": "44b7cc8d632a41450a1efe8a07c9325c9f3e566d9a37d388dbc07f08f2542ac6",
+      "version": "0.7.0",
+      "measurements": [
+        {
+          "analysis_ms": 475.27,
+          "tail_ms": 4.0236999999999625,
+          "search_ms": 14.729299999999967,
+          "export_parse_ms": 193.70800000000008,
+          "total_ms": 687.731
+        },
+        {
+          "analysis_ms": 552.6735000000001,
+          "tail_ms": 6.873299999999745,
+          "search_ms": 8.518100000000231,
+          "export_parse_ms": 227.5978,
+          "total_ms": 795.6627000000001
+        },
+        {
+          "analysis_ms": 523.5243,
+          "tail_ms": 1.716899999999896,
+          "search_ms": 5.651100000000042,
+          "export_parse_ms": 192.05009999999993,
+          "total_ms": 722.9423999999999
+        },
+        {
+          "analysis_ms": 460.1613000000002,
+          "tail_ms": 1.572099999999864,
+          "search_ms": 9.012099999999919,
+          "export_parse_ms": 207.20150000000012,
+          "total_ms": 677.9470000000001
+        },
+        {
+          "analysis_ms": 465.55740000000014,
+          "tail_ms": 3.407799999999952,
+          "search_ms": 8.60990000000038,
+          "export_parse_ms": 194.89129999999932,
+          "total_ms": 672.4663999999998
+        },
+        {
+          "analysis_ms": 517.1070999999993,
+          "tail_ms": 2.1947000000000116,
+          "search_ms": 11.76970000000074,
+          "export_parse_ms": 189.64009999999962,
+          "total_ms": 720.7115999999996
+        },
+        {
+          "analysis_ms": 496.4531999999999,
+          "tail_ms": 1.716500000000451,
+          "search_ms": 6.201900000000023,
+          "export_parse_ms": 161.34149999999954,
+          "total_ms": 665.7130999999999
+        }
+      ],
+      "medians": {
+        "analysis_ms": 496.4531999999999,
+        "tail_ms": 2.1947000000000116,
+        "search_ms": 8.60990000000038,
+        "export_parse_ms": 193.70800000000008,
+        "total_ms": 687.731
+      },
+      "rss_before": 54800384,
+      "rss_after": 362541056,
+      "status": "passed"
+    }
+  ],
+  "status": "passed"
+}

@@ -136,11 +136,11 @@ try {
       await page.screenshot({ path: resolve(output, name + '-mobile.png'), fullPage: true });
       await verifyPagination(page, output, name);
       await verifySnapshot(page, output, name);
-      await verifyProfiles(page, output, name);
+      const profileChecks = await verifyProfiles(page, output, name);
       assert.deepEqual(errors, []);
       assert.deepEqual(badResponses, []);
       assert.ok(requests.every(r => r.method === 'GET' && r.url.startsWith(new URL(url).origin)));
-      evidence.cases.push({ browser: name, browser_version: browser.version(), status: 'passed', checks: ['identity', 'nonblank', 'no-overlay', 'no-console-errors', 'CRLF-source-hash', 'clear-policy', 'rename-policy', 'stale-invalidation', 'partial-report', 'markdown-escaping', 'private-attribute-omission', 'source-navigation', 'download-cli-roundtrip', 'oversize', 'bad-encoding', 'mobile-no-overflow', 'snapshot-0-1-2', 'snapshot-source-hashes', 'snapshot-locations', 'snapshot-report-privacy', 'snapshot-stale-inputs', 'snapshot-resource-limits'], requests, errors, warnings, badResponses });
+      evidence.cases.push({ browser: name, browser_version: browser.version(), status: 'passed', checks: ['identity', 'nonblank', 'no-overlay', 'no-console-errors', 'CRLF-source-hash', 'clear-policy', 'rename-policy', 'stale-invalidation', 'partial-report', 'markdown-escaping', 'private-attribute-omission', 'source-navigation', 'download-cli-roundtrip', 'oversize', 'bad-encoding', 'mobile-no-overflow', 'snapshot-0-1-2', 'snapshot-source-hashes', 'snapshot-locations', 'snapshot-report-privacy', 'snapshot-stale-inputs', 'snapshot-resource-limits', ...profileChecks], requests, errors, warnings, badResponses });
       {
         const racePage = await context.newPage();
         await racePage.addInitScript(() => {
@@ -197,3 +197,4 @@ try {
   writeFileSync(resolve(output, 'result.json'), JSON.stringify(evidence, null, 2) + '\n');
   console.log(JSON.stringify({ status: evidence.status, cases: evidence.cases.length, error: evidence.error }));
 }
+

@@ -7,7 +7,9 @@ import { spoolReport } from './report-output.mjs';
 
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
 export function runProfile(plan) {
-  const raw = readBounded(plan.profile_path, 65536);
+  let raw;
+  try { raw = readBounded(plan.profile_path, 65536); }
+  catch { return JSON.parse(core.host_error('Configuration must be a readable local regular file within 64 KiB.', plan.format)); }
   const encoded = raw.toString('base64');
   const checked = JSON.parse(core.profile_validate(encoded));
   if (checked.exit_code !== 0) {
@@ -25,7 +27,7 @@ export function runProfile(plan) {
       core.batch_add(batch, basename(input), bytes.toString('base64'), hash(bytes));
     }
     const result = JSON.parse(core.batch_finish(batch, plan.format));
-    if (Buffer.byteLength(result.output, 'utf8') > 32 * 1024 * 1024) throw new Error('Report exceeds 32 MiB.');
+    if (Buffer.byteLength(result.output, 'utf8') > 32 * 1024 * 1024) return JSON.parse(core.host_error('Configured batch report exceeds 32 MiB; no report was exported.', plan.format));
     return result;
   }
   const before = readBounded(plan.inputs[0]);

@@ -77,4 +77,5 @@ export async function verifyProfiles(page,output,browser) {
   assert.equal(await page.getByLabel('最多整条删除',{exact:true}).inputValue(),'2');
   assert.equal(await page.getByRole('button',{name:'下载完整审阅报告',exact:true}).isEnabled(),false);
   await section.getByRole('button',{name:'停用配置'}).click();
+  return ['profile-import-export','profile-limit-navigation','profile-effective-fingerprint','profile-edited-source-invalidation','profile-compare-scope','profile-invalid-blocked','profile-read-races'];
 }

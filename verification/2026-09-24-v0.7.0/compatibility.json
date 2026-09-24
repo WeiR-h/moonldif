@@ -1,0 +1,2136 @@
+{
+  "status": "passed",
+  "method": "Identical bytes/options compared against frozen v0.6.0; only tool-version metadata normalized; complete envelope including written LDIF and v2 pages/full reports compared",
+  "cases": [
+    {
+      "input": "examples\\01-directory-export.ldif",
+      "sha256": "400ba054c2cce09e7a5213fc4f4a364fda078075c9954b7dfd96a921a386f9f2",
+      "command": "check",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\01-directory-export.ldif",
+      "sha256": "400ba054c2cce09e7a5213fc4f4a364fda078075c9954b7dfd96a921a386f9f2",
+      "command": "check",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\01-directory-export.ldif",
+      "sha256": "400ba054c2cce09e7a5213fc4f4a364fda078075c9954b7dfd96a921a386f9f2",
+      "command": "inspect",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\01-directory-export.ldif",
+      "sha256": "400ba054c2cce09e7a5213fc4f4a364fda078075c9954b7dfd96a921a386f9f2",
+      "command": "inspect",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\01-directory-export.ldif",
+      "sha256": "400ba054c2cce09e7a5213fc4f4a364fda078075c9954b7dfd96a921a386f9f2",
+      "command": "review",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\01-directory-export.ldif",
+      "sha256": "400ba054c2cce09e7a5213fc4f4a364fda078075c9954b7dfd96a921a386f9f2",
+      "command": "review",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\01-directory-export.ldif",
+      "sha256": "400ba054c2cce09e7a5213fc4f4a364fda078075c9954b7dfd96a921a386f9f2",
+      "command": "review",
+      "format": "text",
+      "policies": false
+    },
+    {
+      "input": "examples\\01-directory-export.ldif",
+      "sha256": "400ba054c2cce09e7a5213fc4f4a364fda078075c9954b7dfd96a921a386f9f2",
+      "command": "review",
+      "format": "text",
+      "policies": true
+    },
+    {
+      "input": "examples\\01-directory-export.ldif",
+      "sha256": "400ba054c2cce09e7a5213fc4f4a364fda078075c9954b7dfd96a921a386f9f2",
+      "command": "review",
+      "format": "markdown",
+      "policies": false
+    },
+    {
+      "input": "examples\\01-directory-export.ldif",
+      "sha256": "400ba054c2cce09e7a5213fc4f4a364fda078075c9954b7dfd96a921a386f9f2",
+      "command": "review",
+      "format": "markdown",
+      "policies": true
+    },
+    {
+      "input": "examples\\01-directory-export.ldif",
+      "sha256": "400ba054c2cce09e7a5213fc4f4a364fda078075c9954b7dfd96a921a386f9f2",
+      "command": "format",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\01-directory-export.ldif",
+      "sha256": "400ba054c2cce09e7a5213fc4f4a364fda078075c9954b7dfd96a921a386f9f2",
+      "command": "format",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\02-account-changes.ldif",
+      "sha256": "bf8e94f2616e98f6383f8d39062dbe074941ee8252a9c87af7e127c436e1e9d0",
+      "command": "check",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\02-account-changes.ldif",
+      "sha256": "bf8e94f2616e98f6383f8d39062dbe074941ee8252a9c87af7e127c436e1e9d0",
+      "command": "check",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\02-account-changes.ldif",
+      "sha256": "bf8e94f2616e98f6383f8d39062dbe074941ee8252a9c87af7e127c436e1e9d0",
+      "command": "inspect",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\02-account-changes.ldif",
+      "sha256": "bf8e94f2616e98f6383f8d39062dbe074941ee8252a9c87af7e127c436e1e9d0",
+      "command": "inspect",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\02-account-changes.ldif",
+      "sha256": "bf8e94f2616e98f6383f8d39062dbe074941ee8252a9c87af7e127c436e1e9d0",
+      "command": "review",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\02-account-changes.ldif",
+      "sha256": "bf8e94f2616e98f6383f8d39062dbe074941ee8252a9c87af7e127c436e1e9d0",
+      "command": "review",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\02-account-changes.ldif",
+      "sha256": "bf8e94f2616e98f6383f8d39062dbe074941ee8252a9c87af7e127c436e1e9d0",
+      "command": "review",
+      "format": "text",
+      "policies": false
+    },
+    {
+      "input": "examples\\02-account-changes.ldif",
+      "sha256": "bf8e94f2616e98f6383f8d39062dbe074941ee8252a9c87af7e127c436e1e9d0",
+      "command": "review",
+      "format": "text",
+      "policies": true
+    },
+    {
+      "input": "examples\\02-account-changes.ldif",
+      "sha256": "bf8e94f2616e98f6383f8d39062dbe074941ee8252a9c87af7e127c436e1e9d0",
+      "command": "review",
+      "format": "markdown",
+      "policies": false
+    },
+    {
+      "input": "examples\\02-account-changes.ldif",
+      "sha256": "bf8e94f2616e98f6383f8d39062dbe074941ee8252a9c87af7e127c436e1e9d0",
+      "command": "review",
+      "format": "markdown",
+      "policies": true
+    },
+    {
+      "input": "examples\\02-account-changes.ldif",
+      "sha256": "bf8e94f2616e98f6383f8d39062dbe074941ee8252a9c87af7e127c436e1e9d0",
+      "command": "format",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\02-account-changes.ldif",
+      "sha256": "bf8e94f2616e98f6383f8d39062dbe074941ee8252a9c87af7e127c436e1e9d0",
+      "command": "format",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\03-migration-plan.ldif",
+      "sha256": "0686d441672d8ead71b481bf49eab77b9ddd5c806c2ec10f033fcbf3f70ea64e",
+      "command": "check",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\03-migration-plan.ldif",
+      "sha256": "0686d441672d8ead71b481bf49eab77b9ddd5c806c2ec10f033fcbf3f70ea64e",
+      "command": "check",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\03-migration-plan.ldif",
+      "sha256": "0686d441672d8ead71b481bf49eab77b9ddd5c806c2ec10f033fcbf3f70ea64e",
+      "command": "inspect",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\03-migration-plan.ldif",
+      "sha256": "0686d441672d8ead71b481bf49eab77b9ddd5c806c2ec10f033fcbf3f70ea64e",
+      "command": "inspect",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\03-migration-plan.ldif",
+      "sha256": "0686d441672d8ead71b481bf49eab77b9ddd5c806c2ec10f033fcbf3f70ea64e",
+      "command": "review",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\03-migration-plan.ldif",
+      "sha256": "0686d441672d8ead71b481bf49eab77b9ddd5c806c2ec10f033fcbf3f70ea64e",
+      "command": "review",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\03-migration-plan.ldif",
+      "sha256": "0686d441672d8ead71b481bf49eab77b9ddd5c806c2ec10f033fcbf3f70ea64e",
+      "command": "review",
+      "format": "text",
+      "policies": false
+    },
+    {
+      "input": "examples\\03-migration-plan.ldif",
+      "sha256": "0686d441672d8ead71b481bf49eab77b9ddd5c806c2ec10f033fcbf3f70ea64e",
+      "command": "review",
+      "format": "text",
+      "policies": true
+    },
+    {
+      "input": "examples\\03-migration-plan.ldif",
+      "sha256": "0686d441672d8ead71b481bf49eab77b9ddd5c806c2ec10f033fcbf3f70ea64e",
+      "command": "review",
+      "format": "markdown",
+      "policies": false
+    },
+    {
+      "input": "examples\\03-migration-plan.ldif",
+      "sha256": "0686d441672d8ead71b481bf49eab77b9ddd5c806c2ec10f033fcbf3f70ea64e",
+      "command": "review",
+      "format": "markdown",
+      "policies": true
+    },
+    {
+      "input": "examples\\03-migration-plan.ldif",
+      "sha256": "0686d441672d8ead71b481bf49eab77b9ddd5c806c2ec10f033fcbf3f70ea64e",
+      "command": "format",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\03-migration-plan.ldif",
+      "sha256": "0686d441672d8ead71b481bf49eab77b9ddd5c806c2ec10f033fcbf3f70ea64e",
+      "command": "format",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\complete-review\\after.ldif",
+      "sha256": "22b0b4635677ad7eedb7ad6dbfbcfb46b9578abaed45d66ad5ad198823c4b015",
+      "command": "check",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\complete-review\\after.ldif",
+      "sha256": "22b0b4635677ad7eedb7ad6dbfbcfb46b9578abaed45d66ad5ad198823c4b015",
+      "command": "check",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\complete-review\\after.ldif",
+      "sha256": "22b0b4635677ad7eedb7ad6dbfbcfb46b9578abaed45d66ad5ad198823c4b015",
+      "command": "inspect",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\complete-review\\after.ldif",
+      "sha256": "22b0b4635677ad7eedb7ad6dbfbcfb46b9578abaed45d66ad5ad198823c4b015",
+      "command": "inspect",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\complete-review\\after.ldif",
+      "sha256": "22b0b4635677ad7eedb7ad6dbfbcfb46b9578abaed45d66ad5ad198823c4b015",
+      "command": "review",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\complete-review\\after.ldif",
+      "sha256": "22b0b4635677ad7eedb7ad6dbfbcfb46b9578abaed45d66ad5ad198823c4b015",
+      "command": "review",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\complete-review\\after.ldif",
+      "sha256": "22b0b4635677ad7eedb7ad6dbfbcfb46b9578abaed45d66ad5ad198823c4b015",
+      "command": "review",
+      "format": "text",
+      "policies": false
+    },
+    {
+      "input": "examples\\complete-review\\after.ldif",
+      "sha256": "22b0b4635677ad7eedb7ad6dbfbcfb46b9578abaed45d66ad5ad198823c4b015",
+      "command": "review",
+      "format": "text",
+      "policies": true
+    },
+    {
+      "input": "examples\\complete-review\\after.ldif",
+      "sha256": "22b0b4635677ad7eedb7ad6dbfbcfb46b9578abaed45d66ad5ad198823c4b015",
+      "command": "review",
+      "format": "markdown",
+      "policies": false
+    },
+    {
+      "input": "examples\\complete-review\\after.ldif",
+      "sha256": "22b0b4635677ad7eedb7ad6dbfbcfb46b9578abaed45d66ad5ad198823c4b015",
+      "command": "review",
+      "format": "markdown",
+      "policies": true
+    },
+    {
+      "input": "examples\\complete-review\\after.ldif",
+      "sha256": "22b0b4635677ad7eedb7ad6dbfbcfb46b9578abaed45d66ad5ad198823c4b015",
+      "command": "format",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\complete-review\\after.ldif",
+      "sha256": "22b0b4635677ad7eedb7ad6dbfbcfb46b9578abaed45d66ad5ad198823c4b015",
+      "command": "format",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\complete-review\\before.ldif",
+      "sha256": "39b787228054b78270843e49f97d2a87f48c60b7bdcd99c5a783ddbaa8d983d9",
+      "command": "check",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\complete-review\\before.ldif",
+      "sha256": "39b787228054b78270843e49f97d2a87f48c60b7bdcd99c5a783ddbaa8d983d9",
+      "command": "check",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\complete-review\\before.ldif",
+      "sha256": "39b787228054b78270843e49f97d2a87f48c60b7bdcd99c5a783ddbaa8d983d9",
+      "command": "inspect",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\complete-review\\before.ldif",
+      "sha256": "39b787228054b78270843e49f97d2a87f48c60b7bdcd99c5a783ddbaa8d983d9",
+      "command": "inspect",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\complete-review\\before.ldif",
+      "sha256": "39b787228054b78270843e49f97d2a87f48c60b7bdcd99c5a783ddbaa8d983d9",
+      "command": "review",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\complete-review\\before.ldif",
+      "sha256": "39b787228054b78270843e49f97d2a87f48c60b7bdcd99c5a783ddbaa8d983d9",
+      "command": "review",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\complete-review\\before.ldif",
+      "sha256": "39b787228054b78270843e49f97d2a87f48c60b7bdcd99c5a783ddbaa8d983d9",
+      "command": "review",
+      "format": "text",
+      "policies": false
+    },
+    {
+      "input": "examples\\complete-review\\before.ldif",
+      "sha256": "39b787228054b78270843e49f97d2a87f48c60b7bdcd99c5a783ddbaa8d983d9",
+      "command": "review",
+      "format": "text",
+      "policies": true
+    },
+    {
+      "input": "examples\\complete-review\\before.ldif",
+      "sha256": "39b787228054b78270843e49f97d2a87f48c60b7bdcd99c5a783ddbaa8d983d9",
+      "command": "review",
+      "format": "markdown",
+      "policies": false
+    },
+    {
+      "input": "examples\\complete-review\\before.ldif",
+      "sha256": "39b787228054b78270843e49f97d2a87f48c60b7bdcd99c5a783ddbaa8d983d9",
+      "command": "review",
+      "format": "markdown",
+      "policies": true
+    },
+    {
+      "input": "examples\\complete-review\\before.ldif",
+      "sha256": "39b787228054b78270843e49f97d2a87f48c60b7bdcd99c5a783ddbaa8d983d9",
+      "command": "format",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\complete-review\\before.ldif",
+      "sha256": "39b787228054b78270843e49f97d2a87f48c60b7bdcd99c5a783ddbaa8d983d9",
+      "command": "format",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\complete-review\\changes.ldif",
+      "sha256": "2c8e0358971c983d776633994d007a630d294d8fbfd3993acbcc2375246df6dc",
+      "command": "check",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\complete-review\\changes.ldif",
+      "sha256": "2c8e0358971c983d776633994d007a630d294d8fbfd3993acbcc2375246df6dc",
+      "command": "check",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\complete-review\\changes.ldif",
+      "sha256": "2c8e0358971c983d776633994d007a630d294d8fbfd3993acbcc2375246df6dc",
+      "command": "inspect",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\complete-review\\changes.ldif",
+      "sha256": "2c8e0358971c983d776633994d007a630d294d8fbfd3993acbcc2375246df6dc",
+      "command": "inspect",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\complete-review\\changes.ldif",
+      "sha256": "2c8e0358971c983d776633994d007a630d294d8fbfd3993acbcc2375246df6dc",
+      "command": "review",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\complete-review\\changes.ldif",
+      "sha256": "2c8e0358971c983d776633994d007a630d294d8fbfd3993acbcc2375246df6dc",
+      "command": "review",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\complete-review\\changes.ldif",
+      "sha256": "2c8e0358971c983d776633994d007a630d294d8fbfd3993acbcc2375246df6dc",
+      "command": "review",
+      "format": "text",
+      "policies": false
+    },
+    {
+      "input": "examples\\complete-review\\changes.ldif",
+      "sha256": "2c8e0358971c983d776633994d007a630d294d8fbfd3993acbcc2375246df6dc",
+      "command": "review",
+      "format": "text",
+      "policies": true
+    },
+    {
+      "input": "examples\\complete-review\\changes.ldif",
+      "sha256": "2c8e0358971c983d776633994d007a630d294d8fbfd3993acbcc2375246df6dc",
+      "command": "review",
+      "format": "markdown",
+      "policies": false
+    },
+    {
+      "input": "examples\\complete-review\\changes.ldif",
+      "sha256": "2c8e0358971c983d776633994d007a630d294d8fbfd3993acbcc2375246df6dc",
+      "command": "review",
+      "format": "markdown",
+      "policies": true
+    },
+    {
+      "input": "examples\\complete-review\\changes.ldif",
+      "sha256": "2c8e0358971c983d776633994d007a630d294d8fbfd3993acbcc2375246df6dc",
+      "command": "format",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\complete-review\\changes.ldif",
+      "sha256": "2c8e0358971c983d776633994d007a630d294d8fbfd3993acbcc2375246df6dc",
+      "command": "format",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\profiles\\exceeded.ldif",
+      "sha256": "e6273fd723e22edf901c7f826ae341c678d5cf253aa2112b29dabe274f611abe",
+      "command": "check",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\profiles\\exceeded.ldif",
+      "sha256": "e6273fd723e22edf901c7f826ae341c678d5cf253aa2112b29dabe274f611abe",
+      "command": "check",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\profiles\\exceeded.ldif",
+      "sha256": "e6273fd723e22edf901c7f826ae341c678d5cf253aa2112b29dabe274f611abe",
+      "command": "inspect",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\profiles\\exceeded.ldif",
+      "sha256": "e6273fd723e22edf901c7f826ae341c678d5cf253aa2112b29dabe274f611abe",
+      "command": "inspect",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\profiles\\exceeded.ldif",
+      "sha256": "e6273fd723e22edf901c7f826ae341c678d5cf253aa2112b29dabe274f611abe",
+      "command": "review",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\profiles\\exceeded.ldif",
+      "sha256": "e6273fd723e22edf901c7f826ae341c678d5cf253aa2112b29dabe274f611abe",
+      "command": "review",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\profiles\\exceeded.ldif",
+      "sha256": "e6273fd723e22edf901c7f826ae341c678d5cf253aa2112b29dabe274f611abe",
+      "command": "review",
+      "format": "text",
+      "policies": false
+    },
+    {
+      "input": "examples\\profiles\\exceeded.ldif",
+      "sha256": "e6273fd723e22edf901c7f826ae341c678d5cf253aa2112b29dabe274f611abe",
+      "command": "review",
+      "format": "text",
+      "policies": true
+    },
+    {
+      "input": "examples\\profiles\\exceeded.ldif",
+      "sha256": "e6273fd723e22edf901c7f826ae341c678d5cf253aa2112b29dabe274f611abe",
+      "command": "review",
+      "format": "markdown",
+      "policies": false
+    },
+    {
+      "input": "examples\\profiles\\exceeded.ldif",
+      "sha256": "e6273fd723e22edf901c7f826ae341c678d5cf253aa2112b29dabe274f611abe",
+      "command": "review",
+      "format": "markdown",
+      "policies": true
+    },
+    {
+      "input": "examples\\profiles\\exceeded.ldif",
+      "sha256": "e6273fd723e22edf901c7f826ae341c678d5cf253aa2112b29dabe274f611abe",
+      "command": "format",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\profiles\\exceeded.ldif",
+      "sha256": "e6273fd723e22edf901c7f826ae341c678d5cf253aa2112b29dabe274f611abe",
+      "command": "format",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\profiles\\incomplete.ldif",
+      "sha256": "f1b691cfb0172fbc6325edeb641d12ca452683aba52a68f3257323a2614c98ff",
+      "command": "check",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\profiles\\incomplete.ldif",
+      "sha256": "f1b691cfb0172fbc6325edeb641d12ca452683aba52a68f3257323a2614c98ff",
+      "command": "check",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\profiles\\incomplete.ldif",
+      "sha256": "f1b691cfb0172fbc6325edeb641d12ca452683aba52a68f3257323a2614c98ff",
+      "command": "inspect",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\profiles\\incomplete.ldif",
+      "sha256": "f1b691cfb0172fbc6325edeb641d12ca452683aba52a68f3257323a2614c98ff",
+      "command": "inspect",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\profiles\\incomplete.ldif",
+      "sha256": "f1b691cfb0172fbc6325edeb641d12ca452683aba52a68f3257323a2614c98ff",
+      "command": "review",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\profiles\\incomplete.ldif",
+      "sha256": "f1b691cfb0172fbc6325edeb641d12ca452683aba52a68f3257323a2614c98ff",
+      "command": "review",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\profiles\\incomplete.ldif",
+      "sha256": "f1b691cfb0172fbc6325edeb641d12ca452683aba52a68f3257323a2614c98ff",
+      "command": "review",
+      "format": "text",
+      "policies": false
+    },
+    {
+      "input": "examples\\profiles\\incomplete.ldif",
+      "sha256": "f1b691cfb0172fbc6325edeb641d12ca452683aba52a68f3257323a2614c98ff",
+      "command": "review",
+      "format": "text",
+      "policies": true
+    },
+    {
+      "input": "examples\\profiles\\incomplete.ldif",
+      "sha256": "f1b691cfb0172fbc6325edeb641d12ca452683aba52a68f3257323a2614c98ff",
+      "command": "review",
+      "format": "markdown",
+      "policies": false
+    },
+    {
+      "input": "examples\\profiles\\incomplete.ldif",
+      "sha256": "f1b691cfb0172fbc6325edeb641d12ca452683aba52a68f3257323a2614c98ff",
+      "command": "review",
+      "format": "markdown",
+      "policies": true
+    },
+    {
+      "input": "examples\\profiles\\incomplete.ldif",
+      "sha256": "f1b691cfb0172fbc6325edeb641d12ca452683aba52a68f3257323a2614c98ff",
+      "command": "format",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\profiles\\incomplete.ldif",
+      "sha256": "f1b691cfb0172fbc6325edeb641d12ca452683aba52a68f3257323a2614c98ff",
+      "command": "format",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\profiles\\within.ldif",
+      "sha256": "13d3cb80f67763a527ddc218b391390efca355114ac1481dff4a49e73a38e666",
+      "command": "check",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\profiles\\within.ldif",
+      "sha256": "13d3cb80f67763a527ddc218b391390efca355114ac1481dff4a49e73a38e666",
+      "command": "check",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\profiles\\within.ldif",
+      "sha256": "13d3cb80f67763a527ddc218b391390efca355114ac1481dff4a49e73a38e666",
+      "command": "inspect",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\profiles\\within.ldif",
+      "sha256": "13d3cb80f67763a527ddc218b391390efca355114ac1481dff4a49e73a38e666",
+      "command": "inspect",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\profiles\\within.ldif",
+      "sha256": "13d3cb80f67763a527ddc218b391390efca355114ac1481dff4a49e73a38e666",
+      "command": "review",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\profiles\\within.ldif",
+      "sha256": "13d3cb80f67763a527ddc218b391390efca355114ac1481dff4a49e73a38e666",
+      "command": "review",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\profiles\\within.ldif",
+      "sha256": "13d3cb80f67763a527ddc218b391390efca355114ac1481dff4a49e73a38e666",
+      "command": "review",
+      "format": "text",
+      "policies": false
+    },
+    {
+      "input": "examples\\profiles\\within.ldif",
+      "sha256": "13d3cb80f67763a527ddc218b391390efca355114ac1481dff4a49e73a38e666",
+      "command": "review",
+      "format": "text",
+      "policies": true
+    },
+    {
+      "input": "examples\\profiles\\within.ldif",
+      "sha256": "13d3cb80f67763a527ddc218b391390efca355114ac1481dff4a49e73a38e666",
+      "command": "review",
+      "format": "markdown",
+      "policies": false
+    },
+    {
+      "input": "examples\\profiles\\within.ldif",
+      "sha256": "13d3cb80f67763a527ddc218b391390efca355114ac1481dff4a49e73a38e666",
+      "command": "review",
+      "format": "markdown",
+      "policies": true
+    },
+    {
+      "input": "examples\\profiles\\within.ldif",
+      "sha256": "13d3cb80f67763a527ddc218b391390efca355114ac1481dff4a49e73a38e666",
+      "command": "format",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\profiles\\within.ldif",
+      "sha256": "13d3cb80f67763a527ddc218b391390efca355114ac1481dff4a49e73a38e666",
+      "command": "format",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\snapshots\\after.ldif",
+      "sha256": "6558c8297a3ba31c6d0b91794e44174fdb39ca2f3e29690513691324f8ee7e68",
+      "command": "check",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\snapshots\\after.ldif",
+      "sha256": "6558c8297a3ba31c6d0b91794e44174fdb39ca2f3e29690513691324f8ee7e68",
+      "command": "check",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\snapshots\\after.ldif",
+      "sha256": "6558c8297a3ba31c6d0b91794e44174fdb39ca2f3e29690513691324f8ee7e68",
+      "command": "inspect",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\snapshots\\after.ldif",
+      "sha256": "6558c8297a3ba31c6d0b91794e44174fdb39ca2f3e29690513691324f8ee7e68",
+      "command": "inspect",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\snapshots\\after.ldif",
+      "sha256": "6558c8297a3ba31c6d0b91794e44174fdb39ca2f3e29690513691324f8ee7e68",
+      "command": "review",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\snapshots\\after.ldif",
+      "sha256": "6558c8297a3ba31c6d0b91794e44174fdb39ca2f3e29690513691324f8ee7e68",
+      "command": "review",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\snapshots\\after.ldif",
+      "sha256": "6558c8297a3ba31c6d0b91794e44174fdb39ca2f3e29690513691324f8ee7e68",
+      "command": "review",
+      "format": "text",
+      "policies": false
+    },
+    {
+      "input": "examples\\snapshots\\after.ldif",
+      "sha256": "6558c8297a3ba31c6d0b91794e44174fdb39ca2f3e29690513691324f8ee7e68",
+      "command": "review",
+      "format": "text",
+      "policies": true
+    },
+    {
+      "input": "examples\\snapshots\\after.ldif",
+      "sha256": "6558c8297a3ba31c6d0b91794e44174fdb39ca2f3e29690513691324f8ee7e68",
+      "command": "review",
+      "format": "markdown",
+      "policies": false
+    },
+    {
+      "input": "examples\\snapshots\\after.ldif",
+      "sha256": "6558c8297a3ba31c6d0b91794e44174fdb39ca2f3e29690513691324f8ee7e68",
+      "command": "review",
+      "format": "markdown",
+      "policies": true
+    },
+    {
+      "input": "examples\\snapshots\\after.ldif",
+      "sha256": "6558c8297a3ba31c6d0b91794e44174fdb39ca2f3e29690513691324f8ee7e68",
+      "command": "format",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\snapshots\\after.ldif",
+      "sha256": "6558c8297a3ba31c6d0b91794e44174fdb39ca2f3e29690513691324f8ee7e68",
+      "command": "format",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\snapshots\\before.ldif",
+      "sha256": "f0266fb2a65f18ebdb787d388c64010f2110aebbc95bab88145ae6d5680facd8",
+      "command": "check",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\snapshots\\before.ldif",
+      "sha256": "f0266fb2a65f18ebdb787d388c64010f2110aebbc95bab88145ae6d5680facd8",
+      "command": "check",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\snapshots\\before.ldif",
+      "sha256": "f0266fb2a65f18ebdb787d388c64010f2110aebbc95bab88145ae6d5680facd8",
+      "command": "inspect",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\snapshots\\before.ldif",
+      "sha256": "f0266fb2a65f18ebdb787d388c64010f2110aebbc95bab88145ae6d5680facd8",
+      "command": "inspect",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\snapshots\\before.ldif",
+      "sha256": "f0266fb2a65f18ebdb787d388c64010f2110aebbc95bab88145ae6d5680facd8",
+      "command": "review",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\snapshots\\before.ldif",
+      "sha256": "f0266fb2a65f18ebdb787d388c64010f2110aebbc95bab88145ae6d5680facd8",
+      "command": "review",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\snapshots\\before.ldif",
+      "sha256": "f0266fb2a65f18ebdb787d388c64010f2110aebbc95bab88145ae6d5680facd8",
+      "command": "review",
+      "format": "text",
+      "policies": false
+    },
+    {
+      "input": "examples\\snapshots\\before.ldif",
+      "sha256": "f0266fb2a65f18ebdb787d388c64010f2110aebbc95bab88145ae6d5680facd8",
+      "command": "review",
+      "format": "text",
+      "policies": true
+    },
+    {
+      "input": "examples\\snapshots\\before.ldif",
+      "sha256": "f0266fb2a65f18ebdb787d388c64010f2110aebbc95bab88145ae6d5680facd8",
+      "command": "review",
+      "format": "markdown",
+      "policies": false
+    },
+    {
+      "input": "examples\\snapshots\\before.ldif",
+      "sha256": "f0266fb2a65f18ebdb787d388c64010f2110aebbc95bab88145ae6d5680facd8",
+      "command": "review",
+      "format": "markdown",
+      "policies": true
+    },
+    {
+      "input": "examples\\snapshots\\before.ldif",
+      "sha256": "f0266fb2a65f18ebdb787d388c64010f2110aebbc95bab88145ae6d5680facd8",
+      "command": "format",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\snapshots\\before.ldif",
+      "sha256": "f0266fb2a65f18ebdb787d388c64010f2110aebbc95bab88145ae6d5680facd8",
+      "command": "format",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\snapshots\\reordered.ldif",
+      "sha256": "d0d02460a7db781a81b768a46a488adad1e77575778e7e73c9fa1ee9e23c9a92",
+      "command": "check",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\snapshots\\reordered.ldif",
+      "sha256": "d0d02460a7db781a81b768a46a488adad1e77575778e7e73c9fa1ee9e23c9a92",
+      "command": "check",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\snapshots\\reordered.ldif",
+      "sha256": "d0d02460a7db781a81b768a46a488adad1e77575778e7e73c9fa1ee9e23c9a92",
+      "command": "inspect",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\snapshots\\reordered.ldif",
+      "sha256": "d0d02460a7db781a81b768a46a488adad1e77575778e7e73c9fa1ee9e23c9a92",
+      "command": "inspect",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\snapshots\\reordered.ldif",
+      "sha256": "d0d02460a7db781a81b768a46a488adad1e77575778e7e73c9fa1ee9e23c9a92",
+      "command": "review",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\snapshots\\reordered.ldif",
+      "sha256": "d0d02460a7db781a81b768a46a488adad1e77575778e7e73c9fa1ee9e23c9a92",
+      "command": "review",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\snapshots\\reordered.ldif",
+      "sha256": "d0d02460a7db781a81b768a46a488adad1e77575778e7e73c9fa1ee9e23c9a92",
+      "command": "review",
+      "format": "text",
+      "policies": false
+    },
+    {
+      "input": "examples\\snapshots\\reordered.ldif",
+      "sha256": "d0d02460a7db781a81b768a46a488adad1e77575778e7e73c9fa1ee9e23c9a92",
+      "command": "review",
+      "format": "text",
+      "policies": true
+    },
+    {
+      "input": "examples\\snapshots\\reordered.ldif",
+      "sha256": "d0d02460a7db781a81b768a46a488adad1e77575778e7e73c9fa1ee9e23c9a92",
+      "command": "review",
+      "format": "markdown",
+      "policies": false
+    },
+    {
+      "input": "examples\\snapshots\\reordered.ldif",
+      "sha256": "d0d02460a7db781a81b768a46a488adad1e77575778e7e73c9fa1ee9e23c9a92",
+      "command": "review",
+      "format": "markdown",
+      "policies": true
+    },
+    {
+      "input": "examples\\snapshots\\reordered.ldif",
+      "sha256": "d0d02460a7db781a81b768a46a488adad1e77575778e7e73c9fa1ee9e23c9a92",
+      "command": "format",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\snapshots\\reordered.ldif",
+      "sha256": "d0d02460a7db781a81b768a46a488adad1e77575778e7e73c9fa1ee9e23c9a92",
+      "command": "format",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\snapshots\\volatile-after.ldif",
+      "sha256": "71be63186f27e5b4abcf71d691f1451b9d87cea78b661e3d5393761b4bf54dfc",
+      "command": "check",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\snapshots\\volatile-after.ldif",
+      "sha256": "71be63186f27e5b4abcf71d691f1451b9d87cea78b661e3d5393761b4bf54dfc",
+      "command": "check",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\snapshots\\volatile-after.ldif",
+      "sha256": "71be63186f27e5b4abcf71d691f1451b9d87cea78b661e3d5393761b4bf54dfc",
+      "command": "inspect",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\snapshots\\volatile-after.ldif",
+      "sha256": "71be63186f27e5b4abcf71d691f1451b9d87cea78b661e3d5393761b4bf54dfc",
+      "command": "inspect",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\snapshots\\volatile-after.ldif",
+      "sha256": "71be63186f27e5b4abcf71d691f1451b9d87cea78b661e3d5393761b4bf54dfc",
+      "command": "review",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\snapshots\\volatile-after.ldif",
+      "sha256": "71be63186f27e5b4abcf71d691f1451b9d87cea78b661e3d5393761b4bf54dfc",
+      "command": "review",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\snapshots\\volatile-after.ldif",
+      "sha256": "71be63186f27e5b4abcf71d691f1451b9d87cea78b661e3d5393761b4bf54dfc",
+      "command": "review",
+      "format": "text",
+      "policies": false
+    },
+    {
+      "input": "examples\\snapshots\\volatile-after.ldif",
+      "sha256": "71be63186f27e5b4abcf71d691f1451b9d87cea78b661e3d5393761b4bf54dfc",
+      "command": "review",
+      "format": "text",
+      "policies": true
+    },
+    {
+      "input": "examples\\snapshots\\volatile-after.ldif",
+      "sha256": "71be63186f27e5b4abcf71d691f1451b9d87cea78b661e3d5393761b4bf54dfc",
+      "command": "review",
+      "format": "markdown",
+      "policies": false
+    },
+    {
+      "input": "examples\\snapshots\\volatile-after.ldif",
+      "sha256": "71be63186f27e5b4abcf71d691f1451b9d87cea78b661e3d5393761b4bf54dfc",
+      "command": "review",
+      "format": "markdown",
+      "policies": true
+    },
+    {
+      "input": "examples\\snapshots\\volatile-after.ldif",
+      "sha256": "71be63186f27e5b4abcf71d691f1451b9d87cea78b661e3d5393761b4bf54dfc",
+      "command": "format",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\snapshots\\volatile-after.ldif",
+      "sha256": "71be63186f27e5b4abcf71d691f1451b9d87cea78b661e3d5393761b4bf54dfc",
+      "command": "format",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\snapshots\\volatile-before.ldif",
+      "sha256": "9fb2a50c2ac75c746765115da317e971977cb1099859576b14ee702576f6eccf",
+      "command": "check",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\snapshots\\volatile-before.ldif",
+      "sha256": "9fb2a50c2ac75c746765115da317e971977cb1099859576b14ee702576f6eccf",
+      "command": "check",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\snapshots\\volatile-before.ldif",
+      "sha256": "9fb2a50c2ac75c746765115da317e971977cb1099859576b14ee702576f6eccf",
+      "command": "inspect",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\snapshots\\volatile-before.ldif",
+      "sha256": "9fb2a50c2ac75c746765115da317e971977cb1099859576b14ee702576f6eccf",
+      "command": "inspect",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\snapshots\\volatile-before.ldif",
+      "sha256": "9fb2a50c2ac75c746765115da317e971977cb1099859576b14ee702576f6eccf",
+      "command": "review",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\snapshots\\volatile-before.ldif",
+      "sha256": "9fb2a50c2ac75c746765115da317e971977cb1099859576b14ee702576f6eccf",
+      "command": "review",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "examples\\snapshots\\volatile-before.ldif",
+      "sha256": "9fb2a50c2ac75c746765115da317e971977cb1099859576b14ee702576f6eccf",
+      "command": "review",
+      "format": "text",
+      "policies": false
+    },
+    {
+      "input": "examples\\snapshots\\volatile-before.ldif",
+      "sha256": "9fb2a50c2ac75c746765115da317e971977cb1099859576b14ee702576f6eccf",
+      "command": "review",
+      "format": "text",
+      "policies": true
+    },
+    {
+      "input": "examples\\snapshots\\volatile-before.ldif",
+      "sha256": "9fb2a50c2ac75c746765115da317e971977cb1099859576b14ee702576f6eccf",
+      "command": "review",
+      "format": "markdown",
+      "policies": false
+    },
+    {
+      "input": "examples\\snapshots\\volatile-before.ldif",
+      "sha256": "9fb2a50c2ac75c746765115da317e971977cb1099859576b14ee702576f6eccf",
+      "command": "review",
+      "format": "markdown",
+      "policies": true
+    },
+    {
+      "input": "examples\\snapshots\\volatile-before.ldif",
+      "sha256": "9fb2a50c2ac75c746765115da317e971977cb1099859576b14ee702576f6eccf",
+      "command": "format",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "examples\\snapshots\\volatile-before.ldif",
+      "sha256": "9fb2a50c2ac75c746765115da317e971977cb1099859576b14ee702576f6eccf",
+      "command": "format",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "synthetic-0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "command": "check",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "synthetic-0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "command": "check",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "synthetic-0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "command": "inspect",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "synthetic-0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "command": "inspect",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "synthetic-0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "command": "review",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "synthetic-0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "command": "review",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "synthetic-0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "command": "review",
+      "format": "text",
+      "policies": false
+    },
+    {
+      "input": "synthetic-0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "command": "review",
+      "format": "text",
+      "policies": true
+    },
+    {
+      "input": "synthetic-0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "command": "review",
+      "format": "markdown",
+      "policies": false
+    },
+    {
+      "input": "synthetic-0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "command": "review",
+      "format": "markdown",
+      "policies": true
+    },
+    {
+      "input": "synthetic-0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "command": "format",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "synthetic-0",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "command": "format",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "synthetic-1",
+      "sha256": "1a6ddd3533d91cae4b3742d4294fb07ee863a4d667fe598f01365bd68a18bcfd",
+      "command": "check",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "synthetic-1",
+      "sha256": "1a6ddd3533d91cae4b3742d4294fb07ee863a4d667fe598f01365bd68a18bcfd",
+      "command": "check",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "synthetic-1",
+      "sha256": "1a6ddd3533d91cae4b3742d4294fb07ee863a4d667fe598f01365bd68a18bcfd",
+      "command": "inspect",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "synthetic-1",
+      "sha256": "1a6ddd3533d91cae4b3742d4294fb07ee863a4d667fe598f01365bd68a18bcfd",
+      "command": "inspect",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "synthetic-1",
+      "sha256": "1a6ddd3533d91cae4b3742d4294fb07ee863a4d667fe598f01365bd68a18bcfd",
+      "command": "review",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "synthetic-1",
+      "sha256": "1a6ddd3533d91cae4b3742d4294fb07ee863a4d667fe598f01365bd68a18bcfd",
+      "command": "review",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "synthetic-1",
+      "sha256": "1a6ddd3533d91cae4b3742d4294fb07ee863a4d667fe598f01365bd68a18bcfd",
+      "command": "review",
+      "format": "text",
+      "policies": false
+    },
+    {
+      "input": "synthetic-1",
+      "sha256": "1a6ddd3533d91cae4b3742d4294fb07ee863a4d667fe598f01365bd68a18bcfd",
+      "command": "review",
+      "format": "text",
+      "policies": true
+    },
+    {
+      "input": "synthetic-1",
+      "sha256": "1a6ddd3533d91cae4b3742d4294fb07ee863a4d667fe598f01365bd68a18bcfd",
+      "command": "review",
+      "format": "markdown",
+      "policies": false
+    },
+    {
+      "input": "synthetic-1",
+      "sha256": "1a6ddd3533d91cae4b3742d4294fb07ee863a4d667fe598f01365bd68a18bcfd",
+      "command": "review",
+      "format": "markdown",
+      "policies": true
+    },
+    {
+      "input": "synthetic-1",
+      "sha256": "1a6ddd3533d91cae4b3742d4294fb07ee863a4d667fe598f01365bd68a18bcfd",
+      "command": "format",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "synthetic-1",
+      "sha256": "1a6ddd3533d91cae4b3742d4294fb07ee863a4d667fe598f01365bd68a18bcfd",
+      "command": "format",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "synthetic-2",
+      "sha256": "6b4eb33abd3c187d3c46f5f207df29245568a83ce83bff5c1b432e643686ff91",
+      "command": "check",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "synthetic-2",
+      "sha256": "6b4eb33abd3c187d3c46f5f207df29245568a83ce83bff5c1b432e643686ff91",
+      "command": "check",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "synthetic-2",
+      "sha256": "6b4eb33abd3c187d3c46f5f207df29245568a83ce83bff5c1b432e643686ff91",
+      "command": "inspect",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "synthetic-2",
+      "sha256": "6b4eb33abd3c187d3c46f5f207df29245568a83ce83bff5c1b432e643686ff91",
+      "command": "inspect",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "synthetic-2",
+      "sha256": "6b4eb33abd3c187d3c46f5f207df29245568a83ce83bff5c1b432e643686ff91",
+      "command": "review",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "synthetic-2",
+      "sha256": "6b4eb33abd3c187d3c46f5f207df29245568a83ce83bff5c1b432e643686ff91",
+      "command": "review",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "synthetic-2",
+      "sha256": "6b4eb33abd3c187d3c46f5f207df29245568a83ce83bff5c1b432e643686ff91",
+      "command": "review",
+      "format": "text",
+      "policies": false
+    },
+    {
+      "input": "synthetic-2",
+      "sha256": "6b4eb33abd3c187d3c46f5f207df29245568a83ce83bff5c1b432e643686ff91",
+      "command": "review",
+      "format": "text",
+      "policies": true
+    },
+    {
+      "input": "synthetic-2",
+      "sha256": "6b4eb33abd3c187d3c46f5f207df29245568a83ce83bff5c1b432e643686ff91",
+      "command": "review",
+      "format": "markdown",
+      "policies": false
+    },
+    {
+      "input": "synthetic-2",
+      "sha256": "6b4eb33abd3c187d3c46f5f207df29245568a83ce83bff5c1b432e643686ff91",
+      "command": "review",
+      "format": "markdown",
+      "policies": true
+    },
+    {
+      "input": "synthetic-2",
+      "sha256": "6b4eb33abd3c187d3c46f5f207df29245568a83ce83bff5c1b432e643686ff91",
+      "command": "format",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "synthetic-2",
+      "sha256": "6b4eb33abd3c187d3c46f5f207df29245568a83ce83bff5c1b432e643686ff91",
+      "command": "format",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "synthetic-3",
+      "sha256": "a910a486be8035b2a27d8be9b4fcd7870bc510392c4c30babc8d6a3e1fdf6945",
+      "command": "check",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "synthetic-3",
+      "sha256": "a910a486be8035b2a27d8be9b4fcd7870bc510392c4c30babc8d6a3e1fdf6945",
+      "command": "check",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "synthetic-3",
+      "sha256": "a910a486be8035b2a27d8be9b4fcd7870bc510392c4c30babc8d6a3e1fdf6945",
+      "command": "inspect",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "synthetic-3",
+      "sha256": "a910a486be8035b2a27d8be9b4fcd7870bc510392c4c30babc8d6a3e1fdf6945",
+      "command": "inspect",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "synthetic-3",
+      "sha256": "a910a486be8035b2a27d8be9b4fcd7870bc510392c4c30babc8d6a3e1fdf6945",
+      "command": "review",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "synthetic-3",
+      "sha256": "a910a486be8035b2a27d8be9b4fcd7870bc510392c4c30babc8d6a3e1fdf6945",
+      "command": "review",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "synthetic-3",
+      "sha256": "a910a486be8035b2a27d8be9b4fcd7870bc510392c4c30babc8d6a3e1fdf6945",
+      "command": "review",
+      "format": "text",
+      "policies": false
+    },
+    {
+      "input": "synthetic-3",
+      "sha256": "a910a486be8035b2a27d8be9b4fcd7870bc510392c4c30babc8d6a3e1fdf6945",
+      "command": "review",
+      "format": "text",
+      "policies": true
+    },
+    {
+      "input": "synthetic-3",
+      "sha256": "a910a486be8035b2a27d8be9b4fcd7870bc510392c4c30babc8d6a3e1fdf6945",
+      "command": "review",
+      "format": "markdown",
+      "policies": false
+    },
+    {
+      "input": "synthetic-3",
+      "sha256": "a910a486be8035b2a27d8be9b4fcd7870bc510392c4c30babc8d6a3e1fdf6945",
+      "command": "review",
+      "format": "markdown",
+      "policies": true
+    },
+    {
+      "input": "synthetic-3",
+      "sha256": "a910a486be8035b2a27d8be9b4fcd7870bc510392c4c30babc8d6a3e1fdf6945",
+      "command": "format",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "synthetic-3",
+      "sha256": "a910a486be8035b2a27d8be9b4fcd7870bc510392c4c30babc8d6a3e1fdf6945",
+      "command": "format",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "synthetic-4",
+      "sha256": "3f37e3c72de6c22d69883c4706f5a009828b7dd3d98690adb2631f363d35070b",
+      "command": "check",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "synthetic-4",
+      "sha256": "3f37e3c72de6c22d69883c4706f5a009828b7dd3d98690adb2631f363d35070b",
+      "command": "check",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "synthetic-4",
+      "sha256": "3f37e3c72de6c22d69883c4706f5a009828b7dd3d98690adb2631f363d35070b",
+      "command": "inspect",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "synthetic-4",
+      "sha256": "3f37e3c72de6c22d69883c4706f5a009828b7dd3d98690adb2631f363d35070b",
+      "command": "inspect",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "synthetic-4",
+      "sha256": "3f37e3c72de6c22d69883c4706f5a009828b7dd3d98690adb2631f363d35070b",
+      "command": "review",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "synthetic-4",
+      "sha256": "3f37e3c72de6c22d69883c4706f5a009828b7dd3d98690adb2631f363d35070b",
+      "command": "review",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "synthetic-4",
+      "sha256": "3f37e3c72de6c22d69883c4706f5a009828b7dd3d98690adb2631f363d35070b",
+      "command": "review",
+      "format": "text",
+      "policies": false
+    },
+    {
+      "input": "synthetic-4",
+      "sha256": "3f37e3c72de6c22d69883c4706f5a009828b7dd3d98690adb2631f363d35070b",
+      "command": "review",
+      "format": "text",
+      "policies": true
+    },
+    {
+      "input": "synthetic-4",
+      "sha256": "3f37e3c72de6c22d69883c4706f5a009828b7dd3d98690adb2631f363d35070b",
+      "command": "review",
+      "format": "markdown",
+      "policies": false
+    },
+    {
+      "input": "synthetic-4",
+      "sha256": "3f37e3c72de6c22d69883c4706f5a009828b7dd3d98690adb2631f363d35070b",
+      "command": "review",
+      "format": "markdown",
+      "policies": true
+    },
+    {
+      "input": "synthetic-4",
+      "sha256": "3f37e3c72de6c22d69883c4706f5a009828b7dd3d98690adb2631f363d35070b",
+      "command": "format",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "synthetic-4",
+      "sha256": "3f37e3c72de6c22d69883c4706f5a009828b7dd3d98690adb2631f363d35070b",
+      "command": "format",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "synthetic-5",
+      "sha256": "8358f37def6ed4cd21e1363efd8bf502518d35153597d4fc1c2af51548c9a516",
+      "command": "check",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "synthetic-5",
+      "sha256": "8358f37def6ed4cd21e1363efd8bf502518d35153597d4fc1c2af51548c9a516",
+      "command": "check",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "synthetic-5",
+      "sha256": "8358f37def6ed4cd21e1363efd8bf502518d35153597d4fc1c2af51548c9a516",
+      "command": "inspect",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "synthetic-5",
+      "sha256": "8358f37def6ed4cd21e1363efd8bf502518d35153597d4fc1c2af51548c9a516",
+      "command": "inspect",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "synthetic-5",
+      "sha256": "8358f37def6ed4cd21e1363efd8bf502518d35153597d4fc1c2af51548c9a516",
+      "command": "review",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "synthetic-5",
+      "sha256": "8358f37def6ed4cd21e1363efd8bf502518d35153597d4fc1c2af51548c9a516",
+      "command": "review",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "synthetic-5",
+      "sha256": "8358f37def6ed4cd21e1363efd8bf502518d35153597d4fc1c2af51548c9a516",
+      "command": "review",
+      "format": "text",
+      "policies": false
+    },
+    {
+      "input": "synthetic-5",
+      "sha256": "8358f37def6ed4cd21e1363efd8bf502518d35153597d4fc1c2af51548c9a516",
+      "command": "review",
+      "format": "text",
+      "policies": true
+    },
+    {
+      "input": "synthetic-5",
+      "sha256": "8358f37def6ed4cd21e1363efd8bf502518d35153597d4fc1c2af51548c9a516",
+      "command": "review",
+      "format": "markdown",
+      "policies": false
+    },
+    {
+      "input": "synthetic-5",
+      "sha256": "8358f37def6ed4cd21e1363efd8bf502518d35153597d4fc1c2af51548c9a516",
+      "command": "review",
+      "format": "markdown",
+      "policies": true
+    },
+    {
+      "input": "synthetic-5",
+      "sha256": "8358f37def6ed4cd21e1363efd8bf502518d35153597d4fc1c2af51548c9a516",
+      "command": "format",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "synthetic-5",
+      "sha256": "8358f37def6ed4cd21e1363efd8bf502518d35153597d4fc1c2af51548c9a516",
+      "command": "format",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "synthetic-6",
+      "sha256": "bd4a79fb9c7872cbb33d8a069ba3ac35fcbd94bb30e90f3be9e8450d85b176b3",
+      "command": "check",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "synthetic-6",
+      "sha256": "bd4a79fb9c7872cbb33d8a069ba3ac35fcbd94bb30e90f3be9e8450d85b176b3",
+      "command": "check",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "synthetic-6",
+      "sha256": "bd4a79fb9c7872cbb33d8a069ba3ac35fcbd94bb30e90f3be9e8450d85b176b3",
+      "command": "inspect",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "synthetic-6",
+      "sha256": "bd4a79fb9c7872cbb33d8a069ba3ac35fcbd94bb30e90f3be9e8450d85b176b3",
+      "command": "inspect",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "synthetic-6",
+      "sha256": "bd4a79fb9c7872cbb33d8a069ba3ac35fcbd94bb30e90f3be9e8450d85b176b3",
+      "command": "review",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "synthetic-6",
+      "sha256": "bd4a79fb9c7872cbb33d8a069ba3ac35fcbd94bb30e90f3be9e8450d85b176b3",
+      "command": "review",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "synthetic-6",
+      "sha256": "bd4a79fb9c7872cbb33d8a069ba3ac35fcbd94bb30e90f3be9e8450d85b176b3",
+      "command": "review",
+      "format": "text",
+      "policies": false
+    },
+    {
+      "input": "synthetic-6",
+      "sha256": "bd4a79fb9c7872cbb33d8a069ba3ac35fcbd94bb30e90f3be9e8450d85b176b3",
+      "command": "review",
+      "format": "text",
+      "policies": true
+    },
+    {
+      "input": "synthetic-6",
+      "sha256": "bd4a79fb9c7872cbb33d8a069ba3ac35fcbd94bb30e90f3be9e8450d85b176b3",
+      "command": "review",
+      "format": "markdown",
+      "policies": false
+    },
+    {
+      "input": "synthetic-6",
+      "sha256": "bd4a79fb9c7872cbb33d8a069ba3ac35fcbd94bb30e90f3be9e8450d85b176b3",
+      "command": "review",
+      "format": "markdown",
+      "policies": true
+    },
+    {
+      "input": "synthetic-6",
+      "sha256": "bd4a79fb9c7872cbb33d8a069ba3ac35fcbd94bb30e90f3be9e8450d85b176b3",
+      "command": "format",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "synthetic-6",
+      "sha256": "bd4a79fb9c7872cbb33d8a069ba3ac35fcbd94bb30e90f3be9e8450d85b176b3",
+      "command": "format",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "synthetic-7",
+      "sha256": "b681a8f460d2e20d91dddfc1b68a1a13c85e80837e12f195d7296bb81b827273",
+      "command": "check",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "synthetic-7",
+      "sha256": "b681a8f460d2e20d91dddfc1b68a1a13c85e80837e12f195d7296bb81b827273",
+      "command": "check",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "synthetic-7",
+      "sha256": "b681a8f460d2e20d91dddfc1b68a1a13c85e80837e12f195d7296bb81b827273",
+      "command": "inspect",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "synthetic-7",
+      "sha256": "b681a8f460d2e20d91dddfc1b68a1a13c85e80837e12f195d7296bb81b827273",
+      "command": "inspect",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "synthetic-7",
+      "sha256": "b681a8f460d2e20d91dddfc1b68a1a13c85e80837e12f195d7296bb81b827273",
+      "command": "review",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "synthetic-7",
+      "sha256": "b681a8f460d2e20d91dddfc1b68a1a13c85e80837e12f195d7296bb81b827273",
+      "command": "review",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "synthetic-7",
+      "sha256": "b681a8f460d2e20d91dddfc1b68a1a13c85e80837e12f195d7296bb81b827273",
+      "command": "review",
+      "format": "text",
+      "policies": false
+    },
+    {
+      "input": "synthetic-7",
+      "sha256": "b681a8f460d2e20d91dddfc1b68a1a13c85e80837e12f195d7296bb81b827273",
+      "command": "review",
+      "format": "text",
+      "policies": true
+    },
+    {
+      "input": "synthetic-7",
+      "sha256": "b681a8f460d2e20d91dddfc1b68a1a13c85e80837e12f195d7296bb81b827273",
+      "command": "review",
+      "format": "markdown",
+      "policies": false
+    },
+    {
+      "input": "synthetic-7",
+      "sha256": "b681a8f460d2e20d91dddfc1b68a1a13c85e80837e12f195d7296bb81b827273",
+      "command": "review",
+      "format": "markdown",
+      "policies": true
+    },
+    {
+      "input": "synthetic-7",
+      "sha256": "b681a8f460d2e20d91dddfc1b68a1a13c85e80837e12f195d7296bb81b827273",
+      "command": "format",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "synthetic-7",
+      "sha256": "b681a8f460d2e20d91dddfc1b68a1a13c85e80837e12f195d7296bb81b827273",
+      "command": "format",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "synthetic-8",
+      "sha256": "0957f062a5a57bd6ab03b8f01d5c9a0aee02767313eb0e093225000a94b69227",
+      "command": "check",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "synthetic-8",
+      "sha256": "0957f062a5a57bd6ab03b8f01d5c9a0aee02767313eb0e093225000a94b69227",
+      "command": "check",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "synthetic-8",
+      "sha256": "0957f062a5a57bd6ab03b8f01d5c9a0aee02767313eb0e093225000a94b69227",
+      "command": "inspect",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "synthetic-8",
+      "sha256": "0957f062a5a57bd6ab03b8f01d5c9a0aee02767313eb0e093225000a94b69227",
+      "command": "inspect",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "synthetic-8",
+      "sha256": "0957f062a5a57bd6ab03b8f01d5c9a0aee02767313eb0e093225000a94b69227",
+      "command": "review",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "synthetic-8",
+      "sha256": "0957f062a5a57bd6ab03b8f01d5c9a0aee02767313eb0e093225000a94b69227",
+      "command": "review",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "synthetic-8",
+      "sha256": "0957f062a5a57bd6ab03b8f01d5c9a0aee02767313eb0e093225000a94b69227",
+      "command": "review",
+      "format": "text",
+      "policies": false
+    },
+    {
+      "input": "synthetic-8",
+      "sha256": "0957f062a5a57bd6ab03b8f01d5c9a0aee02767313eb0e093225000a94b69227",
+      "command": "review",
+      "format": "text",
+      "policies": true
+    },
+    {
+      "input": "synthetic-8",
+      "sha256": "0957f062a5a57bd6ab03b8f01d5c9a0aee02767313eb0e093225000a94b69227",
+      "command": "review",
+      "format": "markdown",
+      "policies": false
+    },
+    {
+      "input": "synthetic-8",
+      "sha256": "0957f062a5a57bd6ab03b8f01d5c9a0aee02767313eb0e093225000a94b69227",
+      "command": "review",
+      "format": "markdown",
+      "policies": true
+    },
+    {
+      "input": "synthetic-8",
+      "sha256": "0957f062a5a57bd6ab03b8f01d5c9a0aee02767313eb0e093225000a94b69227",
+      "command": "format",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "synthetic-8",
+      "sha256": "0957f062a5a57bd6ab03b8f01d5c9a0aee02767313eb0e093225000a94b69227",
+      "command": "format",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "synthetic-9",
+      "sha256": "0094f05cf21077d00a497193d598eb39064b79f724a3c04295ae446aa06793ae",
+      "command": "check",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "synthetic-9",
+      "sha256": "0094f05cf21077d00a497193d598eb39064b79f724a3c04295ae446aa06793ae",
+      "command": "check",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "synthetic-9",
+      "sha256": "0094f05cf21077d00a497193d598eb39064b79f724a3c04295ae446aa06793ae",
+      "command": "inspect",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "synthetic-9",
+      "sha256": "0094f05cf21077d00a497193d598eb39064b79f724a3c04295ae446aa06793ae",
+      "command": "inspect",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "synthetic-9",
+      "sha256": "0094f05cf21077d00a497193d598eb39064b79f724a3c04295ae446aa06793ae",
+      "command": "review",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "synthetic-9",
+      "sha256": "0094f05cf21077d00a497193d598eb39064b79f724a3c04295ae446aa06793ae",
+      "command": "review",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "synthetic-9",
+      "sha256": "0094f05cf21077d00a497193d598eb39064b79f724a3c04295ae446aa06793ae",
+      "command": "review",
+      "format": "text",
+      "policies": false
+    },
+    {
+      "input": "synthetic-9",
+      "sha256": "0094f05cf21077d00a497193d598eb39064b79f724a3c04295ae446aa06793ae",
+      "command": "review",
+      "format": "text",
+      "policies": true
+    },
+    {
+      "input": "synthetic-9",
+      "sha256": "0094f05cf21077d00a497193d598eb39064b79f724a3c04295ae446aa06793ae",
+      "command": "review",
+      "format": "markdown",
+      "policies": false
+    },
+    {
+      "input": "synthetic-9",
+      "sha256": "0094f05cf21077d00a497193d598eb39064b79f724a3c04295ae446aa06793ae",
+      "command": "review",
+      "format": "markdown",
+      "policies": true
+    },
+    {
+      "input": "synthetic-9",
+      "sha256": "0094f05cf21077d00a497193d598eb39064b79f724a3c04295ae446aa06793ae",
+      "command": "format",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "synthetic-9",
+      "sha256": "0094f05cf21077d00a497193d598eb39064b79f724a3c04295ae446aa06793ae",
+      "command": "format",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "invalid-utf8",
+      "sha256": "ad05e8f8c2120a6239061a721f90f9d37c83a6240f27d72d16f5976edf4f1891",
+      "command": "check",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "invalid-utf8",
+      "sha256": "ad05e8f8c2120a6239061a721f90f9d37c83a6240f27d72d16f5976edf4f1891",
+      "command": "check",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "invalid-utf8",
+      "sha256": "ad05e8f8c2120a6239061a721f90f9d37c83a6240f27d72d16f5976edf4f1891",
+      "command": "inspect",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "invalid-utf8",
+      "sha256": "ad05e8f8c2120a6239061a721f90f9d37c83a6240f27d72d16f5976edf4f1891",
+      "command": "inspect",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "invalid-utf8",
+      "sha256": "ad05e8f8c2120a6239061a721f90f9d37c83a6240f27d72d16f5976edf4f1891",
+      "command": "review",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "invalid-utf8",
+      "sha256": "ad05e8f8c2120a6239061a721f90f9d37c83a6240f27d72d16f5976edf4f1891",
+      "command": "review",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "input": "invalid-utf8",
+      "sha256": "ad05e8f8c2120a6239061a721f90f9d37c83a6240f27d72d16f5976edf4f1891",
+      "command": "review",
+      "format": "text",
+      "policies": false
+    },
+    {
+      "input": "invalid-utf8",
+      "sha256": "ad05e8f8c2120a6239061a721f90f9d37c83a6240f27d72d16f5976edf4f1891",
+      "command": "review",
+      "format": "text",
+      "policies": true
+    },
+    {
+      "input": "invalid-utf8",
+      "sha256": "ad05e8f8c2120a6239061a721f90f9d37c83a6240f27d72d16f5976edf4f1891",
+      "command": "review",
+      "format": "markdown",
+      "policies": false
+    },
+    {
+      "input": "invalid-utf8",
+      "sha256": "ad05e8f8c2120a6239061a721f90f9d37c83a6240f27d72d16f5976edf4f1891",
+      "command": "review",
+      "format": "markdown",
+      "policies": true
+    },
+    {
+      "input": "invalid-utf8",
+      "sha256": "ad05e8f8c2120a6239061a721f90f9d37c83a6240f27d72d16f5976edf4f1891",
+      "command": "format",
+      "format": "json",
+      "policies": false
+    },
+    {
+      "input": "invalid-utf8",
+      "sha256": "ad05e8f8c2120a6239061a721f90f9d37c83a6240f27d72d16f5976edf4f1891",
+      "command": "format",
+      "format": "json",
+      "policies": true
+    },
+    {
+      "command": "review",
+      "format": "json",
+      "contract": "v2 page and complete export"
+    },
+    {
+      "command": "review",
+      "format": "markdown",
+      "contract": "v2 page and complete export"
+    },
+    {
+      "command": "review",
+      "format": "text",
+      "contract": "v2 page and complete export"
+    },
+    {
+      "command": "compare",
+      "format": "json",
+      "contract": "v2 page and complete export"
+    },
+    {
+      "command": "compare",
+      "format": "markdown",
+      "contract": "v2 page and complete export"
+    },
+    {
+      "command": "compare",
+      "format": "text",
+      "contract": "v2 page and complete export"
+    }
+  ]
+}

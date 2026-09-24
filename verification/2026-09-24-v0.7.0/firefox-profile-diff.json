@@ -1,0 +1,83 @@
+{
+  "report_schema_version": 3,
+  "exit_code": 0,
+  "summary": {
+    "tool": "MoonLDIF",
+    "version": "0.7.0",
+    "kind": "snapshot-diff",
+    "report_schema_version": 3,
+    "exit_code": 0,
+    "status": "complete",
+    "analysis_complete": true,
+    "comparison_performed": true,
+    "matching": "Exact decoded DN string; ASCII-insensitive attribute descriptions; byte multiset values",
+    "scope": "Export comparison only; not LDAP semantic equality, rename detection or an executable patch. Reports contain DNs, not attribute values.",
+    "options": {
+      "allow_missing_version": false,
+      "legacy_dn_spaces": false,
+      "ignored_attributes": [
+        "cn"
+      ]
+    },
+    "excluded_attribute_occurrences": {
+      "before": 1,
+      "after": 1
+    },
+    "exclusion_scope": "Exact canonical attribute description, including options. Counts cover all parsed entry attribute occurrences, not differences. Entry additions/removals and all input checks remain active.",
+    "before": {
+      "byte_length": 28,
+      "sha256": "09cb2d5b13cffc07b6038593032fb7db45ac75e45d85e648ce9b333b16778237",
+      "status": "complete",
+      "record_count": 1,
+      "diagnostics": []
+    },
+    "after": {
+      "byte_length": 28,
+      "sha256": "10814c3916af9090b71db7aa9e61af2e3be374368a44b810833e052fd1206212",
+      "status": "complete",
+      "record_count": 1,
+      "diagnostics": []
+    },
+    "diagnostics": [],
+    "diagnostics_truncated": false,
+    "ambiguous_dn_count": 0,
+    "compared_dn_count": 1,
+    "counts": {
+      "entry-added": 0,
+      "entry-removed": 0,
+      "attribute-added": 0,
+      "attribute-removed": 0,
+      "values-changed": 0
+    },
+    "total_changes": 0,
+    "profile": {
+      "applied_section": "compare",
+      "source_sha256": "26cdc788d031f20f16e84c493160f5344f43fad067232c391f8700716439763b",
+      "effective_sha256": "2949f33c9c09add011167efee485724988a563914d015d78b6fad1f6d38a8e72",
+      "effective": {
+        "profile_version": 1,
+        "common": {
+          "allow_missing_version": false,
+          "legacy_dn_spaces": false
+        },
+        "compare": {
+          "ignored_attributes": [
+            "cn"
+          ]
+        }
+      }
+    }
+  },
+  "page": {
+    "total_items": 0,
+    "matched_items": 0,
+    "offset": 0,
+    "limit": 0,
+    "returned_items": 0,
+    "has_more": false,
+    "query": "",
+    "kind": "all",
+    "selection": "all"
+  },
+  "items": []
+}
