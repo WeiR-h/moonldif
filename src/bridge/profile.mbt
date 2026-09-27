@@ -24,6 +24,29 @@ pub fn profile_validate(encoded : String) -> String {
 }
 
 ///|
+// Additive UI entry point: legacy profile_validate keeps its exact envelope.
+#export_name("profile_validate_detailed")
+pub fn profile_validate_detailed(encoded : String) -> String {
+  let data = @base64.decode(encoded[:], ignore_whitespace=false) catch {
+    _ =>
+      return (
+        {
+          "exit_code": 2,
+          "issue": {
+            "code": "transport",
+            "path": "",
+            "message": "Invalid configuration transport.",
+          },
+        } : Json).stringify()
+  }
+  match @ldif.validate_profile(data) {
+    Valid(_) => profile_validate(encoded)
+    Invalid(issue) =>
+      ({ "exit_code": 2, "issue": issue.to_json() } : Json).stringify()
+  }
+}
+
+///|
 #export_name("profile_batch_start")
 pub fn profile_batch_start(
   encoded : String,

@@ -17,15 +17,25 @@ pub struct Profile {
 fn profile_keys(
   value : Json,
   allowed : Array[String],
-) -> Unit raise ProfileError {
+  path : String,
+) -> Unit raise ProfileDetailError {
   match value {
     Object(fields) =>
       for key, _ in fields {
         if !allowed.contains(key) {
-          raise InvalidProfile("Unknown configuration field.")
+          raise ProfileDetailError({
+            code: "unknown-field",
+            path: profile_pointer(path, key),
+            message: "Unknown configuration field.",
+          })
         }
       }
-    _ => raise InvalidProfile("Expected a configuration object.")
+    _ =>
+      raise ProfileDetailError({
+        code: "object-type",
+        path,
+        message: "Expected a configuration object.",
+      })
   }
 }
 
@@ -39,47 +49,79 @@ fn profile_section(value : Json, key : String) -> Json {
 }
 
 ///|
-fn profile_bool(value : Json, key : String) -> Bool raise ProfileError {
+fn profile_bool(
+  value : Json,
+  key : String,
+  path : String,
+) -> Bool raise ProfileDetailError {
   if value is Object(fields) {
     match fields.get(key) {
       None => false
       Some(True) => true
       Some(False) => false
-      _ => raise InvalidProfile("Configuration flags must be booleans.")
+      _ =>
+        raise ProfileDetailError({
+          code: "boolean-type",
+          path: profile_pointer(path, key),
+          message: "Configuration flags must be booleans.",
+        })
     }
   } else {
-    raise InvalidProfile("Expected a configuration object.")
+    raise ProfileDetailError({
+      code: "object-type",
+      path,
+      message: "Expected a configuration object.",
+    })
   }
 }
 
 ///|
-fn profile_limit(value : Json, key : String) -> Int? raise ProfileError {
+fn profile_limit(
+  value : Json,
+  key : String,
+  path : String,
+) -> Int? raise ProfileDetailError {
   if value is Object(fields) {
     match fields.get(key) {
       None => None
       Some(Number(n, repr~)) => {
         if repr is Some(raw) {
           if !raw.iter().all(c => c >= '0' && c <= '9') {
-            raise InvalidProfile(
-              "Use unsigned decimal integer notation for limits and version.",
-            )
+            raise ProfileDetailError({
+              code: "number-notation",
+              path: "",
+              message: "Use unsigned decimal integer notation for limits and version.",
+            })
           }
         }
         if n < 0 || n > 2147483647 || n != n.to_int().to_double() {
-          raise InvalidProfile("Limits must be integers from 0 to 2147483647.")
+          raise ProfileDetailError({
+            code: "limit-value",
+            path: profile_pointer(path, key),
+            message: "Limits must be integers from 0 to 2147483647.",
+          })
         }
         Some(n.to_int())
       }
-      _ => raise InvalidProfile("Limits must be integers from 0 to 2147483647.")
+      _ =>
+        raise ProfileDetailError({
+          code: "limit-value",
+          path: profile_pointer(path, key),
+          message: "Limits must be integers from 0 to 2147483647.",
+        })
     }
   } else {
-    raise InvalidProfile("Expected a limits object.")
+    raise ProfileDetailError({
+      code: "object-type",
+      path,
+      message: "Expected a limits object.",
+    })
   }
 }
 
 ///|
 /// Run after the bounded standard parser. Decoding each key catches escaped duplicates.
-fn profile_unique_keys(text : String) -> Unit raise ProfileError {
+fn profile_unique_keys(text : String) -> Unit raise ProfileDetailError {
   let objects : Array[Map[String, Bool]] = []
   let mut i = 0
   let mut depth = 0
@@ -87,7 +129,11 @@ fn profile_unique_keys(text : String) -> Unit raise ProfileError {
     if text[i] == '{' || text[i] == '[' {
       depth += 1
       if depth > 16 {
-        raise InvalidProfile("Configuration nesting exceeds 16.")
+        raise ProfileDetailError({
+          code: "nesting",
+          path: "",
+          message: "Configuration nesting exceeds 16.",
+        })
       }
       if text[i] == '{' {
         objects.push(Map([]))
@@ -108,6 +154,13 @@ fn profile_unique_keys(text : String) -> Unit raise ProfileError {
         }
         i += 1
       }
+      if i >= text.length() {
+        raise ProfileDetailError({
+          code: "json",
+          path: "",
+          message: "Invalid configuration JSON.",
+        })
+      }
       i += 1
       let end = i
       while i < text.length() &&
@@ -121,12 +174,21 @@ fn profile_unique_keys(text : String) -> Unit raise ProfileError {
       }
       if i < text.length() && text[i] == ':' && !objects.is_empty() {
         let key = @json.parse(text[start:end].to_owned()) catch {
-          _ => raise InvalidProfile("Invalid configuration key.")
+          _ =>
+            raise ProfileDetailError({
+              code: "json",
+              path: "",
+              message: "Invalid configuration key.",
+            })
         }
         if key is String(s) {
           let seen = objects[objects.length() - 1]
           if seen.contains(s) {
-            raise InvalidProfile("Duplicate configuration key.")
+            raise ProfileDetailError({
+              code: "duplicate-key",
+              path: "",
+              message: "Duplicate configuration key.",
+            })
           }
           seen[s] = true
         }
@@ -141,9 +203,11 @@ fn profile_unique_keys(text : String) -> Unit raise ProfileError {
             text[i] != '\r' &&
             text[i] != '\n' {
         if text[i] < '0' || text[i] > '9' {
-          raise InvalidProfile(
-            "Use unsigned decimal integer notation for limits and version.",
-          )
+          raise ProfileDetailError({
+            code: "number-notation",
+            path: "",
+            message: "Use unsigned decimal integer notation for limits and version.",
+          })
         }
         i += 1
       }
@@ -154,73 +218,152 @@ fn profile_unique_keys(text : String) -> Unit raise ProfileError {
 }
 
 ///|
-pub fn parse_profile(data : Bytes) -> Profile raise ProfileError {
+fn parse_profile_detail(data : Bytes) -> Profile raise ProfileDetailError {
   if data.length() > 65536 {
-    raise InvalidProfile("Configuration exceeds 64 KiB.")
+    raise ProfileDetailError({
+      code: "size",
+      path: "",
+      message: "Configuration exceeds 64 KiB.",
+    })
   }
   let text = @utf8.decode(data) catch {
-    _ => raise InvalidProfile("Configuration must be UTF-8.")
+    _ =>
+      raise ProfileDetailError({
+        code: "encoding",
+        path: "",
+        message: "Configuration must be UTF-8.",
+      })
   }
   profile_unique_keys(text)
   let raw = @json.parse(text) catch {
-    _ => raise InvalidProfile("Invalid configuration JSON.")
+    _ =>
+      raise ProfileDetailError({
+        code: "json",
+        path: "",
+        message: "Invalid configuration JSON.",
+      })
   }
-  profile_keys(raw, ["profile_version", "common", "review", "compare"])
-  if profile_limit(raw, "profile_version") != Some(1) {
-    raise InvalidProfile("Expected profile_version 1.")
+  profile_keys(raw, ["profile_version", "common", "review", "compare"], "")
+  if profile_limit(raw, "profile_version", "") != Some(1) {
+    raise ProfileDetailError({
+      code: "version",
+      path: "/profile_version",
+      message: "Expected profile_version 1.",
+    })
   }
   let common = profile_section(raw, "common")
   let review = profile_section(raw, "review")
   let compare = profile_section(raw, "compare")
   let limits = profile_section(review, "limits")
-  profile_keys(common, ["allow_missing_version", "legacy_dn_spaces"])
-  profile_keys(review, ["deny_delete", "deny_clear", "deny_rename", "limits"])
-  profile_keys(compare, ["ignored_attributes"])
-  profile_keys(limits, [
-    "max_change_records", "max_delete_records", "max_clear_operations",
-  ])
+  profile_keys(common, ["allow_missing_version", "legacy_dn_spaces"], "/common")
+  profile_keys(
+    review,
+    ["deny_delete", "deny_clear", "deny_rename", "limits"],
+    "/review",
+  )
+  profile_keys(compare, ["ignored_attributes"], "/compare")
+  profile_keys(
+    limits,
+    ["max_change_records", "max_delete_records", "max_clear_operations"],
+    "/review/limits",
+  )
   let names : Map[String, Bool] = Map([])
   if compare is Object(fields) {
     match fields.get("ignored_attributes") {
       None => ()
       Some(Array(attrs)) => {
         if attrs.length() > 64 {
-          raise InvalidProfile("At most 64 ignored attributes.")
+          raise ProfileDetailError({
+            code: "ignored-count",
+            path: "/compare/ignored_attributes",
+            message: "At most 64 ignored attributes.",
+          })
         }
-        for attr in attrs {
+        for index, attr in attrs {
           if attr is String(s) {
             if s.length() > 256 || !valid_attribute(s) || ascii_lower(s) == "dn" {
-              raise InvalidProfile(
-                "Invalid ignored attribute description; DN cannot be excluded.",
-              )
+              raise ProfileDetailError({
+                code: "ignored-attribute",
+                path: "/compare/ignored_attributes/" + index.to_string(),
+                message: "Invalid ignored attribute description; DN cannot be excluded.",
+              })
             }
             names[snapshot_attribute_key(s)] = true
           } else {
-            raise InvalidProfile("Ignored attributes must be strings.")
+            raise ProfileDetailError({
+              code: "ignored-type",
+              path: "/compare/ignored_attributes/" + index.to_string(),
+              message: "Ignored attributes must be strings.",
+            })
           }
         }
       }
-      _ => raise InvalidProfile("Ignored attributes must be an array.")
+      _ =>
+        raise ProfileDetailError({
+          code: "ignored-array",
+          path: "/compare/ignored_attributes",
+          message: "Ignored attributes must be an array.",
+        })
     }
   }
   let ignored = names.keys().to_array()
   ignored.sort()
   {
     options: {
-      allow_missing_version: profile_bool(common, "allow_missing_version"),
-      deny_delete: profile_bool(review, "deny_delete"),
+      allow_missing_version: profile_bool(
+        common, "allow_missing_version", "/common",
+      ),
+      deny_delete: profile_bool(review, "deny_delete", "/review"),
     },
     risk: {
-      deny_clear: profile_bool(review, "deny_clear"),
-      deny_rename: profile_bool(review, "deny_rename"),
+      deny_clear: profile_bool(review, "deny_clear", "/review"),
+      deny_rename: profile_bool(review, "deny_rename", "/review"),
     },
-    legacy: profile_bool(common, "legacy_dn_spaces"),
+    legacy: profile_bool(common, "legacy_dn_spaces", "/common"),
     ignored,
     limits: [
-      profile_limit(limits, "max_change_records"),
-      profile_limit(limits, "max_delete_records"),
-      profile_limit(limits, "max_clear_operations"),
+      profile_limit(limits, "max_change_records", "/review/limits"),
+      profile_limit(limits, "max_delete_records", "/review/limits"),
+      profile_limit(limits, "max_clear_operations", "/review/limits"),
     ],
+  }
+}
+
+///|
+pub(all) struct ProfileIssue {
+  code : String
+  path : String
+  message : String
+} derive(Eq, Debug, ToJson)
+
+///|
+pub(all) enum ProfileValidation {
+  Valid(Profile)
+  Invalid(ProfileIssue)
+}
+
+///|
+priv suberror ProfileDetailError {
+  ProfileDetailError(ProfileIssue)
+}
+
+///|
+fn profile_pointer(parent : String, key : String) -> String {
+  parent + "/" + key.replace(old="~", new="~0").replace(old="/", new="~1")
+}
+
+///|
+pub fn validate_profile(data : Bytes) -> ProfileValidation {
+  Valid(parse_profile_detail(data)) catch {
+    ProfileDetailError(issue) => Invalid(issue)
+  }
+}
+
+///|
+pub fn parse_profile(data : Bytes) -> Profile raise ProfileError {
+  match validate_profile(data) {
+    Valid(profile) => profile
+    Invalid(issue) => raise InvalidProfile(issue.message)
   }
 }
 

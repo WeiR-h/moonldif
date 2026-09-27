@@ -44,6 +44,8 @@ pub fn profile_batch_start(String, String, String) -> @moonldif.BatchReview?
 
 pub fn profile_validate(String) -> String
 
+pub fn profile_validate_detailed(String) -> String
+
 pub fn workbench(String, Bool, Bool, Bool, Bool) -> String
 
 // Errors

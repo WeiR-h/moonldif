@@ -101,3 +101,69 @@ test "profile snapshot and batch share validated configuration" {
   batch.add_unavailable("missing")
   assert_eq(batch.exit_code(), 2)
 }
+
+///|
+test "structured profile validation preserves legacy errors and field paths" {
+  let cases = [
+    (
+      "{\"profile_version\":1,\"review\":{\"limits\":{\"max_delete_records\":\"-1\"}}}",
+      "limit-value", "/review/limits/max_delete_records",
+    ),
+    (
+      "{\"profile_version\":1,\"review\":{\"deny_delete\":1}}", "boolean-type", "/review/deny_delete",
+    ),
+    (
+      "{\"profile_version\":1,\"compare\":{\"ignored_attributes\":[\"cn\",\"dn\"]}}",
+      "ignored-attribute", "/compare/ignored_attributes/1",
+    ),
+    ("{\"profile_version\":1,\"a~/b\":true}", "unknown-field", "/a~0~1b"),
+    ("{\"profile_version\":2}", "version", "/profile_version"),
+    ("{\"profile_version\":1,\"profile_vers\\u0069on\":1}", "duplicate-key", ""),
+    ("{\"profile_version\":1,\"common\":[]}", "object-type", "/common"),
+    ("{\"profile_version\":1,\"unfinished", "json", ""),
+  ]
+  for item in cases {
+    let (text, code, path) = item
+    let data = @utf8.encode(text)
+    match validate_profile(data) {
+      Valid(_) => fail("Expected invalid configuration")
+      Invalid(issue) => {
+        assert_eq(issue.code, code)
+        assert_eq(issue.path, path)
+        let message = try {
+          ignore(parse_profile(data))
+          "unexpected"
+        } catch {
+          InvalidProfile(m) => m
+        }
+        assert_eq(message, issue.message)
+      }
+    }
+  }
+}
+
+///|
+test "structured validation byte and integer boundaries" {
+  for
+    text in [
+      "{\"profile_version\":1}", "{\"profile_version\":1,\"review\":{\"limits\":{\"max_delete_records\":0}}}",
+      "{\"profile_version\":1,\"review\":{\"limits\":{\"max_delete_records\":2147483647}}}",
+    ] {
+    let bytes = @utf8.encode(text)
+    match validate_profile(bytes) {
+      Valid(p) => assert_eq(p.canonical(), parse_profile(bytes).canonical())
+      Invalid(_) => fail("Expected valid profile")
+    }
+  }
+  for value in ["2147483648", "-1", "1.5", "1e2", "null", "\"abc\"", "\" \""] {
+    let text = "{\"profile_version\":1,\"review\":{\"limits\":{\"max_delete_records\":" +
+      value +
+      "}}}"
+    assert_true(validate_profile(@utf8.encode(text)) is Invalid(_))
+  }
+  assert_true(validate_profile(b"\xff") is Invalid({ code: "encoding", .. }))
+  assert_true(
+    validate_profile(@utf8.encode(" ".repeat(65537)))
+    is Invalid({ code: "size", .. }),
+  )
+}

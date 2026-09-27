@@ -30,6 +30,8 @@ pub fn parse_text(String, options? : Options) -> Report
 
 pub fn same_attribute_description(String, String) -> Bool
 
+pub fn validate_profile(Bytes) -> ProfileValidation
+
 pub fn version() -> String
 
 pub fn write(Document) -> String raise WriteError
@@ -143,6 +145,17 @@ pub struct Profile {
 pub fn Profile::canonical(Self) -> String
 pub fn Profile::effective_json(Self, String) -> Json raise ProfileError
 pub fn Profile::to_json(Self) -> Json
+
+pub(all) struct ProfileIssue {
+  code : String
+  path : String
+  message : String
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) enum ProfileValidation {
+  Valid(Profile)
+  Invalid(ProfileIssue)
+}
 
 pub(all) struct Record {
   dn : String

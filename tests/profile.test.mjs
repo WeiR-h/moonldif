@@ -117,3 +117,20 @@ test('all metrics survive diagnostic truncation and deny rules cannot be relaxed
   assert.equal(run(['check',file,'--profile',pp]).status,2);
   assert.equal(run(['check',file,'--profile',folder]).status,2);
 });
+
+test('structured UI errors preserve the legacy envelope and never echo values',()=>{
+  for(const [raw,code,path] of [
+    ['{"profile_version":1,"review":{"deny_clear":"hidden-sensitive"}}','boolean-type','/review/deny_clear'],
+    ['{"profile_version":1,"compare":{"ignored_attributes":["cn","dn"]}}','ignored-attribute','/compare/ignored_attributes/1'],
+    ['{"profile_version":1,"review":{"limits":{"max_delete_records":"1e2"}}}','limit-value','/review/limits/max_delete_records'],
+    ['{"profile_version":1,"unfinished','json',''],
+  ]) {
+    const old=JSON.parse(core.profile_validate(encode(raw)));
+    const result=JSON.parse(core.profile_validate_detailed(encode(raw)));
+    assert.equal(result.exit_code,2);assert.equal(result.issue.code,code);assert.equal(result.issue.path,path);
+    assert.equal(result.issue.message,JSON.parse(old.output).diagnostics[0].reason);
+    assert.equal(JSON.stringify(result).includes('hidden-sensitive'),false);
+  }
+  for(const raw of ['{"profile_version":1}',JSON.stringify(p)])
+    assert.deepEqual(JSON.parse(core.profile_validate_detailed(encode(raw))),JSON.parse(core.profile_validate(encode(raw))));
+});
