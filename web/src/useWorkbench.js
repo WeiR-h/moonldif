@@ -4,7 +4,7 @@ import { samples } from './samples.js';
 import { usePagedSession, downloadBlob } from './usePagedSession.js';
 
 const initialOptions = { denyDelete: true, denyClear: false, denyRename: false, compat: false, legacySpaces: false };
-export function useWorkbench() {
+export function useWorkbench(enabled=true) {
   const [document, setDocument] = useState(samples[0]);
   const [options, setOptions] = useState(initialOptions);
   const session = usePagedSession('review');
@@ -12,7 +12,7 @@ export function useWorkbench() {
   const [selection,setSelection] = useState(null);
   const active = useRef({fileSerial:0});
   const invalidate = useCallback(() => {active.current.fileSerial++;setSelection(null);session.invalidate();},[session.invalidate]);
-  const profile = useProfile('review',invalidate,options,setOptions);
+  const profile = useProfile('review',invalidate,options,setOptions,'',undefined,enabled);
   const profileRef=useRef(profile);profileRef.current=profile;
   const run = useCallback((doc, flags, write=false) => {
     let configuration;

@@ -24,9 +24,9 @@ function Status({ analysis }) {
   return <div className={`status-strip ${tone}`} role="status" aria-live="polite"><Icon name={tone === 'success' ? 'check' : 'alert'} /><div><strong>{title}</strong><p>{ready ? `${report.record_count ?? 0} 条记录 · ${report.review?.total_items ?? 0} 项变更审阅 · ${report.diagnostics?.length || 0} 条${report.exit_code === 1 ? '策略' : ''}诊断` : '仅当前内容和当前选项的检查结果可用于导出。'}</p>{ready && analysis.message && <p>{analysis.message}</p>}</div></div>;
 }
 export default function App() {
-  const state = useWorkbench();
-  const fileInput = useRef(null);
   const [mode, setMode] = useState('review');
+  const state = useWorkbench(mode==='review');
+  const fileInput = useRef(null);
   const [snapshotOpened, setSnapshotOpened] = useState(false);
   const [reportFormat, setReportFormat] = useState('markdown');
   const running = state.analysis.phase === 'running' || state.analysis.phase === 'loading';
@@ -38,7 +38,7 @@ export default function App() {
       <div className="page-intro"><div><h1>检查文件，再执行变更</h1><p>读取、定位问题、审阅影响，并导出经过复检的新文件。</p></div><div className="main-actions">
         <input ref={fileInput} type="file" accept=".ldif,.txt" aria-label="打开本地 LDIF 文件" tabIndex={-1} className="visually-hidden" onChange={e => { state.loadFile(e.target.files[0]); e.target.value = ''; }} />
         <button onClick={() => fileInput.current.click()}><Icon name="folder" />打开 LDIF</button>
-        <button className="primary" onClick={state.recheck} disabled={running||state.profile.loading||Boolean(state.profile.error)}><Icon name="refresh" />{running ? '检查中…' : '重新检查'}</button>
+        <button className="primary" onClick={state.recheck} disabled={running||state.profile.blocked}><Icon name="refresh" />{running ? '检查中…' : '重新检查'}</button>
         <button onClick={state.exportFile} disabled={!state.canExport}><Icon name="download" />导出新文件</button>
       <button onClick={state.invalidate} disabled={!running && !state.analysis.busy}>停止检查</button></div></div>
       <div className="settings" aria-label="检查选项">

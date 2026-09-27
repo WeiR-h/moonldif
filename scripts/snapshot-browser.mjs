@@ -70,9 +70,9 @@ export async function verifySnapshot(page, output, browser) {
   assert.equal(report.before.sha256,sha(before));
   await page.screenshot({path:resolve(output,browser+'-snapshot-excluded.png'),fullPage:true});
   await page.getByLabel('排除指定属性（可选）').fill('dn');
-  await page.getByRole('button',{name:'开始核对',exact:true}).click();await snapshotReady(page);
-  report=JSON.parse(await download(page,output,browser+'-snapshot-invalid-exclusion'));
-  assert.equal(report.exit_code,2);assert.equal(report.comparison_performed,false);
+  await page.locator('#snapshot-exclusions[aria-invalid="true"]').waitFor();
+  assert.equal(await page.getByRole('button',{name:'开始核对',exact:true}).isEnabled(),false);
+  assert.equal(await button(page).isEnabled(),false);
   await page.getByLabel('排除指定属性（可选）').fill('photo');
   await page.getByLabel('核对时允许缺版本头').check(); assert.equal(await button(page).isEnabled(),false);
   await page.getByLabel('迁移后快照内容').fill('version: 1\ndn: cn=[demo]\nphoto:< file:///never-read\n');
