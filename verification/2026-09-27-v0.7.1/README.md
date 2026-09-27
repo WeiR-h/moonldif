@@ -1,6 +1,15 @@
 # 0.7.1 验证证据
 
-2026-09-27：本地候选验证已通过；正式发布、双平台 CI、注册表安装与公开网页复验仍在进行，未完成前正式基线为 0.7.0。
+2026-09-27：工程发布与独立安装复验已完成。个人验收、真实反馈与官方结果仍待实际执行或收到通知。
+
+## 正式发布与安装复验
+
+- 固定源码 `bf20584b7f6f626655a8fc6682a1b855c0abf0eb`；[GitHub Release](https://github.com/WeiR-h/moonldif/releases/tag/v0.7.1)、[mooncakes 0.7.1](https://mooncakes.io/docs/WeiR-h/moonldif@0.7.1/) 与 [Pages](https://weir-h.github.io/moonldif/) 同版本发布。
+- [正式版本 CI](https://github.com/WeiR-h/moonldif/actions/runs/36305183485)：Windows、Ubuntu、双浏览器、Pages 构建与部署全部成功。
+- [独立注册表 CI](https://github.com/WeiR-h/moonldif/actions/runs/36305296213)：两平台均从注册表精确安装 0.7.1，在 JS / Wasm GC 各通过 8 项公共接口测试，包含新增 validate_profile；本机独立安装也通过，没有工作区覆盖。
+- mooncakes 页面 HTTP 200，0.7.1、validate_profile 和 ProfileIssue 可见。
+- 公开 Chromium / Firefox 完成即时错误、恢复、迟到校验与 CLI 对照；见 [浏览器证据](BROWSER-QA.md)。
+- 发布 ZIP 为 4,353,600 字节，SHA-256 `d01e3bce044d450310a820b0a2c26a30260ed3d72b145996e42e4213127efe66`；与 GitHub 资产摘要一致。标签和同版本归档不随发布后文档补充而改写。
 
 - JS / Wasm GC 各 66 项核心测试；CLI、读取边界、分页、配置集成回归通过。
 - 与精确 v0.7.0 对照 317 组接口输出，包括原有 v1/v2、配置校验结果与 v3 分页/完整报告，仅归一化工具版本。

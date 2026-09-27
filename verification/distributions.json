@@ -1,5 +1,14 @@
 [
   {
+    "version": "v0.7.1",
+    "source_commit": "bf20584b7f6f626655a8fc6682a1b855c0abf0eb",
+    "github_release": "https://github.com/WeiR-h/moonldif/releases/tag/v0.7.1",
+    "archive": "WeiR-h-moonldif-0.7.1.zip",
+    "bytes": 4353600,
+    "sha256": "d01e3bce044d450310a820b0a2c26a30260ed3d72b145996e42e4213127efe66",
+    "download_url": "https://github.com/WeiR-h/moonldif/releases/download/v0.7.1/WeiR-h-moonldif-0.7.1.zip"
+  },
+  {
     "version": "v0.7.0",
     "source_commit": "9c25eecd6ed2759b677dfe4698fe02662879a016",
     "github_release": "https://github.com/WeiR-h/moonldif/releases/tag/v0.7.0",

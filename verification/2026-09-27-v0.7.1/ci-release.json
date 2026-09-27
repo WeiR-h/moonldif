@@ -1,0 +1,743 @@
+{
+  "conclusion": "success",
+  "headSha": "bf20584b7f6f626655a8fc6682a1b855c0abf0eb",
+  "jobs": [
+    {
+      "completedAt": "2026-09-27T08:11:17Z",
+      "conclusion": "success",
+      "databaseId": 108580282580,
+      "name": "browser",
+      "startedAt": "2026-09-27T08:06:59Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-09-27T08:07:00Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-09-27T08:07:00Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:07:01Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v7.0.1",
+          "number": 2,
+          "startedAt": "2026-09-27T08:07:00Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:07:02Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-node@v7.0.0",
+          "number": 3,
+          "startedAt": "2026-09-27T08:07:01Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:07:13Z",
+          "conclusion": "success",
+          "name": "Install official MoonBit",
+          "number": 4,
+          "startedAt": "2026-09-27T08:07:02Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:07:14Z",
+          "conclusion": "success",
+          "name": "Run npm --prefix web ci",
+          "number": 5,
+          "startedAt": "2026-09-27T08:07:13Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:07:15Z",
+          "conclusion": "success",
+          "name": "Run npm --prefix web run build",
+          "number": 6,
+          "startedAt": "2026-09-27T08:07:14Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:07:53Z",
+          "conclusion": "success",
+          "name": "Run node web/node_modules/playwright/cli.js install --with-deps chromium firefox",
+          "number": 7,
+          "startedAt": "2026-09-27T08:07:15Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:11:12Z",
+          "conclusion": "success",
+          "name": "Verify browser workflows on Pages subpath",
+          "number": 8,
+          "startedAt": "2026-09-27T08:07:53Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:11:14Z",
+          "conclusion": "success",
+          "name": "Run actions/upload-artifact@v7.0.1",
+          "number": 9,
+          "startedAt": "2026-09-27T08:11:12Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:11:15Z",
+          "conclusion": "success",
+          "name": "Post Run actions/setup-node@v7.0.0",
+          "number": 17,
+          "startedAt": "2026-09-27T08:11:14Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:11:15Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v7.0.1",
+          "number": 18,
+          "startedAt": "2026-09-27T08:11:15Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:11:15Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 19,
+          "startedAt": "2026-09-27T08:11:15Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/WeiR-h/moonldif/actions/runs/36305183485/job/108580282580"
+    },
+    {
+      "completedAt": "2026-09-27T08:08:53Z",
+      "conclusion": "success",
+      "databaseId": 108580282697,
+      "name": "verify (ubuntu-latest)",
+      "startedAt": "2026-09-27T08:06:59Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-09-27T08:07:02Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-09-27T08:07:00Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:07:04Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v7.0.1",
+          "number": 2,
+          "startedAt": "2026-09-27T08:07:02Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:07:07Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-node@v7.0.0",
+          "number": 3,
+          "startedAt": "2026-09-27T08:07:04Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:07:07Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-python@v7.0.0",
+          "number": 4,
+          "startedAt": "2026-09-27T08:07:07Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:07:08Z",
+          "conclusion": "success",
+          "name": "Check public source privacy",
+          "number": 5,
+          "startedAt": "2026-09-27T08:07:07Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:07:08Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-java@v6.0.1",
+          "number": 6,
+          "startedAt": "2026-09-27T08:07:08Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:07:08Z",
+          "conclusion": "skipped",
+          "name": "Install official MoonBit toolchain (Windows)",
+          "number": 7,
+          "startedAt": "2026-09-27T08:07:08Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:07:17Z",
+          "conclusion": "success",
+          "name": "Install official MoonBit toolchain (Ubuntu)",
+          "number": 8,
+          "startedAt": "2026-09-27T08:07:08Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:07:34Z",
+          "conclusion": "success",
+          "name": "Verify core, CLI and scenarios",
+          "number": 9,
+          "startedAt": "2026-09-27T08:07:17Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:07:37Z",
+          "conclusion": "success",
+          "name": "Compare exact released baseline outputs",
+          "number": 10,
+          "startedAt": "2026-09-27T08:07:34Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:08:04Z",
+          "conclusion": "success",
+          "name": "Observe performance without shared-runner timing thresholds",
+          "number": 11,
+          "startedAt": "2026-09-27T08:07:37Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:08:17Z",
+          "conclusion": "success",
+          "name": "Observe complete paging and export scale",
+          "number": 12,
+          "startedAt": "2026-09-27T08:08:04Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:08:19Z",
+          "conclusion": "success",
+          "name": "Install locked workbench dependencies",
+          "number": 13,
+          "startedAt": "2026-09-27T08:08:17Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:08:20Z",
+          "conclusion": "success",
+          "name": "Build browser workbench with the MoonBit core",
+          "number": 14,
+          "startedAt": "2026-09-27T08:08:19Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:08:22Z",
+          "conclusion": "success",
+          "name": "Verify packaged library from a fresh consumer workspace",
+          "number": 15,
+          "startedAt": "2026-09-27T08:08:20Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:08:24Z",
+          "conclusion": "success",
+          "name": "Compare with independent parser",
+          "number": 16,
+          "startedAt": "2026-09-27T08:08:22Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:08:30Z",
+          "conclusion": "success",
+          "name": "Compare snapshot results with independent parser and generated models",
+          "number": 17,
+          "startedAt": "2026-09-27T08:08:24Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:08:33Z",
+          "conclusion": "success",
+          "name": "Verify pinned unmodified OpenLDAP fixtures",
+          "number": 18,
+          "startedAt": "2026-09-27T08:08:30Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:08:43Z",
+          "conclusion": "success",
+          "name": "Compare all change types with independent LDAP SDK",
+          "number": 19,
+          "startedAt": "2026-09-27T08:08:33Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:08:44Z",
+          "conclusion": "success",
+          "name": "Verify published RFC examples and documented variants",
+          "number": 20,
+          "startedAt": "2026-09-27T08:08:43Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:08:45Z",
+          "conclusion": "success",
+          "name": "Prepare pinned ecosystem dependencies",
+          "number": 21,
+          "startedAt": "2026-09-27T08:08:44Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:08:46Z",
+          "conclusion": "success",
+          "name": "Download verified ecosystem dependencies",
+          "number": 22,
+          "startedAt": "2026-09-27T08:08:45Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:08:46Z",
+          "conclusion": "success",
+          "name": "Verify offline moonldap mapping",
+          "number": 23,
+          "startedAt": "2026-09-27T08:08:46Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:08:48Z",
+          "conclusion": "success",
+          "name": "Run actions/upload-artifact@v7.0.1",
+          "number": 24,
+          "startedAt": "2026-09-27T08:08:46Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:08:48Z",
+          "conclusion": "success",
+          "name": "Post Run actions/setup-java@v6.0.1",
+          "number": 45,
+          "startedAt": "2026-09-27T08:08:48Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:08:49Z",
+          "conclusion": "success",
+          "name": "Post Run actions/setup-python@v7.0.0",
+          "number": 46,
+          "startedAt": "2026-09-27T08:08:48Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:08:49Z",
+          "conclusion": "success",
+          "name": "Post Run actions/setup-node@v7.0.0",
+          "number": 47,
+          "startedAt": "2026-09-27T08:08:49Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:08:49Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v7.0.1",
+          "number": 48,
+          "startedAt": "2026-09-27T08:08:49Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:08:49Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 49,
+          "startedAt": "2026-09-27T08:08:49Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/WeiR-h/moonldif/actions/runs/36305183485/job/108580282697"
+    },
+    {
+      "completedAt": "2026-09-27T08:09:30Z",
+      "conclusion": "success",
+      "databaseId": 108580282729,
+      "name": "verify (windows-latest)",
+      "startedAt": "2026-09-27T08:06:58Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-09-27T08:07:00Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-09-27T08:06:59Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:07:07Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v7.0.1",
+          "number": 2,
+          "startedAt": "2026-09-27T08:07:01Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:07:12Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-node@v7.0.0",
+          "number": 3,
+          "startedAt": "2026-09-27T08:07:07Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:07:12Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-python@v7.0.0",
+          "number": 4,
+          "startedAt": "2026-09-27T08:07:12Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:07:14Z",
+          "conclusion": "success",
+          "name": "Check public source privacy",
+          "number": 5,
+          "startedAt": "2026-09-27T08:07:12Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:07:14Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-java@v6.0.1",
+          "number": 6,
+          "startedAt": "2026-09-27T08:07:14Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:07:31Z",
+          "conclusion": "success",
+          "name": "Install official MoonBit toolchain (Windows)",
+          "number": 7,
+          "startedAt": "2026-09-27T08:07:14Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:07:31Z",
+          "conclusion": "skipped",
+          "name": "Install official MoonBit toolchain (Ubuntu)",
+          "number": 8,
+          "startedAt": "2026-09-27T08:07:31Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:07:55Z",
+          "conclusion": "success",
+          "name": "Verify core, CLI and scenarios",
+          "number": 9,
+          "startedAt": "2026-09-27T08:07:31Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:07:59Z",
+          "conclusion": "success",
+          "name": "Compare exact released baseline outputs",
+          "number": 10,
+          "startedAt": "2026-09-27T08:07:55Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:08:27Z",
+          "conclusion": "success",
+          "name": "Observe performance without shared-runner timing thresholds",
+          "number": 11,
+          "startedAt": "2026-09-27T08:07:59Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:08:40Z",
+          "conclusion": "success",
+          "name": "Observe complete paging and export scale",
+          "number": 12,
+          "startedAt": "2026-09-27T08:08:27Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:08:45Z",
+          "conclusion": "success",
+          "name": "Install locked workbench dependencies",
+          "number": 13,
+          "startedAt": "2026-09-27T08:08:40Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:08:47Z",
+          "conclusion": "success",
+          "name": "Build browser workbench with the MoonBit core",
+          "number": 14,
+          "startedAt": "2026-09-27T08:08:45Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:08:50Z",
+          "conclusion": "success",
+          "name": "Verify packaged library from a fresh consumer workspace",
+          "number": 15,
+          "startedAt": "2026-09-27T08:08:47Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:08:53Z",
+          "conclusion": "success",
+          "name": "Compare with independent parser",
+          "number": 16,
+          "startedAt": "2026-09-27T08:08:50Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:09:03Z",
+          "conclusion": "success",
+          "name": "Compare snapshot results with independent parser and generated models",
+          "number": 17,
+          "startedAt": "2026-09-27T08:08:53Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:09:06Z",
+          "conclusion": "success",
+          "name": "Verify pinned unmodified OpenLDAP fixtures",
+          "number": 18,
+          "startedAt": "2026-09-27T08:09:03Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:09:19Z",
+          "conclusion": "success",
+          "name": "Compare all change types with independent LDAP SDK",
+          "number": 19,
+          "startedAt": "2026-09-27T08:09:06Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:09:21Z",
+          "conclusion": "success",
+          "name": "Verify published RFC examples and documented variants",
+          "number": 20,
+          "startedAt": "2026-09-27T08:09:19Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:09:22Z",
+          "conclusion": "success",
+          "name": "Prepare pinned ecosystem dependencies",
+          "number": 21,
+          "startedAt": "2026-09-27T08:09:21Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:09:24Z",
+          "conclusion": "success",
+          "name": "Download verified ecosystem dependencies",
+          "number": 22,
+          "startedAt": "2026-09-27T08:09:22Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:09:26Z",
+          "conclusion": "success",
+          "name": "Verify offline moonldap mapping",
+          "number": 23,
+          "startedAt": "2026-09-27T08:09:24Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:09:27Z",
+          "conclusion": "success",
+          "name": "Run actions/upload-artifact@v7.0.1",
+          "number": 24,
+          "startedAt": "2026-09-27T08:09:26Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:09:27Z",
+          "conclusion": "success",
+          "name": "Post Run actions/setup-java@v6.0.1",
+          "number": 45,
+          "startedAt": "2026-09-27T08:09:27Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:09:27Z",
+          "conclusion": "success",
+          "name": "Post Run actions/setup-python@v7.0.0",
+          "number": 46,
+          "startedAt": "2026-09-27T08:09:27Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:09:27Z",
+          "conclusion": "success",
+          "name": "Post Run actions/setup-node@v7.0.0",
+          "number": 47,
+          "startedAt": "2026-09-27T08:09:27Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:09:29Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v7.0.1",
+          "number": 48,
+          "startedAt": "2026-09-27T08:09:27Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:09:29Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 49,
+          "startedAt": "2026-09-27T08:09:29Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/WeiR-h/moonldif/actions/runs/36305183485/job/108580282729"
+    },
+    {
+      "completedAt": "2026-09-27T08:11:44Z",
+      "conclusion": "success",
+      "databaseId": 108580947358,
+      "name": "pages-build",
+      "startedAt": "2026-09-27T08:11:20Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-09-27T08:11:23Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-09-27T08:11:21Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:11:24Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v7.0.1",
+          "number": 2,
+          "startedAt": "2026-09-27T08:11:23Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:11:26Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-node@v7.0.0",
+          "number": 3,
+          "startedAt": "2026-09-27T08:11:24Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:11:26Z",
+          "conclusion": "success",
+          "name": "Require exact stable package tag",
+          "number": 4,
+          "startedAt": "2026-09-27T08:11:26Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:11:35Z",
+          "conclusion": "success",
+          "name": "Install official MoonBit",
+          "number": 5,
+          "startedAt": "2026-09-27T08:11:26Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:11:38Z",
+          "conclusion": "success",
+          "name": "Run npm --prefix web ci",
+          "number": 6,
+          "startedAt": "2026-09-27T08:11:35Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:11:39Z",
+          "conclusion": "success",
+          "name": "Run npm --prefix web run build",
+          "number": 7,
+          "startedAt": "2026-09-27T08:11:38Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:11:39Z",
+          "conclusion": "success",
+          "name": "Run actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d",
+          "number": 8,
+          "startedAt": "2026-09-27T08:11:39Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:11:41Z",
+          "conclusion": "success",
+          "name": "Run actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9",
+          "number": 9,
+          "startedAt": "2026-09-27T08:11:39Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:11:41Z",
+          "conclusion": "success",
+          "name": "Post Run actions/setup-node@v7.0.0",
+          "number": 17,
+          "startedAt": "2026-09-27T08:11:41Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:11:41Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v7.0.1",
+          "number": 18,
+          "startedAt": "2026-09-27T08:11:41Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:11:41Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 19,
+          "startedAt": "2026-09-27T08:11:41Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/WeiR-h/moonldif/actions/runs/36305183485/job/108580947358"
+    },
+    {
+      "completedAt": "2026-09-27T08:11:57Z",
+      "conclusion": "success",
+      "databaseId": 108581015335,
+      "name": "pages-deploy",
+      "startedAt": "2026-09-27T08:11:48Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-09-27T08:11:49Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-09-27T08:11:49Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:11:56Z",
+          "conclusion": "success",
+          "name": "Deploy verified stable version",
+          "number": 2,
+          "startedAt": "2026-09-27T08:11:49Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:11:56Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 3,
+          "startedAt": "2026-09-27T08:11:56Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/WeiR-h/moonldif/actions/runs/36305183485/job/108581015335"
+    }
+  ],
+  "status": "completed",
+  "url": "https://github.com/WeiR-h/moonldif/actions/runs/36305183485"
+}

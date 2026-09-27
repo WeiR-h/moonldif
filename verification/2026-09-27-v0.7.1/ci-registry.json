@@ -1,0 +1,190 @@
+{
+  "conclusion": "success",
+  "headSha": "bf20584b7f6f626655a8fc6682a1b855c0abf0eb",
+  "jobs": [
+    {
+      "completedAt": "2026-09-27T08:09:29Z",
+      "conclusion": "success",
+      "databaseId": 108580614411,
+      "name": "registry (ubuntu-latest)",
+      "startedAt": "2026-09-27T08:09:11Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-09-27T08:09:12Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-09-27T08:09:11Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:09:13Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v7.0.1",
+          "number": 2,
+          "startedAt": "2026-09-27T08:09:12Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:09:13Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-python@v7.0.0",
+          "number": 3,
+          "startedAt": "2026-09-27T08:09:13Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:09:13Z",
+          "conclusion": "skipped",
+          "name": "Install MoonBit on Windows",
+          "number": 4,
+          "startedAt": "2026-09-27T08:09:13Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:09:22Z",
+          "conclusion": "success",
+          "name": "Install MoonBit on Ubuntu",
+          "number": 5,
+          "startedAt": "2026-09-27T08:09:13Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:09:27Z",
+          "conclusion": "success",
+          "name": "Test exact registry dependency in isolated workspace",
+          "number": 6,
+          "startedAt": "2026-09-27T08:09:22Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:09:28Z",
+          "conclusion": "success",
+          "name": "Run actions/upload-artifact@v7.0.1",
+          "number": 7,
+          "startedAt": "2026-09-27T08:09:27Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:09:28Z",
+          "conclusion": "success",
+          "name": "Post Run actions/setup-python@v7.0.0",
+          "number": 13,
+          "startedAt": "2026-09-27T08:09:28Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:09:28Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v7.0.1",
+          "number": 14,
+          "startedAt": "2026-09-27T08:09:28Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:09:28Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 15,
+          "startedAt": "2026-09-27T08:09:28Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/WeiR-h/moonldif/actions/runs/36305296213/job/108580614411"
+    },
+    {
+      "completedAt": "2026-09-27T08:09:56Z",
+      "conclusion": "success",
+      "databaseId": 108580614549,
+      "name": "registry (windows-latest)",
+      "startedAt": "2026-09-27T08:09:11Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-09-27T08:09:13Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-09-27T08:09:12Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:09:19Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v7.0.1",
+          "number": 2,
+          "startedAt": "2026-09-27T08:09:13Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:09:19Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-python@v7.0.0",
+          "number": 3,
+          "startedAt": "2026-09-27T08:09:19Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:09:37Z",
+          "conclusion": "success",
+          "name": "Install MoonBit on Windows",
+          "number": 4,
+          "startedAt": "2026-09-27T08:09:19Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:09:37Z",
+          "conclusion": "skipped",
+          "name": "Install MoonBit on Ubuntu",
+          "number": 5,
+          "startedAt": "2026-09-27T08:09:37Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:09:50Z",
+          "conclusion": "success",
+          "name": "Test exact registry dependency in isolated workspace",
+          "number": 6,
+          "startedAt": "2026-09-27T08:09:37Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:09:51Z",
+          "conclusion": "success",
+          "name": "Run actions/upload-artifact@v7.0.1",
+          "number": 7,
+          "startedAt": "2026-09-27T08:09:50Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:09:52Z",
+          "conclusion": "success",
+          "name": "Post Run actions/setup-python@v7.0.0",
+          "number": 13,
+          "startedAt": "2026-09-27T08:09:51Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:09:54Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v7.0.1",
+          "number": 14,
+          "startedAt": "2026-09-27T08:09:52Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-27T08:09:54Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 15,
+          "startedAt": "2026-09-27T08:09:54Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/WeiR-h/moonldif/actions/runs/36305296213/job/108580614549"
+    }
+  ],
+  "status": "completed",
+  "url": "https://github.com/WeiR-h/moonldif/actions/runs/36305296213"
+}
