@@ -4,7 +4,7 @@ import { resolve, join } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { createHash } from 'node:crypto';
 import assert from 'node:assert/strict';
-const before = await import(pathToFileURL(resolve(process.argv[2] || 'verification/local/baseline-0.6.0/core.mjs')));
+const before = await import(pathToFileURL(resolve(process.argv[2] || 'verification/local/baseline-0.7.0/core.mjs')));
 const after = await import(pathToFileURL(resolve('dist/core.mjs')));
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 const inputs = [];
@@ -31,13 +31,14 @@ inputs.push({ name: 'invalid-utf8', bytes: Buffer.from([118,101,114,115,105,111,
 // Normalize tool-version metadata only; attribute values and written LDIF are untouched.
 function normalize(envelope) {
   const x = JSON.parse(envelope);
-  const versions = /("version"\s*:\s*")(?:0\.5\.[01]|0\.[67]\.0)(")/g;
-  x.output = x.output.replace(versions, '$1<VERSION>$2').replace(/MoonLDIF (?:0\.5\.[01]|0\.[67]\.0)/g, 'MoonLDIF <VERSION>').replace(/Tool version: (?:0&#46;5&#46;[01]|0&#46;[67]&#46;0)/g, 'Tool version: <VERSION>');
-  if (x.markdown) x.markdown = x.markdown.replace(/Tool version: (?:0&#46;5&#46;[01]|0&#46;[67]&#46;0)/g, 'Tool version: <VERSION>');
-  x.output = x.output.replace(/^- version: 0&#46;[67]&#46;0$/gm, '- version: <VERSION>');
+  if (typeof x.output !== 'string') return x;
+  const versions = /("version"\s*:\s*")(?:0\.5\.[01]|0\.[67]\.[01])(")/g;
+  x.output = x.output.replace(versions, '$1<VERSION>$2').replace(/MoonLDIF (?:0\.5\.[01]|0\.[67]\.[01])/g, 'MoonLDIF <VERSION>').replace(/Tool version: (?:0&#46;5&#46;[01]|0&#46;[67]&#46;[01])/g, 'Tool version: <VERSION>');
+  if (x.markdown) x.markdown = x.markdown.replace(/Tool version: (?:0&#46;5&#46;[01]|0&#46;[67]&#46;[01])/g, 'Tool version: <VERSION>');
+  x.output = x.output.replace(/^- version: 0&#46;[67]&#46;[01]$/gm, '- version: <VERSION>');
   return x;
 }
-const evidence = { status: 'running', method: 'Identical bytes/options compared against frozen v0.6.0; only tool-version metadata normalized; complete envelope including written LDIF and v2 pages/full reports compared', cases: [] };
+const evidence = { status: 'running', method: 'Identical bytes/options compared against frozen v0.7.0; only tool-version metadata normalized; complete envelope including written LDIF and v2 pages/full reports compared', cases: [] };
 try {
   for (const input of inputs) {
     for (const [command, format] of [['check','json'],['inspect','json'],['review','json'],['review','text'],['review','markdown'],['format','json']]) {
@@ -63,6 +64,24 @@ try {
       });
       assert.deepEqual(reports[0],reports[1]);
       evidence.cases.push({command,format,contract:'v2 page and complete export'});
+    }
+  }
+  // v0.7 profile envelopes, canonical configuration and format-v3 reports stay stable.
+  for (const raw of ['{"profile_version":1}', '{"profile_version":1,"review":{"limits":{"max_delete_records":5}}}', '{"profile_version":1,"review":{"deny_clear":"bad"}}', '{"profile_version":1,"review":{"limits":{"max_delete_records":-1}}}', '{"profile_version":1,"profile_version":1}']) {
+    const encoded=Buffer.from(raw).toString('base64');
+    assert.deepEqual(normalize(after.profile_validate(encoded)),normalize(before.profile_validate(encoded)));
+    evidence.cases.push({contract:'v0.7 configuration envelope'});
+  }
+  for(const mode of ['review','compare']) {
+    const oldBytes=Buffer.from(mode==='review'?'version: 1\n'+'dn: cn=x\nchangetype: delete\n\n'.repeat(205):'version: 1\ndn: cn=x\ncn: before\n');
+    const newBytes=Buffer.from('version: 1\ndn: cn=x\ncn: after\n');
+    const raw='{"profile_version":1,"review":{"limits":{"max_delete_records":5}},"compare":{"ignored_attributes":["mail"]}}';
+    const cfg=JSON.stringify({profile_encoded:Buffer.from(raw).toString('base64'),profile_source_sha256:sha(Buffer.from(raw)),before_sha256:sha(oldBytes),after_sha256:sha(newBytes)});
+    const sessions=[before,after].map(c=>c.paged_start(mode,oldBytes.toString('base64'),newBytes.toString('base64'),cfg));
+    for(const format of ['json','markdown','text']) {
+      assert.deepEqual(normalize(before.paged_page(sessions[0],'{"offset":200,"limit":50}',format)),normalize(after.paged_page(sessions[1],'{"offset":200,"limit":50}',format)));
+      const outputs=[before,after].map((c,i)=>{const cursor=c.paged_report_start(sessions[i],format);let output='';for(;;){const part=JSON.parse(c.paged_report_next(cursor));if(part.done)break;assert.equal(part.error,undefined);output+=part.chunk;}return normalize(JSON.stringify({output}));});
+      assert.deepEqual(outputs[0],outputs[1]);evidence.cases.push({contract:'v3 profile page and complete export',mode,format});
     }
   }
   evidence.status = 'passed';

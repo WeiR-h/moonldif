@@ -1,4 +1,4 @@
-# 可复用检查配置（0.7.0）
+# 可复用检查配置（0.7.1）
 
 配置功能已随 0.7.0 发布，发行、安装与公开验证见 [交付状态](STATUS.md)。
 
@@ -51,3 +51,15 @@ node dist/moonldif.js compare before.ldif after.ldif --profile rules.json --all 
 加载配置后，下方选项显示实际生效规则。修改任何规则都会使旧结果和下载失效；修改后的配置标记为已修改，可下载后用于 CLI。错误配置阻止再次检查，需重新加载有效配置或明确停用配置。配置只保留在当前页面，不写入 localStorage。切换模式保留各模式输入与配置，但重新检查后才能下载结果。
 
 配置下载包括两个模式的规则；预检与核对报告各自只展示当前模式实际生效规则。停用配置保留当前手工布尔选项，清除数量限制；核对模式保留当前显式排除项。
+
+## 0.7.1 校验与恢复
+
+`validate_profile(Bytes) -> ProfileValidation` 返回 `Valid(Profile)` 或 `Invalid(ProfileIssue)`，不抛出配置错误。ProfileIssue 的 code、path、message 分别是稳定代码、JSON Pointer 字段路径和兼容的英文说明；path 为空表示配置整体问题。未知字段路径转义 `~` 和 `/`，数组项使用索引。语法、重复键、编码和词法整数写法错误不伪造行号。错误不回显输入值。旧 `parse_profile` 仍抛出 `InvalidProfile(message)`，两者共用校验逻辑；有效规范配置不变。
+
+稳定代码：size、encoding、nesting、json、duplicate-key、number-notation、unknown-field、object-type、version、boolean-type、limit-value、ignored-count、ignored-attribute、ignored-type、ignored-array。浏览器桥接 transport 仅表示传输编码错误，不是库配置规则。
+
+工作台保留原输入草稿；停止修改 300 毫秒后由 MoonBit 校验。空输入不限，0 禁止；不自动修正非法内容。读取、校验或错误期间禁止检查和配置下载。字段错误就地显示，文件整体错误显示在配置区；加载失败须重新加载、恢复或停用，不能靠修改其他选项解除。配置有效不代表 LDIF 检查通过，不会自动启动检查。
+
+“恢复最近加载配置”只恢复本模式最近一次成功加载的配置，包括其后修改的手工选项；保留 LDIF 文本并使报告失效。成功加载新文件才替换恢复记录，加载失败不覆盖，停用后仍能恢复；无成功记录时按钮禁用。两个模式独立保存，刷新清空，不写入 localStorage。恢复使用原始配置字节以还原 source_sha256；手工改动后继续清除该来源指纹。
+
+停用保留当前手工开关和核对排除属性，清除数量限制。后续版本按末位递增（0.7.1、0.7.2……），日常迭代保持接口兼容，不改写历史发行。

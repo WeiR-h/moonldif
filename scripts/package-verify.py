@@ -140,6 +140,23 @@ test "configuration policy public API" {
   assert_eq(@ldif.SnapshotSession::with_profile(content, content, p).exit_code(), 0)
 }
 ''')
+    with (consumer / 'consumer_test.mbt').open('a', encoding='utf8') as tests:
+        tests.write(r'''///|
+test "released structured configuration validation" {
+  match @ldif.validate_profile(b"{\"profile_version\":1}") {
+    Valid(p) => assert_eq(p.canonical(), @ldif.parse_profile(b"{\"profile_version\":1}").canonical())
+    Invalid(_) => fail("Expected valid configuration")
+  }
+  match @ldif.validate_profile(b"{\"profile_version\":1,\"review\":{\"deny_delete\":\"bad\"}}") {
+    Valid(_) => fail("Expected invalid flag")
+    Invalid(issue) => {
+      assert_eq(issue.code, "boolean-type")
+      assert_eq(issue.path, "/review/deny_delete")
+      assert_eq(issue.message, "Configuration flags must be booleans.")
+    }
+  }
+}
+''')
     for target in ['js', 'wasm-gc']:
         run([moon, 'test', '-p', 'local/moonldif_consumer', '--target', target], cwd=workspace, env=env)
     evidence['status'] = 'passed'

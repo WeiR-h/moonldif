@@ -1,0 +1,35 @@
+{
+  "status": "passed",
+  "results": [
+    {
+      "browser": "chromium",
+      "checks": [
+        "profile-inline-validation",
+        "profile-error-sticky",
+        "profile-keyboard-restore",
+        "profile-restore-source-hash",
+        "profile-restore-after-disable",
+        "profile-mode-isolation",
+        "profile-draft-race",
+        "profile-late-validation",
+        "profile-restored-cli-equivalence"
+      ],
+      "status": "passed"
+    },
+    {
+      "browser": "firefox",
+      "checks": [
+        "profile-inline-validation",
+        "profile-error-sticky",
+        "profile-keyboard-restore",
+        "profile-restore-source-hash",
+        "profile-restore-after-disable",
+        "profile-mode-isolation",
+        "profile-draft-race",
+        "profile-late-validation",
+        "profile-restored-cli-equivalence"
+      ],
+      "status": "passed"
+    }
+  ]
+}

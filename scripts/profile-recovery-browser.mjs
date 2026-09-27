@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
-import {readFileSync} from 'node:fs';
+import {readFileSync,writeFileSync} from 'node:fs';
+import {spawnSync} from 'node:child_process';
 import {resolve} from 'node:path';
 import {createHash} from 'node:crypto';
 
@@ -45,6 +46,13 @@ export async function verifyProfileRecovery(page,output,browser) {
   const restored=JSON.parse(readFileSync(file,'utf8'));
   assert.equal(restored.exit_code,1);assert.equal(restored.summary.profile.source_sha256,createHash('sha256').update(raw).digest('hex'));
   assert.equal(restored.summary.profile.effective_sha256,createHash('sha256').update(JSON.stringify(restored.summary.profile.effective)).digest('hex'));
+  const configFile=resolve(output,browser+'-restored-source.json'),inputFile=resolve(output,browser+'-restored-input.ldif');
+  writeFileSync(configFile,raw);writeFileSync(inputFile,data);
+  const cli=spawnSync(process.execPath,['dist/moonldif.js','review',inputFile,'--profile',configFile,'--all','--format','json'],{encoding:'utf8'});
+  assert.equal(cli.status,1,cli.stderr);const cliReport=JSON.parse(cli.stdout);
+  assert.deepEqual(cliReport.summary.profile,restored.summary.profile);
+  assert.deepEqual(cliReport.items,restored.items);
+
   await page.getByLabel('加载预检配置',{exact:true}).setInputFiles({name:'bad.json',mimeType:'application/json',buffer:Buffer.from('{"profile_version":1,"review":{"deny_delete":"wrong"}}')});
   await region.getByRole('alert').waitFor();
   await limit.fill('6');await page.getByLabel('允许缺版本头',{exact:true}).check();
@@ -70,5 +78,15 @@ export async function verifyProfileRecovery(page,output,browser) {
   await page.setViewportSize({width:390,height:844});assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
   await page.screenshot({path:resolve(output,browser+'-profile-recovery-mobile.png'),fullPage:true});
   await region.getByRole('button',{name:'停用配置',exact:true}).click();
-  return ['profile-inline-validation','profile-error-sticky','profile-keyboard-restore','profile-restore-source-hash','profile-restore-after-disable','profile-mode-isolation','profile-draft-race'];
+  const late=await page.context().browser().newPage();
+  try {
+    await late.route('**/assets/core-*.js',async route=>{await new Promise(r=>setTimeout(r,800));await route.continue();});
+    await late.goto(page.url());
+    const field=late.getByLabel('最多整条删除',{exact:true});
+    await field.fill('1');await late.waitForTimeout(350);await field.fill('-1');await late.waitForTimeout(350);await field.fill('5');
+    const next=late.getByRole('button',{name:'重新检查',exact:true});await next.click();
+    assert.equal(await field.inputValue(),'5');assert.notEqual(await field.getAttribute('aria-invalid'),'true');
+    assert.equal(await late.getByRole('region',{name:'预检配置',exact:true}).getByRole('button',{name:'恢复最近加载配置'}).isEnabled(),false);
+  } finally {await late.close();}
+  return ['profile-inline-validation','profile-error-sticky','profile-keyboard-restore','profile-restore-source-hash','profile-restore-after-disable','profile-mode-isolation','profile-draft-race','profile-late-validation','profile-restored-cli-equivalence'];
 }
