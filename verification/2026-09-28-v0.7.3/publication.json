@@ -1,0 +1,23 @@
+{
+  "version": "0.7.3",
+  "source_commit": "e5429fc3669fae09f9441693d2cd5dea0ec7e26d",
+  "compiler": "moonc v0.10.14+7d59c7ec9",
+  "candidate_ci": 36409567257,
+  "tag_ci": 36410151774,
+  "registry_ci": 36410267909,
+  "public_cli_ci": 36410272367,
+  "github_release": "published",
+  "mooncakes": "published and independent consumer passed",
+  "pages": "deployed and public Chromium/Firefox workflows passed",
+  "assets": {
+    "moonldif-cli-v0.7.3.zip": "3884c547cc620af15474d3f197ff1145780b956f79f2d6daf70764da4e450e78",
+    "WeiR-h-moonldif-0.7.3.zip": "5d6f1ff2e172c329d54ce79d53acad14955757856189892b7900a69f576155b7"
+  },
+  "candidate_ci_status": "success",
+  "tag_ci_status": "success",
+  "registry_ci_status": "success",
+  "public_cli_ci_status": "success",
+  "public_browser_status": "passed",
+  "in_app_public_report_download": "verified actual file from fresh tab; earlier tab did not deliver downloads",
+  "in_app_public_original_and_report": "exact input SHA-256 and complete JSON match CLI in fresh tab"
+}

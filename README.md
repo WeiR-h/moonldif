@@ -1,6 +1,6 @@
 # MoonLDIF
 
-MoonBit 原生 LDIF 读写与离线结构预检库。
+MoonBit 原生 LDIF 读写与离线结构预检库。解析、规则、报告与写回由 MoonBit 实现；见[源码分工](docs/IMPLEMENTATION.md)。
 
 版本：`0.7.3`。使用满足最低版本要求的 MoonBit 工具链，增强下载重试及分析线程失败恢复；旧 API 和默认 CLI 输出保持兼容。正式发布、注册表安装和公开网页结果以[最新交付状态](https://github.com/WeiR-h/moonldif/blob/main/docs/STATUS.md)为准。报名初审已通过，个人验收和组委会最终结果分别记录。
 

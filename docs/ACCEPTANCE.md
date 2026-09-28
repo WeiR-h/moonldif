@@ -2,26 +2,26 @@
 
 | 要求 | 对应实现及证据 | 当前状态 |
 |---|---|---|
-| MoonBit 主要实现，moonc ≥ 0.10.14 | `src/*.mbt`，固定 0.10.14+7d59c7ec9，构建最低版本检查 | 本机通过，远端待核对 |
-| 公开 GitHub、清晰提交 | [仓库](https://github.com/WeiR-h/moonldif)、[提交](https://github.com/WeiR-h/moonldif/commits/main/) | 仓库公开，新版待推送 |
+| MoonBit 主要实现，moonc ≥ 0.10.14 | [核心实现分工](IMPLEMENTATION.md)，固定 0.10.14+7d59c7ec9，构建最低版本检查 | 固定编译器的本机及双平台 CI 通过 |
+| 公开 GitHub、清晰提交 | [仓库](https://github.com/WeiR-h/moonldif)、[提交](https://github.com/WeiR-h/moonldif/commits/main/) | v0.7.3 已公开推送 |
 | 结构清晰、声明功能完成 | [架构](ARCHITECTURE.md)、[支持范围](SUPPORT.md) | 核心回归通过 |
 | README 安装、使用、示例可复现 | [README](../README.md)、[CLI](CLI-DISTRIBUTION.md)、[恢复说明](RECOVERY.md) | 本地独立消费通过 |
-| CI 检查、构建、测试 | [.github/workflows/ci.yml](../.github/workflows/ci.yml) | 本轮结果待核对 |
+| CI 检查、构建、测试 | [.github/workflows/ci.yml](../.github/workflows/ci.yml) | [正式标签 CI 全部通过](https://github.com/WeiR-h/moonldif/actions/runs/36410151774) |
 | 可运行样例 | [examples](../examples)、[CI 示例](../examples/ci/README.md) | 样例及独立 CLI 通过 |
 | 核心测试完整 | JS/Wasm GC、独立对照、两浏览器及失败注入 | [本轮证据](../verification/2026-09-28-v0.7.3/README.md) |
-| 发布 mooncakes | `WeiR-h/moonldif` | 0.7.2 已发布；0.7.3 待发布安装复验 |
+| 发布 mooncakes | `WeiR-h/moonldif` | [0.7.3 已发布](https://mooncakes.io/docs/WeiR-h/moonldif@0.7.3/)，JS/Wasm GC 双平台独立安装通过 |
 | OSI 开源许可、来源合规 | [Apache-2.0](../LICENSE)、[来源和许可](../THIRD_PARTY.md)、发行物内运行许可 | 保持并复核 |
 
 最终验收结论由主办方给出。下面保留历史证据。
 
-# 0.7.2 当前验收对照
+# 0.7.2 历史验收对照
 
 - 独立 CLI 安装：[快速开始](CLI-DISTRIBUTION.md)、[CI 示例](../examples/ci/README.md)。
 - 网页到 CLI 复现：[工作台](https://weir-h.github.io/moonldif/)、[配置合同](PROFILES.md)。
 - 核心、基线、参考工具、性能和发布：[证据索引](../verification/2026-09-28-v0.7.2/README.md)。
 - 当前发布状态：[STATUS](STATUS.md)。个人操作验收在仓库外清单中记录，不由自动化代替。
 
-# 0.7.1 当前验收对照
+# 0.7.1 历史验收对照
 
 - 新增 API、错误代码及恢复合同：[配置说明](PROFILES.md)。
 - 核心、317 组版本兼容、独立对照、性能与发布：[证据](../verification/2026-09-27-v0.7.1/README.md)。
