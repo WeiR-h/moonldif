@@ -8,6 +8,7 @@ import zipfile
 ROOT = Path(__file__).resolve().parents[1]
 
 def build():
+    subprocess.run(['node','scripts/toolchain-verify.mjs'], cwd=ROOT, check=True)
     package = json.loads((ROOT / 'package.json').read_text(encoding='utf8'))
     version = package['version']
     actual = subprocess.check_output(['node', 'dist/moonldif.js', '--version'], cwd=ROOT, text=True).strip()

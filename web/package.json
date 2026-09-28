@@ -1,12 +1,12 @@
 {
   "name": "moonldif-workbench",
-  "version": "0.7.2",
+  "version": "0.7.3",
   "private": true,
   "type": "module",
   "license": "Apache-2.0",
   "scripts": {
     "dev": "vite --host 127.0.0.1",
-    "build": "node ../scripts/build.mjs && vite build && node scripts/licenses.mjs",
+    "build": "node ../scripts/build.mjs && node scripts/clean.mjs && vite build && node scripts/licenses.mjs",
     "preview": "vite preview --host 127.0.0.1 --port 4178 --strictPort"
   },
   "dependencies": {

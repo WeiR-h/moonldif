@@ -1,4 +1,4 @@
-CLI 0.7.2：下载并解压发行包即可运行下列示例，只需 Node.js 24。无需源码工程和 MoonBit。
+CLI 0.7.3：下载并解压发行包即可运行下列示例，只需 Node.js 24。无需源码工程和 MoonBit。
 
 # Same rules in local review and CI
 

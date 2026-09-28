@@ -13,7 +13,7 @@ jobs:
         os: [ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
     env:
-      MOONBIT_INSTALL_VERSION: 0.10.11+6ff76a5f9
+      MOONBIT_INSTALL_VERSION: 0.10.14+7d59c7ec9
     steps:
       - uses: actions/checkout@v7.0.1
         with:
@@ -62,7 +62,7 @@ jobs:
         run: |
           python scripts/package-cli.py
           python scripts/cli-consumer.py
-          python scripts/publication-privacy.py --archive _build/cli/moonldif-cli-v0.7.2.zip
+          python scripts/publication-privacy.py --archive _build/cli/moonldif-cli-v0.7.3.zip
       - uses: actions/upload-artifact@v7.0.1
         with:
           name: packages-${{ matrix.os }}
@@ -93,7 +93,7 @@ jobs:
   browser:
     runs-on: ubuntu-latest
     env:
-      MOONBIT_INSTALL_VERSION: 0.10.11+6ff76a5f9
+      MOONBIT_INSTALL_VERSION: 0.10.14+7d59c7ec9
       PAGES_BASE: /moonldif/
     steps:
       - uses: actions/checkout@v7.0.1
@@ -123,7 +123,7 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/v') && !contains(github.ref_name, '-')
     runs-on: ubuntu-latest
     env:
-      MOONBIT_INSTALL_VERSION: 0.10.11+6ff76a5f9
+      MOONBIT_INSTALL_VERSION: 0.10.14+7d59c7ec9
       PAGES_BASE: /moonldif/
     steps:
       - uses: actions/checkout@v7.0.1

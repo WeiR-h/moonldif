@@ -49,6 +49,7 @@ pub suberror QueryError {
 pub suberror WriteError {
   InvalidDocument(String)
 } derive(@debug.Debug)
+pub fn WriteError::to_repr(Self) -> @debug.Repr
 
 // Types and methods
 pub(all) struct Attribute {
@@ -56,6 +57,8 @@ pub(all) struct Attribute {
   value : Value
   span : Span
 } derive(Eq)
+pub fn Attribute::equal(Self, Self) -> Bool
+pub fn Attribute::not_equal(Self, Self) -> Bool
 
 pub struct BatchReview {
   // private fields
@@ -77,6 +80,8 @@ pub(all) enum Body {
   Modify(Array[Modification])
   Rename(String, Bool, String?)
 } derive(Eq)
+pub fn Body::equal(Self, Self) -> Bool
+pub fn Body::not_equal(Self, Self) -> Bool
 
 pub(all) struct Control {
   oid : String
@@ -84,6 +89,8 @@ pub(all) struct Control {
   value : Value?
   span : Span
 } derive(Eq)
+pub fn Control::equal(Self, Self) -> Bool
+pub fn Control::not_equal(Self, Self) -> Bool
 
 pub(all) struct Diagnostic {
   code : String
@@ -91,15 +98,22 @@ pub(all) struct Diagnostic {
   span : Span
   reason : String
 } derive(Eq, ToJson)
+pub fn Diagnostic::equal(Self, Self) -> Bool
+pub fn Diagnostic::not_equal(Self, Self) -> Bool
+pub fn Diagnostic::to_json(Self) -> Json
 
 pub(all) struct DistinguishedName {
   rdns : Array[RelativeName]
 } derive(Eq)
+pub fn DistinguishedName::equal(Self, Self) -> Bool
+pub fn DistinguishedName::not_equal(Self, Self) -> Bool
 
 pub(all) struct Document {
   mode : String
   records : Array[Record]
 } derive(Eq)
+pub fn Document::equal(Self, Self) -> Bool
+pub fn Document::not_equal(Self, Self) -> Bool
 
 pub(all) struct Modification {
   operation : String
@@ -107,29 +121,40 @@ pub(all) struct Modification {
   values : Array[Attribute]
   span : Span
 } derive(Eq)
+pub fn Modification::equal(Self, Self) -> Bool
+pub fn Modification::not_equal(Self, Self) -> Bool
 
 pub(all) struct NameAssertion {
   attribute : String
   value : NameValue
   byte_offset : Int
 } derive(Eq)
+pub fn NameAssertion::equal(Self, Self) -> Bool
+pub fn NameAssertion::not_equal(Self, Self) -> Bool
 
 pub(all) struct NameError {
   code : String
   byte_offset : Int
   reason : String
 } derive(Eq, ToJson)
+pub fn NameError::equal(Self, Self) -> Bool
+pub fn NameError::not_equal(Self, Self) -> Bool
+pub fn NameError::to_json(Self) -> Json
 
 pub(all) enum NameValue {
   Text(Bytes)
   Ber(Bytes)
 } derive(Eq)
+pub fn NameValue::equal(Self, Self) -> Bool
+pub fn NameValue::not_equal(Self, Self) -> Bool
 
 pub(all) struct Options {
   allow_missing_version : Bool
   deny_delete : Bool
 } derive(Eq)
 pub fn Options::default() -> Self
+pub fn Options::equal(Self, Self) -> Bool
+pub fn Options::not_equal(Self, Self) -> Bool
 
 pub(all) struct PageQuery {
   offset : Int
@@ -138,6 +163,8 @@ pub(all) struct PageQuery {
   kind : String
 } derive(Eq)
 pub fn PageQuery::default() -> Self
+pub fn PageQuery::equal(Self, Self) -> Bool
+pub fn PageQuery::not_equal(Self, Self) -> Bool
 
 pub struct Profile {
   // private fields
@@ -151,6 +178,10 @@ pub(all) struct ProfileIssue {
   path : String
   message : String
 } derive(Eq, ToJson, @debug.Debug)
+pub fn ProfileIssue::equal(Self, Self) -> Bool
+pub fn ProfileIssue::not_equal(Self, Self) -> Bool
+pub fn ProfileIssue::to_json(Self) -> Json
+pub fn ProfileIssue::to_repr(Self) -> @debug.Repr
 
 pub(all) enum ProfileValidation {
   Valid(Profile)
@@ -163,10 +194,14 @@ pub(all) struct Record {
   body : Body
   span : Span
 } derive(Eq)
+pub fn Record::equal(Self, Self) -> Bool
+pub fn Record::not_equal(Self, Self) -> Bool
 
 pub(all) struct RelativeName {
   assertions : Array[NameAssertion]
 } derive(Eq)
+pub fn RelativeName::equal(Self, Self) -> Bool
+pub fn RelativeName::not_equal(Self, Self) -> Bool
 
 pub(all) struct Report {
   document : Document
@@ -196,6 +231,8 @@ pub(all) struct Review {
   input_exit_code : Int
   record_count : Int
 } derive(Eq)
+pub fn Review::equal(Self, Self) -> Bool
+pub fn Review::not_equal(Self, Self) -> Bool
 pub fn Review::to_json(Self) -> Json
 pub fn Review::to_text(Self) -> String
 
@@ -211,6 +248,8 @@ pub(all) struct ReviewItem {
   reason : String
   action : String
 } derive(Eq)
+pub fn ReviewItem::equal(Self, Self) -> Bool
+pub fn ReviewItem::not_equal(Self, Self) -> Bool
 
 pub(all) struct ReviewMetadata {
   input_sha256 : String
@@ -219,6 +258,8 @@ pub(all) struct ReviewMetadata {
   legacy_dn_spaces : Bool
   risk_policy : RiskPolicy
 } derive(Eq)
+pub fn ReviewMetadata::equal(Self, Self) -> Bool
+pub fn ReviewMetadata::not_equal(Self, Self) -> Bool
 
 pub struct ReviewSession {
   // private fields
@@ -235,6 +276,9 @@ pub(all) struct RiskPolicy {
   deny_rename : Bool
 } derive(Eq, ToJson)
 pub fn RiskPolicy::default() -> Self
+pub fn RiskPolicy::equal(Self, Self) -> Bool
+pub fn RiskPolicy::not_equal(Self, Self) -> Bool
+pub fn RiskPolicy::to_json(Self) -> Json
 
 pub struct SnapshotDiff {
   // private fields
@@ -257,11 +301,16 @@ pub(all) struct Span {
   line : Int
   end_line : Int
 } derive(Eq, ToJson)
+pub fn Span::equal(Self, Self) -> Bool
+pub fn Span::not_equal(Self, Self) -> Bool
+pub fn Span::to_json(Self) -> Json
 
 pub(all) enum Value {
   Inline(Bytes)
   External(String)
 } derive(Eq)
+pub fn Value::equal(Self, Self) -> Bool
+pub fn Value::not_equal(Self, Self) -> Bool
 
 // Type aliases
 
