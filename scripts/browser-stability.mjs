@@ -48,7 +48,7 @@ export async function verifyStability(context, url, output, browser) {
       await page.waitForTimeout(250);
       assert.equal(await page.getByRole('button', { name: '下载完整审阅报告', exact: true }).isEnabled(), false);
       assert.equal(await page.getByRole('button', { name: '导出新文件', exact: true }).isEnabled(), false);
-      assert.equal(await page.locator('.reproduce-panel:visible').getByRole('button',{name:'下载复现说明'}).isEnabled(),false);
+      assert.equal(await page.locator('.reproduce-panel:visible').getByRole('button',{name:'下载复现说明',includeHidden:true}).isEnabled(),false);
       const state = await page.evaluate(() => ({ active: window.__workerProbe.active, maxActive: window.__workerProbe.maxActive,
         main_realm_heap_bytes: performance.memory?.usedJSHeapSize ?? null }));
       assert.equal(state.active, 0); assert.equal(state.maxActive, 1);
