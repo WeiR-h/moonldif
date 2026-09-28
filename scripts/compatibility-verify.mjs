@@ -4,7 +4,7 @@ import { resolve, join } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { createHash } from 'node:crypto';
 import assert from 'node:assert/strict';
-const before = await import(pathToFileURL(resolve(process.argv[2] || 'verification/local/baseline-0.7.0/core.mjs')));
+const before = await import(pathToFileURL(resolve(process.argv[2] || 'verification/local/baseline-0.7.1/core.mjs')));
 const after = await import(pathToFileURL(resolve('dist/core.mjs')));
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 const inputs = [];
@@ -32,13 +32,13 @@ inputs.push({ name: 'invalid-utf8', bytes: Buffer.from([118,101,114,115,105,111,
 function normalize(envelope) {
   const x = JSON.parse(envelope);
   if (typeof x.output !== 'string') return x;
-  const versions = /("version"\s*:\s*")(?:0\.5\.[01]|0\.[67]\.[01])(")/g;
-  x.output = x.output.replace(versions, '$1<VERSION>$2').replace(/MoonLDIF (?:0\.5\.[01]|0\.[67]\.[01])/g, 'MoonLDIF <VERSION>').replace(/Tool version: (?:0&#46;5&#46;[01]|0&#46;[67]&#46;[01])/g, 'Tool version: <VERSION>');
-  if (x.markdown) x.markdown = x.markdown.replace(/Tool version: (?:0&#46;5&#46;[01]|0&#46;[67]&#46;[01])/g, 'Tool version: <VERSION>');
-  x.output = x.output.replace(/^- version: 0&#46;[67]&#46;[01]$/gm, '- version: <VERSION>');
+  const versions = /("version"\s*:\s*")(?:0\.5\.[01]|0\.[67]\.[012])(")/g;
+  x.output = x.output.replace(versions, '$1<VERSION>$2').replace(/MoonLDIF (?:0\.5\.[01]|0\.[67]\.[012])/g, 'MoonLDIF <VERSION>').replace(/Tool version: (?:0&#46;5&#46;[01]|0&#46;[67]&#46;[012])/g, 'Tool version: <VERSION>');
+  if (x.markdown) x.markdown = x.markdown.replace(/Tool version: (?:0&#46;5&#46;[01]|0&#46;[67]&#46;[012])/g, 'Tool version: <VERSION>');
+  x.output = x.output.replace(/^- version: 0&#46;[67]&#46;[012]$/gm, '- version: <VERSION>');
   return x;
 }
-const evidence = { status: 'running', method: 'Identical bytes/options compared against frozen v0.7.0; only tool-version metadata normalized; complete envelope including written LDIF and v2 pages/full reports compared', cases: [] };
+const evidence = { status: 'running', method: 'Identical bytes/options compared against frozen v0.7.1; only tool-version metadata normalized; complete envelope including written LDIF and v2 pages/full reports compared', cases: [] };
 try {
   for (const input of inputs) {
     for (const [command, format] of [['check','json'],['inspect','json'],['review','json'],['review','text'],['review','markdown'],['format','json']]) {

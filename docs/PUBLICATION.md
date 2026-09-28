@@ -1,3 +1,7 @@
+# 当前发行流程（0.7.2）
+
+库包、Node-only CLI 包和网页按同一源码提交发布；SHA256SUMS 覆盖两个 ZIP，Pages 部署前验证公开附件。独立消费验证分别覆盖归档、注册表和公开 CLI 下载。正式状态及证据见 [STATUS](STATUS.md)。以下保留历史记录。
+
 # 2026-09-21 0.5.1 正式交付
 
 已完成 [GitHub Release](https://github.com/WeiR-h/moonldif/releases/tag/v0.5.1)、[mooncakes](https://mooncakes.io/docs/WeiR-h/moonldif@0.5.1)、Windows / Ubuntu 的 JS / Wasm GC 独立注册表安装，以及同版本 Pages 的公开双浏览器复验。[完整证据](../verification/2026-09-21-v0.5.1/README.md)记录精确源码、包指纹、CI 和实际下载结果。各版本当前源码及 GitHub 发行包指纹见 [发行清单](../verification/distributions.json)。

@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.7.2 — 2026-09-28
+
+- 新增只需 Node.js 24 的 CLI ZIP、校验和、来源清单与独立解压运行验证。库归档按精确名称及模块版本核对。
+- 两种工作台模式新增本次原文保存、配置保存及 PowerShell/Bash 复现说明；原文与报告的内容边界明确区分，过期结果不可下载。
+- 补齐 MoonBit 标准库运行许可、当前版本一致性检查、直接使用发行包的 CI 示例及公开下载复验。
+- 公共库 API、默认 CLI 输出、报告格式、风险规则及资源上限兼容。具体发布状态见 docs/STATUS.md。
+
 ## 0.7.1 — 2026-09-27
 
 - 新增 validate_profile、ProfileValidation 与 ProfileIssue；共用 MoonBit 校验逻辑，旧 parse_profile 保持异常类型与文本。修复未闭合 JSON 字符串可能越界的问题。

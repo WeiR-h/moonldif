@@ -4,10 +4,13 @@ import {writeFileSync, mkdirSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {cpus} from 'node:os';
 import {resolve} from 'node:path';
+import {pathToFileURL} from 'node:url';
 import assert from 'node:assert/strict';
 const useProfile=process.argv.includes('--profile');
+const option=(name,fallback)=>process.argv.includes(name)?process.argv[process.argv.indexOf(name)+1]:fallback;
+const corePath=resolve(option('--core','dist/core.mjs'));
 if(process.argv[2]==='--worker') {
-  const mode=process.argv[3], n=Number(process.argv[4]), core=await import('../dist/core.mjs');
+  const mode=process.argv[3], n=Number(process.argv[4]), core=await import(pathToFileURL(corePath));
   const source='version: 1\n\n'+Array.from({length:n},(_,i)=>`dn: cn=${String(i).padStart(5,'0')}\n`+(mode==='review'?'changetype: modify\nreplace: mail\nmail: before\n-\n\n':'mail: before\n\n')).join('');
   const after=source.replaceAll('mail: before','mail: after');
   const sha=s=>createHash('sha256').update(s).digest('hex');
@@ -41,10 +44,10 @@ if(process.argv[2]==='--worker') {
 } else {
   const cases=[];
   for(const mode of ['review','compare'])for(const n of [100,1000,5000,10000]) {
-    const r=spawnSync(process.execPath,[process.argv[1],'--worker',mode,String(n),...(useProfile?['--profile']:[])],{encoding:'utf8',timeout:120000,maxBuffer:4*1024*1024});
+    const r=spawnSync(process.execPath,[process.argv[1],'--worker',mode,String(n),'--core',corePath,...(useProfile?['--profile']:[])],{encoding:'utf8',timeout:120000,maxBuffer:4*1024*1024});
     assert.equal(r.status,0,r.stderr+r.stdout);cases.push(JSON.parse(r.stdout));console.log(`${mode} ${n} passed`);
   }
   mkdirSync('verification/local',{recursive:true});
-  writeFileSync(resolve('verification/local/'+(useProfile?'profile-performance':'pagination-performance')+'.json'),JSON.stringify({profile_enabled:useProfile,node:process.version,platform:process.platform,cpu:cpus()[0]?.model,
+  writeFileSync(resolve(option('--out','verification/local/'+(useProfile?'profile-performance':'pagination-performance')+'.json')),JSON.stringify({profile_enabled:useProfile,node:process.version,platform:process.platform,cpu:cpus()[0]?.model,
     method:'Independent process per scenario; one warm-up and seven measured runs. Includes source hashing, Base64 transport, initial page, tail lookup, full search, chunk transport and full JSON parsing. RSS before/after is not peak or a leak proof; synthetic data.',cases,status:'passed'},null,2)+'\n');
 }

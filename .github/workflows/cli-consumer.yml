@@ -1,0 +1,29 @@
+name: Verify public CLI download
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  consumer:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-node@v7.0.0
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v7.0.0
+        with:
+          python-version: '3.12'
+      - run: node scripts/release-assets.mjs
+      - run: python scripts/cli-consumer.py --archive verification/local/public-downloads/moonldif-cli-v0.7.2.zip
+      - uses: actions/upload-artifact@v7.0.1
+        if: always()
+        with:
+          name: public-cli-${{ matrix.os }}
+          path: |
+            verification/local/cli-consumer.json
+            verification/local/release-assets.json

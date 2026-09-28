@@ -6,9 +6,9 @@ import subprocess
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
-BASELINE = 'v0.7.0'
-folder = ROOT / '.tools/performance-baseline-0.7.0'
-archive = ROOT / 'verification/local/baseline-0.7.0.zip'
+BASELINE = 'v0.7.1'
+folder = ROOT / '.tools/performance-baseline-0.7.1'
+archive = ROOT / 'verification/local/baseline-0.7.1.zip'
 archive.parent.mkdir(parents=True, exist_ok=True)
 subprocess.run(['git', 'cat-file', '-e', BASELINE], cwd=ROOT, check=True)
 subprocess.run(['git', 'archive', '--format=zip', '--output=' + str(archive), BASELINE], cwd=ROOT, check=True)

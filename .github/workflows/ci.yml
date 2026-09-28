@@ -58,6 +58,17 @@ jobs:
         run: npm --prefix web run build
       - name: Verify packaged library from a fresh consumer workspace
         run: python scripts/package-verify.py
+      - name: Build and verify Node-only CLI distribution
+        run: |
+          python scripts/package-cli.py
+          python scripts/cli-consumer.py
+          python scripts/publication-privacy.py --archive _build/cli/moonldif-cli-v0.7.2.zip
+      - uses: actions/upload-artifact@v7.0.1
+        with:
+          name: packages-${{ matrix.os }}
+          path: |
+            _build/cli/*.zip
+            _build/publish/*.zip
       - name: Compare with independent parser
         run: python scripts/reference-verify.py
       - name: Compare snapshot results with independent parser and generated models
@@ -130,6 +141,8 @@ jobs:
           echo "$HOME/.moon/bin" >> "$GITHUB_PATH"
       - run: npm --prefix web ci
       - run: npm --prefix web run build
+      - name: Require public CLI and library attachments before Pages
+        run: node scripts/release-assets.mjs
       - uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6
       - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5
         with:

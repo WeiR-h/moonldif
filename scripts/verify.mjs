@@ -11,10 +11,12 @@ const steps = [
   ['wasm-gc-check', ['scripts/moon.mjs', 'check', '--target', 'wasm-gc', '--deny-warn']],
   ['wasm-gc-tests', ['scripts/moon.mjs', 'test', '--target', 'wasm-gc']],
   ['build', ['scripts/build.mjs']],
+  ['version-consistency', ['scripts/version-verify.mjs']],
   ['cli-tests', ['--test', 'tests/cli.test.mjs']],
   ['bounded-reader-tests', ['--test', 'tests/read-bounded.test.mjs']],
   ['pagination-tests', ['--test', 'tests/pagination.test.mjs']],
   ['profile-tests', ['--test', 'tests/profile.test.mjs']],
+  ['reproduction-tests', ['--test', 'tests/reproduction.test.mjs']],
   ['scenarios', ['scripts/demo.mjs']],
 ];
 const folder = resolve(root, 'verification/local');

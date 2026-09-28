@@ -2,7 +2,7 @@
 
 MoonBit 原生 LDIF 读写与离线结构预检库。
 
-版本：`0.7.1`。新增配置即时校验、字段中文提示和最近成功加载配置的恢复；旧 API 和默认 CLI 输出保持兼容。正式发布、注册表安装和公开网页结果以[最新交付状态](https://github.com/WeiR-h/moonldif/blob/main/docs/STATUS.md)为准。报名初审已通过，个人验收和组委会最终结果分别记录。
+版本：`0.7.2`。新增可直接运行的 CLI 包、网页原文保存和本机复现说明；旧 API 和默认 CLI 输出保持兼容。正式发布、注册表安装和公开网页结果以[最新交付状态](https://github.com/WeiR-h/moonldif/blob/main/docs/STATUS.md)为准。报名初审已通过，个人验收和组委会最终结果分别记录。
 
 范围：LDIF 内容与基本变更记录、字节属性、源位置、确定性写回和结构报告。目录 Schema、DN 语义相等、权限及真实服务器执行结果不在检查范围内。
 
@@ -48,15 +48,21 @@ node dist/moonldif.js batch examples/01-directory-export.ldif examples/02-accoun
 
 ## 安装 MoonBit 库
 
-在自己的 MoonBit 工程执行 `moon add WeiR-h/moonldif@0.7.0`，并在 `moon.pkg` 导入 `"WeiR-h/moonldif" @ldif`。注册表安装验证使用 `python scripts/registry-verify.py --version 0.7.0`，创建没有本地覆盖的独立消费工程。
+在自己的 MoonBit 工程执行 `moon add WeiR-h/moonldif@0.7.2`，并在 `moon.pkg` 导入 `"WeiR-h/moonldif" @ldif`。注册表安装验证使用 `python scripts/registry-verify.py --version 0.7.2`，创建没有本地覆盖的独立消费工程。
 
-安装 MoonBit 库不会安装 Node.js CLI。CLI 使用下文的源码构建方式；浏览器工作台另按以下步骤启动。
+安装 MoonBit 库不会安装 Node.js CLI。CLI 可下载已编译发行包，也可从源码构建。
 
-## 浏览器试用
+## 下载运行 CLI
+
+安装 Node.js 24，下载 [moonldif-cli-v0.7.2.zip](https://github.com/WeiR-h/moonldif/releases/download/v0.7.2/moonldif-cli-v0.7.2.zip)，核对同一发行页的 SHA256SUMS 后解压。在解压目录运行 `node dist/moonldif.js --help`，无需 MoonBit 或 npm install。详见 [CLI 快速开始](docs/CLI-DISTRIBUTION.md)。候选版本的发布状态以交付状态页为准。
+
+## 在线使用工作台
 
 公开入口：[MoonLDIF 工作台](https://weir-h.github.io/moonldif/)。只部署通过双平台与浏览器 CI 的正式版本；在线版本以页脚和[发布证据](https://github.com/WeiR-h/moonldif/blob/main/docs/STATUS.md)为准。页面提供整条删除、属性清空、改名与移动、不完整输入四类合成示例。
 
-从项目根目录执行以下命令，再打开 `http://127.0.0.1:4178/`：
+网页检查后展开“在本机复现”，保存本次原文、配置和运行说明，在同版本 CLI 中复现。原文包含属性值，仅保存在本机；报告仍不包含原始属性值。
+
+源码开发时，从项目根目录执行以下命令，再打开 `http://127.0.0.1:4178/`：
 
 ```text
 npm --prefix web ci
@@ -126,7 +132,7 @@ python scripts/prepare-moonldap.py
 node scripts/test-moonldap.mjs
 ```
 
-Python 对照覆盖七组内容数据和一组 modify 顺序；新增 Java/JDK 17+ 的 SDK 对照覆盖四类变更等 27 组输入，其中一组的 SDK 输出需显式转换扩展语法，其余 26 组三个方向直接通过。七个 RFC 示例分别记录原刊与修订结果，外部值不记为完整通过。详见 [互操作证据](docs/INTEROPERABILITY.md) 和 [规范覆盖表](docs/CONFORMANCE.md)。moonldap 适配另有三个测试：四种实际模型及 BER 往返、拒绝不支持的输入、拒绝新增风险策略拦截的报告。适配是单独的本地工作区，普通核心构建不下载这些依赖。
+Python 对照覆盖七组内容数据和一组 modify 顺序；新增 Java/JDK 17+ 的 SDK 对照覆盖四类变更等 27 组输入，其中一组的 SDK 输出需显式转换扩展语法，其余 26 组三个方向直接通过。七个 RFC 示例分别记录原刊与修订结果，外部值不记为完整通过。详见 [互操作证据](docs/INTEROPERABILITY.md) 和 [规范覆盖表](docs/CONFORMANCE.md)。moonldap 适配另有四个测试：四种实际模型及 BER 往返、拒绝不支持的输入、拒绝新增风险策略拦截的报告。适配是单独的本地工作区，普通核心构建不下载这些依赖。
 
 ## MoonBit 库接口
 

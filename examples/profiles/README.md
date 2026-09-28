@@ -1,8 +1,10 @@
+CLI 0.7.2：下载并解压发行包即可运行下列示例，只需 Node.js 24。无需源码工程和 MoonBit。
+
 # Same rules in local review and CI
 
 All files are synthetic. The example permits at most 5 delete records per file, denies attribute clear and rename, and limits the file to 100 change records. These values are demonstrations, not production recommendations.
 
-After building the repository:
+From the extracted CLI directory (or a built source checkout):
 
 ```text
 node dist/moonldif.js review examples/profiles/within.ldif --profile examples/profiles/rules.json --all --format json
@@ -14,7 +16,7 @@ Expected exit codes: 0, 1, 2 respectively. The incomplete file retains the known
 
 `node examples/profiles/check-ci.mjs report.json examples/profiles/rules.json examples/profiles/exceeded.ldif` saves a new report and exits 1. Report files include DNs; review your own artifact retention and access before uploading real reports.
 
-The following workflow steps assume this repository and its pinned MoonBit toolchain are already checked out and built, with Node.js 24 available. Use explicit file paths:
+The following workflow steps assume the CLI ZIP has been downloaded, checksum-verified and extracted, with Node.js 24 available. See the complete download example in ../ci/README.md; no MoonBit installation is needed. Use explicit file paths:
 
 ```yaml
 - name: Check maintenance plan

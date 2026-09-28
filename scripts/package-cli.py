@@ -24,7 +24,8 @@ def build():
     commit = subprocess.check_output(['git','rev-parse','HEAD'], cwd=ROOT, text=True).strip()
     version_output = subprocess.check_output(['node','scripts/moon.mjs','version','--all'], cwd=ROOT, encoding='utf8')
     toolchain = [line.split(' (')[0] for line in version_output.splitlines() if line.startswith(('moon ', 'moonc ', 'moonrun '))]
-    manifest = {'version':version, 'source_commit':commit, 'toolchain':toolchain,
+    clean = not subprocess.check_output(['git','status','--porcelain','--untracked-files=no'], cwd=ROOT).strip()
+    manifest = {'version':version, 'source_commit':commit, 'source_tree_clean':clean, 'toolchain':toolchain,
                 'files':{name:hashlib.sha256(data).hexdigest() for name,data in sorted(files.items())}}
     files['BUILD.json'] = (json.dumps(manifest, indent=2)+'\n').encode()
     output = ROOT / '_build/cli'
