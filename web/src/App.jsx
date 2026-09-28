@@ -1,3 +1,4 @@
+import { DownloadPanel } from './DownloadPanel.jsx';
 import manifest from '../package.json';
 import { ProfilePanel } from './ProfilePanel.jsx';
 import React, { useRef, useState } from 'react';
@@ -35,6 +36,7 @@ export default function App() {
     <header className="app-header"><div className="brand"><span>MoonLDIF</span><span className="brand-separator" /><span className="brand-subtitle">目录文件预检工作台</span></div><div className="privacy"><Icon name="lock" /><span>文件仅在本机处理</span></div></header>
     <main>
       <nav className="workspace-mode" aria-label="工作模式"><button aria-pressed={mode === 'review'} onClick={() => { setMode('review'); }}>文件预检</button><button aria-pressed={mode === 'snapshot'} onClick={() => { state.profile.cancelPending(); state.invalidate(); setSnapshotOpened(true); setMode('snapshot'); }}>迁移前后核对</button></nav>
+      <DownloadPanel />
       <div hidden={mode !== 'review'}>
       <div className="page-intro"><div><h1>检查文件，再执行变更</h1><p>读取、定位问题、审阅影响，并导出经过复检的新文件。</p></div><div className="main-actions">
         <input ref={fileInput} type="file" accept=".ldif,.txt" aria-label="打开本地 LDIF 文件" tabIndex={-1} className="visually-hidden" onChange={e => { state.loadFile(e.target.files[0]); e.target.value = ''; }} />

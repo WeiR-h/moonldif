@@ -5,6 +5,9 @@ import { root } from './moon.mjs';
 
 const steps = [
   ['toolchain', ['scripts/moon.mjs', 'version', '--all']],
+  ['compiler-minimum', ['scripts/toolchain-verify.mjs']],
+  ['download-lifecycle-tests', ['--test', 'tests/downloads.test.mjs']],
+  ['compiler-gate-tests', ['--test', 'tests/toolchain.test.mjs']],
   ['format', ['scripts/moon.mjs', 'fmt', '--check']],
   ['check', ['scripts/moon.mjs', 'check', '--target', 'js', '--deny-warn']],
   ['moonbit-tests', ['scripts/moon.mjs', 'test', '--target', 'js']],

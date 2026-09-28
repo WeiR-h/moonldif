@@ -81,6 +81,8 @@ export async function verifyReproduction(page,output,browser) {
   await page.getByLabel('排除指定属性（可选）').fill('');
   await page.getByRole('button',{name:'开始核对',exact:true}).click();await ready();await roundtrip('compare',1,false);
   await page.screenshot({path:resolve(output,browser+'-reproduce-desktop.png'),fullPage:true});
+  await page.waitForFunction(()=>window.__downloadUrls.size===1);
+  await page.getByRole('button',{name:'关闭保存入口',exact:true}).click();
   await page.waitForFunction(()=>window.__downloadUrls.size===0);
   return ['raw-CRLF-download','original-profile-bytes','canonical-edited-profile','displayed-shell-command-executed','review-0-1-2-equivalence','compare-exclusion-equivalence','reproduce-stale-invalidation','reproduce-mobile'];
 }

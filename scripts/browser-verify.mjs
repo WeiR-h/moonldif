@@ -1,5 +1,4 @@
-// Reproducible browser QA. Browser skill/plugin is not listed in this session;
-// regular Playwright covers the explicitly requested Chromium/Firefox matrix.
+// Reproducible Chromium/Firefox regression matrix; interactive in-app checks are recorded separately.
 import assert from 'node:assert/strict';
 import { createRequire } from 'node:module';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
@@ -10,6 +9,7 @@ import { spawnSync } from 'node:child_process';
 import { verifySnapshot, snapshotReady } from './snapshot-browser.mjs';
 import { verifyPagination } from './pagination-browser.mjs';
 import { verifyStability } from './browser-stability.mjs';
+import { verifyRecovery } from './browser-recovery.mjs';
 import { verifyProfiles } from './profile-browser.mjs';
 import { verifyReproduction } from './reproduction-browser.mjs';
 const root = fileURLToPath(new URL('../', import.meta.url));
@@ -19,7 +19,7 @@ const { chromium, firefox } = require('playwright');
 const url = process.argv[2] || 'http://127.0.0.1:4188/moonldif/';
 const output = resolve(root, 'verification/local', url.startsWith('https:') ? 'browser-public' : 'browser-local');
 mkdirSync(output, { recursive: true });
-const evidence = { url, status: 'running', browser_path: 'Browser plugin not available; regular Playwright', cases: [] };
+const evidence = { url, status: 'running', browser_path: 'Automated Chromium/Firefox regression suite', cases: [] };
 const expectedVersion = JSON.parse(readFileSync(resolve(root, 'package.json'), 'utf8')).version;
 evidence.expected_version = expectedVersion;
 const sha = text => createHash('sha256').update(text).digest('hex');
@@ -186,6 +186,7 @@ try {
       }
       await context.close();
       const stabilityContext = await browser.newContext({viewport:{width:1440,height:1080},acceptDownloads:true});
+      await verifyRecovery(stabilityContext, url, output, name);
       await verifyStability(stabilityContext, url, output, name);
       await stabilityContext.close();
       evidence.cases.push({ browser: name, status: 'passed', checks: ['50-analyses', '50-cancellations', 'no-duplicate-report-payload', 'one-live-worker', 'no-stale-exports'], memory: 'main-realm heap observation only; excludes workers and process RSS' });

@@ -42,3 +42,6 @@
 .reproduce-actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
 .reproduce-panel textarea { display: block; box-sizing: border-box; width: 100%; margin: 10px 0; resize: vertical; min-height: 80px; }
 .reproduce-panel [role=status] { margin-left: 8px; }
+
+.download-panel { margin-top: 1.5rem; padding: 1rem; border: 1px solid #9aaebb; border-radius: 8px; background: #f1f7f9; overflow-wrap: anywhere; }
+.download-panel a, .download-panel button { margin: .4rem .8rem .2rem 0; }
