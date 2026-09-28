@@ -35,3 +35,10 @@
 .profile-panel [role=alert] { color:#a82629; }
 
 .profile-error{color:#9c2424;overflow-wrap:anywhere}.profile-help{color:#536777;font-size:12px}.profile-summary{padding:12px 16px;background:#f1f7f6;border-radius:6px;overflow-wrap:anywhere}.profile-summary p{margin:5px 0}.profile-limits input[aria-invalid="true"]{border-color:#9c2424;outline:1px solid #9c2424}
+
+.reproduce-panel { margin: 16px 0; padding: 14px 18px; border: 1px solid var(--border, #dbe2e0); border-radius: 10px; background: #fff; }
+.reproduce-panel summary { cursor: pointer; font-weight: 600; }
+.reproduce-panel p { line-height: 1.65; overflow-wrap: anywhere; }
+.reproduce-actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+.reproduce-panel textarea { display: block; box-sizing: border-box; width: 100%; margin: 10px 0; resize: vertical; min-height: 80px; }
+.reproduce-panel [role=status] { margin-left: 8px; }

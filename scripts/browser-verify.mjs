@@ -11,6 +11,7 @@ import { verifySnapshot, snapshotReady } from './snapshot-browser.mjs';
 import { verifyPagination } from './pagination-browser.mjs';
 import { verifyStability } from './browser-stability.mjs';
 import { verifyProfiles } from './profile-browser.mjs';
+import { verifyReproduction } from './reproduction-browser.mjs';
 const root = fileURLToPath(new URL('../', import.meta.url));
 if (!process.env.PLAYWRIGHT_BROWSERS_PATH && existsSync(resolve(root, '.tools/browsers'))) process.env.PLAYWRIGHT_BROWSERS_PATH = resolve(root, '.tools/browsers');
 const require = createRequire(new URL('../web/package.json', import.meta.url));
@@ -33,6 +34,7 @@ async function ready(page) {
   await page.waitForFunction(() => [...document.querySelectorAll('button')].some(b => b.textContent.includes('下载完整审阅报告') && !b.disabled), null, { timeout: 15000 });
 }
 async function disabled(page) {
+  assert.equal(await page.locator('.reproduce-panel:visible').getByRole('button',{name:'下载复现说明'}).isEnabled(),false);
   assert.equal(await page.getByRole('button', { name: '下载完整审阅报告', exact: true }).isEnabled(), false);
   assert.equal(await page.getByRole('button', { name: '导出新文件', exact: true }).isEnabled(), false);
 }
@@ -137,6 +139,7 @@ try {
       await verifyPagination(page, output, name);
       await verifySnapshot(page, output, name);
       const profileChecks = await verifyProfiles(page, output, name);
+      profileChecks.push(...await verifyReproduction(page,output,name));
       assert.deepEqual(errors, []);
       assert.deepEqual(badResponses, []);
       assert.ok(requests.every(r => r.method === 'GET' && r.url.startsWith(new URL(url).origin)));
@@ -197,4 +200,3 @@ try {
   writeFileSync(resolve(output, 'result.json'), JSON.stringify(evidence, null, 2) + '\n');
   console.log(JSON.stringify({ status: evidence.status, cases: evidence.cases.length, error: evidence.error }));
 }
-

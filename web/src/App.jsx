@@ -6,6 +6,7 @@ import { Editor } from './Editor.jsx';
 import { Results } from './Results.jsx';
 import { Icon } from './Icon.jsx';
 import { SnapshotPanel } from './SnapshotPanel.jsx';
+import { ReproducePanel } from './ReproducePanel.jsx';
 
 function Status({ analysis }) {
   const report = analysis.report;
@@ -50,6 +51,7 @@ export default function App() {
       </div>
       <ProfilePanel profile={state.profile} mode="review" report={state.analysis.report} locate={span=>state.setSelection({...span,focus:true})} />
       <Status analysis={state.analysis} />
+      <ReproducePanel result={state.analysis} />
       <div className="report-tools">
         <label>审阅报告 <select aria-label="审阅报告格式" value={reportFormat} onChange={e => setReportFormat(e.target.value)}><option value="markdown">Markdown</option><option value="json">JSON</option></select></label>
         <button onClick={() => state.exportReport(reportFormat)} disabled={!state.canExportReport}><Icon name="download" />下载完整审阅报告</button>

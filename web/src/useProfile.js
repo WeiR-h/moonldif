@@ -80,7 +80,7 @@ export function useProfile(mode, invalidate, flags, applyFlags, ignoredText='', 
     if(!base)return {};
     const valid=work.current.validated;
     if(valid?.text!==text)throw new Error('配置已更改，请等待校验。');
-    return {profileEncoded:valid.result.encoded,profileSourceEncoded:source};
+    return {profileEncoded:valid.result.encoded,profileSourceEncoded:source,profileCanonical:valid.result.canonical};
   }
   async function save() {
     if(blocked)return;

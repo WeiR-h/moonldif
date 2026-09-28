@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { captureReproduction } from './reproduction.js';
 
 let releaseOwner = null;
 export function downloadBlob(blob, name) {
@@ -35,6 +36,7 @@ export function usePagedSession(kind) {
     c.release = invalidate; releaseOwner = invalidate;
     setResult({phase:'running',report:null,message:'正在分析当前内容…'});
     try {
+      const reproduction = captureReproduction(kind,payload);
       c.worker = kind === 'review'
         ? new Worker(new URL('./analysis.worker.js', import.meta.url), {type:'module'})
         : new Worker(new URL('./snapshot.worker.js', import.meta.url), {type:'module'});
@@ -49,7 +51,7 @@ export function usePagedSession(kind) {
           setResult(previous => ({...previous,busy:false,exporting:false,message:'完整报告已生成。'}));
         } else {
           if (data.type === 'analysis' && data.exit_code === 0 && typeof data.written === 'string') onWritten?.(data.written);
-          setResult({phase:'ready',report:data.report,busy:false,message:''});
+          setResult({phase:'ready',report:data.report,reproduction,busy:false,message:''});
         }
       };
       c.worker.postMessage({...payload,request:++c.request}); arm();
