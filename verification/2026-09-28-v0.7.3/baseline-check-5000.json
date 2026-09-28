@@ -1,0 +1,38 @@
+{
+  "at": "2026-09-28T10:16:55.385Z",
+  "node": "v24.13.0",
+  "platform": "win32",
+  "arch": "x64",
+  "cpu": "AMD Ryzen 7 5800H with Radeon Graphics         ",
+  "core_sha256": "cd4366e03f0763e47332fe8dcad0b31a7f2cc3cc92b616d29615926c13407b06",
+  "method": "Fresh process per case, one warm-up plus seven measured runs. analyse_v2 with host SHA-256, Base64, report parsing and safe writer round-trip. Compare uses compare_exports_v2. Batch invokes real CLI with 50 local files including startup and I/O; its child RSS is not measured. RSS before/after is not peak. Synthetic data; no competing-library claim.",
+  "status": "passed",
+  "cases": [
+    {
+      "id": "check-5000",
+      "command": "check",
+      "records": 5000,
+      "version": "0.7.2",
+      "input_bytes": 1091682,
+      "input_sha256": "686f0d29be0a2fe7c281608a767509a64b7ac93d8067158ae5ef96d0e563cb35",
+      "after_sha256": null,
+      "measured_runs": 7,
+      "measurements_ms": [
+        416.2231999999999,
+        384.20140000000004,
+        387.87260000000015,
+        381.7301,
+        343.3547000000003,
+        379.51980000000003,
+        403.15880000000016
+      ],
+      "min_ms": 343.3547000000003,
+      "median_ms": 384.20140000000004,
+      "max_ms": 416.2231999999999,
+      "rss_before_bytes": 60448768,
+      "rss_after_bytes": 354439168,
+      "memory_scope": "process before/after, not peak",
+      "status": "passed"
+    }
+  ]
+}

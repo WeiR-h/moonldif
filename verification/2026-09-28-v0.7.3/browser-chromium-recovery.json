@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "cases": [
+    "single startup retry",
+    "bounded two failures",
+    "late error discarded",
+    "post failure invalidates",
+    "retry without page refresh",
+    "real download retry byte identity",
+    "edited download invalidated",
+    "one active worker"
+  ],
+  "errors": []
+}

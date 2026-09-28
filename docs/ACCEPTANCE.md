@@ -1,3 +1,19 @@
+# 0.7.3 当前验收对照
+
+| 要求 | 对应实现及证据 | 当前状态 |
+|---|---|---|
+| MoonBit 主要实现，moonc ≥ 0.10.14 | `src/*.mbt`，固定 0.10.14+7d59c7ec9，构建最低版本检查 | 本机通过，远端待核对 |
+| 公开 GitHub、清晰提交 | [仓库](https://github.com/WeiR-h/moonldif)、[提交](https://github.com/WeiR-h/moonldif/commits/main/) | 仓库公开，新版待推送 |
+| 结构清晰、声明功能完成 | [架构](ARCHITECTURE.md)、[支持范围](SUPPORT.md) | 核心回归通过 |
+| README 安装、使用、示例可复现 | [README](../README.md)、[CLI](CLI-DISTRIBUTION.md)、[恢复说明](RECOVERY.md) | 本地独立消费通过 |
+| CI 检查、构建、测试 | [.github/workflows/ci.yml](../.github/workflows/ci.yml) | 本轮结果待核对 |
+| 可运行样例 | [examples](../examples)、[CI 示例](../examples/ci/README.md) | 样例及独立 CLI 通过 |
+| 核心测试完整 | JS/Wasm GC、独立对照、两浏览器及失败注入 | [本轮证据](../verification/2026-09-28-v0.7.3/README.md) |
+| 发布 mooncakes | `WeiR-h/moonldif` | 0.7.2 已发布；0.7.3 待发布安装复验 |
+| OSI 开源许可、来源合规 | [Apache-2.0](../LICENSE)、[来源和许可](../THIRD_PARTY.md)、发行物内运行许可 | 保持并复核 |
+
+最终验收结论由主办方给出。下面保留历史证据。
+
 # 0.7.2 当前验收对照
 
 - 独立 CLI 安装：[快速开始](CLI-DISTRIBUTION.md)、[CI 示例](../examples/ci/README.md)。

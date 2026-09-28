@@ -3,6 +3,7 @@ import argparse
 import hashlib
 import json
 import os
+import re
 from pathlib import Path
 import shutil
 import subprocess
@@ -24,6 +25,9 @@ def verify(archive, expected_commit=None):
         bundle.extractall(folder)
     manifest = json.loads((folder / 'BUILD.json').read_text())
     assert manifest['version'] == expected
+    compiler = next((v for v in manifest['toolchain'] if v.startswith('moonc ')), '')
+    match = re.search(r'^moonc v(\d+)\.(\d+)\.(\d+)(?:\+|$)', compiler)
+    assert match and tuple(map(int,match.groups())) >= (0,10,14), 'CLI was built with an unsupported compiler'
     if expected_commit:
         assert manifest['source_commit'] == expected_commit
         assert manifest.get('source_tree_clean') is True
