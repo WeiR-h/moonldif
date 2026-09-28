@@ -13,6 +13,6 @@
 | 编辑器、Worker 生命周期、页面交互和保存文件 | `web/src/*.js`、`web/src/*.jsx` |
 | 发布/CI/独立验证和浏览器驱动 | `scripts/`、`tests/`，不作为运行时解析器 |
 
-v0.7.3 的 Git 原始文件字节口径：MoonBit 正式实现 144,600 字节、MoonBit 核心测试 47,809 字节；JavaScript/React 正式宿主和界面 75,744 字节、JavaScript 验证及构建脚本 129,959 字节。该统计不包括文档、样式、Python/Java 独立参照、生成产物或依赖，并不宣称这是官方评分方法。完整文件清单见 [统计口径与源文件](../verification/2026-09-28-v0.7.3/implementation-scope.json)。
+v0.7.4 的 Git 原始文件字节口径：MoonBit 正式实现 144,600 字节、MoonBit 核心测试 47,809 字节；JavaScript/React 正式宿主和界面 79,626 字节、JavaScript 验证及构建脚本 139,708 字节。该统计不包括文档、样式、Python/Java 独立参照、生成产物或依赖，并不宣称这是官方评分方法。完整文件清单见 [统计口径与源文件](../verification/2026-09-28-v0.7.4/implementation-scope.json)。
 
 核心库可独立安装运行在 JS 与 Wasm GC 上；浏览器与 CLI 调用同一个编译核心。固定编译器为 moonc 0.10.14+7d59c7ec9，构建检查最低 0.10.14。具体发布及双平台消费证据见 [验收对照](ACCEPTANCE.md)。

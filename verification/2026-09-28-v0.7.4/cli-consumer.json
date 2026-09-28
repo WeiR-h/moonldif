@@ -1,0 +1,185 @@
+{
+  "status": "passed",
+  "version": "0.7.4",
+  "archive": "moonldif-cli-v0.7.4.zip",
+  "sha256": "dbe00ca21569f80f879f19aa9a5e2f6eb9d0f9069d7082dc16f4ef53b17ffe08",
+  "platform": "nt",
+  "source_commit": "7afc7bb18a71a41ca103e15b13e11fcdbea4e418",
+  "source_tree_clean": true,
+  "method": "independent temporary extraction; Node only; no source imports or MoonBit environment",
+  "cases": [
+    {
+      "args": [
+        "dist/moonldif.js",
+        "--version"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "dist/moonldif.js",
+        "--help"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "dist/moonldif.js",
+        "check",
+        "input.ldif"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "dist/moonldif.js",
+        "inspect",
+        "input.ldif",
+        "--format",
+        "json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "dist/moonldif.js",
+        "review",
+        "delete.ldif",
+        "--deny-delete",
+        "--all",
+        "--format",
+        "json"
+      ],
+      "exit_code": 1
+    },
+    {
+      "args": [
+        "dist/moonldif.js",
+        "review",
+        "bad.ldif"
+      ],
+      "exit_code": 2
+    },
+    {
+      "args": [
+        "dist/moonldif.js",
+        "format",
+        "input.ldif",
+        "--output",
+        "normalized.ldif"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "dist/moonldif.js",
+        "format",
+        "input.ldif",
+        "--output",
+        "normalized.ldif"
+      ],
+      "exit_code": 2
+    },
+    {
+      "args": [
+        "dist/moonldif.js",
+        "compare",
+        "input.ldif",
+        "normalized.ldif"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "dist/moonldif.js",
+        "compare",
+        "input.ldif",
+        "after.ldif",
+        "--all"
+      ],
+      "exit_code": 1
+    },
+    {
+      "args": [
+        "dist/moonldif.js",
+        "batch",
+        "input.ldif",
+        "missing.ldif",
+        "--format",
+        "json"
+      ],
+      "exit_code": 2
+    },
+    {
+      "args": [
+        "examples/profiles/check-ci.mjs",
+        "reports/within.json",
+        "examples/profiles/rules.json",
+        "examples/profiles/within.ldif"
+      ],
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "examples/profiles/check-ci.mjs",
+        "reports/within.json",
+        "examples/profiles/rules.json",
+        "examples/profiles/within.ldif"
+      ],
+      "exit_code": 2
+    },
+    {
+      "args": [
+        "examples/profiles/check-ci.mjs",
+        "reports/exceeded.json",
+        "examples/profiles/rules.json",
+        "examples/profiles/exceeded.ldif"
+      ],
+      "exit_code": 1
+    },
+    {
+      "args": [
+        "examples/profiles/check-ci.mjs",
+        "reports/exceeded.json",
+        "examples/profiles/rules.json",
+        "examples/profiles/exceeded.ldif"
+      ],
+      "exit_code": 2
+    },
+    {
+      "args": [
+        "examples/profiles/check-ci.mjs",
+        "reports/incomplete.json",
+        "examples/profiles/rules.json",
+        "examples/profiles/incomplete.ldif"
+      ],
+      "exit_code": 2
+    },
+    {
+      "args": [
+        "examples/profiles/check-ci.mjs",
+        "reports/incomplete.json",
+        "examples/profiles/rules.json",
+        "examples/profiles/incomplete.ldif"
+      ],
+      "exit_code": 2
+    },
+    {
+      "args": [
+        "examples/ci/check-plan.mjs",
+        "reports/plan.json",
+        "delete.ldif"
+      ],
+      "exit_code": 1
+    },
+    {
+      "args": [
+        "examples/profiles/check-ci.mjs",
+        "not-a-directory/report.json",
+        "examples/profiles/rules.json",
+        "examples/profiles/within.ldif"
+      ],
+      "exit_code": 2
+    }
+  ]
+}

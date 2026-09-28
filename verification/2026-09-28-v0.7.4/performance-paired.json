@@ -1,0 +1,2074 @@
+{
+  "method": "Three rounds, alternating baseline/candidate order, each fresh worker warms up once and measures seven runs; median of paired ratios. All observations retained, no forced GC.",
+  "hashes": {
+    "baseline": "93b37843d24408c6fdb20e600b999928385591665cd0a55dc6f422e61d764ecd",
+    "candidate": "0f3ce6218e12a2f6a4a5abcb9efbd41cd28296ddbc7221e30f44d6e387b49023"
+  },
+  "cases": [
+    {
+      "id": "check-100",
+      "ratio": 1.0104711068127303,
+      "regression": false,
+      "rounds": [
+        {
+          "baseline": {
+            "id": "check-100",
+            "command": "check",
+            "records": 100,
+            "version": "0.7.3",
+            "input_bytes": 21282,
+            "input_sha256": "e61123b72a970ccc0347fe041a18842695da5041cb255fba3b02dfb60a9b45eb",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              8.77069999999999,
+              6.753,
+              6.095299999999995,
+              4.015799999999999,
+              4.5929,
+              3.528100000000009,
+              3.572900000000004
+            ],
+            "min_ms": 3.528100000000009,
+            "median_ms": 4.5929,
+            "max_ms": 8.77069999999999,
+            "rss_before_bytes": 48332800,
+            "rss_after_bytes": 60706816,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "candidate": {
+            "id": "check-100",
+            "command": "check",
+            "records": 100,
+            "version": "0.7.4",
+            "input_bytes": 21282,
+            "input_sha256": "e61123b72a970ccc0347fe041a18842695da5041cb255fba3b02dfb60a9b45eb",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              7.405000000000001,
+              6.313000000000002,
+              5.766100000000009,
+              4.389899999999997,
+              5.015000000000001,
+              3.992999999999995,
+              4.0674999999999955
+            ],
+            "min_ms": 3.992999999999995,
+            "median_ms": 5.015000000000001,
+            "max_ms": 7.405000000000001,
+            "rss_before_bytes": 48455680,
+            "rss_after_bytes": 60411904,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "ratio": 1.091902719414749
+        },
+        {
+          "candidate": {
+            "id": "check-100",
+            "command": "check",
+            "records": 100,
+            "version": "0.7.4",
+            "input_bytes": 21282,
+            "input_sha256": "e61123b72a970ccc0347fe041a18842695da5041cb255fba3b02dfb60a9b45eb",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              8.269100000000009,
+              8.59660000000001,
+              6.7132000000000005,
+              4.260899999999992,
+              4.571100000000001,
+              3.8207999999999913,
+              3.8577999999999975
+            ],
+            "min_ms": 3.8207999999999913,
+            "median_ms": 4.571100000000001,
+            "max_ms": 8.59660000000001,
+            "rss_before_bytes": 48750592,
+            "rss_after_bytes": 60469248,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "baseline": {
+            "id": "check-100",
+            "command": "check",
+            "records": 100,
+            "version": "0.7.3",
+            "input_bytes": 21282,
+            "input_sha256": "e61123b72a970ccc0347fe041a18842695da5041cb255fba3b02dfb60a9b45eb",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              7.823099999999997,
+              6.7547,
+              6.0752000000000095,
+              4.824600000000004,
+              4.995199999999997,
+              3.901299999999992,
+              4.001499999999993
+            ],
+            "min_ms": 3.901299999999992,
+            "median_ms": 4.995199999999997,
+            "max_ms": 7.823099999999997,
+            "rss_before_bytes": 48898048,
+            "rss_after_bytes": 60608512,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "ratio": 0.9150984945547734
+        },
+        {
+          "baseline": {
+            "id": "check-100",
+            "command": "check",
+            "records": 100,
+            "version": "0.7.3",
+            "input_bytes": 21282,
+            "input_sha256": "e61123b72a970ccc0347fe041a18842695da5041cb255fba3b02dfb60a9b45eb",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              8.120899999999992,
+              6.99369999999999,
+              6.731999999999999,
+              4.1492000000000075,
+              5.3767,
+              3.963700000000003,
+              4.106399999999994
+            ],
+            "min_ms": 3.963700000000003,
+            "median_ms": 5.3767,
+            "max_ms": 8.120899999999992,
+            "rss_before_bytes": 48775168,
+            "rss_after_bytes": 60559360,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "candidate": {
+            "id": "check-100",
+            "command": "check",
+            "records": 100,
+            "version": "0.7.4",
+            "input_bytes": 21282,
+            "input_sha256": "e61123b72a970ccc0347fe041a18842695da5041cb255fba3b02dfb60a9b45eb",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              8.426900000000003,
+              6.284000000000006,
+              6.088300000000004,
+              4.476400000000012,
+              5.433000000000007,
+              3.6163999999999987,
+              3.4396999999999878
+            ],
+            "min_ms": 3.4396999999999878,
+            "median_ms": 5.433000000000007,
+            "max_ms": 8.426900000000003,
+            "rss_before_bytes": 48439296,
+            "rss_after_bytes": 60235776,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "ratio": 1.0104711068127303
+        }
+      ]
+    },
+    {
+      "id": "format-100",
+      "ratio": 1.0080956303103858,
+      "regression": false,
+      "rounds": [
+        {
+          "baseline": {
+            "id": "format-100",
+            "command": "format",
+            "records": 100,
+            "version": "0.7.3",
+            "input_bytes": 21282,
+            "input_sha256": "e61123b72a970ccc0347fe041a18842695da5041cb255fba3b02dfb60a9b45eb",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              21.004199999999997,
+              10.476800000000011,
+              8.765499999999989,
+              7.741399999999999,
+              8.070300000000003,
+              8.618799999999993,
+              7.5549000000000035
+            ],
+            "min_ms": 7.5549000000000035,
+            "median_ms": 8.618799999999993,
+            "max_ms": 21.004199999999997,
+            "rss_before_bytes": 48431104,
+            "rss_after_bytes": 70651904,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "candidate": {
+            "id": "format-100",
+            "command": "format",
+            "records": 100,
+            "version": "0.7.4",
+            "input_bytes": 21282,
+            "input_sha256": "e61123b72a970ccc0347fe041a18842695da5041cb255fba3b02dfb60a9b45eb",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              14.633700000000005,
+              12.819599999999994,
+              9.61590000000001,
+              8.793199999999999,
+              7.386099999999999,
+              9.389399999999995,
+              8.389700000000005
+            ],
+            "min_ms": 7.386099999999999,
+            "median_ms": 9.389399999999995,
+            "max_ms": 14.633700000000005,
+            "rss_before_bytes": 48525312,
+            "rss_after_bytes": 70365184,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "ratio": 1.0894091984963106
+        },
+        {
+          "candidate": {
+            "id": "format-100",
+            "command": "format",
+            "records": 100,
+            "version": "0.7.4",
+            "input_bytes": 21282,
+            "input_sha256": "e61123b72a970ccc0347fe041a18842695da5041cb255fba3b02dfb60a9b45eb",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              14.0278,
+              10.293099999999995,
+              10.024199999999993,
+              8.099400000000003,
+              8.362300000000005,
+              9.30189999999999,
+              8.4897
+            ],
+            "min_ms": 8.099400000000003,
+            "median_ms": 9.30189999999999,
+            "max_ms": 14.0278,
+            "rss_before_bytes": 48504832,
+            "rss_after_bytes": 70762496,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "baseline": {
+            "id": "format-100",
+            "command": "format",
+            "records": 100,
+            "version": "0.7.3",
+            "input_bytes": 21282,
+            "input_sha256": "e61123b72a970ccc0347fe041a18842695da5041cb255fba3b02dfb60a9b45eb",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              13.6447,
+              11.058299999999988,
+              9.227199999999996,
+              8.99430000000001,
+              8.101199999999977,
+              9.392599999999987,
+              8.613500000000016
+            ],
+            "min_ms": 8.101199999999977,
+            "median_ms": 9.227199999999996,
+            "max_ms": 13.6447,
+            "rss_before_bytes": 48750592,
+            "rss_after_bytes": 70062080,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "ratio": 1.0080956303103858
+        },
+        {
+          "baseline": {
+            "id": "format-100",
+            "command": "format",
+            "records": 100,
+            "version": "0.7.3",
+            "input_bytes": 21282,
+            "input_sha256": "e61123b72a970ccc0347fe041a18842695da5041cb255fba3b02dfb60a9b45eb",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              13.24300000000001,
+              10.552500000000009,
+              8.3429,
+              8.891300000000001,
+              8.531299999999987,
+              8.567599999999999,
+              6.510999999999996
+            ],
+            "min_ms": 6.510999999999996,
+            "median_ms": 8.567599999999999,
+            "max_ms": 13.24300000000001,
+            "rss_before_bytes": 48422912,
+            "rss_after_bytes": 69984256,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "candidate": {
+            "id": "format-100",
+            "command": "format",
+            "records": 100,
+            "version": "0.7.4",
+            "input_bytes": 21282,
+            "input_sha256": "e61123b72a970ccc0347fe041a18842695da5041cb255fba3b02dfb60a9b45eb",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              15.429199999999994,
+              10.16940000000001,
+              9.503299999999996,
+              7.900800000000004,
+              7.427199999999999,
+              8.348199999999991,
+              7.395700000000005
+            ],
+            "min_ms": 7.395700000000005,
+            "median_ms": 8.348199999999991,
+            "max_ms": 15.429199999999994,
+            "rss_before_bytes": 48754688,
+            "rss_after_bytes": 70205440,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "ratio": 0.9743918950464532
+        }
+      ]
+    },
+    {
+      "id": "check-1000",
+      "ratio": 0.9299857606527597,
+      "regression": false,
+      "rounds": [
+        {
+          "baseline": {
+            "id": "check-1000",
+            "command": "check",
+            "records": 1000,
+            "version": "0.7.3",
+            "input_bytes": 215682,
+            "input_sha256": "bc590c554e57f0d83da4af728f085dd3a69b55f54a7da6023e945c5c504cd7d1",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              54.35710000000002,
+              40.81790000000001,
+              36.98270000000002,
+              38.96749999999997,
+              34.113099999999974,
+              42.17520000000002,
+              35.20619999999997
+            ],
+            "min_ms": 34.113099999999974,
+            "median_ms": 38.96749999999997,
+            "max_ms": 54.35710000000002,
+            "rss_before_bytes": 49946624,
+            "rss_after_bytes": 143532032,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "candidate": {
+            "id": "check-1000",
+            "command": "check",
+            "records": 1000,
+            "version": "0.7.4",
+            "input_bytes": 215682,
+            "input_sha256": "bc590c554e57f0d83da4af728f085dd3a69b55f54a7da6023e945c5c504cd7d1",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              51.37530000000001,
+              42.668799999999976,
+              33.58019999999999,
+              38.19200000000001,
+              31.020299999999963,
+              31.28290000000004,
+              31.91410000000002
+            ],
+            "min_ms": 31.020299999999963,
+            "median_ms": 33.58019999999999,
+            "max_ms": 51.37530000000001,
+            "rss_before_bytes": 49741824,
+            "rss_after_bytes": 142217216,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "ratio": 0.8617488933085267
+        },
+        {
+          "candidate": {
+            "id": "check-1000",
+            "command": "check",
+            "records": 1000,
+            "version": "0.7.4",
+            "input_bytes": 215682,
+            "input_sha256": "bc590c554e57f0d83da4af728f085dd3a69b55f54a7da6023e945c5c504cd7d1",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              74.2371,
+              65.1346,
+              36.98649999999998,
+              38.71619999999996,
+              33.54340000000002,
+              32.352599999999995,
+              30.816100000000006
+            ],
+            "min_ms": 30.816100000000006,
+            "median_ms": 36.98649999999998,
+            "max_ms": 74.2371,
+            "rss_before_bytes": 49844224,
+            "rss_after_bytes": 139235328,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "baseline": {
+            "id": "check-1000",
+            "command": "check",
+            "records": 1000,
+            "version": "0.7.3",
+            "input_bytes": 215682,
+            "input_sha256": "bc590c554e57f0d83da4af728f085dd3a69b55f54a7da6023e945c5c504cd7d1",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              45.6673,
+              38.37219999999999,
+              32.037300000000016,
+              38.44239999999999,
+              30.721499999999992,
+              30.69549999999998,
+              30.762099999999975
+            ],
+            "min_ms": 30.69549999999998,
+            "median_ms": 32.037300000000016,
+            "max_ms": 45.6673,
+            "rss_before_bytes": 49930240,
+            "rss_after_bytes": 137838592,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "ratio": 1.1544824314158797
+        },
+        {
+          "baseline": {
+            "id": "check-1000",
+            "command": "check",
+            "records": 1000,
+            "version": "0.7.3",
+            "input_bytes": 215682,
+            "input_sha256": "bc590c554e57f0d83da4af728f085dd3a69b55f54a7da6023e945c5c504cd7d1",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              47.391099999999994,
+              37.49380000000002,
+              33.40980000000002,
+              36.44830000000002,
+              39.719600000000014,
+              34.108000000000004,
+              33.909400000000005
+            ],
+            "min_ms": 33.40980000000002,
+            "median_ms": 36.44830000000002,
+            "max_ms": 47.391099999999994,
+            "rss_before_bytes": 49909760,
+            "rss_after_bytes": 139161600,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "candidate": {
+            "id": "check-1000",
+            "command": "check",
+            "records": 1000,
+            "version": "0.7.4",
+            "input_bytes": 215682,
+            "input_sha256": "bc590c554e57f0d83da4af728f085dd3a69b55f54a7da6023e945c5c504cd7d1",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              45.709,
+              37.38160000000002,
+              33.8964,
+              36.3313,
+              31.040300000000002,
+              30.314599999999984,
+              32.13040000000001
+            ],
+            "min_ms": 30.314599999999984,
+            "median_ms": 33.8964,
+            "max_ms": 45.709,
+            "rss_before_bytes": 49774592,
+            "rss_after_bytes": 143634432,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "ratio": 0.9299857606527597
+        }
+      ]
+    },
+    {
+      "id": "format-1000",
+      "ratio": 1.001004983099279,
+      "regression": false,
+      "rounds": [
+        {
+          "baseline": {
+            "id": "format-1000",
+            "command": "format",
+            "records": 1000,
+            "version": "0.7.3",
+            "input_bytes": 215682,
+            "input_sha256": "bc590c554e57f0d83da4af728f085dd3a69b55f54a7da6023e945c5c504cd7d1",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              77.01319999999998,
+              77.43560000000002,
+              65.3526,
+              67.26710000000003,
+              75.62669999999997,
+              71.74249999999995,
+              65.87290000000007
+            ],
+            "min_ms": 65.3526,
+            "median_ms": 71.74249999999995,
+            "max_ms": 77.43560000000002,
+            "rss_before_bytes": 49827840,
+            "rss_after_bytes": 227405824,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "candidate": {
+            "id": "format-1000",
+            "command": "format",
+            "records": 1000,
+            "version": "0.7.4",
+            "input_bytes": 215682,
+            "input_sha256": "bc590c554e57f0d83da4af728f085dd3a69b55f54a7da6023e945c5c504cd7d1",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              81.09410000000003,
+              78.80720000000002,
+              70.6877,
+              71.81459999999998,
+              79.89949999999999,
+              71.3927000000001,
+              63.12869999999998
+            ],
+            "min_ms": 63.12869999999998,
+            "median_ms": 71.81459999999998,
+            "max_ms": 81.09410000000003,
+            "rss_before_bytes": 50110464,
+            "rss_after_bytes": 230899712,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "ratio": 1.001004983099279
+        },
+        {
+          "candidate": {
+            "id": "format-1000",
+            "command": "format",
+            "records": 1000,
+            "version": "0.7.4",
+            "input_bytes": 215682,
+            "input_sha256": "bc590c554e57f0d83da4af728f085dd3a69b55f54a7da6023e945c5c504cd7d1",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              84.26270000000002,
+              71.8902,
+              69.47489999999999,
+              67.94379999999995,
+              73.9223,
+              71.5172,
+              64.43909999999994
+            ],
+            "min_ms": 64.43909999999994,
+            "median_ms": 71.5172,
+            "max_ms": 84.26270000000002,
+            "rss_before_bytes": 49827840,
+            "rss_after_bytes": 219717632,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "baseline": {
+            "id": "format-1000",
+            "command": "format",
+            "records": 1000,
+            "version": "0.7.3",
+            "input_bytes": 215682,
+            "input_sha256": "bc590c554e57f0d83da4af728f085dd3a69b55f54a7da6023e945c5c504cd7d1",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              77.85069999999999,
+              80.48399999999998,
+              67.07760000000002,
+              64.91390000000001,
+              72.75650000000002,
+              72.0729,
+              64.11950000000002
+            ],
+            "min_ms": 64.11950000000002,
+            "median_ms": 72.0729,
+            "max_ms": 80.48399999999998,
+            "rss_before_bytes": 50196480,
+            "rss_after_bytes": 227610624,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "ratio": 0.9922897510714845
+        },
+        {
+          "baseline": {
+            "id": "format-1000",
+            "command": "format",
+            "records": 1000,
+            "version": "0.7.3",
+            "input_bytes": 215682,
+            "input_sha256": "bc590c554e57f0d83da4af728f085dd3a69b55f54a7da6023e945c5c504cd7d1",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              77.41230000000002,
+              77.5436,
+              67.01800000000003,
+              66.0489,
+              70.81300000000005,
+              73.63099999999997,
+              65.07979999999998
+            ],
+            "min_ms": 65.07979999999998,
+            "median_ms": 70.81300000000005,
+            "max_ms": 77.5436,
+            "rss_before_bytes": 49823744,
+            "rss_after_bytes": 230838272,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "candidate": {
+            "id": "format-1000",
+            "command": "format",
+            "records": 1000,
+            "version": "0.7.4",
+            "input_bytes": 215682,
+            "input_sha256": "bc590c554e57f0d83da4af728f085dd3a69b55f54a7da6023e945c5c504cd7d1",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              79.61709999999997,
+              78.14409999999998,
+              67.12709999999998,
+              65.71570000000003,
+              71.25649999999996,
+              77.4593000000001,
+              63.301399999999944
+            ],
+            "min_ms": 63.301399999999944,
+            "median_ms": 71.25649999999996,
+            "max_ms": 79.61709999999997,
+            "rss_before_bytes": 49967104,
+            "rss_after_bytes": 230805504,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "ratio": 1.006262974312625
+        }
+      ]
+    },
+    {
+      "id": "check-5000",
+      "ratio": 0.9957116939628073,
+      "regression": false,
+      "rounds": [
+        {
+          "baseline": {
+            "id": "check-5000",
+            "command": "check",
+            "records": 5000,
+            "version": "0.7.3",
+            "input_bytes": 1091682,
+            "input_sha256": "686f0d29be0a2fe7c281608a767509a64b7ac93d8067158ae5ef96d0e563cb35",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              186.6859,
+              182.1954,
+              177.30010000000004,
+              171.0444,
+              193.4162,
+              176.0299,
+              178.7056
+            ],
+            "min_ms": 171.0444,
+            "median_ms": 178.7056,
+            "max_ms": 193.4162,
+            "rss_before_bytes": 58437632,
+            "rss_after_bytes": 352927744,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "candidate": {
+            "id": "check-5000",
+            "command": "check",
+            "records": 5000,
+            "version": "0.7.4",
+            "input_bytes": 1091682,
+            "input_sha256": "686f0d29be0a2fe7c281608a767509a64b7ac93d8067158ae5ef96d0e563cb35",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              223.23590000000002,
+              210.70990000000006,
+              203.7192,
+              173.3468999999999,
+              176.63480000000004,
+              176.61259999999993,
+              191.59300000000007
+            ],
+            "min_ms": 173.3468999999999,
+            "median_ms": 191.59300000000007,
+            "max_ms": 223.23590000000002,
+            "rss_before_bytes": 58466304,
+            "rss_after_bytes": 352174080,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "ratio": 1.0721152554816418
+        },
+        {
+          "candidate": {
+            "id": "check-5000",
+            "command": "check",
+            "records": 5000,
+            "version": "0.7.4",
+            "input_bytes": 1091682,
+            "input_sha256": "686f0d29be0a2fe7c281608a767509a64b7ac93d8067158ae5ef96d0e563cb35",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              185.00400000000002,
+              214.7142,
+              193.21069999999997,
+              167.42599999999993,
+              170.96820000000002,
+              166.75559999999996,
+              166.83349999999996
+            ],
+            "min_ms": 166.75559999999996,
+            "median_ms": 170.96820000000002,
+            "max_ms": 214.7142,
+            "rss_before_bytes": 58798080,
+            "rss_after_bytes": 352706560,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "baseline": {
+            "id": "check-5000",
+            "command": "check",
+            "records": 5000,
+            "version": "0.7.3",
+            "input_bytes": 1091682,
+            "input_sha256": "686f0d29be0a2fe7c281608a767509a64b7ac93d8067158ae5ef96d0e563cb35",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              188.87829999999997,
+              185.98949999999996,
+              174.51319999999998,
+              178.8757999999999,
+              176.47220000000004,
+              185.33899999999994,
+              187.78009999999995
+            ],
+            "min_ms": 174.51319999999998,
+            "median_ms": 185.33899999999994,
+            "max_ms": 188.87829999999997,
+            "rss_before_bytes": 58454016,
+            "rss_after_bytes": 352788480,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "ratio": 0.9224620829938657
+        },
+        {
+          "baseline": {
+            "id": "check-5000",
+            "command": "check",
+            "records": 5000,
+            "version": "0.7.3",
+            "input_bytes": 1091682,
+            "input_sha256": "686f0d29be0a2fe7c281608a767509a64b7ac93d8067158ae5ef96d0e563cb35",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              212.75119999999998,
+              201.40820000000008,
+              195.08809999999994,
+              204.3026000000001,
+              189.89609999999993,
+              175.80349999999999,
+              222.51390000000015
+            ],
+            "min_ms": 175.80349999999999,
+            "median_ms": 201.40820000000008,
+            "max_ms": 222.51390000000015,
+            "rss_before_bytes": 58556416,
+            "rss_after_bytes": 353394688,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "candidate": {
+            "id": "check-5000",
+            "command": "check",
+            "records": 5000,
+            "version": "0.7.4",
+            "input_bytes": 1091682,
+            "input_sha256": "686f0d29be0a2fe7c281608a767509a64b7ac93d8067158ae5ef96d0e563cb35",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              200.54449999999997,
+              247.2514,
+              213.84090000000003,
+              212.2577,
+              170.8243,
+              170.96640000000002,
+              176.29449999999997
+            ],
+            "min_ms": 170.8243,
+            "median_ms": 200.54449999999997,
+            "max_ms": 247.2514,
+            "rss_before_bytes": 58290176,
+            "rss_after_bytes": 352301056,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "ratio": 0.9957116939628073
+        }
+      ]
+    },
+    {
+      "id": "format-5000",
+      "ratio": 1.0234502100043705,
+      "regression": false,
+      "rounds": [
+        {
+          "baseline": {
+            "id": "format-5000",
+            "command": "format",
+            "records": 5000,
+            "version": "0.7.3",
+            "input_bytes": 1091682,
+            "input_sha256": "686f0d29be0a2fe7c281608a767509a64b7ac93d8067158ae5ef96d0e563cb35",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              437.3827,
+              356.9045,
+              359.70680000000016,
+              367.6660999999999,
+              350.6666,
+              349.2274000000002,
+              375.73720000000003
+            ],
+            "min_ms": 349.2274000000002,
+            "median_ms": 359.70680000000016,
+            "max_ms": 437.3827,
+            "rss_before_bytes": 58445824,
+            "rss_after_bytes": 349507584,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "candidate": {
+            "id": "format-5000",
+            "command": "format",
+            "records": 5000,
+            "version": "0.7.4",
+            "input_bytes": 1091682,
+            "input_sha256": "686f0d29be0a2fe7c281608a767509a64b7ac93d8067158ae5ef96d0e563cb35",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              390.10319999999996,
+              354.56280000000004,
+              341.1953000000001,
+              386.50839999999994,
+              342.9783,
+              380.80780000000004,
+              368.1420000000003
+            ],
+            "min_ms": 341.1953000000001,
+            "median_ms": 368.1420000000003,
+            "max_ms": 390.10319999999996,
+            "rss_before_bytes": 58793984,
+            "rss_after_bytes": 375128064,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "ratio": 1.0234502100043705
+        },
+        {
+          "candidate": {
+            "id": "format-5000",
+            "command": "format",
+            "records": 5000,
+            "version": "0.7.4",
+            "input_bytes": 1091682,
+            "input_sha256": "686f0d29be0a2fe7c281608a767509a64b7ac93d8067158ae5ef96d0e563cb35",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              357.0045,
+              337.6969,
+              345.3274999999999,
+              376.19330000000014,
+              349.3458999999998,
+              340.1129000000001,
+              361.93430000000035
+            ],
+            "min_ms": 337.6969,
+            "median_ms": 349.3458999999998,
+            "max_ms": 376.19330000000014,
+            "rss_before_bytes": 58437632,
+            "rss_after_bytes": 354189312,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "baseline": {
+            "id": "format-5000",
+            "command": "format",
+            "records": 5000,
+            "version": "0.7.3",
+            "input_bytes": 1091682,
+            "input_sha256": "686f0d29be0a2fe7c281608a767509a64b7ac93d8067158ae5ef96d0e563cb35",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              419.8687000000001,
+              348.35489999999993,
+              345.087,
+              367.08629999999994,
+              341.61379999999986,
+              347.9272000000001,
+              385.6743999999999
+            ],
+            "min_ms": 341.61379999999986,
+            "median_ms": 348.35489999999993,
+            "max_ms": 419.8687000000001,
+            "rss_before_bytes": 58593280,
+            "rss_after_bytes": 374702080,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "ratio": 1.002844799943965
+        },
+        {
+          "baseline": {
+            "id": "format-5000",
+            "command": "format",
+            "records": 5000,
+            "version": "0.7.3",
+            "input_bytes": 1091682,
+            "input_sha256": "686f0d29be0a2fe7c281608a767509a64b7ac93d8067158ae5ef96d0e563cb35",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              364.80319999999995,
+              374.69960000000015,
+              375.54229999999984,
+              390.52199999999993,
+              364.4092999999998,
+              356.16200000000026,
+              384.9224999999997
+            ],
+            "min_ms": 356.16200000000026,
+            "median_ms": 374.69960000000015,
+            "max_ms": 390.52199999999993,
+            "rss_before_bytes": 58806272,
+            "rss_after_bytes": 374509568,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "candidate": {
+            "id": "format-5000",
+            "command": "format",
+            "records": 5000,
+            "version": "0.7.4",
+            "input_bytes": 1091682,
+            "input_sha256": "686f0d29be0a2fe7c281608a767509a64b7ac93d8067158ae5ef96d0e563cb35",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              399.4357,
+              364.7554000000001,
+              379.93679999999995,
+              437.5998000000002,
+              394.529,
+              382.058,
+              421.3588999999997
+            ],
+            "min_ms": 364.7554000000001,
+            "median_ms": 394.529,
+            "max_ms": 437.5998000000002,
+            "rss_before_bytes": 58458112,
+            "rss_after_bytes": 376373248,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "ratio": 1.0529207930833122
+        }
+      ]
+    },
+    {
+      "id": "check-10000",
+      "ratio": 0.9817655353217468,
+      "regression": false,
+      "rounds": [
+        {
+          "baseline": {
+            "id": "check-10000",
+            "command": "check",
+            "records": 10000,
+            "version": "0.7.3",
+            "input_bytes": 2186682,
+            "input_sha256": "e7685881f795a395a4262466de500136133116f316a39d685efe6fb08e6738f5",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              372.80679999999995,
+              371.59939999999995,
+              341.6562000000001,
+              375.7520000000002,
+              348.28150000000005,
+              344.8533000000002,
+              379.04230000000007
+            ],
+            "min_ms": 341.6562000000001,
+            "median_ms": 371.59939999999995,
+            "max_ms": 379.04230000000007,
+            "rss_before_bytes": 63135744,
+            "rss_after_bytes": 453246976,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "candidate": {
+            "id": "check-10000",
+            "command": "check",
+            "records": 10000,
+            "version": "0.7.4",
+            "input_bytes": 2186682,
+            "input_sha256": "e7685881f795a395a4262466de500136133116f316a39d685efe6fb08e6738f5",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              381.23109999999997,
+              365.60659999999996,
+              372.55510000000004,
+              446.8759,
+              345.27649999999994,
+              341.95029999999997,
+              335.90909999999985
+            ],
+            "min_ms": 335.90909999999985,
+            "median_ms": 365.60659999999996,
+            "max_ms": 446.8759,
+            "rss_before_bytes": 63299584,
+            "rss_after_bytes": 453300224,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "ratio": 0.9838729556613923
+        },
+        {
+          "candidate": {
+            "id": "check-10000",
+            "command": "check",
+            "records": 10000,
+            "version": "0.7.4",
+            "input_bytes": 2186682,
+            "input_sha256": "e7685881f795a395a4262466de500136133116f316a39d685efe6fb08e6738f5",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              361.0711,
+              354.0312,
+              380.3541,
+              414.6828999999998,
+              352.27459999999974,
+              338.2082999999998,
+              338.66579999999976
+            ],
+            "min_ms": 338.2082999999998,
+            "median_ms": 354.0312,
+            "max_ms": 414.6828999999998,
+            "rss_before_bytes": 63209472,
+            "rss_after_bytes": 452808704,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "baseline": {
+            "id": "check-10000",
+            "command": "check",
+            "records": 10000,
+            "version": "0.7.3",
+            "input_bytes": 2186682,
+            "input_sha256": "e7685881f795a395a4262466de500136133116f316a39d685efe6fb08e6738f5",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              364.3564,
+              358.32950000000005,
+              371.1685,
+              436.9572999999998,
+              356.6538999999998,
+              385.33110000000033,
+              404.05960000000005
+            ],
+            "min_ms": 356.6538999999998,
+            "median_ms": 371.1685,
+            "max_ms": 436.9572999999998,
+            "rss_before_bytes": 63209472,
+            "rss_after_bytes": 448569344,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "ratio": 0.9538287866561953
+        },
+        {
+          "baseline": {
+            "id": "check-10000",
+            "command": "check",
+            "records": 10000,
+            "version": "0.7.3",
+            "input_bytes": 2186682,
+            "input_sha256": "e7685881f795a395a4262466de500136133116f316a39d685efe6fb08e6738f5",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              363.0522,
+              341.44550000000004,
+              350.40100000000007,
+              420.10249999999996,
+              362.74199999999996,
+              357.78949999999986,
+              343.6433000000002
+            ],
+            "min_ms": 341.44550000000004,
+            "median_ms": 357.78949999999986,
+            "max_ms": 420.10249999999996,
+            "rss_before_bytes": 63410176,
+            "rss_after_bytes": 452448256,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "candidate": {
+            "id": "check-10000",
+            "command": "check",
+            "records": 10000,
+            "version": "0.7.4",
+            "input_bytes": 2186682,
+            "input_sha256": "e7685881f795a395a4262466de500136133116f316a39d685efe6fb08e6738f5",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              369.2654,
+              353.418,
+              346.95399999999995,
+              377.17550000000006,
+              351.2654,
+              348.32079999999996,
+              344.31889999999976
+            ],
+            "min_ms": 344.31889999999976,
+            "median_ms": 351.2654,
+            "max_ms": 377.17550000000006,
+            "rss_before_bytes": 63246336,
+            "rss_after_bytes": 449601536,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "ratio": 0.9817655353217468
+        }
+      ]
+    },
+    {
+      "id": "format-10000",
+      "ratio": 0.9801215988116191,
+      "regression": false,
+      "rounds": [
+        {
+          "baseline": {
+            "id": "format-10000",
+            "command": "format",
+            "records": 10000,
+            "version": "0.7.3",
+            "input_bytes": 2186682,
+            "input_sha256": "e7685881f795a395a4262466de500136133116f316a39d685efe6fb08e6738f5",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              762.4486,
+              847.1624999999999,
+              754.0953,
+              794.9581000000003,
+              809.9034000000001,
+              801.4456,
+              824.6575000000003
+            ],
+            "min_ms": 754.0953,
+            "median_ms": 801.4456,
+            "max_ms": 847.1624999999999,
+            "rss_before_bytes": 63217664,
+            "rss_after_bytes": 592621568,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "candidate": {
+            "id": "format-10000",
+            "command": "format",
+            "records": 10000,
+            "version": "0.7.4",
+            "input_bytes": 2186682,
+            "input_sha256": "e7685881f795a395a4262466de500136133116f316a39d685efe6fb08e6738f5",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              807.0322999999999,
+              822.5804999999998,
+              747.9949999999999,
+              808.8290000000002,
+              845.2250999999997,
+              828.4180999999999,
+              788.8198999999995
+            ],
+            "min_ms": 747.9949999999999,
+            "median_ms": 808.8290000000002,
+            "max_ms": 845.2250999999997,
+            "rss_before_bytes": 63205376,
+            "rss_after_bytes": 589791232,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "ratio": 1.0092126028266923
+        },
+        {
+          "candidate": {
+            "id": "format-10000",
+            "command": "format",
+            "records": 10000,
+            "version": "0.7.4",
+            "input_bytes": 2186682,
+            "input_sha256": "e7685881f795a395a4262466de500136133116f316a39d685efe6fb08e6738f5",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              911.3825999999999,
+              825.7731000000001,
+              748.8852999999999,
+              792.9345000000003,
+              800.2093999999997,
+              770.5254999999997,
+              800.8708999999999
+            ],
+            "min_ms": 748.8852999999999,
+            "median_ms": 800.2093999999997,
+            "max_ms": 911.3825999999999,
+            "rss_before_bytes": 63164416,
+            "rss_after_bytes": 593174528,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "baseline": {
+            "id": "format-10000",
+            "command": "format",
+            "records": 10000,
+            "version": "0.7.3",
+            "input_bytes": 2186682,
+            "input_sha256": "e7685881f795a395a4262466de500136133116f316a39d685efe6fb08e6738f5",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              804.0245,
+              854.4387000000002,
+              816.4389000000001,
+              848.5006000000003,
+              992.5481,
+              773.1091000000006,
+              796.8437000000004
+            ],
+            "min_ms": 773.1091000000006,
+            "median_ms": 816.4389000000001,
+            "max_ms": 992.5481,
+            "rss_before_bytes": 63389696,
+            "rss_after_bytes": 589590528,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "ratio": 0.9801215988116191
+        },
+        {
+          "baseline": {
+            "id": "format-10000",
+            "command": "format",
+            "records": 10000,
+            "version": "0.7.3",
+            "input_bytes": 2186682,
+            "input_sha256": "e7685881f795a395a4262466de500136133116f316a39d685efe6fb08e6738f5",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              777.9544,
+              823.6669999999999,
+              795.8425000000002,
+              854.7968000000001,
+              902.5793999999996,
+              832.9588000000003,
+              819.2973999999995
+            ],
+            "min_ms": 777.9544,
+            "median_ms": 823.6669999999999,
+            "max_ms": 902.5793999999996,
+            "rss_before_bytes": 63586304,
+            "rss_after_bytes": 591511552,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "candidate": {
+            "id": "format-10000",
+            "command": "format",
+            "records": 10000,
+            "version": "0.7.4",
+            "input_bytes": 2186682,
+            "input_sha256": "e7685881f795a395a4262466de500136133116f316a39d685efe6fb08e6738f5",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              766.1145,
+              824.0269000000003,
+              768.7383000000004,
+              765.0436000000004,
+              800.6612000000005,
+              836.1455999999998,
+              759.1088
+            ],
+            "min_ms": 759.1088,
+            "median_ms": 768.7383000000004,
+            "max_ms": 836.1455999999998,
+            "rss_before_bytes": 63283200,
+            "rss_after_bytes": 450494464,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "ratio": 0.9333120059441504
+        }
+      ]
+    },
+    {
+      "id": "folded",
+      "ratio": 0.9222046666028266,
+      "regression": false,
+      "rounds": [
+        {
+          "baseline": {
+            "id": "folded",
+            "command": "format",
+            "records": 1,
+            "version": "0.7.3",
+            "input_bytes": 60051,
+            "input_sha256": "57202593c36a9fde825a2503a252f2b27984afffe6b957c89a68e76ecd7d6eb2",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              19.295,
+              16.764399999999995,
+              14.301500000000004,
+              12.531600000000026,
+              10.90639999999999,
+              11.41409999999999,
+              11.386700000000019
+            ],
+            "min_ms": 10.90639999999999,
+            "median_ms": 12.531600000000026,
+            "max_ms": 19.295,
+            "rss_before_bytes": 48766976,
+            "rss_after_bytes": 69365760,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "candidate": {
+            "id": "folded",
+            "command": "format",
+            "records": 1,
+            "version": "0.7.4",
+            "input_bytes": 60051,
+            "input_sha256": "57202593c36a9fde825a2503a252f2b27984afffe6b957c89a68e76ecd7d6eb2",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              20.42609999999999,
+              16.836399999999998,
+              14.081699999999984,
+              11.556700000000006,
+              10.378500000000003,
+              10.221699999999998,
+              10.989000000000004
+            ],
+            "min_ms": 10.221699999999998,
+            "median_ms": 11.556700000000006,
+            "max_ms": 20.42609999999999,
+            "rss_before_bytes": 48771072,
+            "rss_after_bytes": 69865472,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "ratio": 0.9222046666028266
+        },
+        {
+          "candidate": {
+            "id": "folded",
+            "command": "format",
+            "records": 1,
+            "version": "0.7.4",
+            "input_bytes": 60051,
+            "input_sha256": "57202593c36a9fde825a2503a252f2b27984afffe6b957c89a68e76ecd7d6eb2",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              19.691500000000005,
+              15.8626,
+              12.78570000000002,
+              14.428599999999989,
+              11.344399999999979,
+              10.670199999999994,
+              11.430399999999992
+            ],
+            "min_ms": 10.670199999999994,
+            "median_ms": 12.78570000000002,
+            "max_ms": 19.691500000000005,
+            "rss_before_bytes": 48488448,
+            "rss_after_bytes": 69414912,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "baseline": {
+            "id": "folded",
+            "command": "format",
+            "records": 1,
+            "version": "0.7.3",
+            "input_bytes": 60051,
+            "input_sha256": "57202593c36a9fde825a2503a252f2b27984afffe6b957c89a68e76ecd7d6eb2",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              21.8335,
+              15.946100000000001,
+              12.34429999999999,
+              13.352800000000002,
+              10.819099999999992,
+              10.207699999999988,
+              10.56450000000001
+            ],
+            "min_ms": 10.207699999999988,
+            "median_ms": 12.34429999999999,
+            "max_ms": 21.8335,
+            "rss_before_bytes": 48816128,
+            "rss_after_bytes": 69611520,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "ratio": 1.0357573941009235
+        },
+        {
+          "baseline": {
+            "id": "folded",
+            "command": "format",
+            "records": 1,
+            "version": "0.7.3",
+            "input_bytes": 60051,
+            "input_sha256": "57202593c36a9fde825a2503a252f2b27984afffe6b957c89a68e76ecd7d6eb2",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              19.344399999999993,
+              20.512699999999995,
+              13.202200000000005,
+              14.019900000000007,
+              11.922499999999985,
+              11.5488,
+              11.12039999999999
+            ],
+            "min_ms": 11.12039999999999,
+            "median_ms": 13.202200000000005,
+            "max_ms": 20.512699999999995,
+            "rss_before_bytes": 48672768,
+            "rss_after_bytes": 69353472,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "candidate": {
+            "id": "folded",
+            "command": "format",
+            "records": 1,
+            "version": "0.7.4",
+            "input_bytes": 60051,
+            "input_sha256": "57202593c36a9fde825a2503a252f2b27984afffe6b957c89a68e76ecd7d6eb2",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              19.432000000000002,
+              17.116100000000003,
+              12.482499999999987,
+              11.444800000000015,
+              10.668299999999988,
+              10.15809999999999,
+              10.373099999999994
+            ],
+            "min_ms": 10.15809999999999,
+            "median_ms": 11.444800000000015,
+            "max_ms": 19.432000000000002,
+            "rss_before_bytes": 48812032,
+            "rss_after_bytes": 69263360,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "ratio": 0.8668858220599606
+        }
+      ]
+    },
+    {
+      "id": "risk-review",
+      "ratio": 1.0426570017842454,
+      "regression": false,
+      "rounds": [
+        {
+          "baseline": {
+            "id": "risk-review",
+            "command": "review",
+            "records": 10000,
+            "version": "0.7.3",
+            "input_bytes": 1368902,
+            "input_sha256": "6ee667f91c5994b2da9d063558b87aca0e7b3e179c284b2e1fa5399d9c9929e9",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              336.00710000000004,
+              319.01109999999994,
+              313.43629999999985,
+              291.39339999999993,
+              291.4850000000001,
+              297.1910999999998,
+              301.4495999999999
+            ],
+            "min_ms": 291.39339999999993,
+            "median_ms": 301.4495999999999,
+            "max_ms": 336.00710000000004,
+            "rss_before_bytes": 53682176,
+            "rss_after_bytes": 331792384,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "candidate": {
+            "id": "risk-review",
+            "command": "review",
+            "records": 10000,
+            "version": "0.7.4",
+            "input_bytes": 1368902,
+            "input_sha256": "6ee667f91c5994b2da9d063558b87aca0e7b3e179c284b2e1fa5399d9c9929e9",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              325.60749999999996,
+              312.34550000000013,
+              294.9611,
+              297.39840000000004,
+              295.2404999999999,
+              286.05529999999976,
+              293.47199999999975
+            ],
+            "min_ms": 286.05529999999976,
+            "median_ms": 295.2404999999999,
+            "max_ms": 325.60749999999996,
+            "rss_before_bytes": 53592064,
+            "rss_after_bytes": 304320512,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "ratio": 0.9794025269895862
+        },
+        {
+          "candidate": {
+            "id": "risk-review",
+            "command": "review",
+            "records": 10000,
+            "version": "0.7.4",
+            "input_bytes": 1368902,
+            "input_sha256": "6ee667f91c5994b2da9d063558b87aca0e7b3e179c284b2e1fa5399d9c9929e9",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              317.91349999999994,
+              306.49299999999994,
+              311.22450000000003,
+              324.02289999999994,
+              314.24160000000006,
+              317.42899999999986,
+              330.4072000000001
+            ],
+            "min_ms": 306.49299999999994,
+            "median_ms": 317.42899999999986,
+            "max_ms": 330.4072000000001,
+            "rss_before_bytes": 53714944,
+            "rss_after_bytes": 304857088,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "baseline": {
+            "id": "risk-review",
+            "command": "review",
+            "records": 10000,
+            "version": "0.7.3",
+            "input_bytes": 1368902,
+            "input_sha256": "6ee667f91c5994b2da9d063558b87aca0e7b3e179c284b2e1fa5399d9c9929e9",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              337.6882,
+              354.48710000000005,
+              304.4423999999999,
+              291.23760000000016,
+              297.0990999999999,
+              294.4079999999999,
+              306.4195999999997
+            ],
+            "min_ms": 291.23760000000016,
+            "median_ms": 304.4423999999999,
+            "max_ms": 354.48710000000005,
+            "rss_before_bytes": 53633024,
+            "rss_after_bytes": 305459200,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "ratio": 1.0426570017842454
+        },
+        {
+          "baseline": {
+            "id": "risk-review",
+            "command": "review",
+            "records": 10000,
+            "version": "0.7.3",
+            "input_bytes": 1368902,
+            "input_sha256": "6ee667f91c5994b2da9d063558b87aca0e7b3e179c284b2e1fa5399d9c9929e9",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              334.9107,
+              305.74760000000003,
+              297.2934,
+              293.932,
+              299.32569999999987,
+              304.2663,
+              309.9859999999999
+            ],
+            "min_ms": 293.932,
+            "median_ms": 304.2663,
+            "max_ms": 334.9107,
+            "rss_before_bytes": 53858304,
+            "rss_after_bytes": 305307648,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "candidate": {
+            "id": "risk-review",
+            "command": "review",
+            "records": 10000,
+            "version": "0.7.4",
+            "input_bytes": 1368902,
+            "input_sha256": "6ee667f91c5994b2da9d063558b87aca0e7b3e179c284b2e1fa5399d9c9929e9",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              343.7773,
+              310.3412000000001,
+              307.3605,
+              334.5104000000001,
+              303.4693,
+              319.67100000000005,
+              379.25649999999996
+            ],
+            "min_ms": 303.4693,
+            "median_ms": 319.67100000000005,
+            "max_ms": 379.25649999999996,
+            "rss_before_bytes": 53698560,
+            "rss_after_bytes": 309145600,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "ratio": 1.0506290049210183
+        }
+      ]
+    },
+    {
+      "id": "compare",
+      "ratio": 1.0317526404408393,
+      "regression": false,
+      "rounds": [
+        {
+          "baseline": {
+            "id": "compare",
+            "command": "compare",
+            "records": 5000,
+            "version": "0.7.3",
+            "input_bytes": 1091682,
+            "input_sha256": "686f0d29be0a2fe7c281608a767509a64b7ac93d8067158ae5ef96d0e563cb35",
+            "after_sha256": "9bf261e0a37d8bac4e0e84460ede2cb6d2b10f98dc9aee38a38c3a506c24ecf4",
+            "measured_runs": 7,
+            "measurements_ms": [
+              485.16510000000005,
+              500.35300000000007,
+              477.0473999999999,
+              467.6277,
+              468.5009,
+              488.76900000000023,
+              455.35030000000006
+            ],
+            "min_ms": 455.35030000000006,
+            "median_ms": 477.0473999999999,
+            "max_ms": 500.35300000000007,
+            "rss_before_bytes": 58474496,
+            "rss_after_bytes": 422821888,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "candidate": {
+            "id": "compare",
+            "command": "compare",
+            "records": 5000,
+            "version": "0.7.4",
+            "input_bytes": 1091682,
+            "input_sha256": "686f0d29be0a2fe7c281608a767509a64b7ac93d8067158ae5ef96d0e563cb35",
+            "after_sha256": "9bf261e0a37d8bac4e0e84460ede2cb6d2b10f98dc9aee38a38c3a506c24ecf4",
+            "measured_runs": 7,
+            "measurements_ms": [
+              554.4590000000001,
+              484.0879000000002,
+              475.5271,
+              500.9494999999997,
+              471.2201,
+              483.95910000000003,
+              448.3031000000001
+            ],
+            "min_ms": 448.3031000000001,
+            "median_ms": 483.95910000000003,
+            "max_ms": 554.4590000000001,
+            "rss_before_bytes": 58576896,
+            "rss_after_bytes": 402350080,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "ratio": 1.0144884973694441
+        },
+        {
+          "candidate": {
+            "id": "compare",
+            "command": "compare",
+            "records": 5000,
+            "version": "0.7.4",
+            "input_bytes": 1091682,
+            "input_sha256": "686f0d29be0a2fe7c281608a767509a64b7ac93d8067158ae5ef96d0e563cb35",
+            "after_sha256": "9bf261e0a37d8bac4e0e84460ede2cb6d2b10f98dc9aee38a38c3a506c24ecf4",
+            "measured_runs": 7,
+            "measurements_ms": [
+              523.7324,
+              508.2942999999998,
+              494.8087000000003,
+              500.0135,
+              474.8399000000004,
+              494.6497999999997,
+              461.28120000000035
+            ],
+            "min_ms": 461.28120000000035,
+            "median_ms": 494.8087000000003,
+            "max_ms": 523.7324,
+            "rss_before_bytes": 58482688,
+            "rss_after_bytes": 419991552,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "baseline": {
+            "id": "compare",
+            "command": "compare",
+            "records": 5000,
+            "version": "0.7.3",
+            "input_bytes": 1091682,
+            "input_sha256": "686f0d29be0a2fe7c281608a767509a64b7ac93d8067158ae5ef96d0e563cb35",
+            "after_sha256": "9bf261e0a37d8bac4e0e84460ede2cb6d2b10f98dc9aee38a38c3a506c24ecf4",
+            "measured_runs": 7,
+            "measurements_ms": [
+              489.491,
+              488.27340000000004,
+              497.79140000000007,
+              479.1402000000003,
+              468.3580999999999,
+              477.2411000000002,
+              465.72850000000017
+            ],
+            "min_ms": 465.72850000000017,
+            "median_ms": 479.1402000000003,
+            "max_ms": 497.79140000000007,
+            "rss_before_bytes": 58343424,
+            "rss_after_bytes": 413794304,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "ratio": 1.0327012845092105
+        },
+        {
+          "baseline": {
+            "id": "compare",
+            "command": "compare",
+            "records": 5000,
+            "version": "0.7.3",
+            "input_bytes": 1091682,
+            "input_sha256": "686f0d29be0a2fe7c281608a767509a64b7ac93d8067158ae5ef96d0e563cb35",
+            "after_sha256": "9bf261e0a37d8bac4e0e84460ede2cb6d2b10f98dc9aee38a38c3a506c24ecf4",
+            "measured_runs": 7,
+            "measurements_ms": [
+              488.21119999999985,
+              490.3584000000001,
+              505.5486999999998,
+              476.97659999999996,
+              486.73820000000023,
+              489.9749999999999,
+              493.7489999999998
+            ],
+            "min_ms": 476.97659999999996,
+            "median_ms": 489.9749999999999,
+            "max_ms": 505.5486999999998,
+            "rss_before_bytes": 58548224,
+            "rss_after_bytes": 415723520,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "candidate": {
+            "id": "compare",
+            "command": "compare",
+            "records": 5000,
+            "version": "0.7.4",
+            "input_bytes": 1091682,
+            "input_sha256": "686f0d29be0a2fe7c281608a767509a64b7ac93d8067158ae5ef96d0e563cb35",
+            "after_sha256": "9bf261e0a37d8bac4e0e84460ede2cb6d2b10f98dc9aee38a38c3a506c24ecf4",
+            "measured_runs": 7,
+            "measurements_ms": [
+              565.6864,
+              542.4267,
+              505.53300000000013,
+              487.54219999999987,
+              514.4720000000002,
+              489.63599999999997,
+              469.64310000000023
+            ],
+            "min_ms": 469.64310000000023,
+            "median_ms": 505.53300000000013,
+            "max_ms": 565.6864,
+            "rss_before_bytes": 58560512,
+            "rss_after_bytes": 413622272,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "ratio": 1.0317526404408393
+        }
+      ]
+    },
+    {
+      "id": "batch-50",
+      "ratio": 0.9794477472285463,
+      "regression": false,
+      "rounds": [
+        {
+          "baseline": {
+            "id": "batch-50",
+            "command": "batch",
+            "records": 1,
+            "version": "0.7.3",
+            "input_bytes": 222,
+            "input_sha256": "1dc2a30e86a61fd8bc0a923c91a7ad43c050e5c8cd100b21cb85998025aed374",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              131.42249999999999,
+              135.0634,
+              140.0951,
+              137.44490000000008,
+              138.94450000000006,
+              133.61570000000006,
+              134.30849999999987
+            ],
+            "min_ms": 131.42249999999999,
+            "median_ms": 135.0634,
+            "max_ms": 140.0951,
+            "rss_before_bytes": null,
+            "rss_after_bytes": null,
+            "memory_scope": "CLI child RSS not measured",
+            "status": "passed"
+          },
+          "candidate": {
+            "id": "batch-50",
+            "command": "batch",
+            "records": 1,
+            "version": "0.7.4",
+            "input_bytes": 222,
+            "input_sha256": "1dc2a30e86a61fd8bc0a923c91a7ad43c050e5c8cd100b21cb85998025aed374",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              143.77779999999998,
+              135.7851,
+              133.99830000000003,
+              133.53339999999992,
+              135.16610000000003,
+              134.4733000000001,
+              131.84670000000006
+            ],
+            "min_ms": 131.84670000000006,
+            "median_ms": 134.4733000000001,
+            "max_ms": 143.77779999999998,
+            "rss_before_bytes": null,
+            "rss_after_bytes": null,
+            "memory_scope": "CLI child RSS not measured",
+            "status": "passed"
+          },
+          "ratio": 0.9956309407285772
+        },
+        {
+          "candidate": {
+            "id": "batch-50",
+            "command": "batch",
+            "records": 1,
+            "version": "0.7.4",
+            "input_bytes": 222,
+            "input_sha256": "1dc2a30e86a61fd8bc0a923c91a7ad43c050e5c8cd100b21cb85998025aed374",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              138.389,
+              134.1433,
+              130.82370000000003,
+              133.2387000000001,
+              134.091,
+              130.37479999999994,
+              137.1812
+            ],
+            "min_ms": 130.37479999999994,
+            "median_ms": 134.091,
+            "max_ms": 138.389,
+            "rss_before_bytes": null,
+            "rss_after_bytes": null,
+            "memory_scope": "CLI child RSS not measured",
+            "status": "passed"
+          },
+          "baseline": {
+            "id": "batch-50",
+            "command": "batch",
+            "records": 1,
+            "version": "0.7.3",
+            "input_bytes": 222,
+            "input_sha256": "1dc2a30e86a61fd8bc0a923c91a7ad43c050e5c8cd100b21cb85998025aed374",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              141.31910000000002,
+              131.14,
+              136.90470000000005,
+              143.71230000000003,
+              136.78459999999995,
+              136.1398999999999,
+              138.40879999999993
+            ],
+            "min_ms": 131.14,
+            "median_ms": 136.90470000000005,
+            "max_ms": 143.71230000000003,
+            "rss_before_bytes": null,
+            "rss_after_bytes": null,
+            "memory_scope": "CLI child RSS not measured",
+            "status": "passed"
+          },
+          "ratio": 0.9794477472285463
+        },
+        {
+          "baseline": {
+            "id": "batch-50",
+            "command": "batch",
+            "records": 1,
+            "version": "0.7.3",
+            "input_bytes": 222,
+            "input_sha256": "1dc2a30e86a61fd8bc0a923c91a7ad43c050e5c8cd100b21cb85998025aed374",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              135.2725,
+              131.09409999999997,
+              134.13720000000006,
+              140.84759999999994,
+              138.34109999999998,
+              139.94410000000005,
+              139.77660000000014
+            ],
+            "min_ms": 131.09409999999997,
+            "median_ms": 138.34109999999998,
+            "max_ms": 140.84759999999994,
+            "rss_before_bytes": null,
+            "rss_after_bytes": null,
+            "memory_scope": "CLI child RSS not measured",
+            "status": "passed"
+          },
+          "candidate": {
+            "id": "batch-50",
+            "command": "batch",
+            "records": 1,
+            "version": "0.7.4",
+            "input_bytes": 222,
+            "input_sha256": "1dc2a30e86a61fd8bc0a923c91a7ad43c050e5c8cd100b21cb85998025aed374",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              131.72360000000003,
+              135.6778,
+              135.96250000000003,
+              141.4081,
+              135.1345,
+              135.3188,
+              133.77639999999997
+            ],
+            "min_ms": 131.72360000000003,
+            "median_ms": 135.3188,
+            "max_ms": 141.4081,
+            "rss_before_bytes": null,
+            "rss_after_bytes": null,
+            "memory_scope": "CLI child RSS not measured",
+            "status": "passed"
+          },
+          "ratio": 0.978153274767947
+        }
+      ]
+    }
+  ],
+  "status": "passed"
+}

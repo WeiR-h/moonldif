@@ -1,0 +1,170 @@
+{
+  "started": "2026-09-28T13:31:36.396Z",
+  "node": "v24.13.0",
+  "platform": "win32",
+  "status": "passed",
+  "steps": [
+    {
+      "name": "toolchain",
+      "status": "passed",
+      "exit_code": 0,
+      "args": [
+        "scripts/moon.mjs",
+        "version",
+        "--all"
+      ]
+    },
+    {
+      "name": "compiler-minimum",
+      "status": "passed",
+      "exit_code": 0,
+      "args": [
+        "scripts/toolchain-verify.mjs"
+      ]
+    },
+    {
+      "name": "download-lifecycle-tests",
+      "status": "passed",
+      "exit_code": 0,
+      "args": [
+        "--test",
+        "tests/downloads.test.mjs"
+      ]
+    },
+    {
+      "name": "compiler-gate-tests",
+      "status": "passed",
+      "exit_code": 0,
+      "args": [
+        "--test",
+        "tests/toolchain.test.mjs"
+      ]
+    },
+    {
+      "name": "format",
+      "status": "passed",
+      "exit_code": 0,
+      "args": [
+        "scripts/moon.mjs",
+        "fmt",
+        "--check"
+      ]
+    },
+    {
+      "name": "check",
+      "status": "passed",
+      "exit_code": 0,
+      "args": [
+        "scripts/moon.mjs",
+        "check",
+        "--target",
+        "js",
+        "--deny-warn"
+      ]
+    },
+    {
+      "name": "moonbit-tests",
+      "status": "passed",
+      "exit_code": 0,
+      "args": [
+        "scripts/moon.mjs",
+        "test",
+        "--target",
+        "js"
+      ]
+    },
+    {
+      "name": "wasm-gc-check",
+      "status": "passed",
+      "exit_code": 0,
+      "args": [
+        "scripts/moon.mjs",
+        "check",
+        "--target",
+        "wasm-gc",
+        "--deny-warn"
+      ]
+    },
+    {
+      "name": "wasm-gc-tests",
+      "status": "passed",
+      "exit_code": 0,
+      "args": [
+        "scripts/moon.mjs",
+        "test",
+        "--target",
+        "wasm-gc"
+      ]
+    },
+    {
+      "name": "build",
+      "status": "passed",
+      "exit_code": 0,
+      "args": [
+        "scripts/build.mjs"
+      ]
+    },
+    {
+      "name": "version-consistency",
+      "status": "passed",
+      "exit_code": 0,
+      "args": [
+        "scripts/version-verify.mjs"
+      ]
+    },
+    {
+      "name": "cli-tests",
+      "status": "passed",
+      "exit_code": 0,
+      "args": [
+        "--test",
+        "tests/cli.test.mjs"
+      ]
+    },
+    {
+      "name": "bounded-reader-tests",
+      "status": "passed",
+      "exit_code": 0,
+      "args": [
+        "--test",
+        "tests/read-bounded.test.mjs"
+      ]
+    },
+    {
+      "name": "pagination-tests",
+      "status": "passed",
+      "exit_code": 0,
+      "args": [
+        "--test",
+        "tests/pagination.test.mjs"
+      ]
+    },
+    {
+      "name": "profile-tests",
+      "status": "passed",
+      "exit_code": 0,
+      "args": [
+        "--test",
+        "tests/profile.test.mjs"
+      ]
+    },
+    {
+      "name": "reproduction-tests",
+      "status": "passed",
+      "exit_code": 0,
+      "args": [
+        "--test",
+        "tests/reproduction.test.mjs"
+      ]
+    },
+    {
+      "name": "scenarios",
+      "status": "passed",
+      "exit_code": 0,
+      "args": [
+        "scripts/demo.mjs"
+      ]
+    }
+  ],
+  "finished": "2026-09-28T13:32:03.647Z"
+}

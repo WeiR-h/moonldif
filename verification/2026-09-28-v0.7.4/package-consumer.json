@@ -1,0 +1,42 @@
+{
+  "started": "2026-09-28T13:40:07.143549+00:00",
+  "method": "fresh local workspace importing extracted moon package archive; not registry installation",
+  "status": "passed",
+  "steps": [
+    {
+      "command": [
+        "<project>\\.tools\\moon-acceptance\\bin\\moon.exe",
+        "package"
+      ],
+      "exit_code": 0,
+      "output": "Running moon check ...\nFinished. moon: ran 5 tasks, now up to date\nCheck passed\nPackage to <project>\\_build\\publish\\WeiR-h-moonldif-0.7.4.zip\n"
+    },
+    {
+      "command": [
+        "<project>\\.tools\\moon-acceptance\\bin\\moon.exe",
+        "test",
+        "-p",
+        "local/moonldif_consumer",
+        "--target",
+        "js"
+      ],
+      "exit_code": 0,
+      "output": "Total tests: 6, passed: 6, failed: 0.\nWarning: [0029]\n   ╭─[ <project>\\.tools\\package-consumers\\consumer-gzqa7_yb\\consumer\\moon.pkg:1:10 ]\n   │\n 1 │ import { \"WeiR-h/moonldif\" @ldif }\n   │          ────────┬────────  \n   │                  ╰────────── Warning (unused_package): Unused package 'WeiR-h/moonldif'\n───╯\nWarning: [0029]\n   ╭─[ <project>\\.tools\\package-consumers\\consumer-gzqa7_yb\\consumer\\moon.pkg:1:28 ]\n   │\n 1 │ import { \"WeiR-h/moonldif\" @ldif }\n   │                            ──┬──  \n   │                              ╰──── Warning (unused_package): Unused package alias 'ldif'\n───╯\n"
+    },
+    {
+      "command": [
+        "<project>\\.tools\\moon-acceptance\\bin\\moon.exe",
+        "test",
+        "-p",
+        "local/moonldif_consumer",
+        "--target",
+        "wasm-gc"
+      ],
+      "exit_code": 0,
+      "output": "Total tests: 6, passed: 6, failed: 0.\nWarning: [0029]\n   ╭─[ <project>\\.tools\\package-consumers\\consumer-gzqa7_yb\\consumer\\moon.pkg:1:10 ]\n   │\n 1 │ import { \"WeiR-h/moonldif\" @ldif }\n   │          ────────┬────────  \n   │                  ╰────────── Warning (unused_package): Unused package 'WeiR-h/moonldif'\n───╯\nWarning: [0029]\n   ╭─[ <project>\\.tools\\package-consumers\\consumer-gzqa7_yb\\consumer\\moon.pkg:1:28 ]\n   │\n 1 │ import { \"WeiR-h/moonldif\" @ldif }\n   │                            ──┬──  \n   │                              ╰──── Warning (unused_package): Unused package alias 'ldif'\n───╯\n"
+    }
+  ],
+  "archive": "WeiR-h-moonldif-0.7.4.zip",
+  "sha256": "03a3f65b2edff546fe04a69cba674c759e9d6847afe4ba6b36281314ce229192",
+  "finished": "2026-09-28T13:40:12.000983+00:00"
+}
