@@ -10,6 +10,7 @@ import { verifySnapshot, snapshotReady } from './snapshot-browser.mjs';
 import { verifyPagination } from './pagination-browser.mjs';
 import { verifyStability } from './browser-stability.mjs';
 import { verifyRecovery } from './browser-recovery.mjs';
+import { verifySaveFallback } from './browser-save.mjs';
 import { verifyProfiles } from './profile-browser.mjs';
 import { verifyReproduction } from './reproduction-browser.mjs';
 const root = fileURLToPath(new URL('../', import.meta.url));
@@ -51,7 +52,7 @@ async function downloadReport(page, format, file) {
   assert.equal(all.items.length,all.page.total_items);assert.equal(all.page.has_more,false);
   return JSON.stringify({...all.summary,review:{...all.summary.review,items:all.items}});
 }
-const watchdog = setTimeout(() => { evidence.status = 'failed'; evidence.error = 'Browser QA exceeded 300 seconds'; writeFileSync(resolve(output, 'result.json'), JSON.stringify(evidence, null, 2)); process.exit(1); }, 300000);
+const watchdog = setTimeout(() => { evidence.status = 'failed'; evidence.error = 'Browser QA exceeded 420 seconds'; writeFileSync(resolve(output, 'result.json'), JSON.stringify(evidence, null, 2)); process.exit(1); }, 420000);
 try {
   for (const [name, engine] of [['chromium', chromium], ['firefox', firefox]]) {
     console.log('Browser start: ' + name);
@@ -150,7 +151,7 @@ try {
           const OriginalWorker = window.Worker;
           window.Worker = class extends OriginalWorker {
             addEventListener(...args) { return super.addEventListener(...args); }
-            set onmessage(handler) { super.onmessage = event => setTimeout(() => handler(event), 300); }
+            set onmessage(handler) { super.onmessage = event => ['ready','started'].includes(event.data.type)?handler?.(event):setTimeout(() => handler?.(event), 300); }
           };
         });
         await racePage.goto(url); await ready(racePage);
@@ -173,7 +174,11 @@ try {
         assert.equal(await racePage.getByRole('button', { name: '下载完整核对报告', exact: true }).isEnabled(), false);
         await racePage.close();
         const timed = await context.newPage();
-        await timed.addInitScript(() => { window.Worker = class { postMessage() {} terminate() {} }; });
+        await timed.addInitScript(() => { window.Worker = class {
+          constructor(){setTimeout(()=>this.onmessage?.({data:{type:'ready'}}),0);}
+          postMessage(data){setTimeout(()=>this.onmessage?.({data:{type:'started',request:data.request}}),0);}
+          terminate(){this.onmessage=null;}
+        }; });
         await timed.goto(url);
         await timed.getByText('处理超过 20 秒', { exact: false }).waitFor({ timeout: 25000 });
         await disabled(timed);
@@ -187,6 +192,7 @@ try {
       await context.close();
       const stabilityContext = await browser.newContext({viewport:{width:1440,height:1080},acceptDownloads:true});
       await verifyRecovery(stabilityContext, url, output, name);
+      await verifySaveFallback(stabilityContext, url, output, name);
       await verifyStability(stabilityContext, url, output, name);
       await stabilityContext.close();
       evidence.cases.push({ browser: name, status: 'passed', checks: ['50-analyses', '50-cancellations', 'no-duplicate-report-payload', 'one-live-worker', 'no-stale-exports'], memory: 'main-realm heap observation only; excludes workers and process RSS' });

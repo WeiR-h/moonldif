@@ -10,8 +10,8 @@ export async function source(text) {
 }
 
 // Only this worker's current analysis is retained. Its owner terminates it on invalidation.
-export function workerHandler(command) {
-  let session = null;
+export function workerHandler() {
+  let session = null, command = null;
   return async ({data}) => {
     const request = data.request ?? 0;
     try {
@@ -35,6 +35,9 @@ export function workerHandler(command) {
       }
       let written = null;
       if (data.type !== 'page') {
+        if (!['review','compare'].includes(data.command)) throw new Error('未知分析模式，请重新检查。');
+        command = data.command;
+        self.postMessage({type:'started',request});
         const before = await source(command === 'compare' ? data.before : data.text);
         const after = command === 'compare' ? await source(data.after) : {encoded:'',sha:''};
         const f = data.options || data;

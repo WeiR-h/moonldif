@@ -16,10 +16,11 @@ export async function verifyStability(context, url, output, browser) {
       set onmessage(handler) {
         super.onmessage = event => {
           const data = event.data;
+          if(data.type==='ready'||data.type==='started'){handler?.(event);return;}
           probe.queued++;
           probe.last = { keys: Object.keys(data).sort(), sha256: data.report?.source?.sha256, exit: data.exit_code };
           // Fault injection intentionally delivers queued callbacks after termination.
-          setTimeout(() => handler(event), probe.delay);
+          setTimeout(() => handler?.(event), probe.delay);
         };
       }
     };

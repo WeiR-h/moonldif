@@ -7,9 +7,15 @@ export async function verifyRecovery(context,url,output,browser) {
   const errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.addInitScript(()=>{
     const Original=window.Worker;
-    const p=window.__recovery={failures:0,starts:0,active:0,max:0,postFail:false,late:null};
+    const p=window.__recovery={failures:0,silent:0,starts:0,active:0,max:0,postFail:false,late:null,lateReady:null,urls:[]};
     window.Worker=class extends Original {
-      constructor(...args) {super(...args);p.starts++;p.active++;p.max=Math.max(p.max,p.active);this.alive=true;}
+      constructor(...args) {super(...args);p.starts++;p.active++;p.max=Math.max(p.max,p.active);this.alive=true;p.urls.push(String(args[0]));this.silent=p.silent>0;if(this.silent)p.silent--;}
+      set onmessage(handler) {
+        super.onmessage=event=>{
+          if(this.silent&&event.data.type==='ready'){p.lateReady=()=>handler?.(event);return;}
+          handler?.(event);
+        };
+      }
       terminate(){if(this.alive){this.alive=false;p.active--;}super.terminate();}
       postMessage(...args){
         if(p.postFail){p.postFail=false;throw new DOMException('Synthetic post failure','DataCloneError');}
@@ -34,6 +40,22 @@ export async function verifyRecovery(context,url,output,browser) {
     assert.equal(await page.evaluate(()=>window.__recovery.starts)-before,2);
     assert.equal(await page.evaluate(()=>window.__recovery.active),0);
     await page.evaluate(()=>{window.__recovery.failures=0;});await recheck();await ready();
+    // A silently stalled script does not emit onerror; retry it within the original deadline.
+    await page.evaluate(()=>{window.__recovery.silent=1;});
+    await recheck();await ready();
+    await page.evaluate(()=>window.__recovery.lateReady());
+    assert.equal(await page.getByRole('button',{name:'下载完整审阅报告',exact:true}).isEnabled(),true);
+    await page.evaluate(()=>{window.__recovery.silent=3;});
+    const silentBefore=await page.evaluate(()=>window.__recovery.starts);
+    await recheck();await page.getByText('分析程序未能启动，已停止。请重新检查；若仍失败，请刷新页面或使用 CLI。',{exact:true}).waitFor();
+    assert.equal(await page.evaluate(()=>window.__recovery.starts)-silentBefore,2);
+    assert.equal(await page.evaluate(()=>window.__recovery.active),0);
+    await page.evaluate(()=>{window.__recovery.silent=0;});await recheck();await ready();
+    await page.getByRole('button',{name:'迁移前后核对',exact:true}).click();
+    await page.getByRole('button',{name:'开始核对',exact:true}).click();
+    await page.waitForFunction(()=>[...document.querySelectorAll('button')].some(b=>b.textContent==='下载完整核对报告'&&!b.disabled));
+    assert.equal(await page.evaluate(()=>new Set(window.__recovery.urls).size),1);
+    await page.getByRole('button',{name:'文件预检',exact:true}).click();await recheck();await ready();
     await page.evaluate(()=>{window.__recovery.postFail=true;});
     await page.getByRole('button',{name:'下载完整审阅报告',exact:true}).click();
     await page.getByText('报告请求失败，请重新检查。',{exact:true}).waitFor();
@@ -52,6 +74,6 @@ export async function verifyRecovery(context,url,output,browser) {
     assert.equal(await page.locator('.download-panel').count(),0);
     await recheck();await ready();
     assert.deepEqual(errors,[]);
-    writeFileSync(resolve(output,browser+'-recovery.json'),JSON.stringify({status:'passed',cases:['single startup retry','bounded two failures','late error discarded','post failure invalidates','retry without page refresh','real download retry byte identity','edited download invalidated','one active worker'],errors},null,2)+'\n');
+    writeFileSync(resolve(output,browser+'-recovery.json'),JSON.stringify({status:'passed',cases:['single startup retry','bounded two failures','silent bootstrap retry','bounded silent bootstrap failure','late ready and error discarded','one bundle for both modes','post failure invalidates','retry without page refresh','real download retry byte identity','edited download invalidated','one active worker'],errors},null,2)+'\n');
   } finally {await page.close();}
 }

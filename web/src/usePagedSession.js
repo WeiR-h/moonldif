@@ -13,12 +13,13 @@ function dispose(worker) {
 
 export function usePagedSession(kind) {
   const [result, setResult] = useState({phase:'stale', report:null});
-  const current = useRef({generation:0, request:0, worker:null, timer:null, pending:null});
+  const current = useRef({generation:0, request:0, worker:null, timer:null, bootTimer:null, pending:null, started:false});
   const stop = useCallback(() => {
     const c = current.current;
     c.generation++; c.request++;
-    dispose(c.worker); c.worker = null; c.pending = null;
+    dispose(c.worker); c.worker = null; c.pending = null; c.started = false;
     clearTimeout(c.timer);
+    clearTimeout(c.bootTimer);
     downloads.clear();
     if (releaseOwner === c.release) releaseOwner = null;
   }, []);
@@ -26,7 +27,10 @@ export function usePagedSession(kind) {
   const arm = useCallback(() => {
     const c = current.current;
     clearTimeout(c.timer);
-    c.timer = setTimeout(() => {stop(); setResult({phase:'error',report:null,message:'处理超过 20 秒，已停止。请减小文件或使用 CLI。'});}, 20000);
+    c.timer = setTimeout(() => {
+      const message=c.started?'处理超过 20 秒，已停止。请减小文件或使用 CLI。':'分析程序未能启动，已停止。请重新检查；若仍失败，请刷新页面或使用 CLI。';
+      stop(); setResult({phase:'error',report:null,message});
+    }, 20000);
   }, [stop]);
   const run = useCallback((payload, onWritten) => {
     invalidate();
@@ -37,30 +41,51 @@ export function usePagedSession(kind) {
       stop(); setResult({phase:'error',report:null,message});
     };
     c.release = invalidate; releaseOwner = invalidate;
-    setResult({phase:'running',report:null,message:'正在分析当前内容…'});
+    setResult({phase:'running',report:null,message:'正在启动分析程序…'});
     try {
       const reproduction = captureReproduction(kind,payload);
       let retries = 0, accepted = false;
       const start = () => {
         if (generation !== c.generation) return;
+        clearTimeout(c.bootTimer);
         dispose(c.worker); c.worker = null;
-        const worker = kind === 'review'
-          ? new Worker(new URL('./analysis.worker.js', import.meta.url), {type:'module'})
-          : new Worker(new URL('./snapshot.worker.js', import.meta.url), {type:'module'});
+        // Both modes use the same cached bundle; changing modes needs no second download.
+        const worker = new Worker(new URL('./analysis.worker.js', import.meta.url), {type:'module'});
         c.worker = worker;
+        let posted = false;
         const live = () => generation === c.generation && c.worker === worker;
-        worker.onerror = event => {
+        const retry = message => {
           if (!live()) return;
-          event.preventDefault();
           if (!accepted && retries++ === 0) {
             setResult({phase:'running',report:null,message:'分析线程启动失败，正在重试一次…'});
             try {start();} catch {fail('无法启动分析线程。请重新检查；若仍失败，请刷新页面或使用 CLI。');}
-          } else fail('分析线程发生错误。旧结果已失效，请重新检查；若仍失败，请刷新页面或使用 CLI。');
+          } else fail(message);
+        };
+        // Retry once after 4 seconds; the second attempt may use the remaining total budget.
+        if(retries===0)c.bootTimer = setTimeout(() => retry('分析程序未能启动，已停止。请重新检查；若仍失败，请刷新页面或使用 CLI。'),4000);
+        worker.onerror = event => {
+          if (!live()) return;
+          event.preventDefault();
+          retry('分析线程发生错误。旧结果已失效，请重新检查；若仍失败，请刷新页面或使用 CLI。');
         };
         worker.onmessageerror = () => {if(live())fail('分析线程通信失败。旧结果已失效，请重新检查。');};
         worker.onmessage = ({data}) => {
-          if (!live() || data.request !== c.request) return;
+          if (!live()) return;
+          if (data.type === 'ready') {
+            if (posted) return;
+            posted = true;
+            try {worker.postMessage({...payload,command:kind,request:++c.request});}
+            catch {fail('无法发送分析内容。旧结果已失效，请重新检查。');}
+            return;
+          }
+          if (data.request !== c.request) return;
           accepted = true;
+          clearTimeout(c.bootTimer);
+          if (data.type === 'started') {
+            c.started = true;
+            setResult({phase:'running',report:null,message:'正在分析当前内容…'});
+            return;
+          }
           if (data.error) {fail(data.error); return;}
           clearTimeout(c.timer);
           try {
@@ -74,7 +99,6 @@ export function usePagedSession(kind) {
             }
           } catch {fail('接收结果或准备下载失败，请重新检查。');}
         };
-        worker.postMessage({...payload,request:++c.request});
       };
       arm(); start();
     } catch {fail('无法启动分析线程，请重新加载或使用 CLI。');}
