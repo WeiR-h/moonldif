@@ -3,7 +3,7 @@
   "version": "0.7.2",
   "archive": "moonldif-cli-v0.7.2.zip",
   "sha256": "e6ced1dfcb28d8fbc8acbcfc30ee79a605f5a5f04763562f6de15e2c6f3c8af8",
-  "platform": "nt",
+  "platform": "posix",
   "source_commit": "cdfede73d8ead0cb6cfaa7459ebdccd7218eb393",
   "source_tree_clean": true,
   "method": "independent temporary extraction; Node only; no source imports or MoonBit environment",

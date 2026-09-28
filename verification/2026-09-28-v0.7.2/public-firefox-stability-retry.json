@@ -1,0 +1,6 @@
+{
+  "scope": "Targeted retry of public Firefox 50 analysis/cancellation cycles after initial page navigation timed out; prior five cases retained in public-first-attempt.json",
+  "url": "https://weir-h.github.io/moonldif/",
+  "browser": "153.0",
+  "status": "passed"
+}

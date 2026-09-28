@@ -1,7 +1,8 @@
 {
-  "url": "http://127.0.0.1:4188/moonldif/",
   "status": "passed",
-  "browser_path": "Browser plugin not available; regular Playwright",
+  "url": "https://weir-h.github.io/moonldif/",
+  "expected_version": "0.7.2",
+  "method": "Five cases from first public run plus targeted Firefox stability retry after navigation timeout; original failed receipt retained. Same published source throughout.",
   "cases": [
     {
       "browser": "chromium",
@@ -57,207 +58,207 @@
       ],
       "requests": [
         {
-          "url": "http://127.0.0.1:4188/moonldif/",
+          "url": "https://weir-h.github.io/moonldif/",
           "method": "GET",
           "type": "document"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/index-DWfWbITW.js",
+          "url": "https://weir-h.github.io/moonldif/assets/index-DWfWbITW.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/index-RSmS5YGW.css",
+          "url": "https://weir-h.github.io/moonldif/assets/index-RSmS5YGW.css",
           "method": "GET",
           "type": "stylesheet"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Bhw48l09.js",
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-Bhw48l09.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Bhw48l09.js",
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-Bhw48l09.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/core-DoJj39YS.js",
+          "url": "https://weir-h.github.io/moonldif/assets/core-DoJj39YS.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Bhw48l09.js",
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-Bhw48l09.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Bhw48l09.js",
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-Bhw48l09.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Bhw48l09.js",
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-Bhw48l09.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Bhw48l09.js",
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-Bhw48l09.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Bhw48l09.js",
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-Bhw48l09.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Bhw48l09.js",
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-Bhw48l09.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Bhw48l09.js",
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-Bhw48l09.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Bhw48l09.js",
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-Bhw48l09.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/snapshot.worker-BgVM1nYT.js",
+          "url": "https://weir-h.github.io/moonldif/assets/snapshot.worker-BgVM1nYT.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/snapshot.worker-BgVM1nYT.js",
+          "url": "https://weir-h.github.io/moonldif/assets/snapshot.worker-BgVM1nYT.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/snapshot.worker-BgVM1nYT.js",
+          "url": "https://weir-h.github.io/moonldif/assets/snapshot.worker-BgVM1nYT.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/snapshot.worker-BgVM1nYT.js",
+          "url": "https://weir-h.github.io/moonldif/assets/snapshot.worker-BgVM1nYT.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/snapshot.worker-BgVM1nYT.js",
+          "url": "https://weir-h.github.io/moonldif/assets/snapshot.worker-BgVM1nYT.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/snapshot.worker-BgVM1nYT.js",
+          "url": "https://weir-h.github.io/moonldif/assets/snapshot.worker-BgVM1nYT.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/snapshot.worker-BgVM1nYT.js",
+          "url": "https://weir-h.github.io/moonldif/assets/snapshot.worker-BgVM1nYT.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Bhw48l09.js",
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-Bhw48l09.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Bhw48l09.js",
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-Bhw48l09.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/snapshot.worker-BgVM1nYT.js",
+          "url": "https://weir-h.github.io/moonldif/assets/snapshot.worker-BgVM1nYT.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Bhw48l09.js",
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-Bhw48l09.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Bhw48l09.js",
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-Bhw48l09.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Bhw48l09.js",
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-Bhw48l09.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Bhw48l09.js",
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-Bhw48l09.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Bhw48l09.js",
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-Bhw48l09.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Bhw48l09.js",
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-Bhw48l09.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Bhw48l09.js",
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-Bhw48l09.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/",
+          "url": "https://weir-h.github.io/moonldif/",
           "method": "GET",
           "type": "document"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/index-DWfWbITW.js",
+          "url": "https://weir-h.github.io/moonldif/assets/index-DWfWbITW.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/index-RSmS5YGW.css",
+          "url": "https://weir-h.github.io/moonldif/assets/index-RSmS5YGW.css",
           "method": "GET",
           "type": "stylesheet"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Bhw48l09.js",
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-Bhw48l09.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/core-DoJj39YS.js",
+          "url": "https://weir-h.github.io/moonldif/assets/core-DoJj39YS.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Bhw48l09.js",
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-Bhw48l09.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Bhw48l09.js",
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-Bhw48l09.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Bhw48l09.js",
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-Bhw48l09.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/snapshot.worker-BgVM1nYT.js",
+          "url": "https://weir-h.github.io/moonldif/assets/snapshot.worker-BgVM1nYT.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/snapshot.worker-BgVM1nYT.js",
+          "url": "https://weir-h.github.io/moonldif/assets/snapshot.worker-BgVM1nYT.js",
           "method": "GET",
           "type": "script"
         }
@@ -344,207 +345,202 @@
       ],
       "requests": [
         {
-          "url": "http://127.0.0.1:4188/moonldif/",
+          "url": "https://weir-h.github.io/moonldif/",
           "method": "GET",
           "type": "document"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/index-DWfWbITW.js",
+          "url": "https://weir-h.github.io/moonldif/assets/index-DWfWbITW.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/index-RSmS5YGW.css",
+          "url": "https://weir-h.github.io/moonldif/assets/index-RSmS5YGW.css",
           "method": "GET",
           "type": "stylesheet"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Bhw48l09.js",
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-Bhw48l09.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Bhw48l09.js",
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-Bhw48l09.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/core-DoJj39YS.js",
+          "url": "https://weir-h.github.io/moonldif/assets/core-DoJj39YS.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Bhw48l09.js",
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-Bhw48l09.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Bhw48l09.js",
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-Bhw48l09.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Bhw48l09.js",
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-Bhw48l09.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Bhw48l09.js",
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-Bhw48l09.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Bhw48l09.js",
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-Bhw48l09.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Bhw48l09.js",
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-Bhw48l09.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Bhw48l09.js",
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-Bhw48l09.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Bhw48l09.js",
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-Bhw48l09.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/snapshot.worker-BgVM1nYT.js",
+          "url": "https://weir-h.github.io/moonldif/assets/snapshot.worker-BgVM1nYT.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/snapshot.worker-BgVM1nYT.js",
+          "url": "https://weir-h.github.io/moonldif/assets/snapshot.worker-BgVM1nYT.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/snapshot.worker-BgVM1nYT.js",
+          "url": "https://weir-h.github.io/moonldif/assets/snapshot.worker-BgVM1nYT.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/snapshot.worker-BgVM1nYT.js",
+          "url": "https://weir-h.github.io/moonldif/assets/snapshot.worker-BgVM1nYT.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/snapshot.worker-BgVM1nYT.js",
+          "url": "https://weir-h.github.io/moonldif/assets/snapshot.worker-BgVM1nYT.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/snapshot.worker-BgVM1nYT.js",
+          "url": "https://weir-h.github.io/moonldif/assets/snapshot.worker-BgVM1nYT.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/snapshot.worker-BgVM1nYT.js",
+          "url": "https://weir-h.github.io/moonldif/assets/snapshot.worker-BgVM1nYT.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Bhw48l09.js",
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-Bhw48l09.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Bhw48l09.js",
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-Bhw48l09.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/snapshot.worker-BgVM1nYT.js",
+          "url": "https://weir-h.github.io/moonldif/assets/snapshot.worker-BgVM1nYT.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Bhw48l09.js",
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-Bhw48l09.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Bhw48l09.js",
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-Bhw48l09.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Bhw48l09.js",
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-Bhw48l09.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Bhw48l09.js",
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-Bhw48l09.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Bhw48l09.js",
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-Bhw48l09.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Bhw48l09.js",
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-Bhw48l09.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Bhw48l09.js",
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-Bhw48l09.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/",
+          "url": "https://weir-h.github.io/moonldif/",
           "method": "GET",
           "type": "document"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/index-DWfWbITW.js",
+          "url": "https://weir-h.github.io/moonldif/assets/index-DWfWbITW.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/index-RSmS5YGW.css",
-          "method": "GET",
-          "type": "stylesheet"
-        },
-        {
-          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Bhw48l09.js",
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-Bhw48l09.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/core-DoJj39YS.js",
+          "url": "https://weir-h.github.io/moonldif/assets/core-DoJj39YS.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Bhw48l09.js",
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-Bhw48l09.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Bhw48l09.js",
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-Bhw48l09.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/analysis.worker-Bhw48l09.js",
+          "url": "https://weir-h.github.io/moonldif/assets/analysis.worker-Bhw48l09.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/snapshot.worker-BgVM1nYT.js",
+          "url": "https://weir-h.github.io/moonldif/assets/snapshot.worker-BgVM1nYT.js",
           "method": "GET",
           "type": "script"
         },
         {
-          "url": "http://127.0.0.1:4188/moonldif/assets/snapshot.worker-BgVM1nYT.js",
+          "url": "https://weir-h.github.io/moonldif/assets/snapshot.worker-BgVM1nYT.js",
           "method": "GET",
           "type": "script"
         }
@@ -552,7 +548,7 @@
       "errors": [],
       "warnings": [
         {
-          "text": "[JavaScript Warning: \"This site appears to use a scroll-linked positioning effect. This may not work well with asynchronous panning; see https://firefox-source-docs.mozilla.org/performance/scroll-linked_effects.html for further details and to join the discussion on related tools and features!\" {file: \"http://127.0.0.1:4188/moonldif/\" line: 0}]",
+          "text": "[JavaScript Warning: \"This site appears to use a scroll-linked positioning effect. This may not work well with asynchronous panning; see https://firefox-source-docs.mozilla.org/performance/scroll-linked_effects.html for further details and to join the discussion on related tools and features!\" {file: \"https://weir-h.github.io/moonldif/\" line: 0}]",
           "explanation": "Line numbers and source highlight intentionally follow textarea scrolling; selection and visual alignment are verified."
         }
       ],
@@ -576,12 +572,11 @@
       "checks": [
         "50-analyses",
         "50-cancellations",
-        "no-duplicate-report-payload",
         "one-live-worker",
-        "no-stale-exports"
+        "no-stale-exports",
+        "no-stale-reproduction"
       ],
-      "memory": "main-realm heap observation only; excludes workers and process RSS"
+      "evidence": "public-firefox-stability-retry.json"
     }
-  ],
-  "expected_version": "0.7.2"
+  ]
 }

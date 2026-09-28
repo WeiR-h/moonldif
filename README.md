@@ -54,7 +54,7 @@ node dist/moonldif.js batch examples/01-directory-export.ldif examples/02-accoun
 
 ## 下载运行 CLI
 
-安装 Node.js 24，下载 [moonldif-cli-v0.7.2.zip](https://github.com/WeiR-h/moonldif/releases/download/v0.7.2/moonldif-cli-v0.7.2.zip)，核对同一发行页的 SHA256SUMS 后解压。在解压目录运行 `node dist/moonldif.js --help`，无需 MoonBit 或 npm install。详见 [CLI 快速开始](docs/CLI-DISTRIBUTION.md)。候选版本的发布状态以交付状态页为准。
+安装 Node.js 24，下载 [moonldif-cli-v0.7.2.zip](https://github.com/WeiR-h/moonldif/releases/download/v0.7.2/moonldif-cli-v0.7.2.zip)，核对同一发行页的 SHA256SUMS 后解压。在解压目录运行 `node dist/moonldif.js --help`，无需 MoonBit 或 npm install。详见 [CLI 快速开始](docs/CLI-DISTRIBUTION.md)。正式下载与独立消费证据见交付状态页。
 
 ## 在线使用工作台
 
