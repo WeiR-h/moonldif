@@ -1,0 +1,14 @@
+{
+  "status": "diagnosed",
+  "method": "Chromium on this Windows host; actual reproduction-download button clicked 15 times",
+  "without_pause": {
+    "attempts": 15,
+    "events": 10,
+    "elapsed_including_one_second_wait_ms": 1683
+  },
+  "with_80ms_pause": {
+    "attempts": 15,
+    "events": 15
+  },
+  "resolution": "Use 250 ms between independent e2e download gestures; verify each exact file. No application limits or assertions relaxed."
+}

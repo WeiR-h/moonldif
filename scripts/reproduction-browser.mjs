@@ -18,6 +18,9 @@ export async function verifyReproduction(page,output,browser) {
   await ready();await panel().locator('summary').click();
   const folder=resolve(output,browser+'-reproduce');mkdirSync(folder,{recursive:true});
   async function save(button,name) {
+    // Chromium drops excessive download bursts (15 rapid clicks reproduced only
+    // 10 download events). Pace separate user gestures; never suppress assertions.
+    await page.waitForTimeout(250);
     const wait=page.waitForEvent('download');await button.click();const download=await wait;
     assert.equal(download.suggestedFilename(),name);
     const file=resolve(folder,name);await download.saveAs(file);return readFileSync(file);
