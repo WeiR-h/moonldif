@@ -1,0 +1,42 @@
+{
+  "started": "2026-09-28T08:16:00.532610+00:00",
+  "method": "fresh local workspace importing extracted moon package archive; not registry installation",
+  "status": "passed",
+  "steps": [
+    {
+      "command": [
+        "<user>\\Desktop\\Competition\\MoonBit 黑客松\\MoonAPI Check\\.tools\\moon\\bin\\moon.exe",
+        "package"
+      ],
+      "exit_code": 0,
+      "output": "Running moon check ...\nFinished. moon: ran 5 tasks, now up to date\nCheck passed\nPackage to <workspace>\\_build\\publish\\WeiR-h-moonldif-0.7.2.zip\n"
+    },
+    {
+      "command": [
+        "<user>\\Desktop\\Competition\\MoonBit 黑客松\\MoonAPI Check\\.tools\\moon\\bin\\moon.exe",
+        "test",
+        "-p",
+        "local/moonldif_consumer",
+        "--target",
+        "js"
+      ],
+      "exit_code": 0,
+      "output": "Total tests: 6, passed: 6, failed: 0.\nWarning: [0029]\n   ╭─[ <workspace>\\.tools\\package-consumers\\consumer-_msosp1q\\consumer\\moon.pkg:1:10 ]\n   │\n 1 │ import { \"WeiR-h/moonldif\" @ldif }\n   │          ────────┬────────  \n   │                  ╰────────── Warning (unused_package): Unused package 'WeiR-h/moonldif'\n───╯\nWarning: [0029]\n   ╭─[ <workspace>\\.tools\\package-consumers\\consumer-_msosp1q\\consumer\\moon.pkg:1:28 ]\n   │\n 1 │ import { \"WeiR-h/moonldif\" @ldif }\n   │                            ──┬──  \n   │                              ╰──── Warning (unused_package): Unused package alias 'ldif'\n───╯\n"
+    },
+    {
+      "command": [
+        "<user>\\Desktop\\Competition\\MoonBit 黑客松\\MoonAPI Check\\.tools\\moon\\bin\\moon.exe",
+        "test",
+        "-p",
+        "local/moonldif_consumer",
+        "--target",
+        "wasm-gc"
+      ],
+      "exit_code": 0,
+      "output": "Total tests: 6, passed: 6, failed: 0.\nWarning: [0029]\n   ╭─[ <workspace>\\.tools\\package-consumers\\consumer-_msosp1q\\consumer\\moon.pkg:1:10 ]\n   │\n 1 │ import { \"WeiR-h/moonldif\" @ldif }\n   │          ────────┬────────  \n   │                  ╰────────── Warning (unused_package): Unused package 'WeiR-h/moonldif'\n───╯\nWarning: [0029]\n   ╭─[ <workspace>\\.tools\\package-consumers\\consumer-_msosp1q\\consumer\\moon.pkg:1:28 ]\n   │\n 1 │ import { \"WeiR-h/moonldif\" @ldif }\n   │                            ──┬──  \n   │                              ╰──── Warning (unused_package): Unused package alias 'ldif'\n───╯\n"
+    }
+  ],
+  "archive": "WeiR-h-moonldif-0.7.2.zip",
+  "sha256": "f74407b3ac1c32a50f7c1eb6f437cdd256f8c73fbedc55ceb0f4eb552ff73b27",
+  "finished": "2026-09-28T08:16:14.914735+00:00"
+}

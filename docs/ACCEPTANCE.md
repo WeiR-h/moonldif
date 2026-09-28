@@ -1,3 +1,10 @@
+# 0.7.2 当前验收对照
+
+- 独立 CLI 安装：[快速开始](CLI-DISTRIBUTION.md)、[CI 示例](../examples/ci/README.md)。
+- 网页到 CLI 复现：[工作台](https://weir-h.github.io/moonldif/)、[配置合同](PROFILES.md)。
+- 核心、基线、参考工具、性能和发布：[证据索引](../verification/2026-09-28-v0.7.2/README.md)。
+- 当前发布状态：[STATUS](STATUS.md)。个人操作验收在仓库外清单中记录，不由自动化代替。
+
 # 0.7.1 当前验收对照
 
 - 新增 API、错误代码及恢复合同：[配置说明](PROFILES.md)。

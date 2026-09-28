@@ -1,0 +1,8 @@
+{
+  "url": "http://127.0.0.1:4188/moonldif/",
+  "status": "failed",
+  "browser_path": "Browser plugin not available; regular Playwright",
+  "cases": [],
+  "expected_version": "0.7.2",
+  "error": "page.waitForFunction: Timeout 15000ms exceeded.\n    at ready (<workspace>\\scripts\\browser-verify.mjs:34:14)\n    at <workspace>\\scripts\\browser-verify.mjs:70:13"
+}

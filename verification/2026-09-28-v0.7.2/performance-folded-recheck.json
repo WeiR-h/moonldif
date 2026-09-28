@@ -1,0 +1,182 @@
+{
+  "method": "Three rounds, alternating baseline/candidate order, each fresh worker warms up once and measures seven runs; median of paired ratios. All observations retained, no forced GC.",
+  "hashes": {
+    "baseline": "adf524cee50eb10b79c374207e4f15c9b5e7a3a79ef18001e816b10d871a2c8f",
+    "candidate": "524838db9dc60aae88912b1fd900527542fb92d4d7e548031a80d94151b76f33"
+  },
+  "cases": [
+    {
+      "id": "folded",
+      "ratio": 0.9610929253356436,
+      "regression": false,
+      "rounds": [
+        {
+          "baseline": {
+            "id": "folded",
+            "command": "format",
+            "records": 1,
+            "version": "0.7.1",
+            "input_bytes": 60051,
+            "input_sha256": "57202593c36a9fde825a2503a252f2b27984afffe6b957c89a68e76ecd7d6eb2",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              41.91060000000002,
+              30.225300000000004,
+              20.510400000000004,
+              20.51429999999999,
+              28.26049999999998,
+              35.86809999999997,
+              22.635899999999992
+            ],
+            "min_ms": 20.510400000000004,
+            "median_ms": 28.26049999999998,
+            "max_ms": 41.91060000000002,
+            "rss_before_bytes": 46837760,
+            "rss_after_bytes": 67649536,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "candidate": {
+            "id": "folded",
+            "command": "format",
+            "records": 1,
+            "version": "0.7.2",
+            "input_bytes": 60051,
+            "input_sha256": "57202593c36a9fde825a2503a252f2b27984afffe6b957c89a68e76ecd7d6eb2",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              43.9828,
+              31.087700000000012,
+              27.78569999999999,
+              25.345700000000022,
+              21.53520000000003,
+              17.78200000000004,
+              14.509900000000016
+            ],
+            "min_ms": 14.509900000000016,
+            "median_ms": 25.345700000000022,
+            "max_ms": 43.9828,
+            "rss_before_bytes": 46804992,
+            "rss_after_bytes": 67657728,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "ratio": 0.8968595743175117
+        },
+        {
+          "candidate": {
+            "id": "folded",
+            "command": "format",
+            "records": 1,
+            "version": "0.7.2",
+            "input_bytes": 60051,
+            "input_sha256": "57202593c36a9fde825a2503a252f2b27984afffe6b957c89a68e76ecd7d6eb2",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              39.50150000000002,
+              40.71209999999999,
+              26.52309999999997,
+              26.541600000000017,
+              22.038999999999987,
+              23.124199999999973,
+              21.249199999999973
+            ],
+            "min_ms": 21.249199999999973,
+            "median_ms": 26.52309999999997,
+            "max_ms": 40.71209999999999,
+            "rss_before_bytes": 46567424,
+            "rss_after_bytes": 67887104,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "baseline": {
+            "id": "folded",
+            "command": "format",
+            "records": 1,
+            "version": "0.7.1",
+            "input_bytes": 60051,
+            "input_sha256": "57202593c36a9fde825a2503a252f2b27984afffe6b957c89a68e76ecd7d6eb2",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              47.10079999999999,
+              31.735600000000005,
+              21.57740000000001,
+              22.879099999999994,
+              17.50279999999998,
+              24.03340000000003,
+              32.37819999999999
+            ],
+            "min_ms": 17.50279999999998,
+            "median_ms": 24.03340000000003,
+            "max_ms": 47.10079999999999,
+            "rss_before_bytes": 46968832,
+            "rss_after_bytes": 67735552,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "ratio": 1.1035933326121123
+        },
+        {
+          "baseline": {
+            "id": "folded",
+            "command": "format",
+            "records": 1,
+            "version": "0.7.1",
+            "input_bytes": 60051,
+            "input_sha256": "57202593c36a9fde825a2503a252f2b27984afffe6b957c89a68e76ecd7d6eb2",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              40.44640000000001,
+              28.285500000000013,
+              23.718000000000018,
+              31.6875,
+              32.40929999999997,
+              30.732199999999978,
+              28.18240000000003
+            ],
+            "min_ms": 23.718000000000018,
+            "median_ms": 30.732199999999978,
+            "max_ms": 40.44640000000001,
+            "rss_before_bytes": 46559232,
+            "rss_after_bytes": 67829760,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "candidate": {
+            "id": "folded",
+            "command": "format",
+            "records": 1,
+            "version": "0.7.2",
+            "input_bytes": 60051,
+            "input_sha256": "57202593c36a9fde825a2503a252f2b27984afffe6b957c89a68e76ecd7d6eb2",
+            "after_sha256": null,
+            "measured_runs": 7,
+            "measurements_ms": [
+              33.5617,
+              36.0463,
+              18.50710000000001,
+              29.536500000000046,
+              31.784400000000005,
+              24.716799999999978,
+              18.796299999999974
+            ],
+            "min_ms": 18.50710000000001,
+            "median_ms": 29.536500000000046,
+            "max_ms": 36.0463,
+            "rss_before_bytes": 46804992,
+            "rss_after_bytes": 67723264,
+            "memory_scope": "process before/after, not peak",
+            "status": "passed"
+          },
+          "ratio": 0.9610929253356436
+        }
+      ]
+    }
+  ],
+  "status": "passed"
+}
