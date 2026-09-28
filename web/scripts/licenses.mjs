@@ -1,9 +1,11 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
+import { coreNotices } from '../../scripts/runtime-notices.mjs';
 
 // Runtime packages bundled in the browser output; build-only tools are not shipped.
 const root = new URL('../', import.meta.url);
 const notices = ['MoonLDIF workbench — bundled runtime licenses\n'];
+notices.push(coreNotices());
 for (const name of ['react', 'react-dom', 'scheduler']) {
   const folder = new URL(`node_modules/${name}/`, root);
   const metadata = JSON.parse(readFileSync(new URL('package.json', folder), 'utf8'));

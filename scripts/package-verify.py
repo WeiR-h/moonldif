@@ -44,8 +44,12 @@ try:
         env['MOON_HOME'] = home
         env['PATH'] = str(Path(home) / 'bin') + os.pathsep + env.get('PATH', '')
     run([moon, 'package'], env=env)
-    archives = list((ROOT / '_build/publish').glob('*.zip'))
-    archive = max(archives, key=lambda p: p.stat().st_mtime_ns)
+    module = (ROOT / 'moon.mod').read_text(encoding='utf8')
+    expected_name = re.search(r'^name\s*=\s*"([^"]+)"', module, re.M).group(1)
+    expected_version = re.search(r'^version\s*=\s*"([^"]+)"', module, re.M).group(1)
+    archive = ROOT / '_build/publish' / (expected_name.replace('/', '-') + '-' + expected_version + '.zip')
+    if not archive.is_file():
+        raise RuntimeError('Expected exact module archive is missing')
     evidence['archive'] = archive.name
     evidence['sha256'] = hashlib.sha256(archive.read_bytes()).hexdigest()
     parent = ROOT / '.tools/package-consumers'
@@ -63,6 +67,9 @@ try:
     consumer.mkdir()
     (workspace / 'moon.work').write_text('members = ["library", "consumer"]\n', encoding='utf8')
     version = re.search(r'^version\s*=\s*"([^"]+)"', (library / 'moon.mod').read_text(encoding='utf8'), re.M).group(1)
+    name = re.search(r'^name\s*=\s*"([^"]+)"', (library / 'moon.mod').read_text(encoding='utf8'), re.M).group(1)
+    if name != expected_name or version != expected_version:
+        raise RuntimeError('Archive module identity does not match source')
     (consumer / 'moon.mod').write_text('name = "local/moonldif_consumer"\nversion = "0.0.0"\nimport { "WeiR-h/moonldif@' + version + '" }\n', encoding='utf8')
     (consumer / 'moon.pkg').write_text('import { "WeiR-h/moonldif" @ldif }\n', encoding='utf8')
     (consumer / 'consumer_test.mbt').write_text('''///|
