@@ -1,20 +1,20 @@
-# 0.7.4 当前验收对照
+# 0.7.5 当前验收对照
 
 按提供的九项验收指南核对。声明范围是 LDIF 读写与离线预检，不包含 LDAP 服务器写入、Schema 验证或导入成功保证。
 
 | 要求 | 对应实现及证据 | 核查结果 |
 |---|---|---|
-| MoonBit 为主要实现，moonc 不低于 0.10.14 | [实现职责及文件清单](IMPLEMENTATION.md)，[实际构建记录](../verification/2026-09-28-v0.7.4/verification.json) | 核心解析、规则、比较、报告与写回均为 MoonBit；固定实际编译器 0.10.14+7d59c7ec9，有最低版本检查 |
-| GitHub 公开可访问、提交清晰 | [仓库](https://github.com/WeiR-h/moonldif)、[正式源码](https://github.com/WeiR-h/moonldif/commit/7afc7bb18a71a41ca103e15b13e11fcdbea4e418)、[版本记录](https://github.com/WeiR-h/moonldif/releases) | 公开，按实际功能及修复阶段提交，历史版本保留 |
+| MoonBit 为主要实现，moonc 不低于 0.10.14 | [实现职责及文件清单](IMPLEMENTATION.md)，[实际构建记录](../verification/2026-09-30-v0.7.5/verification.json) | 核心解析、规则、比较、报告与写回均为 MoonBit；固定实际编译器 0.10.14+7d59c7ec9，有最低版本检查 |
+| GitHub 公开可访问、提交清晰 | [仓库](https://github.com/WeiR-h/moonldif)、[正式源码](https://github.com/WeiR-h/moonldif/commit/30af64e863409d77acb44e2bd30d7a31a3672821)、[版本记录](https://github.com/WeiR-h/moonldif/releases) | 公开，按实际功能及修复阶段提交，历史版本保留 |
 | 结构清晰、声明核心功能完成 | [架构](ARCHITECTURE.md)、[支持矩阵](SUPPORT.md)、[公共 API](../src/pkg.generated.mbti) | 核心与宿主职责清楚，支持范围内回归通过 |
-| README 完整且可复现 | [README](../README.md)、[独立 CLI](CLI-DISTRIBUTION.md)、[注册表安装](../verification/2026-09-28-v0.7.4/registry-0.7.4.json) | 库、CLI、工作台及源码开发入口分开；双平台外部消费通过 |
-| CI 覆盖检查、构建、测试 | [工作流](../.github/workflows/ci.yml)、[正式源 CI](https://github.com/WeiR-h/moonldif/actions/runs/36430190061) | Windows/Ubuntu 检查、构建、核心与集成测试和双浏览器验证通过 |
+| README 完整且可复现 | [README](../README.md)、[独立 CLI](CLI-DISTRIBUTION.md)、[注册表安装](../verification/2026-09-30-v0.7.5/registry-0.7.5.json) | 库、CLI、工作台及源码开发入口分开；双平台外部消费通过 |
+| CI 覆盖检查、构建、测试 | [工作流](../.github/workflows/ci.yml)、[正式源 CI](https://github.com/WeiR-h/moonldif/actions/runs/36687941602) | Windows/Ubuntu 检查、构建、核心与集成测试和双浏览器验证通过 |
 | 至少一个可运行示例 | [三个场景](SCENARIOS.md)、[合成文件](../examples)、[CI 示例](../examples/ci/README.md) | 示例和下载包中的 CI 接入实际运行通过 |
-| 测试覆盖核心路径 | [本轮证据](../verification/2026-09-28-v0.7.4/README.md)、[浏览器恢复](../verification/2026-09-28-v0.7.4/BROWSER-QA.md) | 正反例、边界、317 项旧输出对照、独立参照与失败恢复覆盖；不以数量宣称绝无缺陷 |
-| 发布 mooncakes.io | [WeiR-h/moonldif 0.7.4](https://mooncakes.io/docs/WeiR-h/moonldif@0.7.4/)、[双平台注册表消费](https://github.com/WeiR-h/moonldif/actions/runs/36431860355) | 公开包可访问；指定版本在独立工程 JS/Wasm GC 安装运行通过 |
+| 测试覆盖核心路径 | [本轮证据](../verification/2026-09-30-v0.7.5/README.md)、[浏览器恢复](../verification/2026-09-30-v0.7.5/VISUAL-QA.md) | 正反例、边界、317 项旧输出对照、独立参照与失败恢复覆盖；不以数量宣称绝无缺陷 |
+| 发布 mooncakes.io | [WeiR-h/moonldif 0.7.5](https://mooncakes.io/docs/WeiR-h/moonldif@0.7.5/)、[双平台注册表消费](https://github.com/WeiR-h/moonldif/actions/runs/36688876315) | 公开包可访问；指定版本在独立工程 JS/Wasm GC 安装运行通过 |
 | OSI 许可及参考项目合规 | [Apache-2.0](../LICENSE)、[OSI 条目](https://opensource.org/license/apache-2-0)、[来源声明](../THIRD_PARTY.md) | 项目许可及参考来源明确，CLI/网页包含实际打包依赖的许可证 |
 
-九项技术核查未发现未满足项；这不是组委会结论。v0.7.4 网页部署及公开复验进度见 [状态](STATUS.md)，个人完整验收与官方最终结果单独记录。
+九项技术核查未发现未满足项；这不是组委会结论。v0.7.5 网页部署及公开复验进度见 [状态](STATUS.md)，个人完整验收与官方最终结果单独记录。
 
 # 0.7.3 历史验收对照
 

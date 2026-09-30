@@ -1,0 +1,223 @@
+{
+  "conclusion": "success",
+  "databaseId": 36688876315,
+  "headSha": "30af64e863409d77acb44e2bd30d7a31a3672821",
+  "jobs": [
+    {
+      "completedAt": "2026-09-30T08:18:42Z",
+      "conclusion": "success",
+      "databaseId": 109801075508,
+      "name": "registry (ubuntu-latest)",
+      "startedAt": "2026-09-30T08:18:22Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-09-30T08:18:24Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-09-30T08:18:23Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-30T08:18:25Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v7.0.1",
+          "number": 2,
+          "startedAt": "2026-09-30T08:18:24Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-30T08:18:26Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-node@v7.0.0",
+          "number": 3,
+          "startedAt": "2026-09-30T08:18:25Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-30T08:18:26Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-python@v7.0.0",
+          "number": 4,
+          "startedAt": "2026-09-30T08:18:26Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-30T08:18:26Z",
+          "conclusion": "skipped",
+          "name": "Install MoonBit on Windows",
+          "number": 5,
+          "startedAt": "2026-09-30T08:18:26Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-30T08:18:34Z",
+          "conclusion": "success",
+          "name": "Install MoonBit on Ubuntu",
+          "number": 6,
+          "startedAt": "2026-09-30T08:18:26Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-30T08:18:37Z",
+          "conclusion": "success",
+          "name": "Test exact registry dependency in isolated workspace",
+          "number": 7,
+          "startedAt": "2026-09-30T08:18:34Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-30T08:18:39Z",
+          "conclusion": "success",
+          "name": "Run actions/upload-artifact@v7.0.1",
+          "number": 8,
+          "startedAt": "2026-09-30T08:18:37Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-30T08:18:39Z",
+          "conclusion": "success",
+          "name": "Post Run actions/setup-python@v7.0.0",
+          "number": 14,
+          "startedAt": "2026-09-30T08:18:39Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-30T08:18:39Z",
+          "conclusion": "success",
+          "name": "Post Run actions/setup-node@v7.0.0",
+          "number": 15,
+          "startedAt": "2026-09-30T08:18:39Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-30T08:18:39Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v7.0.1",
+          "number": 16,
+          "startedAt": "2026-09-30T08:18:39Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-30T08:18:39Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 17,
+          "startedAt": "2026-09-30T08:18:39Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/WeiR-h/moonldif/actions/runs/36688876315/job/109801075508"
+    },
+    {
+      "completedAt": "2026-09-30T08:19:23Z",
+      "conclusion": "success",
+      "databaseId": 109801075821,
+      "name": "registry (windows-latest)",
+      "startedAt": "2026-09-30T08:18:23Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-09-30T08:18:26Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-09-30T08:18:25Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-30T08:18:35Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v7.0.1",
+          "number": 2,
+          "startedAt": "2026-09-30T08:18:26Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-30T08:18:41Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-node@v7.0.0",
+          "number": 3,
+          "startedAt": "2026-09-30T08:18:35Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-30T08:18:41Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-python@v7.0.0",
+          "number": 4,
+          "startedAt": "2026-09-30T08:18:41Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-30T08:19:04Z",
+          "conclusion": "success",
+          "name": "Install MoonBit on Windows",
+          "number": 5,
+          "startedAt": "2026-09-30T08:18:41Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-30T08:19:04Z",
+          "conclusion": "skipped",
+          "name": "Install MoonBit on Ubuntu",
+          "number": 6,
+          "startedAt": "2026-09-30T08:19:04Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-30T08:19:17Z",
+          "conclusion": "success",
+          "name": "Test exact registry dependency in isolated workspace",
+          "number": 7,
+          "startedAt": "2026-09-30T08:19:04Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-30T08:19:18Z",
+          "conclusion": "success",
+          "name": "Run actions/upload-artifact@v7.0.1",
+          "number": 8,
+          "startedAt": "2026-09-30T08:19:17Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-30T08:19:18Z",
+          "conclusion": "success",
+          "name": "Post Run actions/setup-python@v7.0.0",
+          "number": 14,
+          "startedAt": "2026-09-30T08:19:18Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-30T08:19:19Z",
+          "conclusion": "success",
+          "name": "Post Run actions/setup-node@v7.0.0",
+          "number": 15,
+          "startedAt": "2026-09-30T08:19:18Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-30T08:19:21Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v7.0.1",
+          "number": 16,
+          "startedAt": "2026-09-30T08:19:19Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-09-30T08:19:21Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 17,
+          "startedAt": "2026-09-30T08:19:21Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/WeiR-h/moonldif/actions/runs/36688876315/job/109801075821"
+    }
+  ],
+  "status": "completed",
+  "url": "https://github.com/WeiR-h/moonldif/actions/runs/36688876315"
+}

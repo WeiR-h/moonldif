@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "version": "0.7.5",
+  "transport": "GitHub CLI authenticated retry for public attachments; anonymous dual-platform CI separately linked",
+  "files": [
+    {
+      "name": "WeiR-h-moonldif-0.7.5.zip",
+      "bytes": 5597753,
+      "sha256": "113a8bb8f5d5aef63a987b978bb93a979d0f02c998f1751838d2dc4560e12ab7"
+    },
+    {
+      "name": "moonldif-cli-v0.7.5.zip",
+      "bytes": 130828,
+      "sha256": "a17254e78768abf842872e933fc534b55ea1b0a483b2d22cef9e4b7ea7990b97"
+    }
+  ]
+}

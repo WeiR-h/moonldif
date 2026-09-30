@@ -1,0 +1,18 @@
+{
+  "version": "0.7.5",
+  "url": "https://weir-h.github.io/moonldif/",
+  "date": "2026-09-30",
+  "method": "direct built-in browser interactions",
+  "observed": [
+    "navy header and white identity text",
+    "default example blocks one risk and shows three review items",
+    "content example completes and enables checked LDIF export",
+    "migration example returns four differences",
+    "mode switch invalidates prepared files",
+    "no page console errors returned",
+    "1440px document has no horizontal overflow"
+  ],
+  "download_limit": "Automatic download and retry-link events timed out in this embedded host. Native Save as remains available; its previous manual verification is recorded with v0.7.4. No new native-save test claimed.",
+  "clipboard_limit": "The UI reported successful copy, but the browser tool returned an empty clipboard. This does not verify clipboard bytes or a saved file. No success is inferred from the empty readback.",
+  "fast_mode_switch": "Immediately selecting a sample during mode reactivation can meet pending profile validation. After validation, pressing Recheck completes normally; no old result is downloadable."
+}

@@ -1,0 +1,7 @@
+{
+  "status": "failed",
+  "version": "0.7.5",
+  "method": "node scripts/release-assets.mjs on local Windows",
+  "error": "TimeoutError: The operation was aborted due to timeout",
+  "note": "No successful v0.7.5 local download receipt was produced. The first dependent CLI attempt ran too early and saw FileNotFoundError. Retry uses GitHub CLI transport and fresh receipt; independent anonymous downloads already passed in Windows/Ubuntu CI."
+}

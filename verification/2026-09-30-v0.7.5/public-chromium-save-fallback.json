@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "method": "Real browser controls/download; picker and clipboard injected, not a real OS save dialog",
+  "checks": [
+    "direct user activation",
+    "exact blob byte write",
+    "cancel retains file",
+    "write error aborts",
+    "clipboard success and rejection",
+    "stale picker cannot write"
+  ]
+}

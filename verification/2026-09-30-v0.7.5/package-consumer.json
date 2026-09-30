@@ -1,5 +1,5 @@
 {
-  "started": "2026-09-30T08:05:06.429202+00:00",
+  "started": "2026-09-30T08:11:50.001972+00:00",
   "method": "fresh local workspace importing extracted moon package archive; not registry installation",
   "status": "passed",
   "steps": [
@@ -9,7 +9,7 @@
         "package"
       ],
       "exit_code": 0,
-      "output": "Running moon check ...\nFinished. moon: ran 5 tasks, now up to date\nCheck passed\nPackage to <project>\\_build\\publish\\WeiR-h-moonldif-0.7.5.zip\n"
+      "output": "Running moon check ...\nFinished. moon: no work to do\nCheck passed\nPackage to <project>\\_build\\publish\\WeiR-h-moonldif-0.7.5.zip\n"
     },
     {
       "command": [
@@ -21,7 +21,7 @@
         "js"
       ],
       "exit_code": 0,
-      "output": "Total tests: 6, passed: 6, failed: 0.\nWarning: [0029]\n   ╭─[ <project>\\.tools\\package-consumers\\consumer-mb_8t56v\\consumer\\moon.pkg:1:10 ]\n   │\n 1 │ import { \"WeiR-h/moonldif\" @ldif }\n   │          ────────┬────────  \n   │                  ╰────────── Warning (unused_package): Unused package 'WeiR-h/moonldif'\n───╯\nWarning: [0029]\n   ╭─[ <project>\\.tools\\package-consumers\\consumer-mb_8t56v\\consumer\\moon.pkg:1:28 ]\n   │\n 1 │ import { \"WeiR-h/moonldif\" @ldif }\n   │                            ──┬──  \n   │                              ╰──── Warning (unused_package): Unused package alias 'ldif'\n───╯\n"
+      "output": "Total tests: 6, passed: 6, failed: 0.\nWarning: [0029]\n   ╭─[ <project>\\.tools\\package-consumers\\consumer-mbs9bm0j\\consumer\\moon.pkg:1:10 ]\n   │\n 1 │ import { \"WeiR-h/moonldif\" @ldif }\n   │          ────────┬────────  \n   │                  ╰────────── Warning (unused_package): Unused package 'WeiR-h/moonldif'\n───╯\nWarning: [0029]\n   ╭─[ <project>\\.tools\\package-consumers\\consumer-mbs9bm0j\\consumer\\moon.pkg:1:28 ]\n   │\n 1 │ import { \"WeiR-h/moonldif\" @ldif }\n   │                            ──┬──  \n   │                              ╰──── Warning (unused_package): Unused package alias 'ldif'\n───╯\n"
     },
     {
       "command": [
@@ -33,10 +33,10 @@
         "wasm-gc"
       ],
       "exit_code": 0,
-      "output": "Total tests: 6, passed: 6, failed: 0.\nWarning: [0029]\n   ╭─[ <project>\\.tools\\package-consumers\\consumer-mb_8t56v\\consumer\\moon.pkg:1:10 ]\n   │\n 1 │ import { \"WeiR-h/moonldif\" @ldif }\n   │          ────────┬────────  \n   │                  ╰────────── Warning (unused_package): Unused package 'WeiR-h/moonldif'\n───╯\nWarning: [0029]\n   ╭─[ <project>\\.tools\\package-consumers\\consumer-mb_8t56v\\consumer\\moon.pkg:1:28 ]\n   │\n 1 │ import { \"WeiR-h/moonldif\" @ldif }\n   │                            ──┬──  \n   │                              ╰──── Warning (unused_package): Unused package alias 'ldif'\n───╯\n"
+      "output": "Total tests: 6, passed: 6, failed: 0.\nWarning: [0029]\n   ╭─[ <project>\\.tools\\package-consumers\\consumer-mbs9bm0j\\consumer\\moon.pkg:1:10 ]\n   │\n 1 │ import { \"WeiR-h/moonldif\" @ldif }\n   │          ────────┬────────  \n   │                  ╰────────── Warning (unused_package): Unused package 'WeiR-h/moonldif'\n───╯\nWarning: [0029]\n   ╭─[ <project>\\.tools\\package-consumers\\consumer-mbs9bm0j\\consumer\\moon.pkg:1:28 ]\n   │\n 1 │ import { \"WeiR-h/moonldif\" @ldif }\n   │                            ──┬──  \n   │                              ╰──── Warning (unused_package): Unused package alias 'ldif'\n───╯\n"
     }
   ],
   "archive": "WeiR-h-moonldif-0.7.5.zip",
-  "sha256": "0a1f1244de1b4775639e610bbf49af73f7321427bf776178c13f6c48fdb06d56",
-  "finished": "2026-09-30T08:05:37.826827+00:00"
+  "sha256": "113a8bb8f5d5aef63a987b978bb93a979d0f02c998f1751838d2dc4560e12ab7",
+  "finished": "2026-09-30T08:12:01.116675+00:00"
 }
