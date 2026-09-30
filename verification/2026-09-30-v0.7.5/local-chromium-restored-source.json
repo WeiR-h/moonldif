@@ -1,0 +1,13 @@
+{
+  "profile_version": 1,
+  "review": {
+    "limits": {
+      "max_delete_records": 5
+    }
+  },
+  "compare": {
+    "ignored_attributes": [
+      "cn"
+    ]
+  }
+}

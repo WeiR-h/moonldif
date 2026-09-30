@@ -1,0 +1,118 @@
+{
+  "report_schema_version": 2,
+  "exit_code": 1,
+  "summary": {
+    "tool": "MoonLDIF",
+    "version": "0.7.5",
+    "status": "complete",
+    "exit_code": 1,
+    "mode": "changes",
+    "record_count": 2,
+    "scope": "LDIF v1 supported structure and DN/RDN string syntax; not server import approval",
+    "names_checked": true,
+    "name_profile": "RFC 4514 string syntax",
+    "not_checked": [
+      "DN equality and schema matching",
+      "BER-hex assertion semantics",
+      "directory schema",
+      "server state and ACL",
+      "control semantics",
+      "external value contents"
+    ],
+    "diagnostics": [
+      {
+        "code": "delete-denied",
+        "severity": "policy",
+        "span": {
+          "line": 11,
+          "end_line": 12
+        },
+        "reason": "Entry deletion is blocked by --deny-delete."
+      }
+    ],
+    "review": {
+      "total_items": 3,
+      "analysis_complete": true,
+      "input_exit_code": 1,
+      "record_count": 2,
+      "scope": "File operation intent only; no LDAP execution or schema approval"
+    },
+    "document": null,
+    "locations": null,
+    "report_schema_version": 1,
+    "source": {
+      "sha256": "bf8e94f2616e98f6383f8d39062dbe074941ee8252a9c87af7e127c436e1e9d0",
+      "byte_length": 265,
+      "identity_scope": "Exact analysed bytes; not a signature or authenticity proof"
+    },
+    "options": {
+      "allow_missing_version": false,
+      "deny_delete": true,
+      "deny_clear": false,
+      "deny_rename": false,
+      "legacy_dn_spaces": false
+    },
+    "diagnostics_truncated": false
+  },
+  "page": {
+    "total_items": 3,
+    "matched_items": 3,
+    "offset": 0,
+    "limit": 3,
+    "returned_items": 3,
+    "has_more": false,
+    "query": "",
+    "kind": "all",
+    "selection": "all"
+  },
+  "items": [
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 0,
+      "dn": "uid=demo,ou=People,dc=example,dc=org",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 5,
+        "end_line": 7
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 0
+    },
+    {
+      "code": "attribute-delete-all",
+      "level": "high",
+      "record_index": 0,
+      "dn": "uid=demo,ou=People,dc=example,dc=org",
+      "attribute": "description",
+      "value_count": 0,
+      "span": {
+        "line": 8,
+        "end_line": 9
+      },
+      "title": "Delete entire attribute",
+      "reason": "No values were supplied, so this requests removal of the attribute and all its values.",
+      "action": "Confirm that all values should be removed and that the attribute is not required.",
+      "item_index": 1
+    },
+    {
+      "code": "entry-delete",
+      "level": "high",
+      "record_index": 1,
+      "dn": "uid=retired,ou=People,dc=example,dc=org",
+      "attribute": null,
+      "value_count": 0,
+      "span": {
+        "line": 11,
+        "end_line": 12
+      },
+      "title": "Delete directory entry",
+      "reason": "Requests deletion of this DN. The server state and effects of attached controls are unknown.",
+      "action": "Verify the target and recovery plan. The optional deletion policy can block this file.",
+      "item_index": 2
+    }
+  ]
+}

@@ -1,0 +1,4246 @@
+{
+  "report_schema_version": 2,
+  "exit_code": 1,
+  "summary": {
+    "tool": "MoonLDIF",
+    "version": "0.7.5",
+    "status": "complete",
+    "exit_code": 1,
+    "mode": "changes",
+    "record_count": 261,
+    "scope": "LDIF v1 supported structure and DN/RDN string syntax; not server import approval",
+    "names_checked": true,
+    "name_profile": "RFC 4514 string syntax",
+    "not_checked": [
+      "DN equality and schema matching",
+      "BER-hex assertion semantics",
+      "directory schema",
+      "server state and ACL",
+      "control semantics",
+      "external value contents"
+    ],
+    "diagnostics": [
+      {
+        "code": "delete-denied",
+        "severity": "policy",
+        "span": {
+          "line": 1563,
+          "end_line": 1564
+        },
+        "reason": "Entry deletion is blocked by --deny-delete."
+      }
+    ],
+    "review": {
+      "total_items": 261,
+      "analysis_complete": true,
+      "input_exit_code": 1,
+      "record_count": 261,
+      "scope": "File operation intent only; no LDAP execution or schema approval"
+    },
+    "document": null,
+    "locations": null,
+    "report_schema_version": 1,
+    "source": {
+      "sha256": "4f47475de884dddf10dbbee74b8125b4f6c3c139120083773a3b013fc292a00d",
+      "byte_length": 18290,
+      "identity_scope": "Exact analysed bytes; not a signature or authenticity proof"
+    },
+    "options": {
+      "allow_missing_version": false,
+      "deny_delete": true,
+      "deny_clear": true,
+      "deny_rename": true,
+      "legacy_dn_spaces": false
+    },
+    "diagnostics_truncated": false
+  },
+  "page": {
+    "total_items": 261,
+    "matched_items": 261,
+    "offset": 0,
+    "limit": 261,
+    "returned_items": 261,
+    "has_more": false,
+    "query": "",
+    "kind": "all",
+    "selection": "all"
+  },
+  "items": [
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 0,
+      "dn": "cn=target-0",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 5,
+        "end_line": 7
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 0
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 1,
+      "dn": "cn=target-1",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 11,
+        "end_line": 13
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 1
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 2,
+      "dn": "cn=target-2",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 17,
+        "end_line": 19
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 2
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 3,
+      "dn": "cn=target-3",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 23,
+        "end_line": 25
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 3
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 4,
+      "dn": "cn=target-4",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 29,
+        "end_line": 31
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 4
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 5,
+      "dn": "cn=target-5",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 35,
+        "end_line": 37
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 5
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 6,
+      "dn": "cn=target-6",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 41,
+        "end_line": 43
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 6
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 7,
+      "dn": "cn=target-7",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 47,
+        "end_line": 49
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 7
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 8,
+      "dn": "cn=target-8",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 53,
+        "end_line": 55
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 8
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 9,
+      "dn": "cn=target-9",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 59,
+        "end_line": 61
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 9
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 10,
+      "dn": "cn=target-10",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 65,
+        "end_line": 67
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 10
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 11,
+      "dn": "cn=target-11",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 71,
+        "end_line": 73
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 11
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 12,
+      "dn": "cn=target-12",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 77,
+        "end_line": 79
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 12
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 13,
+      "dn": "cn=target-13",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 83,
+        "end_line": 85
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 13
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 14,
+      "dn": "cn=target-14",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 89,
+        "end_line": 91
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 14
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 15,
+      "dn": "cn=target-15",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 95,
+        "end_line": 97
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 15
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 16,
+      "dn": "cn=target-16",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 101,
+        "end_line": 103
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 16
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 17,
+      "dn": "cn=target-17",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 107,
+        "end_line": 109
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 17
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 18,
+      "dn": "cn=target-18",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 113,
+        "end_line": 115
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 18
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 19,
+      "dn": "cn=target-19",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 119,
+        "end_line": 121
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 19
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 20,
+      "dn": "cn=target-20",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 125,
+        "end_line": 127
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 20
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 21,
+      "dn": "cn=target-21",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 131,
+        "end_line": 133
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 21
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 22,
+      "dn": "cn=target-22",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 137,
+        "end_line": 139
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 22
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 23,
+      "dn": "cn=target-23",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 143,
+        "end_line": 145
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 23
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 24,
+      "dn": "cn=target-24",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 149,
+        "end_line": 151
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 24
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 25,
+      "dn": "cn=target-25",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 155,
+        "end_line": 157
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 25
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 26,
+      "dn": "cn=target-26",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 161,
+        "end_line": 163
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 26
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 27,
+      "dn": "cn=target-27",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 167,
+        "end_line": 169
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 27
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 28,
+      "dn": "cn=target-28",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 173,
+        "end_line": 175
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 28
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 29,
+      "dn": "cn=target-29",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 179,
+        "end_line": 181
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 29
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 30,
+      "dn": "cn=target-30",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 185,
+        "end_line": 187
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 30
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 31,
+      "dn": "cn=target-31",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 191,
+        "end_line": 193
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 31
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 32,
+      "dn": "cn=target-32",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 197,
+        "end_line": 199
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 32
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 33,
+      "dn": "cn=target-33",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 203,
+        "end_line": 205
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 33
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 34,
+      "dn": "cn=target-34",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 209,
+        "end_line": 211
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 34
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 35,
+      "dn": "cn=target-35",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 215,
+        "end_line": 217
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 35
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 36,
+      "dn": "cn=target-36",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 221,
+        "end_line": 223
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 36
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 37,
+      "dn": "cn=target-37",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 227,
+        "end_line": 229
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 37
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 38,
+      "dn": "cn=target-38",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 233,
+        "end_line": 235
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 38
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 39,
+      "dn": "cn=target-39",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 239,
+        "end_line": 241
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 39
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 40,
+      "dn": "cn=target-40",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 245,
+        "end_line": 247
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 40
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 41,
+      "dn": "cn=target-41",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 251,
+        "end_line": 253
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 41
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 42,
+      "dn": "cn=target-42",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 257,
+        "end_line": 259
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 42
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 43,
+      "dn": "cn=target-43",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 263,
+        "end_line": 265
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 43
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 44,
+      "dn": "cn=target-44",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 269,
+        "end_line": 271
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 44
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 45,
+      "dn": "cn=target-45",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 275,
+        "end_line": 277
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 45
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 46,
+      "dn": "cn=target-46",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 281,
+        "end_line": 283
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 46
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 47,
+      "dn": "cn=target-47",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 287,
+        "end_line": 289
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 47
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 48,
+      "dn": "cn=target-48",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 293,
+        "end_line": 295
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 48
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 49,
+      "dn": "cn=target-49",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 299,
+        "end_line": 301
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 49
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 50,
+      "dn": "cn=target-50",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 305,
+        "end_line": 307
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 50
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 51,
+      "dn": "cn=target-51",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 311,
+        "end_line": 313
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 51
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 52,
+      "dn": "cn=target-52",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 317,
+        "end_line": 319
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 52
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 53,
+      "dn": "cn=target-53",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 323,
+        "end_line": 325
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 53
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 54,
+      "dn": "cn=target-54",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 329,
+        "end_line": 331
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 54
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 55,
+      "dn": "cn=target-55",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 335,
+        "end_line": 337
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 55
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 56,
+      "dn": "cn=target-56",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 341,
+        "end_line": 343
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 56
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 57,
+      "dn": "cn=target-57",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 347,
+        "end_line": 349
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 57
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 58,
+      "dn": "cn=target-58",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 353,
+        "end_line": 355
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 58
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 59,
+      "dn": "cn=target-59",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 359,
+        "end_line": 361
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 59
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 60,
+      "dn": "cn=target-60",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 365,
+        "end_line": 367
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 60
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 61,
+      "dn": "cn=target-61",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 371,
+        "end_line": 373
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 61
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 62,
+      "dn": "cn=target-62",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 377,
+        "end_line": 379
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 62
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 63,
+      "dn": "cn=target-63",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 383,
+        "end_line": 385
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 63
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 64,
+      "dn": "cn=target-64",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 389,
+        "end_line": 391
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 64
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 65,
+      "dn": "cn=target-65",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 395,
+        "end_line": 397
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 65
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 66,
+      "dn": "cn=target-66",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 401,
+        "end_line": 403
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 66
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 67,
+      "dn": "cn=target-67",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 407,
+        "end_line": 409
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 67
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 68,
+      "dn": "cn=target-68",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 413,
+        "end_line": 415
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 68
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 69,
+      "dn": "cn=target-69",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 419,
+        "end_line": 421
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 69
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 70,
+      "dn": "cn=target-70",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 425,
+        "end_line": 427
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 70
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 71,
+      "dn": "cn=target-71",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 431,
+        "end_line": 433
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 71
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 72,
+      "dn": "cn=target-72",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 437,
+        "end_line": 439
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 72
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 73,
+      "dn": "cn=target-73",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 443,
+        "end_line": 445
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 73
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 74,
+      "dn": "cn=target-74",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 449,
+        "end_line": 451
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 74
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 75,
+      "dn": "cn=target-75",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 455,
+        "end_line": 457
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 75
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 76,
+      "dn": "cn=target-76",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 461,
+        "end_line": 463
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 76
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 77,
+      "dn": "cn=target-77",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 467,
+        "end_line": 469
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 77
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 78,
+      "dn": "cn=target-78",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 473,
+        "end_line": 475
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 78
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 79,
+      "dn": "cn=target-79",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 479,
+        "end_line": 481
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 79
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 80,
+      "dn": "cn=target-80",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 485,
+        "end_line": 487
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 80
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 81,
+      "dn": "cn=target-81",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 491,
+        "end_line": 493
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 81
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 82,
+      "dn": "cn=target-82",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 497,
+        "end_line": 499
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 82
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 83,
+      "dn": "cn=target-83",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 503,
+        "end_line": 505
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 83
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 84,
+      "dn": "cn=target-84",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 509,
+        "end_line": 511
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 84
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 85,
+      "dn": "cn=target-85",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 515,
+        "end_line": 517
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 85
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 86,
+      "dn": "cn=target-86",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 521,
+        "end_line": 523
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 86
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 87,
+      "dn": "cn=target-87",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 527,
+        "end_line": 529
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 87
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 88,
+      "dn": "cn=target-88",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 533,
+        "end_line": 535
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 88
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 89,
+      "dn": "cn=target-89",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 539,
+        "end_line": 541
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 89
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 90,
+      "dn": "cn=target-90",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 545,
+        "end_line": 547
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 90
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 91,
+      "dn": "cn=target-91",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 551,
+        "end_line": 553
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 91
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 92,
+      "dn": "cn=target-92",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 557,
+        "end_line": 559
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 92
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 93,
+      "dn": "cn=target-93",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 563,
+        "end_line": 565
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 93
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 94,
+      "dn": "cn=target-94",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 569,
+        "end_line": 571
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 94
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 95,
+      "dn": "cn=target-95",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 575,
+        "end_line": 577
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 95
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 96,
+      "dn": "cn=target-96",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 581,
+        "end_line": 583
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 96
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 97,
+      "dn": "cn=target-97",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 587,
+        "end_line": 589
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 97
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 98,
+      "dn": "cn=target-98",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 593,
+        "end_line": 595
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 98
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 99,
+      "dn": "cn=target-99",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 599,
+        "end_line": 601
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 99
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 100,
+      "dn": "cn=target-100",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 605,
+        "end_line": 607
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 100
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 101,
+      "dn": "cn=target-101",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 611,
+        "end_line": 613
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 101
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 102,
+      "dn": "cn=target-102",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 617,
+        "end_line": 619
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 102
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 103,
+      "dn": "cn=target-103",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 623,
+        "end_line": 625
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 103
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 104,
+      "dn": "cn=target-104",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 629,
+        "end_line": 631
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 104
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 105,
+      "dn": "cn=target-105",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 635,
+        "end_line": 637
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 105
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 106,
+      "dn": "cn=target-106",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 641,
+        "end_line": 643
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 106
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 107,
+      "dn": "cn=target-107",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 647,
+        "end_line": 649
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 107
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 108,
+      "dn": "cn=target-108",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 653,
+        "end_line": 655
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 108
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 109,
+      "dn": "cn=target-109",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 659,
+        "end_line": 661
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 109
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 110,
+      "dn": "cn=target-110",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 665,
+        "end_line": 667
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 110
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 111,
+      "dn": "cn=target-111",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 671,
+        "end_line": 673
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 111
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 112,
+      "dn": "cn=target-112",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 677,
+        "end_line": 679
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 112
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 113,
+      "dn": "cn=target-113",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 683,
+        "end_line": 685
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 113
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 114,
+      "dn": "cn=target-114",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 689,
+        "end_line": 691
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 114
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 115,
+      "dn": "cn=target-115",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 695,
+        "end_line": 697
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 115
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 116,
+      "dn": "cn=target-116",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 701,
+        "end_line": 703
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 116
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 117,
+      "dn": "cn=target-117",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 707,
+        "end_line": 709
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 117
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 118,
+      "dn": "cn=target-118",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 713,
+        "end_line": 715
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 118
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 119,
+      "dn": "cn=target-119",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 719,
+        "end_line": 721
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 119
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 120,
+      "dn": "cn=target-120",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 725,
+        "end_line": 727
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 120
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 121,
+      "dn": "cn=target-121",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 731,
+        "end_line": 733
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 121
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 122,
+      "dn": "cn=target-122",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 737,
+        "end_line": 739
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 122
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 123,
+      "dn": "cn=target-123",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 743,
+        "end_line": 745
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 123
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 124,
+      "dn": "cn=target-124",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 749,
+        "end_line": 751
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 124
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 125,
+      "dn": "cn=target-125",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 755,
+        "end_line": 757
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 125
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 126,
+      "dn": "cn=target-126",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 761,
+        "end_line": 763
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 126
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 127,
+      "dn": "cn=target-127",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 767,
+        "end_line": 769
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 127
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 128,
+      "dn": "cn=target-128",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 773,
+        "end_line": 775
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 128
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 129,
+      "dn": "cn=target-129",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 779,
+        "end_line": 781
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 129
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 130,
+      "dn": "cn=target-130",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 785,
+        "end_line": 787
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 130
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 131,
+      "dn": "cn=target-131",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 791,
+        "end_line": 793
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 131
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 132,
+      "dn": "cn=target-132",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 797,
+        "end_line": 799
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 132
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 133,
+      "dn": "cn=target-133",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 803,
+        "end_line": 805
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 133
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 134,
+      "dn": "cn=target-134",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 809,
+        "end_line": 811
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 134
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 135,
+      "dn": "cn=target-135",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 815,
+        "end_line": 817
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 135
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 136,
+      "dn": "cn=target-136",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 821,
+        "end_line": 823
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 136
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 137,
+      "dn": "cn=target-137",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 827,
+        "end_line": 829
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 137
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 138,
+      "dn": "cn=target-138",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 833,
+        "end_line": 835
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 138
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 139,
+      "dn": "cn=target-139",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 839,
+        "end_line": 841
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 139
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 140,
+      "dn": "cn=target-140",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 845,
+        "end_line": 847
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 140
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 141,
+      "dn": "cn=target-141",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 851,
+        "end_line": 853
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 141
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 142,
+      "dn": "cn=target-142",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 857,
+        "end_line": 859
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 142
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 143,
+      "dn": "cn=target-143",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 863,
+        "end_line": 865
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 143
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 144,
+      "dn": "cn=target-144",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 869,
+        "end_line": 871
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 144
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 145,
+      "dn": "cn=target-145",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 875,
+        "end_line": 877
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 145
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 146,
+      "dn": "cn=target-146",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 881,
+        "end_line": 883
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 146
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 147,
+      "dn": "cn=target-147",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 887,
+        "end_line": 889
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 147
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 148,
+      "dn": "cn=target-148",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 893,
+        "end_line": 895
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 148
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 149,
+      "dn": "cn=target-149",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 899,
+        "end_line": 901
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 149
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 150,
+      "dn": "cn=target-150",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 905,
+        "end_line": 907
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 150
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 151,
+      "dn": "cn=target-151",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 911,
+        "end_line": 913
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 151
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 152,
+      "dn": "cn=target-152",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 917,
+        "end_line": 919
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 152
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 153,
+      "dn": "cn=target-153",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 923,
+        "end_line": 925
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 153
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 154,
+      "dn": "cn=target-154",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 929,
+        "end_line": 931
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 154
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 155,
+      "dn": "cn=target-155",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 935,
+        "end_line": 937
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 155
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 156,
+      "dn": "cn=target-156",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 941,
+        "end_line": 943
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 156
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 157,
+      "dn": "cn=target-157",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 947,
+        "end_line": 949
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 157
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 158,
+      "dn": "cn=target-158",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 953,
+        "end_line": 955
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 158
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 159,
+      "dn": "cn=target-159",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 959,
+        "end_line": 961
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 159
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 160,
+      "dn": "cn=target-160",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 965,
+        "end_line": 967
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 160
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 161,
+      "dn": "cn=target-161",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 971,
+        "end_line": 973
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 161
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 162,
+      "dn": "cn=target-162",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 977,
+        "end_line": 979
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 162
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 163,
+      "dn": "cn=target-163",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 983,
+        "end_line": 985
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 163
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 164,
+      "dn": "cn=target-164",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 989,
+        "end_line": 991
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 164
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 165,
+      "dn": "cn=target-165",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 995,
+        "end_line": 997
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 165
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 166,
+      "dn": "cn=target-166",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1001,
+        "end_line": 1003
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 166
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 167,
+      "dn": "cn=target-167",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1007,
+        "end_line": 1009
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 167
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 168,
+      "dn": "cn=target-168",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1013,
+        "end_line": 1015
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 168
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 169,
+      "dn": "cn=target-169",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1019,
+        "end_line": 1021
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 169
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 170,
+      "dn": "cn=target-170",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1025,
+        "end_line": 1027
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 170
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 171,
+      "dn": "cn=target-171",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1031,
+        "end_line": 1033
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 171
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 172,
+      "dn": "cn=target-172",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1037,
+        "end_line": 1039
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 172
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 173,
+      "dn": "cn=target-173",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1043,
+        "end_line": 1045
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 173
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 174,
+      "dn": "cn=target-174",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1049,
+        "end_line": 1051
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 174
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 175,
+      "dn": "cn=target-175",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1055,
+        "end_line": 1057
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 175
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 176,
+      "dn": "cn=target-176",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1061,
+        "end_line": 1063
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 176
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 177,
+      "dn": "cn=target-177",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1067,
+        "end_line": 1069
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 177
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 178,
+      "dn": "cn=target-178",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1073,
+        "end_line": 1075
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 178
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 179,
+      "dn": "cn=target-179",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1079,
+        "end_line": 1081
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 179
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 180,
+      "dn": "cn=target-180",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1085,
+        "end_line": 1087
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 180
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 181,
+      "dn": "cn=target-181",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1091,
+        "end_line": 1093
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 181
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 182,
+      "dn": "cn=target-182",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1097,
+        "end_line": 1099
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 182
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 183,
+      "dn": "cn=target-183",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1103,
+        "end_line": 1105
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 183
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 184,
+      "dn": "cn=target-184",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1109,
+        "end_line": 1111
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 184
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 185,
+      "dn": "cn=target-185",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1115,
+        "end_line": 1117
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 185
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 186,
+      "dn": "cn=target-186",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1121,
+        "end_line": 1123
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 186
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 187,
+      "dn": "cn=target-187",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1127,
+        "end_line": 1129
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 187
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 188,
+      "dn": "cn=target-188",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1133,
+        "end_line": 1135
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 188
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 189,
+      "dn": "cn=target-189",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1139,
+        "end_line": 1141
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 189
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 190,
+      "dn": "cn=target-190",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1145,
+        "end_line": 1147
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 190
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 191,
+      "dn": "cn=target-191",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1151,
+        "end_line": 1153
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 191
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 192,
+      "dn": "cn=target-192",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1157,
+        "end_line": 1159
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 192
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 193,
+      "dn": "cn=target-193",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1163,
+        "end_line": 1165
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 193
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 194,
+      "dn": "cn=target-194",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1169,
+        "end_line": 1171
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 194
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 195,
+      "dn": "cn=target-195",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1175,
+        "end_line": 1177
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 195
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 196,
+      "dn": "cn=target-196",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1181,
+        "end_line": 1183
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 196
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 197,
+      "dn": "cn=target-197",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1187,
+        "end_line": 1189
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 197
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 198,
+      "dn": "cn=target-198",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1193,
+        "end_line": 1195
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 198
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 199,
+      "dn": "cn=target-199",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1199,
+        "end_line": 1201
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 199
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 200,
+      "dn": "cn=target-200",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1205,
+        "end_line": 1207
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 200
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 201,
+      "dn": "cn=target-201",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1211,
+        "end_line": 1213
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 201
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 202,
+      "dn": "cn=target-202",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1217,
+        "end_line": 1219
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 202
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 203,
+      "dn": "cn=target-203",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1223,
+        "end_line": 1225
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 203
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 204,
+      "dn": "cn=target-204",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1229,
+        "end_line": 1231
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 204
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 205,
+      "dn": "cn=target-205",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1235,
+        "end_line": 1237
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 205
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 206,
+      "dn": "cn=target-206",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1241,
+        "end_line": 1243
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 206
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 207,
+      "dn": "cn=target-207",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1247,
+        "end_line": 1249
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 207
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 208,
+      "dn": "cn=target-208",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1253,
+        "end_line": 1255
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 208
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 209,
+      "dn": "cn=target-209",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1259,
+        "end_line": 1261
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 209
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 210,
+      "dn": "cn=target-210",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1265,
+        "end_line": 1267
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 210
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 211,
+      "dn": "cn=target-211",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1271,
+        "end_line": 1273
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 211
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 212,
+      "dn": "cn=target-212",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1277,
+        "end_line": 1279
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 212
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 213,
+      "dn": "cn=target-213",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1283,
+        "end_line": 1285
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 213
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 214,
+      "dn": "cn=target-214",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1289,
+        "end_line": 1291
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 214
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 215,
+      "dn": "cn=target-215",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1295,
+        "end_line": 1297
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 215
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 216,
+      "dn": "cn=target-216",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1301,
+        "end_line": 1303
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 216
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 217,
+      "dn": "cn=target-217",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1307,
+        "end_line": 1309
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 217
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 218,
+      "dn": "cn=target-218",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1313,
+        "end_line": 1315
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 218
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 219,
+      "dn": "cn=target-219",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1319,
+        "end_line": 1321
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 219
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 220,
+      "dn": "cn=target-220",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1325,
+        "end_line": 1327
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 220
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 221,
+      "dn": "cn=target-221",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1331,
+        "end_line": 1333
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 221
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 222,
+      "dn": "cn=target-222",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1337,
+        "end_line": 1339
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 222
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 223,
+      "dn": "cn=target-223",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1343,
+        "end_line": 1345
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 223
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 224,
+      "dn": "cn=target-224",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1349,
+        "end_line": 1351
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 224
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 225,
+      "dn": "cn=target-225",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1355,
+        "end_line": 1357
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 225
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 226,
+      "dn": "cn=target-226",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1361,
+        "end_line": 1363
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 226
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 227,
+      "dn": "cn=target-227",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1367,
+        "end_line": 1369
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 227
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 228,
+      "dn": "cn=target-228",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1373,
+        "end_line": 1375
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 228
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 229,
+      "dn": "cn=target-229",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1379,
+        "end_line": 1381
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 229
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 230,
+      "dn": "cn=target-230",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1385,
+        "end_line": 1387
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 230
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 231,
+      "dn": "cn=target-231",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1391,
+        "end_line": 1393
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 231
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 232,
+      "dn": "cn=target-232",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1397,
+        "end_line": 1399
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 232
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 233,
+      "dn": "cn=target-233",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1403,
+        "end_line": 1405
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 233
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 234,
+      "dn": "cn=target-234",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1409,
+        "end_line": 1411
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 234
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 235,
+      "dn": "cn=target-235",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1415,
+        "end_line": 1417
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 235
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 236,
+      "dn": "cn=target-236",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1421,
+        "end_line": 1423
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 236
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 237,
+      "dn": "cn=target-237",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1427,
+        "end_line": 1429
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 237
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 238,
+      "dn": "cn=target-238",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1433,
+        "end_line": 1435
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 238
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 239,
+      "dn": "cn=target-239",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1439,
+        "end_line": 1441
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 239
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 240,
+      "dn": "cn=target-240",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1445,
+        "end_line": 1447
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 240
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 241,
+      "dn": "cn=target-241",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1451,
+        "end_line": 1453
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 241
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 242,
+      "dn": "cn=target-242",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1457,
+        "end_line": 1459
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 242
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 243,
+      "dn": "cn=target-243",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1463,
+        "end_line": 1465
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 243
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 244,
+      "dn": "cn=target-244",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1469,
+        "end_line": 1471
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 244
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 245,
+      "dn": "cn=target-245",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1475,
+        "end_line": 1477
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 245
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 246,
+      "dn": "cn=target-246",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1481,
+        "end_line": 1483
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 246
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 247,
+      "dn": "cn=target-247",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1487,
+        "end_line": 1489
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 247
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 248,
+      "dn": "cn=target-248",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1493,
+        "end_line": 1495
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 248
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 249,
+      "dn": "cn=target-249",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1499,
+        "end_line": 1501
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 249
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 250,
+      "dn": "cn=target-250",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1505,
+        "end_line": 1507
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 250
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 251,
+      "dn": "cn=target-251",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1511,
+        "end_line": 1513
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 251
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 252,
+      "dn": "cn=target-252",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1517,
+        "end_line": 1519
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 252
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 253,
+      "dn": "cn=target-253",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1523,
+        "end_line": 1525
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 253
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 254,
+      "dn": "cn=target-254",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1529,
+        "end_line": 1531
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 254
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 255,
+      "dn": "cn=target-255",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1535,
+        "end_line": 1537
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 255
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 256,
+      "dn": "cn=target-256",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1541,
+        "end_line": 1543
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 256
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 257,
+      "dn": "cn=target-257",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1547,
+        "end_line": 1549
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 257
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 258,
+      "dn": "cn=target-258",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1553,
+        "end_line": 1555
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 258
+    },
+    {
+      "code": "attribute-replace",
+      "level": "caution",
+      "record_index": 259,
+      "dn": "cn=target-259",
+      "attribute": "mail",
+      "value_count": 1,
+      "span": {
+        "line": 1559,
+        "end_line": 1561
+      },
+      "title": "Replace attribute values",
+      "reason": "This replaces the entire value set rather than appending to it.",
+      "action": "Include any old values that must be retained in the replacement set.",
+      "item_index": 259
+    },
+    {
+      "code": "entry-delete",
+      "level": "high",
+      "record_index": 260,
+      "dn": "cn=last-target",
+      "attribute": null,
+      "value_count": 0,
+      "span": {
+        "line": 1563,
+        "end_line": 1564
+      },
+      "title": "Delete directory entry",
+      "reason": "Requests deletion of this DN. The server state and effects of attached controls are unknown.",
+      "action": "Verify the target and recovery plan. The optional deletion policy can block this file.",
+      "item_index": 260
+    }
+  ]
+}

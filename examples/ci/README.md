@@ -8,7 +8,7 @@ node examples/ci/check-plan.mjs verification/local/batch-ci.json examples/01-dir
 
 此例统一开启整条删除、属性清空、改名/移动拦截，预期退出 1，仍保存 JSON 报告。只检查第一个内容文件时为 0；混入缺失文件或不完整输入为 2，已发现的风险保留。指定的报告路径必须尚不存在；不会覆盖输入或上次报告。CI 可以按运行编号给输出命名。
 
-下面工作流可复制到维护 LDIF 的项目，根据仓库实际文件修改最后一行输入列表。它固定 MoonLDIF 0.7.4 并保留失败报告。安装 CLI 使用已编译 ZIP，mooncakes 安装是另一种库接入方式。首次接入先用合成文件确认预期退出码。
+下面工作流可复制到维护 LDIF 的项目，根据仓库实际文件修改最后一行输入列表。它固定 MoonLDIF 0.7.5 并保留失败报告。安装 CLI 使用已编译 ZIP，mooncakes 安装是另一种库接入方式。首次接入先用合成文件确认预期退出码。
 
 ```yaml
 name: LDIF preflight
@@ -28,13 +28,13 @@ jobs:
           set -euo pipefail
           mkdir -p .tools/moonldif
           cd .tools/moonldif
-          base=https://github.com/WeiR-h/moonldif/releases/download/v0.7.4
-          curl -fLO "$base/moonldif-cli-v0.7.4.zip"
+          base=https://github.com/WeiR-h/moonldif/releases/download/v0.7.5
+          curl -fLO "$base/moonldif-cli-v0.7.5.zip"
           curl -fLO "$base/SHA256SUMS"
-          awk '$2 == "moonldif-cli-v0.7.4.zip"' SHA256SUMS > CLI.sha256
+          awk '$2 == "moonldif-cli-v0.7.5.zip"' SHA256SUMS > CLI.sha256
           test -s CLI.sha256
           sha256sum -c CLI.sha256
-          unzip -q moonldif-cli-v0.7.4.zip
+          unzip -q moonldif-cli-v0.7.5.zip
       - name: Review all planned files
         run: node .tools/moonldif/examples/ci/check-plan.mjs artifacts/ldif-review.json plans/01.ldif plans/02.ldif
       - uses: actions/upload-artifact@v7.0.1

@@ -44,6 +44,9 @@ export default function App() {
         <button className="primary" onClick={state.recheck} disabled={running||state.profile.blocked}><Icon name="refresh" />{running ? '检查中…' : '重新检查'}</button>
         <button onClick={state.exportFile} disabled={!state.canExport}><Icon name="download" />导出新文件</button>
       <button onClick={state.invalidate} disabled={!running && !state.analysis.busy}>停止检查</button></div></div>
+      <Status analysis={state.analysis} />
+      <div className="workbench-layout">
+      <aside className="rules-rail" aria-label="检查规则"><h2>检查规则</h2>
       <div className="settings" aria-label="检查选项">
         <label><input type="checkbox" checked={state.options.denyDelete} onChange={e => state.setOption('denyDelete', e.target.checked)} />拦截整条删除</label>
         <label><input type="checkbox" checked={state.options.denyClear} onChange={e => state.setOption('denyClear', e.target.checked)} />拦截属性清空</label>
@@ -52,14 +55,18 @@ export default function App() {
         <label><input type="checkbox" checked={state.options.legacySpaces} onChange={e => state.setOption('legacySpaces', e.target.checked)} />允许旧 DN 空格</label>
       </div>
       <ProfilePanel profile={state.profile} mode="review" report={state.analysis.report} locate={span=>state.setSelection({...span,focus:true})} />
-      <Status analysis={state.analysis} />
-      <ReproducePanel result={state.analysis} />
+      </aside>
+      <div className="workbench-main">
+      <div className="report-surface">
       <div className="report-tools">
         <label>审阅报告 <select aria-label="审阅报告格式" value={reportFormat} onChange={e => setReportFormat(e.target.value)}><option value="markdown">Markdown</option><option value="json">JSON</option></select></label>
         <button onClick={() => state.exportReport(reportFormat)} disabled={!state.canExportReport}><Icon name="download" />下载完整审阅报告</button>
         <p>报告包含目标 DN 和内容指纹，不包含原始属性值；可记录拦截或不完整结果。</p>
       </div>
+      <ReproducePanel result={state.analysis} />
+      </div>
       <div className="workspace"><Editor document={state.document} edit={state.edit} loadSample={state.loadSample} loadFile={state.loadFile} selection={state.selection} /><Results queryPage={state.queryPage} analysis={state.analysis} locate={span => state.setSelection({ ...span, focus: true })} selected={state.selection} /></div>
+      </div></div>
       </div>
       {snapshotOpened && <div hidden={mode !== 'snapshot'}><SnapshotPanel enabled={mode === 'snapshot'} /></div>}
     </main>

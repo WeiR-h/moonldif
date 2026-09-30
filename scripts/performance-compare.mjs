@@ -7,7 +7,7 @@ import { cases } from './performance-fixtures.mjs';
 const median = values => [...values].sort((a,b) => a-b)[Math.floor(values.length / 2)];
 const args = process.argv.slice(2);
 const option = (name, fallback) => args.includes(name) ? args[args.indexOf(name)+1] : fallback;
-const paths = { baseline: resolve(option('--baseline','.tools/performance-baseline-0.7.3/dist/core.mjs')), candidate: resolve('dist/core.mjs') };
+const paths = { baseline: resolve(option('--baseline','.tools/performance-baseline-0.7.4/dist/core.mjs')), candidate: resolve('dist/core.mjs') };
 const selected = option('--case', null);
 const output = option('--out', 'verification/local/performance-paired.json');
 if (selected && !cases.some(c => c.id === selected)) throw new Error('Unknown performance case');

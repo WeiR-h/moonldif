@@ -26,6 +26,6 @@
 - [GitHub v0.7.4](https://github.com/WeiR-h/moonldif/releases/tag/v0.7.4)、[mooncakes 0.7.4](https://mooncakes.io/docs/WeiR-h/moonldif@0.7.4/)已发布。内置浏览器确认注册表显示 `0.7.4 (latest)`。
 - [公开附件校验](release-assets.json)：库 ZIP SHA-256 `03a3f65b2edff546fe04a69cba674c759e9d6847afe4ba6b36281314ce229192`；CLI ZIP SHA-256 `dbe00ca21569f80f879f19aa9a5e2f6eb9d0f9069d7082dc16f4ef53b17ffe08`。CLI 内 `BUILD.json` 指向同一干净源码和固定编译器。
 
-Pages 正式构建、Windows/Ubuntu 与浏览器检查均通过。首次部署被环境允许列表拒绝：`v0.7.4` 尚未登记，部署步骤尚未开始；保留 [首次回执](ci074-tag-first-attempt.json)。新版公开网页复验待部署完成后补充；不以已发布的 CLI 和库代替网页交付。
+Pages 正式构建、Windows/Ubuntu 与浏览器检查均通过。首次部署被环境允许列表拒绝：`v0.7.4` 尚未登记，部署步骤尚未开始；保留 [首次回执](ci074-tag-first-attempt.json)。2026-09-30 补充：精确登记后仅重跑失败任务因历史 Pages 构建产物过期失败；全流程重跑通过，公开工作台显示 0.7.4 并完成默认示例检查。见 [最终部署回执](ci074-pages-completed.json) 与 [过期产物回执](ci074-artifact-expired.json)。
 
 此处只记录工程证据，全部输入为合成数据；不代替个人完整操作、真实使用者反馈或组委会最终结论。

@@ -1,0 +1,102 @@
+{
+  "report_schema_version": 2,
+  "exit_code": 1,
+  "summary": {
+    "tool": "MoonLDIF",
+    "version": "0.7.5",
+    "status": "complete",
+    "exit_code": 1,
+    "mode": "changes",
+    "record_count": 2,
+    "scope": "LDIF v1 supported structure and DN/RDN string syntax; not server import approval",
+    "names_checked": true,
+    "name_profile": "RFC 4514 string syntax",
+    "not_checked": [
+      "DN equality and schema matching",
+      "BER-hex assertion semantics",
+      "directory schema",
+      "server state and ACL",
+      "control semantics",
+      "external value contents"
+    ],
+    "diagnostics": [
+      {
+        "code": "rename-denied",
+        "severity": "policy",
+        "span": {
+          "line": 9,
+          "end_line": 13
+        },
+        "reason": "Renaming or moving a directory entry is blocked by --deny-rename."
+      }
+    ],
+    "review": {
+      "total_items": 2,
+      "analysis_complete": true,
+      "input_exit_code": 1,
+      "record_count": 2,
+      "scope": "File operation intent only; no LDAP execution or schema approval"
+    },
+    "document": null,
+    "locations": null,
+    "report_schema_version": 1,
+    "source": {
+      "sha256": "0686d441672d8ead71b481bf49eab77b9ddd5c806c2ec10f033fcbf3f70ea64e",
+      "byte_length": 273,
+      "identity_scope": "Exact analysed bytes; not a signature or authenticity proof"
+    },
+    "options": {
+      "allow_missing_version": false,
+      "deny_delete": true,
+      "deny_clear": true,
+      "deny_rename": true,
+      "legacy_dn_spaces": false
+    },
+    "diagnostics_truncated": false
+  },
+  "page": {
+    "total_items": 2,
+    "matched_items": 2,
+    "offset": 0,
+    "limit": 2,
+    "returned_items": 2,
+    "has_more": false,
+    "query": "",
+    "kind": "all",
+    "selection": "all"
+  },
+  "items": [
+    {
+      "code": "entry-add",
+      "level": "notice",
+      "record_index": 0,
+      "dn": "uid=demo,ou=People,dc=example,dc=org",
+      "attribute": null,
+      "value_count": 4,
+      "span": {
+        "line": 2,
+        "end_line": 7
+      },
+      "title": "Add directory entry",
+      "reason": "Requests a new entry with the supplied attribute values.",
+      "action": "Check the parent, object classes and required attributes against the target directory schema.",
+      "item_index": 0
+    },
+    {
+      "code": "entry-move",
+      "level": "high",
+      "record_index": 1,
+      "dn": "uid=demo,ou=People,dc=example,dc=org",
+      "attribute": null,
+      "value_count": 0,
+      "span": {
+        "line": 9,
+        "end_line": 13
+      },
+      "title": "Rename with a new parent DN",
+      "reason": "New RDN: uid=demo-renamed. Requests removal of the old RDN attribute values. New parent DN: ou=Archive,dc=example,dc=org.",
+      "action": "Review dependent names and child entries; confirm target-parent and permission requirements on the server.",
+      "item_index": 1
+    }
+  ]
+}

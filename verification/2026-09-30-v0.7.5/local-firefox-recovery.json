@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "cases": [
+    "single startup retry",
+    "bounded two failures",
+    "silent bootstrap retry",
+    "bounded silent bootstrap failure",
+    "late ready and error discarded",
+    "one bundle for both modes",
+    "post failure invalidates",
+    "retry without page refresh",
+    "real download retry byte identity",
+    "edited download invalidated",
+    "one active worker"
+  ],
+  "errors": []
+}

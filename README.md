@@ -2,7 +2,7 @@
 
 MoonBit 原生 LDIF 读写与离线结构预检库。解析、规则、报告与写回由 MoonBit 实现；见[源码分工](docs/IMPLEMENTATION.md)。
 
-版本：`0.7.4`。共用分析程序并识别启动停滞，补充另存为及复制保存回退；旧 API 和默认 CLI 输出保持兼容。正式发布、注册表安装和公开网页结果以[最新交付状态](https://github.com/WeiR-h/moonldif/blob/main/docs/STATUS.md)为准。报名初审已通过，个人验收和组委会最终结果分别记录。
+版本：`0.7.5`。工作台采用统一规则侧栏、突出检查状态与并排审阅布局，完善桌面和小屏显示；保留启动恢复、保存回退与所有原有功能。旧 API 和默认 CLI 输出保持兼容。正式发布、注册表安装和公开网页结果以[最新交付状态](https://github.com/WeiR-h/moonldif/blob/main/docs/STATUS.md)为准。报名初审已通过，个人验收和组委会最终结果分别记录。
 
 范围：LDIF 内容与基本变更记录、字节属性、源位置、确定性写回和结构报告。目录 Schema、DN 语义相等、权限及真实服务器执行结果不在检查范围内。
 
@@ -48,13 +48,13 @@ node dist/moonldif.js batch examples/01-directory-export.ldif examples/02-accoun
 
 ## 安装 MoonBit 库
 
-在自己的 MoonBit 工程执行 `moon add WeiR-h/moonldif@0.7.4`，并在 `moon.pkg` 导入 `"WeiR-h/moonldif" @ldif`。注册表安装验证使用 `python scripts/registry-verify.py --version 0.7.4`，创建没有本地覆盖的独立消费工程。
+在自己的 MoonBit 工程执行 `moon add WeiR-h/moonldif@0.7.5`，并在 `moon.pkg` 导入 `"WeiR-h/moonldif" @ldif`。注册表安装验证使用 `python scripts/registry-verify.py --version 0.7.5`，创建没有本地覆盖的独立消费工程。
 
 安装 MoonBit 库不会安装 Node.js CLI。CLI 可下载已编译发行包，也可从源码构建。
 
 ## 下载运行 CLI
 
-安装 Node.js 24，下载 [moonldif-cli-v0.7.4.zip](https://github.com/WeiR-h/moonldif/releases/download/v0.7.4/moonldif-cli-v0.7.4.zip)，核对同一发行页的 SHA256SUMS 后解压。在解压目录运行 `node dist/moonldif.js --help`，无需 MoonBit 或 npm install。详见 [CLI 快速开始](docs/CLI-DISTRIBUTION.md)。正式下载与独立消费证据见交付状态页。
+安装 Node.js 24，下载 [moonldif-cli-v0.7.5.zip](https://github.com/WeiR-h/moonldif/releases/download/v0.7.5/moonldif-cli-v0.7.5.zip)，核对同一发行页的 SHA256SUMS 后解压。在解压目录运行 `node dist/moonldif.js --help`，无需 MoonBit 或 npm install。详见 [CLI 快速开始](docs/CLI-DISTRIBUTION.md)。正式下载与独立消费证据见交付状态页。
 
 ## 在线使用工作台
 

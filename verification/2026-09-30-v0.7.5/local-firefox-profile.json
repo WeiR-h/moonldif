@@ -1,0 +1,20 @@
+{
+  "profile_version": 1,
+  "common": {
+    "allow_missing_version": false,
+    "legacy_dn_spaces": false
+  },
+  "review": {
+    "deny_delete": false,
+    "deny_clear": false,
+    "deny_rename": false,
+    "limits": {
+      "max_delete_records": 6
+    }
+  },
+  "compare": {
+    "ignored_attributes": [
+      "cn"
+    ]
+  }
+}

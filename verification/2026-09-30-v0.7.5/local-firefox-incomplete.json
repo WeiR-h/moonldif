@@ -1,0 +1,69 @@
+{
+  "report_schema_version": 2,
+  "exit_code": 2,
+  "summary": {
+    "tool": "MoonLDIF",
+    "version": "0.7.5",
+    "status": "incomplete",
+    "exit_code": 2,
+    "mode": "content",
+    "record_count": 1,
+    "scope": "LDIF v1 supported structure and DN/RDN string syntax; not server import approval",
+    "names_checked": true,
+    "name_profile": "RFC 4514 string syntax",
+    "not_checked": [
+      "DN equality and schema matching",
+      "BER-hex assertion semantics",
+      "directory schema",
+      "server state and ACL",
+      "control semantics",
+      "external value contents"
+    ],
+    "diagnostics": [
+      {
+        "code": "external-value-unresolved",
+        "severity": "unsupported",
+        "span": {
+          "line": 5,
+          "end_line": 5
+        },
+        "reason": "URL value is preserved but will not be read."
+      }
+    ],
+    "review": {
+      "total_items": 0,
+      "analysis_complete": false,
+      "input_exit_code": 2,
+      "record_count": 1,
+      "scope": "File operation intent only; no LDAP execution or schema approval"
+    },
+    "document": null,
+    "locations": null,
+    "report_schema_version": 1,
+    "source": {
+      "sha256": "9f578e09e0b613d6a80a9ce78c4fd2521f1adfdaa125e2a27f0e2504d1043326",
+      "byte_length": 60,
+      "identity_scope": "Exact analysed bytes; not a signature or authenticity proof"
+    },
+    "options": {
+      "allow_missing_version": false,
+      "deny_delete": true,
+      "deny_clear": true,
+      "deny_rename": false,
+      "legacy_dn_spaces": false
+    },
+    "diagnostics_truncated": false
+  },
+  "page": {
+    "total_items": 0,
+    "matched_items": 0,
+    "offset": 0,
+    "limit": 0,
+    "returned_items": 0,
+    "has_more": false,
+    "query": "",
+    "kind": "all",
+    "selection": "all"
+  },
+  "items": []
+}

@@ -1,0 +1,4225 @@
+{
+  "report_schema_version": 2,
+  "exit_code": 1,
+  "summary": {
+    "tool": "MoonLDIF",
+    "version": "0.7.5",
+    "kind": "snapshot-diff",
+    "report_schema_version": 1,
+    "exit_code": 1,
+    "status": "complete",
+    "analysis_complete": true,
+    "comparison_performed": true,
+    "matching": "Exact decoded DN string; ASCII-insensitive attribute descriptions; byte multiset values",
+    "scope": "Export comparison only; not LDAP semantic equality, rename detection or an executable patch. Reports contain DNs, not attribute values.",
+    "options": {
+      "allow_missing_version": false,
+      "legacy_dn_spaces": false,
+      "ignored_attributes": []
+    },
+    "excluded_attribute_occurrences": {
+      "before": 0,
+      "after": 0
+    },
+    "exclusion_scope": "Exact canonical attribute description, including options. Counts cover all parsed entry attribute occurrences, not differences. Entry additions/removals and all input checks remain active.",
+    "before": {
+      "byte_length": 5212,
+      "sha256": "65cd773c3aafa9e0830d3cf7132b1ecdb935c983cd66fa16ab2c09b5ca8f8f72",
+      "status": "complete",
+      "record_count": 260,
+      "diagnostics": []
+    },
+    "after": {
+      "byte_length": 5212,
+      "sha256": "5f830ef5987ac5fb8c60437c727574727ab3ae762a4e19cacbdd415e2e61156c",
+      "status": "complete",
+      "record_count": 260,
+      "diagnostics": []
+    },
+    "diagnostics": [],
+    "diagnostics_truncated": false,
+    "ambiguous_dn_count": 0,
+    "compared_dn_count": 260,
+    "counts": {
+      "entry-added": 0,
+      "entry-removed": 0,
+      "attribute-added": 0,
+      "attribute-removed": 0,
+      "values-changed": 260
+    },
+    "total_changes": 260
+  },
+  "page": {
+    "total_items": 260,
+    "matched_items": 260,
+    "offset": 0,
+    "limit": 260,
+    "returned_items": 260,
+    "has_more": false,
+    "query": "",
+    "kind": "all",
+    "selection": "all"
+  },
+  "items": [
+    {
+      "code": "values-changed",
+      "dn": "cn=000",
+      "attribute": "cn",
+      "before_span": {
+        "line": 4,
+        "end_line": 4
+      },
+      "after_span": {
+        "line": 4,
+        "end_line": 4
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 0
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=001",
+      "attribute": "cn",
+      "before_span": {
+        "line": 7,
+        "end_line": 7
+      },
+      "after_span": {
+        "line": 7,
+        "end_line": 7
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 1
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=002",
+      "attribute": "cn",
+      "before_span": {
+        "line": 10,
+        "end_line": 10
+      },
+      "after_span": {
+        "line": 10,
+        "end_line": 10
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 2
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=003",
+      "attribute": "cn",
+      "before_span": {
+        "line": 13,
+        "end_line": 13
+      },
+      "after_span": {
+        "line": 13,
+        "end_line": 13
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 3
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=004",
+      "attribute": "cn",
+      "before_span": {
+        "line": 16,
+        "end_line": 16
+      },
+      "after_span": {
+        "line": 16,
+        "end_line": 16
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 4
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=005",
+      "attribute": "cn",
+      "before_span": {
+        "line": 19,
+        "end_line": 19
+      },
+      "after_span": {
+        "line": 19,
+        "end_line": 19
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 5
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=006",
+      "attribute": "cn",
+      "before_span": {
+        "line": 22,
+        "end_line": 22
+      },
+      "after_span": {
+        "line": 22,
+        "end_line": 22
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 6
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=007",
+      "attribute": "cn",
+      "before_span": {
+        "line": 25,
+        "end_line": 25
+      },
+      "after_span": {
+        "line": 25,
+        "end_line": 25
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 7
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=008",
+      "attribute": "cn",
+      "before_span": {
+        "line": 28,
+        "end_line": 28
+      },
+      "after_span": {
+        "line": 28,
+        "end_line": 28
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 8
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=009",
+      "attribute": "cn",
+      "before_span": {
+        "line": 31,
+        "end_line": 31
+      },
+      "after_span": {
+        "line": 31,
+        "end_line": 31
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 9
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=010",
+      "attribute": "cn",
+      "before_span": {
+        "line": 34,
+        "end_line": 34
+      },
+      "after_span": {
+        "line": 34,
+        "end_line": 34
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 10
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=011",
+      "attribute": "cn",
+      "before_span": {
+        "line": 37,
+        "end_line": 37
+      },
+      "after_span": {
+        "line": 37,
+        "end_line": 37
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 11
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=012",
+      "attribute": "cn",
+      "before_span": {
+        "line": 40,
+        "end_line": 40
+      },
+      "after_span": {
+        "line": 40,
+        "end_line": 40
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 12
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=013",
+      "attribute": "cn",
+      "before_span": {
+        "line": 43,
+        "end_line": 43
+      },
+      "after_span": {
+        "line": 43,
+        "end_line": 43
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 13
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=014",
+      "attribute": "cn",
+      "before_span": {
+        "line": 46,
+        "end_line": 46
+      },
+      "after_span": {
+        "line": 46,
+        "end_line": 46
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 14
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=015",
+      "attribute": "cn",
+      "before_span": {
+        "line": 49,
+        "end_line": 49
+      },
+      "after_span": {
+        "line": 49,
+        "end_line": 49
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 15
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=016",
+      "attribute": "cn",
+      "before_span": {
+        "line": 52,
+        "end_line": 52
+      },
+      "after_span": {
+        "line": 52,
+        "end_line": 52
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 16
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=017",
+      "attribute": "cn",
+      "before_span": {
+        "line": 55,
+        "end_line": 55
+      },
+      "after_span": {
+        "line": 55,
+        "end_line": 55
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 17
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=018",
+      "attribute": "cn",
+      "before_span": {
+        "line": 58,
+        "end_line": 58
+      },
+      "after_span": {
+        "line": 58,
+        "end_line": 58
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 18
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=019",
+      "attribute": "cn",
+      "before_span": {
+        "line": 61,
+        "end_line": 61
+      },
+      "after_span": {
+        "line": 61,
+        "end_line": 61
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 19
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=020",
+      "attribute": "cn",
+      "before_span": {
+        "line": 64,
+        "end_line": 64
+      },
+      "after_span": {
+        "line": 64,
+        "end_line": 64
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 20
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=021",
+      "attribute": "cn",
+      "before_span": {
+        "line": 67,
+        "end_line": 67
+      },
+      "after_span": {
+        "line": 67,
+        "end_line": 67
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 21
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=022",
+      "attribute": "cn",
+      "before_span": {
+        "line": 70,
+        "end_line": 70
+      },
+      "after_span": {
+        "line": 70,
+        "end_line": 70
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 22
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=023",
+      "attribute": "cn",
+      "before_span": {
+        "line": 73,
+        "end_line": 73
+      },
+      "after_span": {
+        "line": 73,
+        "end_line": 73
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 23
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=024",
+      "attribute": "cn",
+      "before_span": {
+        "line": 76,
+        "end_line": 76
+      },
+      "after_span": {
+        "line": 76,
+        "end_line": 76
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 24
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=025",
+      "attribute": "cn",
+      "before_span": {
+        "line": 79,
+        "end_line": 79
+      },
+      "after_span": {
+        "line": 79,
+        "end_line": 79
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 25
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=026",
+      "attribute": "cn",
+      "before_span": {
+        "line": 82,
+        "end_line": 82
+      },
+      "after_span": {
+        "line": 82,
+        "end_line": 82
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 26
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=027",
+      "attribute": "cn",
+      "before_span": {
+        "line": 85,
+        "end_line": 85
+      },
+      "after_span": {
+        "line": 85,
+        "end_line": 85
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 27
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=028",
+      "attribute": "cn",
+      "before_span": {
+        "line": 88,
+        "end_line": 88
+      },
+      "after_span": {
+        "line": 88,
+        "end_line": 88
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 28
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=029",
+      "attribute": "cn",
+      "before_span": {
+        "line": 91,
+        "end_line": 91
+      },
+      "after_span": {
+        "line": 91,
+        "end_line": 91
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 29
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=030",
+      "attribute": "cn",
+      "before_span": {
+        "line": 94,
+        "end_line": 94
+      },
+      "after_span": {
+        "line": 94,
+        "end_line": 94
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 30
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=031",
+      "attribute": "cn",
+      "before_span": {
+        "line": 97,
+        "end_line": 97
+      },
+      "after_span": {
+        "line": 97,
+        "end_line": 97
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 31
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=032",
+      "attribute": "cn",
+      "before_span": {
+        "line": 100,
+        "end_line": 100
+      },
+      "after_span": {
+        "line": 100,
+        "end_line": 100
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 32
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=033",
+      "attribute": "cn",
+      "before_span": {
+        "line": 103,
+        "end_line": 103
+      },
+      "after_span": {
+        "line": 103,
+        "end_line": 103
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 33
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=034",
+      "attribute": "cn",
+      "before_span": {
+        "line": 106,
+        "end_line": 106
+      },
+      "after_span": {
+        "line": 106,
+        "end_line": 106
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 34
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=035",
+      "attribute": "cn",
+      "before_span": {
+        "line": 109,
+        "end_line": 109
+      },
+      "after_span": {
+        "line": 109,
+        "end_line": 109
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 35
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=036",
+      "attribute": "cn",
+      "before_span": {
+        "line": 112,
+        "end_line": 112
+      },
+      "after_span": {
+        "line": 112,
+        "end_line": 112
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 36
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=037",
+      "attribute": "cn",
+      "before_span": {
+        "line": 115,
+        "end_line": 115
+      },
+      "after_span": {
+        "line": 115,
+        "end_line": 115
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 37
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=038",
+      "attribute": "cn",
+      "before_span": {
+        "line": 118,
+        "end_line": 118
+      },
+      "after_span": {
+        "line": 118,
+        "end_line": 118
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 38
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=039",
+      "attribute": "cn",
+      "before_span": {
+        "line": 121,
+        "end_line": 121
+      },
+      "after_span": {
+        "line": 121,
+        "end_line": 121
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 39
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=040",
+      "attribute": "cn",
+      "before_span": {
+        "line": 124,
+        "end_line": 124
+      },
+      "after_span": {
+        "line": 124,
+        "end_line": 124
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 40
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=041",
+      "attribute": "cn",
+      "before_span": {
+        "line": 127,
+        "end_line": 127
+      },
+      "after_span": {
+        "line": 127,
+        "end_line": 127
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 41
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=042",
+      "attribute": "cn",
+      "before_span": {
+        "line": 130,
+        "end_line": 130
+      },
+      "after_span": {
+        "line": 130,
+        "end_line": 130
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 42
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=043",
+      "attribute": "cn",
+      "before_span": {
+        "line": 133,
+        "end_line": 133
+      },
+      "after_span": {
+        "line": 133,
+        "end_line": 133
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 43
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=044",
+      "attribute": "cn",
+      "before_span": {
+        "line": 136,
+        "end_line": 136
+      },
+      "after_span": {
+        "line": 136,
+        "end_line": 136
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 44
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=045",
+      "attribute": "cn",
+      "before_span": {
+        "line": 139,
+        "end_line": 139
+      },
+      "after_span": {
+        "line": 139,
+        "end_line": 139
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 45
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=046",
+      "attribute": "cn",
+      "before_span": {
+        "line": 142,
+        "end_line": 142
+      },
+      "after_span": {
+        "line": 142,
+        "end_line": 142
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 46
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=047",
+      "attribute": "cn",
+      "before_span": {
+        "line": 145,
+        "end_line": 145
+      },
+      "after_span": {
+        "line": 145,
+        "end_line": 145
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 47
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=048",
+      "attribute": "cn",
+      "before_span": {
+        "line": 148,
+        "end_line": 148
+      },
+      "after_span": {
+        "line": 148,
+        "end_line": 148
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 48
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=049",
+      "attribute": "cn",
+      "before_span": {
+        "line": 151,
+        "end_line": 151
+      },
+      "after_span": {
+        "line": 151,
+        "end_line": 151
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 49
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=050",
+      "attribute": "cn",
+      "before_span": {
+        "line": 154,
+        "end_line": 154
+      },
+      "after_span": {
+        "line": 154,
+        "end_line": 154
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 50
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=051",
+      "attribute": "cn",
+      "before_span": {
+        "line": 157,
+        "end_line": 157
+      },
+      "after_span": {
+        "line": 157,
+        "end_line": 157
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 51
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=052",
+      "attribute": "cn",
+      "before_span": {
+        "line": 160,
+        "end_line": 160
+      },
+      "after_span": {
+        "line": 160,
+        "end_line": 160
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 52
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=053",
+      "attribute": "cn",
+      "before_span": {
+        "line": 163,
+        "end_line": 163
+      },
+      "after_span": {
+        "line": 163,
+        "end_line": 163
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 53
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=054",
+      "attribute": "cn",
+      "before_span": {
+        "line": 166,
+        "end_line": 166
+      },
+      "after_span": {
+        "line": 166,
+        "end_line": 166
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 54
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=055",
+      "attribute": "cn",
+      "before_span": {
+        "line": 169,
+        "end_line": 169
+      },
+      "after_span": {
+        "line": 169,
+        "end_line": 169
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 55
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=056",
+      "attribute": "cn",
+      "before_span": {
+        "line": 172,
+        "end_line": 172
+      },
+      "after_span": {
+        "line": 172,
+        "end_line": 172
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 56
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=057",
+      "attribute": "cn",
+      "before_span": {
+        "line": 175,
+        "end_line": 175
+      },
+      "after_span": {
+        "line": 175,
+        "end_line": 175
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 57
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=058",
+      "attribute": "cn",
+      "before_span": {
+        "line": 178,
+        "end_line": 178
+      },
+      "after_span": {
+        "line": 178,
+        "end_line": 178
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 58
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=059",
+      "attribute": "cn",
+      "before_span": {
+        "line": 181,
+        "end_line": 181
+      },
+      "after_span": {
+        "line": 181,
+        "end_line": 181
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 59
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=060",
+      "attribute": "cn",
+      "before_span": {
+        "line": 184,
+        "end_line": 184
+      },
+      "after_span": {
+        "line": 184,
+        "end_line": 184
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 60
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=061",
+      "attribute": "cn",
+      "before_span": {
+        "line": 187,
+        "end_line": 187
+      },
+      "after_span": {
+        "line": 187,
+        "end_line": 187
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 61
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=062",
+      "attribute": "cn",
+      "before_span": {
+        "line": 190,
+        "end_line": 190
+      },
+      "after_span": {
+        "line": 190,
+        "end_line": 190
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 62
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=063",
+      "attribute": "cn",
+      "before_span": {
+        "line": 193,
+        "end_line": 193
+      },
+      "after_span": {
+        "line": 193,
+        "end_line": 193
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 63
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=064",
+      "attribute": "cn",
+      "before_span": {
+        "line": 196,
+        "end_line": 196
+      },
+      "after_span": {
+        "line": 196,
+        "end_line": 196
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 64
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=065",
+      "attribute": "cn",
+      "before_span": {
+        "line": 199,
+        "end_line": 199
+      },
+      "after_span": {
+        "line": 199,
+        "end_line": 199
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 65
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=066",
+      "attribute": "cn",
+      "before_span": {
+        "line": 202,
+        "end_line": 202
+      },
+      "after_span": {
+        "line": 202,
+        "end_line": 202
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 66
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=067",
+      "attribute": "cn",
+      "before_span": {
+        "line": 205,
+        "end_line": 205
+      },
+      "after_span": {
+        "line": 205,
+        "end_line": 205
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 67
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=068",
+      "attribute": "cn",
+      "before_span": {
+        "line": 208,
+        "end_line": 208
+      },
+      "after_span": {
+        "line": 208,
+        "end_line": 208
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 68
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=069",
+      "attribute": "cn",
+      "before_span": {
+        "line": 211,
+        "end_line": 211
+      },
+      "after_span": {
+        "line": 211,
+        "end_line": 211
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 69
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=070",
+      "attribute": "cn",
+      "before_span": {
+        "line": 214,
+        "end_line": 214
+      },
+      "after_span": {
+        "line": 214,
+        "end_line": 214
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 70
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=071",
+      "attribute": "cn",
+      "before_span": {
+        "line": 217,
+        "end_line": 217
+      },
+      "after_span": {
+        "line": 217,
+        "end_line": 217
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 71
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=072",
+      "attribute": "cn",
+      "before_span": {
+        "line": 220,
+        "end_line": 220
+      },
+      "after_span": {
+        "line": 220,
+        "end_line": 220
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 72
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=073",
+      "attribute": "cn",
+      "before_span": {
+        "line": 223,
+        "end_line": 223
+      },
+      "after_span": {
+        "line": 223,
+        "end_line": 223
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 73
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=074",
+      "attribute": "cn",
+      "before_span": {
+        "line": 226,
+        "end_line": 226
+      },
+      "after_span": {
+        "line": 226,
+        "end_line": 226
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 74
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=075",
+      "attribute": "cn",
+      "before_span": {
+        "line": 229,
+        "end_line": 229
+      },
+      "after_span": {
+        "line": 229,
+        "end_line": 229
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 75
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=076",
+      "attribute": "cn",
+      "before_span": {
+        "line": 232,
+        "end_line": 232
+      },
+      "after_span": {
+        "line": 232,
+        "end_line": 232
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 76
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=077",
+      "attribute": "cn",
+      "before_span": {
+        "line": 235,
+        "end_line": 235
+      },
+      "after_span": {
+        "line": 235,
+        "end_line": 235
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 77
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=078",
+      "attribute": "cn",
+      "before_span": {
+        "line": 238,
+        "end_line": 238
+      },
+      "after_span": {
+        "line": 238,
+        "end_line": 238
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 78
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=079",
+      "attribute": "cn",
+      "before_span": {
+        "line": 241,
+        "end_line": 241
+      },
+      "after_span": {
+        "line": 241,
+        "end_line": 241
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 79
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=080",
+      "attribute": "cn",
+      "before_span": {
+        "line": 244,
+        "end_line": 244
+      },
+      "after_span": {
+        "line": 244,
+        "end_line": 244
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 80
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=081",
+      "attribute": "cn",
+      "before_span": {
+        "line": 247,
+        "end_line": 247
+      },
+      "after_span": {
+        "line": 247,
+        "end_line": 247
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 81
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=082",
+      "attribute": "cn",
+      "before_span": {
+        "line": 250,
+        "end_line": 250
+      },
+      "after_span": {
+        "line": 250,
+        "end_line": 250
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 82
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=083",
+      "attribute": "cn",
+      "before_span": {
+        "line": 253,
+        "end_line": 253
+      },
+      "after_span": {
+        "line": 253,
+        "end_line": 253
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 83
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=084",
+      "attribute": "cn",
+      "before_span": {
+        "line": 256,
+        "end_line": 256
+      },
+      "after_span": {
+        "line": 256,
+        "end_line": 256
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 84
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=085",
+      "attribute": "cn",
+      "before_span": {
+        "line": 259,
+        "end_line": 259
+      },
+      "after_span": {
+        "line": 259,
+        "end_line": 259
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 85
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=086",
+      "attribute": "cn",
+      "before_span": {
+        "line": 262,
+        "end_line": 262
+      },
+      "after_span": {
+        "line": 262,
+        "end_line": 262
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 86
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=087",
+      "attribute": "cn",
+      "before_span": {
+        "line": 265,
+        "end_line": 265
+      },
+      "after_span": {
+        "line": 265,
+        "end_line": 265
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 87
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=088",
+      "attribute": "cn",
+      "before_span": {
+        "line": 268,
+        "end_line": 268
+      },
+      "after_span": {
+        "line": 268,
+        "end_line": 268
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 88
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=089",
+      "attribute": "cn",
+      "before_span": {
+        "line": 271,
+        "end_line": 271
+      },
+      "after_span": {
+        "line": 271,
+        "end_line": 271
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 89
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=090",
+      "attribute": "cn",
+      "before_span": {
+        "line": 274,
+        "end_line": 274
+      },
+      "after_span": {
+        "line": 274,
+        "end_line": 274
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 90
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=091",
+      "attribute": "cn",
+      "before_span": {
+        "line": 277,
+        "end_line": 277
+      },
+      "after_span": {
+        "line": 277,
+        "end_line": 277
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 91
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=092",
+      "attribute": "cn",
+      "before_span": {
+        "line": 280,
+        "end_line": 280
+      },
+      "after_span": {
+        "line": 280,
+        "end_line": 280
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 92
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=093",
+      "attribute": "cn",
+      "before_span": {
+        "line": 283,
+        "end_line": 283
+      },
+      "after_span": {
+        "line": 283,
+        "end_line": 283
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 93
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=094",
+      "attribute": "cn",
+      "before_span": {
+        "line": 286,
+        "end_line": 286
+      },
+      "after_span": {
+        "line": 286,
+        "end_line": 286
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 94
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=095",
+      "attribute": "cn",
+      "before_span": {
+        "line": 289,
+        "end_line": 289
+      },
+      "after_span": {
+        "line": 289,
+        "end_line": 289
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 95
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=096",
+      "attribute": "cn",
+      "before_span": {
+        "line": 292,
+        "end_line": 292
+      },
+      "after_span": {
+        "line": 292,
+        "end_line": 292
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 96
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=097",
+      "attribute": "cn",
+      "before_span": {
+        "line": 295,
+        "end_line": 295
+      },
+      "after_span": {
+        "line": 295,
+        "end_line": 295
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 97
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=098",
+      "attribute": "cn",
+      "before_span": {
+        "line": 298,
+        "end_line": 298
+      },
+      "after_span": {
+        "line": 298,
+        "end_line": 298
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 98
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=099",
+      "attribute": "cn",
+      "before_span": {
+        "line": 301,
+        "end_line": 301
+      },
+      "after_span": {
+        "line": 301,
+        "end_line": 301
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 99
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=100",
+      "attribute": "cn",
+      "before_span": {
+        "line": 304,
+        "end_line": 304
+      },
+      "after_span": {
+        "line": 304,
+        "end_line": 304
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 100
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=101",
+      "attribute": "cn",
+      "before_span": {
+        "line": 307,
+        "end_line": 307
+      },
+      "after_span": {
+        "line": 307,
+        "end_line": 307
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 101
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=102",
+      "attribute": "cn",
+      "before_span": {
+        "line": 310,
+        "end_line": 310
+      },
+      "after_span": {
+        "line": 310,
+        "end_line": 310
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 102
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=103",
+      "attribute": "cn",
+      "before_span": {
+        "line": 313,
+        "end_line": 313
+      },
+      "after_span": {
+        "line": 313,
+        "end_line": 313
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 103
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=104",
+      "attribute": "cn",
+      "before_span": {
+        "line": 316,
+        "end_line": 316
+      },
+      "after_span": {
+        "line": 316,
+        "end_line": 316
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 104
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=105",
+      "attribute": "cn",
+      "before_span": {
+        "line": 319,
+        "end_line": 319
+      },
+      "after_span": {
+        "line": 319,
+        "end_line": 319
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 105
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=106",
+      "attribute": "cn",
+      "before_span": {
+        "line": 322,
+        "end_line": 322
+      },
+      "after_span": {
+        "line": 322,
+        "end_line": 322
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 106
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=107",
+      "attribute": "cn",
+      "before_span": {
+        "line": 325,
+        "end_line": 325
+      },
+      "after_span": {
+        "line": 325,
+        "end_line": 325
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 107
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=108",
+      "attribute": "cn",
+      "before_span": {
+        "line": 328,
+        "end_line": 328
+      },
+      "after_span": {
+        "line": 328,
+        "end_line": 328
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 108
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=109",
+      "attribute": "cn",
+      "before_span": {
+        "line": 331,
+        "end_line": 331
+      },
+      "after_span": {
+        "line": 331,
+        "end_line": 331
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 109
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=110",
+      "attribute": "cn",
+      "before_span": {
+        "line": 334,
+        "end_line": 334
+      },
+      "after_span": {
+        "line": 334,
+        "end_line": 334
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 110
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=111",
+      "attribute": "cn",
+      "before_span": {
+        "line": 337,
+        "end_line": 337
+      },
+      "after_span": {
+        "line": 337,
+        "end_line": 337
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 111
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=112",
+      "attribute": "cn",
+      "before_span": {
+        "line": 340,
+        "end_line": 340
+      },
+      "after_span": {
+        "line": 340,
+        "end_line": 340
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 112
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=113",
+      "attribute": "cn",
+      "before_span": {
+        "line": 343,
+        "end_line": 343
+      },
+      "after_span": {
+        "line": 343,
+        "end_line": 343
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 113
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=114",
+      "attribute": "cn",
+      "before_span": {
+        "line": 346,
+        "end_line": 346
+      },
+      "after_span": {
+        "line": 346,
+        "end_line": 346
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 114
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=115",
+      "attribute": "cn",
+      "before_span": {
+        "line": 349,
+        "end_line": 349
+      },
+      "after_span": {
+        "line": 349,
+        "end_line": 349
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 115
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=116",
+      "attribute": "cn",
+      "before_span": {
+        "line": 352,
+        "end_line": 352
+      },
+      "after_span": {
+        "line": 352,
+        "end_line": 352
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 116
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=117",
+      "attribute": "cn",
+      "before_span": {
+        "line": 355,
+        "end_line": 355
+      },
+      "after_span": {
+        "line": 355,
+        "end_line": 355
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 117
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=118",
+      "attribute": "cn",
+      "before_span": {
+        "line": 358,
+        "end_line": 358
+      },
+      "after_span": {
+        "line": 358,
+        "end_line": 358
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 118
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=119",
+      "attribute": "cn",
+      "before_span": {
+        "line": 361,
+        "end_line": 361
+      },
+      "after_span": {
+        "line": 361,
+        "end_line": 361
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 119
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=120",
+      "attribute": "cn",
+      "before_span": {
+        "line": 364,
+        "end_line": 364
+      },
+      "after_span": {
+        "line": 364,
+        "end_line": 364
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 120
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=121",
+      "attribute": "cn",
+      "before_span": {
+        "line": 367,
+        "end_line": 367
+      },
+      "after_span": {
+        "line": 367,
+        "end_line": 367
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 121
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=122",
+      "attribute": "cn",
+      "before_span": {
+        "line": 370,
+        "end_line": 370
+      },
+      "after_span": {
+        "line": 370,
+        "end_line": 370
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 122
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=123",
+      "attribute": "cn",
+      "before_span": {
+        "line": 373,
+        "end_line": 373
+      },
+      "after_span": {
+        "line": 373,
+        "end_line": 373
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 123
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=124",
+      "attribute": "cn",
+      "before_span": {
+        "line": 376,
+        "end_line": 376
+      },
+      "after_span": {
+        "line": 376,
+        "end_line": 376
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 124
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=125",
+      "attribute": "cn",
+      "before_span": {
+        "line": 379,
+        "end_line": 379
+      },
+      "after_span": {
+        "line": 379,
+        "end_line": 379
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 125
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=126",
+      "attribute": "cn",
+      "before_span": {
+        "line": 382,
+        "end_line": 382
+      },
+      "after_span": {
+        "line": 382,
+        "end_line": 382
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 126
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=127",
+      "attribute": "cn",
+      "before_span": {
+        "line": 385,
+        "end_line": 385
+      },
+      "after_span": {
+        "line": 385,
+        "end_line": 385
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 127
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=128",
+      "attribute": "cn",
+      "before_span": {
+        "line": 388,
+        "end_line": 388
+      },
+      "after_span": {
+        "line": 388,
+        "end_line": 388
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 128
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=129",
+      "attribute": "cn",
+      "before_span": {
+        "line": 391,
+        "end_line": 391
+      },
+      "after_span": {
+        "line": 391,
+        "end_line": 391
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 129
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=130",
+      "attribute": "cn",
+      "before_span": {
+        "line": 394,
+        "end_line": 394
+      },
+      "after_span": {
+        "line": 394,
+        "end_line": 394
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 130
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=131",
+      "attribute": "cn",
+      "before_span": {
+        "line": 397,
+        "end_line": 397
+      },
+      "after_span": {
+        "line": 397,
+        "end_line": 397
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 131
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=132",
+      "attribute": "cn",
+      "before_span": {
+        "line": 400,
+        "end_line": 400
+      },
+      "after_span": {
+        "line": 400,
+        "end_line": 400
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 132
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=133",
+      "attribute": "cn",
+      "before_span": {
+        "line": 403,
+        "end_line": 403
+      },
+      "after_span": {
+        "line": 403,
+        "end_line": 403
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 133
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=134",
+      "attribute": "cn",
+      "before_span": {
+        "line": 406,
+        "end_line": 406
+      },
+      "after_span": {
+        "line": 406,
+        "end_line": 406
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 134
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=135",
+      "attribute": "cn",
+      "before_span": {
+        "line": 409,
+        "end_line": 409
+      },
+      "after_span": {
+        "line": 409,
+        "end_line": 409
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 135
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=136",
+      "attribute": "cn",
+      "before_span": {
+        "line": 412,
+        "end_line": 412
+      },
+      "after_span": {
+        "line": 412,
+        "end_line": 412
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 136
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=137",
+      "attribute": "cn",
+      "before_span": {
+        "line": 415,
+        "end_line": 415
+      },
+      "after_span": {
+        "line": 415,
+        "end_line": 415
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 137
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=138",
+      "attribute": "cn",
+      "before_span": {
+        "line": 418,
+        "end_line": 418
+      },
+      "after_span": {
+        "line": 418,
+        "end_line": 418
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 138
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=139",
+      "attribute": "cn",
+      "before_span": {
+        "line": 421,
+        "end_line": 421
+      },
+      "after_span": {
+        "line": 421,
+        "end_line": 421
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 139
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=140",
+      "attribute": "cn",
+      "before_span": {
+        "line": 424,
+        "end_line": 424
+      },
+      "after_span": {
+        "line": 424,
+        "end_line": 424
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 140
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=141",
+      "attribute": "cn",
+      "before_span": {
+        "line": 427,
+        "end_line": 427
+      },
+      "after_span": {
+        "line": 427,
+        "end_line": 427
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 141
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=142",
+      "attribute": "cn",
+      "before_span": {
+        "line": 430,
+        "end_line": 430
+      },
+      "after_span": {
+        "line": 430,
+        "end_line": 430
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 142
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=143",
+      "attribute": "cn",
+      "before_span": {
+        "line": 433,
+        "end_line": 433
+      },
+      "after_span": {
+        "line": 433,
+        "end_line": 433
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 143
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=144",
+      "attribute": "cn",
+      "before_span": {
+        "line": 436,
+        "end_line": 436
+      },
+      "after_span": {
+        "line": 436,
+        "end_line": 436
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 144
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=145",
+      "attribute": "cn",
+      "before_span": {
+        "line": 439,
+        "end_line": 439
+      },
+      "after_span": {
+        "line": 439,
+        "end_line": 439
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 145
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=146",
+      "attribute": "cn",
+      "before_span": {
+        "line": 442,
+        "end_line": 442
+      },
+      "after_span": {
+        "line": 442,
+        "end_line": 442
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 146
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=147",
+      "attribute": "cn",
+      "before_span": {
+        "line": 445,
+        "end_line": 445
+      },
+      "after_span": {
+        "line": 445,
+        "end_line": 445
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 147
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=148",
+      "attribute": "cn",
+      "before_span": {
+        "line": 448,
+        "end_line": 448
+      },
+      "after_span": {
+        "line": 448,
+        "end_line": 448
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 148
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=149",
+      "attribute": "cn",
+      "before_span": {
+        "line": 451,
+        "end_line": 451
+      },
+      "after_span": {
+        "line": 451,
+        "end_line": 451
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 149
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=150",
+      "attribute": "cn",
+      "before_span": {
+        "line": 454,
+        "end_line": 454
+      },
+      "after_span": {
+        "line": 454,
+        "end_line": 454
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 150
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=151",
+      "attribute": "cn",
+      "before_span": {
+        "line": 457,
+        "end_line": 457
+      },
+      "after_span": {
+        "line": 457,
+        "end_line": 457
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 151
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=152",
+      "attribute": "cn",
+      "before_span": {
+        "line": 460,
+        "end_line": 460
+      },
+      "after_span": {
+        "line": 460,
+        "end_line": 460
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 152
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=153",
+      "attribute": "cn",
+      "before_span": {
+        "line": 463,
+        "end_line": 463
+      },
+      "after_span": {
+        "line": 463,
+        "end_line": 463
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 153
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=154",
+      "attribute": "cn",
+      "before_span": {
+        "line": 466,
+        "end_line": 466
+      },
+      "after_span": {
+        "line": 466,
+        "end_line": 466
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 154
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=155",
+      "attribute": "cn",
+      "before_span": {
+        "line": 469,
+        "end_line": 469
+      },
+      "after_span": {
+        "line": 469,
+        "end_line": 469
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 155
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=156",
+      "attribute": "cn",
+      "before_span": {
+        "line": 472,
+        "end_line": 472
+      },
+      "after_span": {
+        "line": 472,
+        "end_line": 472
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 156
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=157",
+      "attribute": "cn",
+      "before_span": {
+        "line": 475,
+        "end_line": 475
+      },
+      "after_span": {
+        "line": 475,
+        "end_line": 475
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 157
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=158",
+      "attribute": "cn",
+      "before_span": {
+        "line": 478,
+        "end_line": 478
+      },
+      "after_span": {
+        "line": 478,
+        "end_line": 478
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 158
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=159",
+      "attribute": "cn",
+      "before_span": {
+        "line": 481,
+        "end_line": 481
+      },
+      "after_span": {
+        "line": 481,
+        "end_line": 481
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 159
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=160",
+      "attribute": "cn",
+      "before_span": {
+        "line": 484,
+        "end_line": 484
+      },
+      "after_span": {
+        "line": 484,
+        "end_line": 484
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 160
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=161",
+      "attribute": "cn",
+      "before_span": {
+        "line": 487,
+        "end_line": 487
+      },
+      "after_span": {
+        "line": 487,
+        "end_line": 487
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 161
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=162",
+      "attribute": "cn",
+      "before_span": {
+        "line": 490,
+        "end_line": 490
+      },
+      "after_span": {
+        "line": 490,
+        "end_line": 490
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 162
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=163",
+      "attribute": "cn",
+      "before_span": {
+        "line": 493,
+        "end_line": 493
+      },
+      "after_span": {
+        "line": 493,
+        "end_line": 493
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 163
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=164",
+      "attribute": "cn",
+      "before_span": {
+        "line": 496,
+        "end_line": 496
+      },
+      "after_span": {
+        "line": 496,
+        "end_line": 496
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 164
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=165",
+      "attribute": "cn",
+      "before_span": {
+        "line": 499,
+        "end_line": 499
+      },
+      "after_span": {
+        "line": 499,
+        "end_line": 499
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 165
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=166",
+      "attribute": "cn",
+      "before_span": {
+        "line": 502,
+        "end_line": 502
+      },
+      "after_span": {
+        "line": 502,
+        "end_line": 502
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 166
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=167",
+      "attribute": "cn",
+      "before_span": {
+        "line": 505,
+        "end_line": 505
+      },
+      "after_span": {
+        "line": 505,
+        "end_line": 505
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 167
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=168",
+      "attribute": "cn",
+      "before_span": {
+        "line": 508,
+        "end_line": 508
+      },
+      "after_span": {
+        "line": 508,
+        "end_line": 508
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 168
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=169",
+      "attribute": "cn",
+      "before_span": {
+        "line": 511,
+        "end_line": 511
+      },
+      "after_span": {
+        "line": 511,
+        "end_line": 511
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 169
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=170",
+      "attribute": "cn",
+      "before_span": {
+        "line": 514,
+        "end_line": 514
+      },
+      "after_span": {
+        "line": 514,
+        "end_line": 514
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 170
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=171",
+      "attribute": "cn",
+      "before_span": {
+        "line": 517,
+        "end_line": 517
+      },
+      "after_span": {
+        "line": 517,
+        "end_line": 517
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 171
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=172",
+      "attribute": "cn",
+      "before_span": {
+        "line": 520,
+        "end_line": 520
+      },
+      "after_span": {
+        "line": 520,
+        "end_line": 520
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 172
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=173",
+      "attribute": "cn",
+      "before_span": {
+        "line": 523,
+        "end_line": 523
+      },
+      "after_span": {
+        "line": 523,
+        "end_line": 523
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 173
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=174",
+      "attribute": "cn",
+      "before_span": {
+        "line": 526,
+        "end_line": 526
+      },
+      "after_span": {
+        "line": 526,
+        "end_line": 526
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 174
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=175",
+      "attribute": "cn",
+      "before_span": {
+        "line": 529,
+        "end_line": 529
+      },
+      "after_span": {
+        "line": 529,
+        "end_line": 529
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 175
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=176",
+      "attribute": "cn",
+      "before_span": {
+        "line": 532,
+        "end_line": 532
+      },
+      "after_span": {
+        "line": 532,
+        "end_line": 532
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 176
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=177",
+      "attribute": "cn",
+      "before_span": {
+        "line": 535,
+        "end_line": 535
+      },
+      "after_span": {
+        "line": 535,
+        "end_line": 535
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 177
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=178",
+      "attribute": "cn",
+      "before_span": {
+        "line": 538,
+        "end_line": 538
+      },
+      "after_span": {
+        "line": 538,
+        "end_line": 538
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 178
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=179",
+      "attribute": "cn",
+      "before_span": {
+        "line": 541,
+        "end_line": 541
+      },
+      "after_span": {
+        "line": 541,
+        "end_line": 541
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 179
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=180",
+      "attribute": "cn",
+      "before_span": {
+        "line": 544,
+        "end_line": 544
+      },
+      "after_span": {
+        "line": 544,
+        "end_line": 544
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 180
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=181",
+      "attribute": "cn",
+      "before_span": {
+        "line": 547,
+        "end_line": 547
+      },
+      "after_span": {
+        "line": 547,
+        "end_line": 547
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 181
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=182",
+      "attribute": "cn",
+      "before_span": {
+        "line": 550,
+        "end_line": 550
+      },
+      "after_span": {
+        "line": 550,
+        "end_line": 550
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 182
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=183",
+      "attribute": "cn",
+      "before_span": {
+        "line": 553,
+        "end_line": 553
+      },
+      "after_span": {
+        "line": 553,
+        "end_line": 553
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 183
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=184",
+      "attribute": "cn",
+      "before_span": {
+        "line": 556,
+        "end_line": 556
+      },
+      "after_span": {
+        "line": 556,
+        "end_line": 556
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 184
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=185",
+      "attribute": "cn",
+      "before_span": {
+        "line": 559,
+        "end_line": 559
+      },
+      "after_span": {
+        "line": 559,
+        "end_line": 559
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 185
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=186",
+      "attribute": "cn",
+      "before_span": {
+        "line": 562,
+        "end_line": 562
+      },
+      "after_span": {
+        "line": 562,
+        "end_line": 562
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 186
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=187",
+      "attribute": "cn",
+      "before_span": {
+        "line": 565,
+        "end_line": 565
+      },
+      "after_span": {
+        "line": 565,
+        "end_line": 565
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 187
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=188",
+      "attribute": "cn",
+      "before_span": {
+        "line": 568,
+        "end_line": 568
+      },
+      "after_span": {
+        "line": 568,
+        "end_line": 568
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 188
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=189",
+      "attribute": "cn",
+      "before_span": {
+        "line": 571,
+        "end_line": 571
+      },
+      "after_span": {
+        "line": 571,
+        "end_line": 571
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 189
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=190",
+      "attribute": "cn",
+      "before_span": {
+        "line": 574,
+        "end_line": 574
+      },
+      "after_span": {
+        "line": 574,
+        "end_line": 574
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 190
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=191",
+      "attribute": "cn",
+      "before_span": {
+        "line": 577,
+        "end_line": 577
+      },
+      "after_span": {
+        "line": 577,
+        "end_line": 577
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 191
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=192",
+      "attribute": "cn",
+      "before_span": {
+        "line": 580,
+        "end_line": 580
+      },
+      "after_span": {
+        "line": 580,
+        "end_line": 580
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 192
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=193",
+      "attribute": "cn",
+      "before_span": {
+        "line": 583,
+        "end_line": 583
+      },
+      "after_span": {
+        "line": 583,
+        "end_line": 583
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 193
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=194",
+      "attribute": "cn",
+      "before_span": {
+        "line": 586,
+        "end_line": 586
+      },
+      "after_span": {
+        "line": 586,
+        "end_line": 586
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 194
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=195",
+      "attribute": "cn",
+      "before_span": {
+        "line": 589,
+        "end_line": 589
+      },
+      "after_span": {
+        "line": 589,
+        "end_line": 589
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 195
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=196",
+      "attribute": "cn",
+      "before_span": {
+        "line": 592,
+        "end_line": 592
+      },
+      "after_span": {
+        "line": 592,
+        "end_line": 592
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 196
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=197",
+      "attribute": "cn",
+      "before_span": {
+        "line": 595,
+        "end_line": 595
+      },
+      "after_span": {
+        "line": 595,
+        "end_line": 595
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 197
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=198",
+      "attribute": "cn",
+      "before_span": {
+        "line": 598,
+        "end_line": 598
+      },
+      "after_span": {
+        "line": 598,
+        "end_line": 598
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 198
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=199",
+      "attribute": "cn",
+      "before_span": {
+        "line": 601,
+        "end_line": 601
+      },
+      "after_span": {
+        "line": 601,
+        "end_line": 601
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 199
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=200",
+      "attribute": "cn",
+      "before_span": {
+        "line": 604,
+        "end_line": 604
+      },
+      "after_span": {
+        "line": 604,
+        "end_line": 604
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 200
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=201",
+      "attribute": "cn",
+      "before_span": {
+        "line": 607,
+        "end_line": 607
+      },
+      "after_span": {
+        "line": 607,
+        "end_line": 607
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 201
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=202",
+      "attribute": "cn",
+      "before_span": {
+        "line": 610,
+        "end_line": 610
+      },
+      "after_span": {
+        "line": 610,
+        "end_line": 610
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 202
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=203",
+      "attribute": "cn",
+      "before_span": {
+        "line": 613,
+        "end_line": 613
+      },
+      "after_span": {
+        "line": 613,
+        "end_line": 613
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 203
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=204",
+      "attribute": "cn",
+      "before_span": {
+        "line": 616,
+        "end_line": 616
+      },
+      "after_span": {
+        "line": 616,
+        "end_line": 616
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 204
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=205",
+      "attribute": "cn",
+      "before_span": {
+        "line": 619,
+        "end_line": 619
+      },
+      "after_span": {
+        "line": 619,
+        "end_line": 619
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 205
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=206",
+      "attribute": "cn",
+      "before_span": {
+        "line": 622,
+        "end_line": 622
+      },
+      "after_span": {
+        "line": 622,
+        "end_line": 622
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 206
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=207",
+      "attribute": "cn",
+      "before_span": {
+        "line": 625,
+        "end_line": 625
+      },
+      "after_span": {
+        "line": 625,
+        "end_line": 625
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 207
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=208",
+      "attribute": "cn",
+      "before_span": {
+        "line": 628,
+        "end_line": 628
+      },
+      "after_span": {
+        "line": 628,
+        "end_line": 628
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 208
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=209",
+      "attribute": "cn",
+      "before_span": {
+        "line": 631,
+        "end_line": 631
+      },
+      "after_span": {
+        "line": 631,
+        "end_line": 631
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 209
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=210",
+      "attribute": "cn",
+      "before_span": {
+        "line": 634,
+        "end_line": 634
+      },
+      "after_span": {
+        "line": 634,
+        "end_line": 634
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 210
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=211",
+      "attribute": "cn",
+      "before_span": {
+        "line": 637,
+        "end_line": 637
+      },
+      "after_span": {
+        "line": 637,
+        "end_line": 637
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 211
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=212",
+      "attribute": "cn",
+      "before_span": {
+        "line": 640,
+        "end_line": 640
+      },
+      "after_span": {
+        "line": 640,
+        "end_line": 640
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 212
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=213",
+      "attribute": "cn",
+      "before_span": {
+        "line": 643,
+        "end_line": 643
+      },
+      "after_span": {
+        "line": 643,
+        "end_line": 643
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 213
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=214",
+      "attribute": "cn",
+      "before_span": {
+        "line": 646,
+        "end_line": 646
+      },
+      "after_span": {
+        "line": 646,
+        "end_line": 646
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 214
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=215",
+      "attribute": "cn",
+      "before_span": {
+        "line": 649,
+        "end_line": 649
+      },
+      "after_span": {
+        "line": 649,
+        "end_line": 649
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 215
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=216",
+      "attribute": "cn",
+      "before_span": {
+        "line": 652,
+        "end_line": 652
+      },
+      "after_span": {
+        "line": 652,
+        "end_line": 652
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 216
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=217",
+      "attribute": "cn",
+      "before_span": {
+        "line": 655,
+        "end_line": 655
+      },
+      "after_span": {
+        "line": 655,
+        "end_line": 655
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 217
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=218",
+      "attribute": "cn",
+      "before_span": {
+        "line": 658,
+        "end_line": 658
+      },
+      "after_span": {
+        "line": 658,
+        "end_line": 658
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 218
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=219",
+      "attribute": "cn",
+      "before_span": {
+        "line": 661,
+        "end_line": 661
+      },
+      "after_span": {
+        "line": 661,
+        "end_line": 661
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 219
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=220",
+      "attribute": "cn",
+      "before_span": {
+        "line": 664,
+        "end_line": 664
+      },
+      "after_span": {
+        "line": 664,
+        "end_line": 664
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 220
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=221",
+      "attribute": "cn",
+      "before_span": {
+        "line": 667,
+        "end_line": 667
+      },
+      "after_span": {
+        "line": 667,
+        "end_line": 667
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 221
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=222",
+      "attribute": "cn",
+      "before_span": {
+        "line": 670,
+        "end_line": 670
+      },
+      "after_span": {
+        "line": 670,
+        "end_line": 670
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 222
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=223",
+      "attribute": "cn",
+      "before_span": {
+        "line": 673,
+        "end_line": 673
+      },
+      "after_span": {
+        "line": 673,
+        "end_line": 673
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 223
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=224",
+      "attribute": "cn",
+      "before_span": {
+        "line": 676,
+        "end_line": 676
+      },
+      "after_span": {
+        "line": 676,
+        "end_line": 676
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 224
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=225",
+      "attribute": "cn",
+      "before_span": {
+        "line": 679,
+        "end_line": 679
+      },
+      "after_span": {
+        "line": 679,
+        "end_line": 679
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 225
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=226",
+      "attribute": "cn",
+      "before_span": {
+        "line": 682,
+        "end_line": 682
+      },
+      "after_span": {
+        "line": 682,
+        "end_line": 682
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 226
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=227",
+      "attribute": "cn",
+      "before_span": {
+        "line": 685,
+        "end_line": 685
+      },
+      "after_span": {
+        "line": 685,
+        "end_line": 685
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 227
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=228",
+      "attribute": "cn",
+      "before_span": {
+        "line": 688,
+        "end_line": 688
+      },
+      "after_span": {
+        "line": 688,
+        "end_line": 688
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 228
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=229",
+      "attribute": "cn",
+      "before_span": {
+        "line": 691,
+        "end_line": 691
+      },
+      "after_span": {
+        "line": 691,
+        "end_line": 691
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 229
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=230",
+      "attribute": "cn",
+      "before_span": {
+        "line": 694,
+        "end_line": 694
+      },
+      "after_span": {
+        "line": 694,
+        "end_line": 694
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 230
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=231",
+      "attribute": "cn",
+      "before_span": {
+        "line": 697,
+        "end_line": 697
+      },
+      "after_span": {
+        "line": 697,
+        "end_line": 697
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 231
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=232",
+      "attribute": "cn",
+      "before_span": {
+        "line": 700,
+        "end_line": 700
+      },
+      "after_span": {
+        "line": 700,
+        "end_line": 700
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 232
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=233",
+      "attribute": "cn",
+      "before_span": {
+        "line": 703,
+        "end_line": 703
+      },
+      "after_span": {
+        "line": 703,
+        "end_line": 703
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 233
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=234",
+      "attribute": "cn",
+      "before_span": {
+        "line": 706,
+        "end_line": 706
+      },
+      "after_span": {
+        "line": 706,
+        "end_line": 706
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 234
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=235",
+      "attribute": "cn",
+      "before_span": {
+        "line": 709,
+        "end_line": 709
+      },
+      "after_span": {
+        "line": 709,
+        "end_line": 709
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 235
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=236",
+      "attribute": "cn",
+      "before_span": {
+        "line": 712,
+        "end_line": 712
+      },
+      "after_span": {
+        "line": 712,
+        "end_line": 712
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 236
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=237",
+      "attribute": "cn",
+      "before_span": {
+        "line": 715,
+        "end_line": 715
+      },
+      "after_span": {
+        "line": 715,
+        "end_line": 715
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 237
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=238",
+      "attribute": "cn",
+      "before_span": {
+        "line": 718,
+        "end_line": 718
+      },
+      "after_span": {
+        "line": 718,
+        "end_line": 718
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 238
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=239",
+      "attribute": "cn",
+      "before_span": {
+        "line": 721,
+        "end_line": 721
+      },
+      "after_span": {
+        "line": 721,
+        "end_line": 721
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 239
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=240",
+      "attribute": "cn",
+      "before_span": {
+        "line": 724,
+        "end_line": 724
+      },
+      "after_span": {
+        "line": 724,
+        "end_line": 724
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 240
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=241",
+      "attribute": "cn",
+      "before_span": {
+        "line": 727,
+        "end_line": 727
+      },
+      "after_span": {
+        "line": 727,
+        "end_line": 727
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 241
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=242",
+      "attribute": "cn",
+      "before_span": {
+        "line": 730,
+        "end_line": 730
+      },
+      "after_span": {
+        "line": 730,
+        "end_line": 730
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 242
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=243",
+      "attribute": "cn",
+      "before_span": {
+        "line": 733,
+        "end_line": 733
+      },
+      "after_span": {
+        "line": 733,
+        "end_line": 733
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 243
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=244",
+      "attribute": "cn",
+      "before_span": {
+        "line": 736,
+        "end_line": 736
+      },
+      "after_span": {
+        "line": 736,
+        "end_line": 736
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 244
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=245",
+      "attribute": "cn",
+      "before_span": {
+        "line": 739,
+        "end_line": 739
+      },
+      "after_span": {
+        "line": 739,
+        "end_line": 739
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 245
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=246",
+      "attribute": "cn",
+      "before_span": {
+        "line": 742,
+        "end_line": 742
+      },
+      "after_span": {
+        "line": 742,
+        "end_line": 742
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 246
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=247",
+      "attribute": "cn",
+      "before_span": {
+        "line": 745,
+        "end_line": 745
+      },
+      "after_span": {
+        "line": 745,
+        "end_line": 745
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 247
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=248",
+      "attribute": "cn",
+      "before_span": {
+        "line": 748,
+        "end_line": 748
+      },
+      "after_span": {
+        "line": 748,
+        "end_line": 748
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 248
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=249",
+      "attribute": "cn",
+      "before_span": {
+        "line": 751,
+        "end_line": 751
+      },
+      "after_span": {
+        "line": 751,
+        "end_line": 751
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 249
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=250",
+      "attribute": "cn",
+      "before_span": {
+        "line": 754,
+        "end_line": 754
+      },
+      "after_span": {
+        "line": 754,
+        "end_line": 754
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 250
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=251",
+      "attribute": "cn",
+      "before_span": {
+        "line": 757,
+        "end_line": 757
+      },
+      "after_span": {
+        "line": 757,
+        "end_line": 757
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 251
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=252",
+      "attribute": "cn",
+      "before_span": {
+        "line": 760,
+        "end_line": 760
+      },
+      "after_span": {
+        "line": 760,
+        "end_line": 760
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 252
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=253",
+      "attribute": "cn",
+      "before_span": {
+        "line": 763,
+        "end_line": 763
+      },
+      "after_span": {
+        "line": 763,
+        "end_line": 763
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 253
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=254",
+      "attribute": "cn",
+      "before_span": {
+        "line": 766,
+        "end_line": 766
+      },
+      "after_span": {
+        "line": 766,
+        "end_line": 766
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 254
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=255",
+      "attribute": "cn",
+      "before_span": {
+        "line": 769,
+        "end_line": 769
+      },
+      "after_span": {
+        "line": 769,
+        "end_line": 769
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 255
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=256",
+      "attribute": "cn",
+      "before_span": {
+        "line": 772,
+        "end_line": 772
+      },
+      "after_span": {
+        "line": 772,
+        "end_line": 772
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 256
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=257",
+      "attribute": "cn",
+      "before_span": {
+        "line": 775,
+        "end_line": 775
+      },
+      "after_span": {
+        "line": 775,
+        "end_line": 775
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 257
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=258",
+      "attribute": "cn",
+      "before_span": {
+        "line": 778,
+        "end_line": 778
+      },
+      "after_span": {
+        "line": 778,
+        "end_line": 778
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 258
+    },
+    {
+      "code": "values-changed",
+      "dn": "cn=259",
+      "attribute": "cn",
+      "before_span": {
+        "line": 781,
+        "end_line": 781
+      },
+      "after_span": {
+        "line": 781,
+        "end_line": 781
+      },
+      "removed_value_count": 1,
+      "added_value_count": 1,
+      "item_index": 259
+    }
+  ]
+}

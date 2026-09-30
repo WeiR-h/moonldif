@@ -4,7 +4,7 @@ import { resolve, join } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { createHash } from 'node:crypto';
 import assert from 'node:assert/strict';
-const before = await import(pathToFileURL(resolve(process.argv[2] || 'verification/local/baseline-0.7.3/core.mjs')));
+const before = await import(pathToFileURL(resolve(process.argv[2] || 'verification/local/baseline-0.7.4/core.mjs')));
 const after = await import(pathToFileURL(resolve('dist/core.mjs')));
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 const inputs = [];
@@ -38,7 +38,7 @@ function normalize(envelope) {
   x.output = x.output.replace(/^- version: \d+&#46;\d+&#46;\d+$/gm, '- version: <VERSION>');
   return x;
 }
-const evidence = { status: 'running', method: 'Identical bytes/options compared against frozen v0.7.3; only tool-version metadata normalized; complete envelope including written LDIF and v2 pages/full reports compared', cases: [] };
+const evidence = { status: 'running', method: 'Identical bytes/options compared against frozen v0.7.4; only tool-version metadata normalized; complete envelope including written LDIF and v2 pages/full reports compared', cases: [] };
 try {
   for (const input of inputs) {
     for (const [command, format] of [['check','json'],['inspect','json'],['review','json'],['review','text'],['review','markdown'],['format','json']]) {
