@@ -11,14 +11,12 @@ pub fn profile_validate(encoded : String) -> String {
     "exit_code": 0,
     "canonical": p.canonical(),
     "profile": p.to_json(),
-    "canonical_review": (p.effective_json("review") catch { _ => Json::null() })
-    .stringify()
-    .to_json(),
-    "canonical_compare": (p.effective_json("compare") catch {
-      _ => Json::null()
-    })
-    .stringify()
-    .to_json(),
+    "canonical_review": ToJson::to_json(
+      (p.effective_json("review") catch { _ => Json::null() }).stringify(),
+    ),
+    "canonical_compare": ToJson::to_json(
+      (p.effective_json("compare") catch { _ => Json::null() }).stringify(),
+    ),
   }
   result.stringify()
 }

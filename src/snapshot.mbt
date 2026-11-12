@@ -1,12 +1,12 @@
 ///|
 /// A bounded comparison of two content exports, not an executable LDAP patch.
 pub struct SnapshotDiff {
-  priv code : Int
+  priv code : Int32
   priv result : Json
 }
 
 ///|
-pub fn SnapshotDiff::exit_code(self : SnapshotDiff) -> Int {
+pub fn SnapshotDiff::exit_code(self : SnapshotDiff) -> Int32 {
   self.code
 }
 
@@ -48,8 +48,8 @@ fn snapshot_attribute_key(name : String) -> String {
 
 ///|
 priv struct SnapshotAttribute {
-  values : Map[String, Int]
-  mut count : Int
+  values : Map[String, Int32]
+  mut count : Int32
   mut span : Span
 }
 
@@ -127,16 +127,16 @@ fn snapshot_span(span : Span?) -> Json {
 }
 
 ///|
-fn snapshot_source(report : Report, length : Int, sha : String?) -> Json {
+fn snapshot_source(report : Report, length : Int32, sha : String?) -> Json {
   {
-    "byte_length": length.to_json(),
+    "byte_length": ToJson::to_json(length),
     "sha256": match sha {
       Some(s) => ToJson::to_json(s)
       None => Json::null()
     },
-    "status": report.status().to_json(),
-    "record_count": report.document.records.length().to_json(),
-    "diagnostics": report.diagnostics.to_json(),
+    "status": ToJson::to_json(report.status()),
+    "record_count": ToJson::to_json(report.document.records.length()),
+    "diagnostics": ToJson::to_json(report.diagnostics),
   }
 }
 
@@ -152,11 +152,11 @@ fn snapshot_source(report : Report, length : Int, sha : String?) -> Json {
 pub fn compare_snapshots(
   before : Bytes,
   after : Bytes,
-  allow_missing_version? : Bool = false,
-  legacy_dn_spaces? : Bool = false,
-  before_sha256? : String? = None,
-  after_sha256? : String? = None,
-  ignored_attributes? : Array[String] = [],
+  allow_missing_version~ : Bool = false,
+  legacy_dn_spaces~ : Bool = false,
+  before_sha256~ : String? = None,
+  after_sha256~ : String? = None,
+  ignored_attributes~ : Array[String] = [],
 ) -> SnapshotDiff {
   snapshot_compare(
     before,
@@ -174,11 +174,11 @@ pub fn compare_snapshots(
 fn snapshot_compare(
   before : Bytes,
   after : Bytes,
-  allow_missing_version? : Bool = false,
-  legacy_dn_spaces? : Bool = false,
-  before_sha256? : String? = None,
-  after_sha256? : String? = None,
-  ignored_attributes? : Array[String] = [],
+  allow_missing_version~ : Bool = false,
+  legacy_dn_spaces~ : Bool = false,
+  before_sha256~ : String? = None,
+  after_sha256~ : String? = None,
+  ignored_attributes~ : Array[String] = [],
   retained~ : Array[SnapshotItem]?,
 ) -> SnapshotDiff {
   let options : Options = { allow_missing_version, deny_delete: false, }
@@ -210,7 +210,7 @@ fn snapshot_compare(
       failed = true
       diagnostics.push({
         "code": "snapshot-content-only",
-        "side": side.to_json(),
+        "side": ToJson::to_json(side),
         "reason": "Comparison accepts content exports, not change plans.",
       })
     }
@@ -223,7 +223,7 @@ fn snapshot_compare(
         failed = true
         diagnostics.push({
           "code": "snapshot-source-hash",
-          "side": side.to_json(),
+          "side": ToJson::to_json(side),
           "reason": "SHA-256 must be 64 lowercase hexadecimal characters.",
         })
       }
@@ -231,7 +231,7 @@ fn snapshot_compare(
   }
   let can_compare = !failed
   let items : Array[Json] = []
-  let counts : Map[String, Int] = {
+  let counts : Map[String, Int32] = {
     "entry-added": 0,
     "entry-removed": 0,
     "attribute-added": 0,
@@ -241,15 +241,15 @@ fn snapshot_compare(
   let mut total = 0
   let mut ambiguous = 0
   let mut compared = 0
-  let excluded_counts : Map[String, Int] = { "before": 0, "after": 0 }
+  let excluded_counts : Map[String, Int32] = { "before": 0, "after": 0 }
   fn add_item(
     code : String,
     dn : String,
     attr : String?,
     old_span : Span?,
     new_span : Span?,
-    removed : Int,
-    added : Int,
+    removed : Int32,
+    added : Int32,
   ) {
     total += 1
     counts[code] = counts.get(code).unwrap_or(0) + 1
@@ -266,16 +266,16 @@ fn snapshot_compare(
     }
     if items.length() < 200 {
       items.push({
-        "code": code.to_json(),
-        "dn": dn.to_json(),
+        "code": ToJson::to_json(code),
+        "dn": ToJson::to_json(dn),
         "attribute": match attr {
-          Some(a) => a.to_json()
+          Some(a) => ToJson::to_json(a)
           None => Json::null()
         },
         "before_span": snapshot_span(old_span),
         "after_span": snapshot_span(new_span),
-        "removed_value_count": removed.to_json(),
-        "added_value_count": added.to_json(),
+        "removed_value_count": ToJson::to_json(removed),
+        "added_value_count": ToJson::to_json(added),
       })
     }
   }
@@ -304,9 +304,9 @@ fn snapshot_compare(
         if diagnostics.length() < 100 {
           diagnostics.push({
             "code": "snapshot-duplicate-dn",
-            "dn": dn.to_json(),
-            "before_count": aa.length().to_json(),
-            "after_count": bb.length().to_json(),
+            "dn": ToJson::to_json(dn),
+            "before_count": ToJson::to_json(aa.length()),
+            "after_count": ToJson::to_json(bb.length()),
             "before_span": if aa.is_empty() {
               Json::null()
             } else {
@@ -390,37 +390,37 @@ fn snapshot_compare(
     code,
     result: {
       "tool": "MoonLDIF",
-      "version": version().to_json(),
+      "version": ToJson::to_json(version()),
       "kind": "snapshot-diff",
       "report_schema_version": 1,
-      "exit_code": code.to_json(),
-      "status": (if failed { "incomplete" } else { "complete" }).to_json(),
-      "analysis_complete": (!failed).to_json(),
-      "comparison_performed": can_compare.to_json(),
+      "exit_code": ToJson::to_json(code),
+      "status": ToJson::to_json(if failed { "incomplete" } else { "complete" }),
+      "analysis_complete": ToJson::to_json(!failed),
+      "comparison_performed": ToJson::to_json(can_compare),
       "matching": "Exact decoded DN string; ASCII-insensitive attribute descriptions; byte multiset values",
       "scope": "Export comparison only; not LDAP semantic equality, rename detection or an executable patch. Reports contain DNs, not attribute values.",
       "options": {
-        "allow_missing_version": allow_missing_version.to_json(),
-        "legacy_dn_spaces": legacy_dn_spaces.to_json(),
-        "ignored_attributes": ignored_names.to_json(),
+        "allow_missing_version": ToJson::to_json(allow_missing_version),
+        "legacy_dn_spaces": ToJson::to_json(legacy_dn_spaces),
+        "ignored_attributes": ToJson::to_json(ignored_names),
       },
       "excluded_attribute_occurrences": if can_compare {
-        excluded_counts.to_json()
+        ToJson::to_json(excluded_counts)
       } else {
         Json::null()
       },
       "exclusion_scope": "Exact canonical attribute description, including options. Counts cover all parsed entry attribute occurrences, not differences. Entry additions/removals and all input checks remain active.",
       "before": snapshot_source(old, before.length(), before_sha256),
       "after": snapshot_source(new, after.length(), after_sha256),
-      "diagnostics": diagnostics.to_json(),
-      "diagnostics_truncated": (ambiguous > 100).to_json(),
-      "ambiguous_dn_count": ambiguous.to_json(),
-      "compared_dn_count": compared.to_json(),
-      "counts": counts.to_json(),
-      "total_changes": total.to_json(),
-      "reported_changes": items.length().to_json(),
-      "truncated": (total > items.length()).to_json(),
-      "changes": items.to_json(),
+      "diagnostics": ToJson::to_json(diagnostics),
+      "diagnostics_truncated": ToJson::to_json(ambiguous > 100),
+      "ambiguous_dn_count": ToJson::to_json(ambiguous),
+      "compared_dn_count": ToJson::to_json(compared),
+      "counts": ToJson::to_json(counts),
+      "total_changes": ToJson::to_json(total),
+      "reported_changes": ToJson::to_json(items.length()),
+      "truncated": ToJson::to_json(total > items.length()),
+      "changes": ToJson::to_json(items),
     },
   }
 }

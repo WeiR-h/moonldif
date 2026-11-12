@@ -19,7 +19,8 @@ assert.ok(read('docs/SUPPORT.md').includes('版本：'+version+'。'));
 for (const file of ['.github/workflows/ci.yml','.github/workflows/registry.yml']) {
   const pins=[...read(file).matchAll(/MOONBIT_INSTALL_VERSION:\s*(\S+)/g)].map(m=>m[1]);
   assert.ok(pins.length>0,file);
-  for(const pin of pins) assert.equal(pin,'0.10.14+7d59c7ec9',file);
+  for(const pin of pins) assert.equal(pin,JSON.parse(read('scripts/toolchain.json')).compilerVersion,file);
 }
+assert.ok(read('.github/workflows/ci.yml').includes('MOONLDIF_BASELINE_VERSION: '+JSON.parse(read('scripts/toolchain.json')).baselineCompilerVersion));
 assert.ok(read('.github/workflows/registry.yml').includes("default: '"+version+"'"),'Registry consumer must default to current version');
 console.log('Current manifests, compiled CLI, installation examples and attachment names agree: '+version);

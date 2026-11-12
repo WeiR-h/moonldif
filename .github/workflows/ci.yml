@@ -3,6 +3,8 @@ on:
   push:
   pull_request:
   workflow_dispatch:
+  schedule:
+    - cron: '17 1 * * 1'
 permissions:
   contents: read
 jobs:
@@ -13,7 +15,9 @@ jobs:
         os: [ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
     env:
-      MOONBIT_INSTALL_VERSION: 0.10.14+7d59c7ec9
+      MOONBIT_INSTALL_VERSION: 0.10.20+65efd5b93
+      MOONLDIF_BASELINE_VERSION: 0.10.14+7d59c7ec9
+      MOONLDIF_BASELINE_MOON_HOME: ${{ github.workspace }}/.tools/baseline-moon
     steps:
       - uses: actions/checkout@v7.0.1
         with:
@@ -46,6 +50,23 @@ jobs:
           echo "$HOME/.moon/bin" >> "$GITHUB_PATH"
       - name: Verify core, CLI and scenarios
         run: node scripts/verify.mjs
+      - name: Install isolated historical baseline compiler (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $env:MOONBIT_INSTALL_VERSION = $env:MOONLDIF_BASELINE_VERSION
+          $env:MOON_HOME = $env:MOONLDIF_BASELINE_MOON_HOME
+          $env:PATH = "$env:MOON_HOME/bin;$env:PATH"
+          Invoke-RestMethod https://cli.moonbitlang.com/install/powershell.ps1 | Invoke-Expression
+      - name: Install isolated historical baseline compiler (Ubuntu)
+        if: runner.os == 'Linux'
+        shell: bash
+        run: |
+          set -euo pipefail
+          export MOONBIT_INSTALL_VERSION="$MOONLDIF_BASELINE_VERSION"
+          export MOON_HOME="$MOONLDIF_BASELINE_MOON_HOME"
+          export PATH="$MOON_HOME/bin:$PATH"
+          curl -fsSL https://cli.moonbitlang.com/install/unix.sh | bash -s -- "$MOONBIT_INSTALL_VERSION"
       - name: Compare exact released baseline outputs
         run: python scripts/baseline-verify.py
       - name: Observe performance without shared-runner timing thresholds
@@ -62,7 +83,7 @@ jobs:
         run: |
           python scripts/package-cli.py
           python scripts/cli-consumer.py
-          python scripts/publication-privacy.py --archive _build/cli/moonldif-cli-v0.7.5.zip
+          python scripts/publication-privacy.py --archive _build/cli/moonldif-cli-v0.7.6.zip
       - uses: actions/upload-artifact@v7.0.1
         with:
           name: packages-${{ matrix.os }}
@@ -90,10 +111,30 @@ jobs:
         with:
           name: evidence-${{ matrix.os }}
           path: verification/local/
+  latest-toolchain:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-node@v7.0.0
+        with:
+          node-version: '24'
+      - name: Install current official stable toolchain
+        run: |
+          set -euo pipefail
+          curl -fsSL https://cli.moonbitlang.com/install/unix.sh | bash
+          echo "$HOME/.moon/bin" >> "$GITHUB_PATH"
+      - name: Check current toolchain, build, tests and examples
+        run: node scripts/verify.mjs
+      - uses: actions/upload-artifact@v7.0.1
+        if: always()
+        with:
+          name: latest-toolchain-evidence
+          path: verification/local/
   browser:
     runs-on: ubuntu-latest
     env:
-      MOONBIT_INSTALL_VERSION: 0.10.14+7d59c7ec9
+      MOONBIT_INSTALL_VERSION: 0.10.20+65efd5b93
       PAGES_BASE: /moonldif/
     steps:
       - uses: actions/checkout@v7.0.1
@@ -123,7 +164,7 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/v') && !contains(github.ref_name, '-')
     runs-on: ubuntu-latest
     env:
-      MOONBIT_INSTALL_VERSION: 0.10.14+7d59c7ec9
+      MOONBIT_INSTALL_VERSION: 0.10.20+65efd5b93
       PAGES_BASE: /moonldif/
     steps:
       - uses: actions/checkout@v7.0.1

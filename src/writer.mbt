@@ -1,7 +1,8 @@
 ///|
+#derive(Debug)
 pub suberror WriteError {
   InvalidDocument(String)
-} derive(Debug)
+}
 
 ///|
 fn folded(out : StringBuilder, line : String) -> Unit {

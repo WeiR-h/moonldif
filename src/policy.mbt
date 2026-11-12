@@ -1,9 +1,10 @@
 ///|
 /// Opt-in file-intent checks. These do not query directory state or schema.
+#derive(Eq, ToJson)
 pub(all) struct RiskPolicy {
   deny_clear : Bool
   deny_rename : Bool
-} derive(Eq, ToJson)
+}
 
 ///|
 pub fn RiskPolicy::default() -> RiskPolicy {

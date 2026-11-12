@@ -1,22 +1,23 @@
 ///|
 /// Host-computed identity of the exact analysed bytes, not a signature.
 /// Callers must supply the options used to create the report.
+#derive(Eq)
 pub(all) struct ReviewMetadata {
   input_sha256 : String
-  input_byte_length : Int
+  input_byte_length : Int32
   options : Options
   legacy_dn_spaces : Bool
   risk_policy : RiskPolicy
-} derive(Eq)
+}
 
 ///|
 fn ReviewMetadata::json(self : ReviewMetadata) -> Json {
   {
-    "allow_missing_version": self.options.allow_missing_version.to_json(),
-    "deny_delete": self.options.deny_delete.to_json(),
-    "deny_clear": self.risk_policy.deny_clear.to_json(),
-    "deny_rename": self.risk_policy.deny_rename.to_json(),
-    "legacy_dn_spaces": self.legacy_dn_spaces.to_json(),
+    "allow_missing_version": ToJson::to_json(self.options.allow_missing_version),
+    "deny_delete": ToJson::to_json(self.options.deny_delete),
+    "deny_clear": ToJson::to_json(self.risk_policy.deny_clear),
+    "deny_rename": ToJson::to_json(self.risk_policy.deny_rename),
+    "legacy_dn_spaces": ToJson::to_json(self.legacy_dn_spaces),
   }
 }
 
@@ -26,16 +27,16 @@ fn ReviewMetadata::json(self : ReviewMetadata) -> Json {
 pub fn Report::review_json(self : Report, metadata : ReviewMetadata) -> Json {
   let result = self.to_json(include_review=true)
   if result is Object(fields) {
-    fields["report_schema_version"] = (1).to_json()
+    fields["report_schema_version"] = ToJson::to_json(1)
     fields["source"] = {
-      "sha256": metadata.input_sha256.to_json(),
-      "byte_length": metadata.input_byte_length.to_json(),
+      "sha256": ToJson::to_json(metadata.input_sha256),
+      "byte_length": ToJson::to_json(metadata.input_byte_length),
       "identity_scope": "Exact analysed bytes; not a signature or authenticity proof",
     }
     fields["options"] = metadata.json()
-    fields["diagnostics_truncated"] = self.diagnostics
-      .any(d => d.code == "diagnostic-limit")
-      .to_json()
+    fields["diagnostics_truncated"] = ToJson::to_json(
+      self.diagnostics.any(d => d.code == "diagnostic-limit"),
+    )
   }
   result
 }

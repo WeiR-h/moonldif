@@ -9,15 +9,15 @@ test "paged library works on JS and Wasm GC and does not expose session state" {
   let page = session.page({ offset: 200, limit: 50, query: "", kind: "all", })
   assert_eq(
     snapshot_field(snapshot_field(page, "page"), "returned_items"),
-    (40).to_json(),
+    ToJson::to_json(40),
   )
   if snapshot_field(page, "summary") is Object(fields) {
-    fields["exit_code"] = (123).to_json()
+    fields["exit_code"] = ToJson::to_json(123)
   }
   assert_eq(session.exit_code(), 0)
   assert_eq(
     snapshot_field(session.page(PageQuery::default()), "exit_code"),
-    (0).to_json(),
+    ToJson::to_json(0),
   )
   let diff = SnapshotSession::new(
     b"version: 1\ndn: cn=a\ncn: old\n", b"version: 1\ndn: cn=a\ncn: value\n",
@@ -28,7 +28,7 @@ test "paged library works on JS and Wasm GC and does not expose session state" {
       snapshot_field(diff.page(PageQuery::default()), "page"),
       "total_items",
     ),
-    (1).to_json(),
+    ToJson::to_json(1),
   )
 }
 

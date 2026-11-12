@@ -14,7 +14,7 @@ pub fn batch_add(@moonldif.BatchReview, String, String, String) -> Unit
 
 pub fn batch_finish(@moonldif.BatchReview, String) -> String
 
-pub fn batch_remaining_bytes(@moonldif.BatchReview) -> Int
+pub fn batch_remaining_bytes(@moonldif.BatchReview) -> Int32
 
 pub fn batch_start(Bool, Bool, Bool, Bool, Bool) -> @moonldif.BatchReview
 
@@ -28,7 +28,7 @@ pub fn compare_exports_v2(String, String, String, String, Bool, Bool, String, St
 
 pub fn host_error(String, String) -> String
 
-pub fn paged_exit_code(PagingSession) -> Int
+pub fn paged_exit_code(PagingSession) -> Int32
 
 pub fn paged_page(PagingSession, String, String) -> String
 

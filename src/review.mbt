@@ -1,53 +1,55 @@
 ///|
+#derive(Eq)
 pub(all) struct ReviewItem {
   code : String
   level : String
-  record_index : Int
+  record_index : Int32
   dn : String
   attribute : String?
-  value_count : Int
+  value_count : Int32
   span : Span
   title : String
   reason : String
   action : String
-} derive(Eq)
+}
 
 ///|
+#derive(Eq)
 pub(all) struct Review {
   items : Array[ReviewItem]
-  total_items : Int
+  total_items : Int32
   truncated : Bool
   analysis_complete : Bool
-  input_exit_code : Int
-  record_count : Int
-} derive(Eq)
+  input_exit_code : Int32
+  record_count : Int32
+}
 
 ///|
 pub fn Review::to_json(self : Review) -> Json {
   {
-    "total_items": self.total_items.to_json(),
-    "truncated": self.truncated.to_json(),
-    "analysis_complete": self.analysis_complete.to_json(),
-    "input_exit_code": self.input_exit_code.to_json(),
-    "record_count": self.record_count.to_json(),
+    "total_items": ToJson::to_json(self.total_items),
+    "truncated": ToJson::to_json(self.truncated),
+    "analysis_complete": ToJson::to_json(self.analysis_complete),
+    "input_exit_code": ToJson::to_json(self.input_exit_code),
+    "record_count": ToJson::to_json(self.record_count),
     "scope": "File operation intent only; no LDAP execution or schema approval",
-    "items": self.items
-    .map(item => {
-      "code": item.code.to_json(),
-      "level": item.level.to_json(),
-      "record_index": item.record_index.to_json(),
-      "dn": item.dn.to_json(),
-      "attribute": match item.attribute {
-        Some(s) => s.to_json()
-        None => Json::null()
-      },
-      "value_count": item.value_count.to_json(),
-      "span": ToJson::to_json(item.span),
-      "title": item.title.to_json(),
-      "reason": item.reason.to_json(),
-      "action": item.action.to_json(),
-    })
-    .to_json(),
+    "items": ToJson::to_json(
+      self.items.map(item => {
+        "code": ToJson::to_json(item.code),
+        "level": ToJson::to_json(item.level),
+        "record_index": ToJson::to_json(item.record_index),
+        "dn": ToJson::to_json(item.dn),
+        "attribute": match item.attribute {
+          Some(s) => ToJson::to_json(s)
+          None => Json::null()
+        },
+        "value_count": ToJson::to_json(item.value_count),
+        "span": ToJson::to_json(item.span),
+        "title": ToJson::to_json(item.title),
+        "reason": ToJson::to_json(item.reason),
+        "action": ToJson::to_json(item.action),
+      }),
+    ),
   }
 }
 
@@ -56,11 +58,11 @@ fn push_review(
   items : Array[ReviewItem],
   code : String,
   level : String,
-  index : Int,
+  index : Int32,
   r : Record,
   span : Span,
   attribute : String?,
-  values : Int,
+  values : Int32,
   title : String,
   reason : String,
   action : String,

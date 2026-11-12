@@ -1,37 +1,42 @@
 ///|
 /// Decoded assertion bytes or opaque BER hex form. No directory schema or
 /// distinguishedNameMatch is applied by this syntax parser.
+#derive(Eq)
 pub(all) enum NameValue {
   Text(Bytes)
   Ber(Bytes)
-} derive(Eq)
+}
 
 ///|
+#derive(Eq)
 pub(all) struct NameAssertion {
   attribute : String
   value : NameValue
-  byte_offset : Int
-} derive(Eq)
+  byte_offset : Int32
+}
 
 ///|
+#derive(Eq)
 pub(all) struct RelativeName {
   assertions : Array[NameAssertion]
-} derive(Eq)
+}
 
 ///|
+#derive(Eq)
 pub(all) struct DistinguishedName {
   rdns : Array[RelativeName]
-} derive(Eq)
+}
 
 ///|
+#derive(Eq, ToJson)
 pub(all) struct NameError {
   code : String
-  byte_offset : Int
+  byte_offset : Int32
   reason : String
-} derive(Eq, ToJson)
+}
 
 ///|
-fn hex_digit(b : Byte) -> Int? {
+fn hex_digit(b : Byte) -> Int32? {
   let n = b.to_int()
   if n >= 48 && n <= 57 {
     Some(n - 48)
@@ -45,7 +50,7 @@ fn hex_digit(b : Byte) -> Int? {
 }
 
 ///|
-fn name_error(code : String, byte_offset : Int, reason : String) -> NameError {
+fn name_error(code : String, byte_offset : Int32, reason : String) -> NameError {
   { code, byte_offset, reason, }
 }
 
@@ -346,9 +351,9 @@ fn check_name_field(
 /// Diagnostics locate original physical fields even with Base64 or folding.
 pub fn check(
   data : Bytes,
-  options? : Options = Options::default(),
-  legacy_dn_spaces? : Bool = false,
-  risk_policy? : RiskPolicy = RiskPolicy::default(),
+  options~ : Options = Options::default(),
+  legacy_dn_spaces~ : Bool = false,
+  risk_policy~ : RiskPolicy = RiskPolicy::default(),
 ) -> Report {
   let report = parse(data, options~)
   let ds = report.diagnostics.copy()
@@ -396,9 +401,9 @@ pub fn check(
 ///|
 pub fn check_text(
   text : String,
-  options? : Options = Options::default(),
-  legacy_dn_spaces? : Bool = false,
-  risk_policy? : RiskPolicy = RiskPolicy::default(),
+  options~ : Options = Options::default(),
+  legacy_dn_spaces~ : Bool = false,
+  risk_policy~ : RiskPolicy = RiskPolicy::default(),
 ) -> Report {
   check(@utf8.encode(text[:]), options~, legacy_dn_spaces~, risk_policy~)
 }

@@ -288,10 +288,10 @@ test "snapshot result JSON is detached from reusable report" {
   let expected = r.to_text()
   let json = r.to_json()
   if json is Object(fields) {
-    fields["exit_code"] = (99).to_json()
+    fields["exit_code"] = ToJson::to_json(99)
     if fields.get("changes") is Some(Array(items)) {
       if items[0] is Object(item) {
-        item["dn"] = "tampered".to_json()
+        item["dn"] = ToJson::to_json("tampered")
       }
       items.clear()
     }

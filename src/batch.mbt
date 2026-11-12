@@ -1,7 +1,7 @@
 ///|
 priv struct BatchItem {
   label : String
-  code : Int
+  code : Int32
   report : Json
   text : String
   markdown : String
@@ -17,15 +17,15 @@ pub struct BatchReview {
   priv legacy_dn_spaces : Bool
   priv profile : Profile?
   priv profile_meta : Json
-  priv mut requested : Int
-  priv mut input_bytes : Int
+  priv mut requested : Int32
+  priv mut input_bytes : Int32
 }
 
 ///|
 pub fn BatchReview::new(
-  options? : Options = Options::default(),
-  risk_policy? : RiskPolicy = RiskPolicy::default(),
-  legacy_dn_spaces? : Bool = false,
+  options~ : Options = Options::default(),
+  risk_policy~ : RiskPolicy = RiskPolicy::default(),
+  legacy_dn_spaces~ : Bool = false,
 ) -> BatchReview {
   {
     items: [],
@@ -86,7 +86,7 @@ fn BatchReview::failure(
         {
           "code": "batch-input-error",
           "severity": "error",
-          "reason": reason.to_json(),
+          "reason": ToJson::to_json(reason),
         },
       ],
     },
@@ -108,7 +108,7 @@ pub fn BatchReview::add_unavailable(self : BatchReview, label : String) -> Unit 
 
 ///|
 /// Remaining cumulative accepted-input-byte budget, for bounded host I/O.
-pub fn BatchReview::remaining_bytes(self : BatchReview) -> Int {
+pub fn BatchReview::remaining_bytes(self : BatchReview) -> Int32 {
   32 * 1024 * 1024 - self.input_bytes
 }
 
@@ -155,7 +155,7 @@ pub fn BatchReview::add_bytes(
   }
   let json = report.review_json(metadata)
   if self.profile is Some(_) && json is Object(fields) {
-    fields["report_schema_version"] = (3).to_json()
+    fields["report_schema_version"] = ToJson::to_json(3)
     fields["profile"] = snapshot_copy_json(self.profile_meta)
     fields["change_limits"] = counts.unwrap()
   }
@@ -181,7 +181,7 @@ pub fn BatchReview::add_bytes(
 }
 
 ///|
-pub fn BatchReview::exit_code(self : BatchReview) -> Int {
+pub fn BatchReview::exit_code(self : BatchReview) -> Int32 {
   if self.requested == 0 ||
     self.requested > 50 ||
     self.items.any(item => item.code == 2) {
@@ -206,37 +206,46 @@ pub fn BatchReview::to_json(self : BatchReview) -> Json {
   let files : Array[Json] = []
   for i, item in self.items {
     files.push({
-      "index": i.to_json(),
-      "label": item.label.to_json(),
+      "index": ToJson::to_json(i),
+      "label": ToJson::to_json(item.label),
       "report": item.report,
     })
   }
   let json : Json = {
     "tool": "MoonLDIF",
-    "version": version().to_json(),
+    "version": ToJson::to_json(version()),
     "kind": "batch-review",
     "report_schema_version": 1,
-    "exit_code": self.exit_code().to_json(),
-    "status": (if self.exit_code() == 2 { "incomplete" } else { "complete" }).to_json(),
-    "analysis_complete": (self.exit_code() != 2).to_json(),
-    "requested_files": self.requested.to_json(),
-    "reported_files": self.items.length().to_json(),
-    "unreported_files": (self.requested - self.items.length()).to_json(),
-    "input_byte_budget_used": self.input_bytes.to_json(),
-    "passed_files": self.items.filter(i => i.code == 0).length().to_json(),
-    "blocked_files": self.items.filter(i => i.code == 1).length().to_json(),
-    "incomplete_or_error_files": self.items
-    .filter(i => i.code == 2)
-    .length()
-    .to_json(),
+    "exit_code": ToJson::to_json(self.exit_code()),
+    "status": ToJson::to_json(
+      if self.exit_code() == 2 {
+        "incomplete"
+      } else {
+        "complete"
+      },
+    ),
+    "analysis_complete": ToJson::to_json(self.exit_code() != 2),
+    "requested_files": ToJson::to_json(self.requested),
+    "reported_files": ToJson::to_json(self.items.length()),
+    "unreported_files": ToJson::to_json(self.requested - self.items.length()),
+    "input_byte_budget_used": ToJson::to_json(self.input_bytes),
+    "passed_files": ToJson::to_json(
+      self.items.filter(i => i.code == 0).length(),
+    ),
+    "blocked_files": ToJson::to_json(
+      self.items.filter(i => i.code == 1).length(),
+    ),
+    "incomplete_or_error_files": ToJson::to_json(
+      self.items.filter(i => i.code == 2).length(),
+    ),
     "options": self.options_json(),
-    "diagnostics": diagnostics.to_json(),
-    "files": files.to_json(),
+    "diagnostics": ToJson::to_json(diagnostics),
+    "files": ToJson::to_json(files),
   }
   if self.profile is Some(_) && json is Object(fields) {
-    fields["report_schema_version"] = (3).to_json()
+    fields["report_schema_version"] = ToJson::to_json(3)
     fields["profile"] = snapshot_copy_json(self.profile_meta)
-    fields["limit_scope"] = "per_file".to_json()
+    fields["limit_scope"] = ToJson::to_json("per_file")
   }
   json
 }
@@ -244,11 +253,11 @@ pub fn BatchReview::to_json(self : BatchReview) -> Json {
 ///|
 fn BatchReview::options_json(self : BatchReview) -> Json {
   {
-    "allow_missing_version": self.options.allow_missing_version.to_json(),
-    "deny_delete": self.options.deny_delete.to_json(),
-    "deny_clear": self.risk_policy.deny_clear.to_json(),
-    "deny_rename": self.risk_policy.deny_rename.to_json(),
-    "legacy_dn_spaces": self.legacy_dn_spaces.to_json(),
+    "allow_missing_version": ToJson::to_json(self.options.allow_missing_version),
+    "deny_delete": ToJson::to_json(self.options.deny_delete),
+    "deny_clear": ToJson::to_json(self.risk_policy.deny_clear),
+    "deny_rename": ToJson::to_json(self.risk_policy.deny_rename),
+    "legacy_dn_spaces": ToJson::to_json(self.legacy_dn_spaces),
   }
 }
 
@@ -351,8 +360,8 @@ pub fn BatchReview::to_markdown(self : BatchReview) -> String {
 ///|
 pub fn BatchReview::with_profile(
   profile : Profile,
-  profile_source_sha256? : String = "",
-  profile_effective_sha256? : String = "",
+  profile_source_sha256~ : String = "",
+  profile_effective_sha256~ : String = "",
 ) -> BatchReview raise QueryError {
   {
     items: [],

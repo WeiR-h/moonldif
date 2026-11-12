@@ -1,74 +1,84 @@
 ///|
+#derive(Eq, ToJson)
 pub(all) struct Span {
-  line : Int
-  end_line : Int
-} derive(Eq, ToJson)
+  line : Int32
+  end_line : Int32
+}
 
 ///|
+#derive(Eq)
 pub(all) enum Value {
   Inline(Bytes)
   External(String)
-} derive(Eq)
+}
 
 ///|
+#derive(Eq)
 pub(all) struct Attribute {
   name : String
   value : Value
   span : Span
-} derive(Eq)
+}
 
 ///|
+#derive(Eq)
 pub(all) struct Control {
   oid : String
   critical : Bool
   value : Value?
   span : Span
-} derive(Eq)
+}
 
 ///|
+#derive(Eq)
 pub(all) struct Modification {
   operation : String
   attribute : String
   values : Array[Attribute]
   span : Span
-} derive(Eq)
+}
 
 ///|
+#derive(Eq)
 pub(all) enum Body {
   Entry(Array[Attribute])
   Add(Array[Attribute])
   Delete
   Modify(Array[Modification])
   Rename(String, Bool, String?)
-} derive(Eq)
+}
 
 ///|
+#derive(Eq)
 pub(all) struct Record {
   dn : String
   controls : Array[Control]
   body : Body
   span : Span
-} derive(Eq)
+}
 
 ///|
+#derive(Eq)
 pub(all) struct Document {
   mode : String
   records : Array[Record]
-} derive(Eq)
+}
 
 ///|
+#derive(Eq, ToJson)
 pub(all) struct Diagnostic {
   code : String
   severity : String
   span : Span
   reason : String
-} derive(Eq, ToJson)
+}
 
 ///|
+#derive(Eq)
 pub(all) struct Options {
   allow_missing_version : Bool
   deny_delete : Bool
-} derive(Eq)
+}
 
 ///|
 pub fn Options::default() -> Options {
@@ -94,7 +104,7 @@ pub fn Report::status(self : Report) -> String {
 }
 
 ///|
-pub fn Report::exit_code(self : Report) -> Int {
+pub fn Report::exit_code(self : Report) -> Int32 {
   if self.status() != "complete" {
     2
   } else if self.diagnostics.any(d => d.severity == "policy") {
@@ -131,11 +141,11 @@ priv struct Line {
 }
 
 ///|
-fn single_line(line : Int) -> Span {
+fn single_line(line : Int32) -> Span {
   { line, end_line: line, }
 }
 
 ///|
 pub fn version() -> String {
-  "0.7.5"
+  "0.7.6"
 }

@@ -105,7 +105,7 @@ fn parse_control(line : Line, ds : Array[Diagnostic]) -> Control? {
 ///|
 fn read_attributes(
   lines : Array[Line],
-  start : Int,
+  start : Int32,
   ds : Array[Diagnostic],
 ) -> Array[Attribute] {
   let attrs = []
@@ -139,7 +139,7 @@ fn read_attributes(
 ///|
 fn read_modifications(
   lines : Array[Line],
-  start : Int,
+  start : Int32,
   ds : Array[Diagnostic],
 ) -> Array[Modification] {
   let mods : Array[Modification] = []
@@ -234,7 +234,7 @@ fn read_modifications(
 ///|
 fn read_rename(
   lines : Array[Line],
-  start : Int,
+  start : Int32,
   ds : Array[Diagnostic],
 ) -> Body {
   let mut rdn = ""
@@ -397,7 +397,7 @@ fn read_record(
 ///|
 /// Parse a bounded LDIF v1 buffer. Diagnostics retain partial records for
 /// inspection; callers must check exit_code before accepting the document.
-pub fn parse(data : Bytes, options? : Options = Options::default()) -> Report {
+pub fn parse(data : Bytes, options~ : Options = Options::default()) -> Report {
   let ds : Array[Diagnostic] = []
   let lines = logical_lines(data, ds)
   let records : Array[Record] = []
@@ -492,7 +492,7 @@ pub fn parse(data : Bytes, options? : Options = Options::default()) -> Report {
 ///|
 pub fn parse_text(
   text : String,
-  options? : Options = Options::default(),
+  options~ : Options = Options::default(),
 ) -> Report {
   parse(@utf8.encode(text[:]), options~)
 }

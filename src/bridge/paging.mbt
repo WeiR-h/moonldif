@@ -14,7 +14,7 @@ fn field(json : Json, key : String) -> Json {
 }
 
 ///|
-fn string_field(json : Json, key : String, fallback? : String = "") -> String {
+fn string_field(json : Json, key : String, fallback~ : String = "") -> String {
   match field(json, key) {
     String(s) => s
     _ => fallback
@@ -23,11 +23,11 @@ fn string_field(json : Json, key : String, fallback? : String = "") -> String {
 
 ///|
 fn bool_field(json : Json, key : String) -> Bool {
-  field(json, key) == true.to_json()
+  field(json, key) == ToJson::to_json(true)
 }
 
 ///|
-fn int_field(json : Json, key : String, fallback : Int) -> Int {
+fn int_field(json : Json, key : String, fallback : Int32) -> Int32 {
   match field(json, key) {
     Number(n, ..) => n.to_int()
     _ => fallback
@@ -127,7 +127,7 @@ fn start_session(
 
 ///|
 #export_name("paged_exit_code")
-pub fn paged_exit_code(session : PagingSession) -> Int {
+pub fn paged_exit_code(session : PagingSession) -> Int32 {
   match session {
     Review(s) => s.exit_code()
     Snapshot(s) => s.exit_code()
@@ -206,7 +206,7 @@ pub fn paged_report_next(handle : PagingCursor) -> String {
   }
   let json : Json = match chunk {
     None => { "done": true }
-    Some(s) => { "done": false, "chunk": s.to_json() }
+    Some(s) => { "done": false, "chunk": ToJson::to_json(s) }
   }
   json.stringify()
 }

@@ -1,5 +1,6 @@
 """Rebuild the exact released baseline and compare behavior; no registry override."""
 import json
+import os
 from pathlib import Path
 import shutil
 import subprocess
@@ -20,6 +21,9 @@ with zipfile.ZipFile(archive) as bundle:
     bundle.extractall(folder)
 if (ROOT / '.local-toolchain.json').exists():
     shutil.copyfile(ROOT / '.local-toolchain.json', folder / '.local-toolchain.json')
-subprocess.run(['node', 'scripts/build.mjs'], cwd=folder, check=True, timeout=120)
+baseline_env = os.environ.copy()
+if os.environ.get('MOONLDIF_BASELINE_MOON_HOME'):
+    baseline_env['MOON_HOME'] = os.environ['MOONLDIF_BASELINE_MOON_HOME']
+subprocess.run(['node', 'scripts/build.mjs'], cwd=folder, env=baseline_env, check=True, timeout=120)
 subprocess.run(['node', 'scripts/compatibility-verify.mjs', str(folder / 'dist/core.mjs')], cwd=ROOT, check=True, timeout=120)
 print(json.dumps({'baseline_commit': BASELINE, 'status': 'passed'}))

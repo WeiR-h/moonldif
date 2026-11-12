@@ -1,10 +1,11 @@
 ///|
+#derive(Eq)
 pub(all) struct PageQuery {
-  offset : Int
-  limit : Int
+  offset : Int32
+  limit : Int32
   query : String
   kind : String
-} derive(Eq)
+}
 
 ///|
 pub fn PageQuery::default() -> PageQuery {
@@ -55,42 +56,45 @@ fn page_matches(
 ///|
 fn page_result(
   summary : Json,
-  code : Int,
-  total : Int,
-  matched : Int,
+  code : Int32,
+  total : Int32,
+  matched : Int32,
   q : PageQuery,
   items : Array[Json],
-  all? : Bool = false,
+  all~ : Bool = false,
 ) -> Json {
   {
-    "report_schema_version": (if snapshot_field(summary, "profile") ==
-      Json::null() {
-      2
-    } else {
-      3
-    }).to_json(),
-    "exit_code": code.to_json(),
+    "report_schema_version": ToJson::to_json(
+      if snapshot_field(summary, "profile") == Json::null() {
+        2
+      } else {
+        3
+      },
+    ),
+    "exit_code": ToJson::to_json(code),
     "summary": snapshot_copy_json(summary),
     "page": {
-      "total_items": total.to_json(),
-      "matched_items": matched.to_json(),
-      "offset": q.offset.to_json(),
-      "limit": q.limit.to_json(),
-      "returned_items": items.length().to_json(),
-      "has_more": (q.offset < matched && items.length() < matched - q.offset).to_json(),
-      "query": q.query.to_json(),
-      "kind": q.kind.to_json(),
-      "selection": (if all { "all" } else { "page" }).to_json(),
+      "total_items": ToJson::to_json(total),
+      "matched_items": ToJson::to_json(matched),
+      "offset": ToJson::to_json(q.offset),
+      "limit": ToJson::to_json(q.limit),
+      "returned_items": ToJson::to_json(items.length()),
+      "has_more": ToJson::to_json(
+        q.offset < matched && items.length() < matched - q.offset,
+      ),
+      "query": ToJson::to_json(q.query),
+      "kind": ToJson::to_json(q.kind),
+      "selection": ToJson::to_json(if all { "all" } else { "page" }),
     },
-    "items": items.to_json(),
+    "items": ToJson::to_json(items),
   }
 }
 
 ///|
 priv struct ReviewRef {
-  record : Int
-  control : Int
-  modification : Int
+  record : Int32
+  control : Int32
+  modification : Int32
   code : String
   attribute : String?
 }
@@ -106,10 +110,10 @@ pub struct ReviewSession {
 /// Private parsed state is not shared with caller-owned Report/Document arrays.
 pub fn ReviewSession::new(
   input : Bytes,
-  options? : Options = Options::default(),
-  legacy_dn_spaces? : Bool = false,
-  risk_policy? : RiskPolicy = RiskPolicy::default(),
-  sha256? : String = "",
+  options~ : Options = Options::default(),
+  legacy_dn_spaces~ : Bool = false,
+  risk_policy~ : RiskPolicy = RiskPolicy::default(),
+  sha256~ : String = "",
 ) -> ReviewSession raise QueryError {
   review_session(
     input,
@@ -127,9 +131,9 @@ pub fn ReviewSession::new(
 pub fn ReviewSession::with_profile(
   input : Bytes,
   profile : Profile,
-  sha256? : String = "",
-  profile_source_sha256? : String = "",
-  profile_effective_sha256? : String = "",
+  sha256~ : String = "",
+  profile_source_sha256~ : String = "",
+  profile_effective_sha256~ : String = "",
 ) -> ReviewSession raise QueryError {
   review_session(
     input,
@@ -172,7 +176,7 @@ fn review_session(
   })
   if profile is Some(p) {
     if summary is Object(fields) {
-      fields["report_schema_version"] = (3).to_json()
+      fields["report_schema_version"] = ToJson::to_json(3)
       fields["profile"] = profile_metadata(
         p, "review", profile_source_sha256, profile_effective_sha256,
       )
@@ -245,12 +249,12 @@ fn review_session(
 }
 
 ///|
-pub fn ReviewSession::exit_code(self : ReviewSession) -> Int {
+pub fn ReviewSession::exit_code(self : ReviewSession) -> Int32 {
   self.report.exit_code()
 }
 
 ///|
-fn ReviewSession::item(self : ReviewSession, i : Int) -> Json {
+fn ReviewSession::item(self : ReviewSession, i : Int32) -> Json {
   let intent = self.index[i]
   let r = self.report.document.records[intent.record]
   // Reuse the existing rule descriptions on one selected intent, not a second rule engine.
@@ -282,8 +286,8 @@ fn ReviewSession::item(self : ReviewSession, i : Int) -> Json {
   if snapshot_field(json, "items") is Array(items) {
     let item = items[0]
     if item is Object(fields) {
-      fields["record_index"] = intent.record.to_json()
-      fields["item_index"] = i.to_json()
+      fields["record_index"] = ToJson::to_json(intent.record)
+      fields["item_index"] = ToJson::to_json(i)
     }
     item
   } else {
@@ -328,20 +332,21 @@ pub fn ReviewSession::page(
 }
 
 ///|
+#derive(ToJson)
 priv struct SnapshotItem {
   code : String
   dn : String
   attribute : String?
   before_span : Span?
   after_span : Span?
-  removed_value_count : Int
-  added_value_count : Int
-} derive(ToJson)
+  removed_value_count : Int32
+  added_value_count : Int32
+}
 
 ///|
 pub struct SnapshotSession {
   priv summary : Json
-  priv code : Int
+  priv code : Int32
   priv items : Array[SnapshotItem]
 }
 
@@ -349,11 +354,11 @@ pub struct SnapshotSession {
 pub fn SnapshotSession::new(
   before : Bytes,
   after : Bytes,
-  allow_missing_version? : Bool = false,
-  legacy_dn_spaces? : Bool = false,
-  before_sha256? : String? = None,
-  after_sha256? : String? = None,
-  ignored_attributes? : Array[String] = [],
+  allow_missing_version~ : Bool = false,
+  legacy_dn_spaces~ : Bool = false,
+  before_sha256~ : String? = None,
+  after_sha256~ : String? = None,
+  ignored_attributes~ : Array[String] = [],
 ) -> SnapshotSession {
   let items : Array[SnapshotItem] = []
   let result = snapshot_compare(
@@ -376,15 +381,15 @@ pub fn SnapshotSession::new(
 }
 
 ///|
-pub fn SnapshotSession::exit_code(self : SnapshotSession) -> Int {
+pub fn SnapshotSession::exit_code(self : SnapshotSession) -> Int32 {
   self.code
 }
 
 ///|
-fn SnapshotSession::item(self : SnapshotSession, i : Int) -> Json {
+fn SnapshotSession::item(self : SnapshotSession, i : Int32) -> Json {
   let json = ToJson::to_json(self.items[i])
   if json is Object(fields) {
-    fields["item_index"] = i.to_json()
+    fields["item_index"] = ToJson::to_json(i)
   }
   json
 }
@@ -415,20 +420,20 @@ pub fn SnapshotSession::page(
 /// Forward-only output. Consumers must finish successfully before publishing any chunks.
 pub struct ReportCursor {
   priv metadata : Json
-  priv item : (Int) -> Json
-  priv count : Int
+  priv item : (Int32) -> Json
+  priv count : Int32
   priv format : String
-  priv mut position : Int
-  priv mut bytes : Int
+  priv mut position : Int32
+  priv mut bytes : Int32
   priv mut failed : Bool
 }
 
 ///|
 fn report_cursor(
   summary : Json,
-  code : Int,
-  count : Int,
-  item : (Int) -> Json,
+  code : Int32,
+  count : Int32,
+  item : (Int32) -> Json,
   format : String,
 ) -> ReportCursor raise QueryError {
   if !["json", "markdown", "text"].contains(format) {
@@ -446,8 +451,8 @@ fn report_cursor(
   if metadata is Object(fields) {
     fields.remove("items") |> ignore
     if fields.get("page") is Some(Object(page)) {
-      page["returned_items"] = count.to_json()
-      page["has_more"] = false.to_json()
+      page["returned_items"] = ToJson::to_json(count)
+      page["has_more"] = ToJson::to_json(false)
     }
   }
   { metadata, item, count, format, position: -1, bytes: 0, failed: false, }
@@ -526,7 +531,7 @@ pub fn ReportCursor::next(self : ReportCursor) -> String? raise QueryError {
 }
 
 ///|
-pub fn page_text(page : Json, markdown? : Bool = false) -> String {
+pub fn page_text(page : Json, markdown~ : Bool = false) -> String {
   if markdown {
     let out = StringBuilder()
     out.write_string(report_heading(page))
@@ -617,10 +622,10 @@ pub fn SnapshotSession::with_profile(
   before : Bytes,
   after : Bytes,
   profile : Profile,
-  before_sha256? : String? = None,
-  after_sha256? : String? = None,
-  profile_source_sha256? : String = "",
-  profile_effective_sha256? : String = "",
+  before_sha256~ : String? = None,
+  after_sha256~ : String? = None,
+  profile_source_sha256~ : String = "",
+  profile_effective_sha256~ : String = "",
 ) -> SnapshotSession raise QueryError {
   let s = SnapshotSession::new(
     before,
@@ -632,7 +637,7 @@ pub fn SnapshotSession::with_profile(
     after_sha256~,
   )
   if s.summary is Object(fields) {
-    fields["report_schema_version"] = (3).to_json()
+    fields["report_schema_version"] = ToJson::to_json(3)
     fields["profile"] = profile_metadata(
       profile, "compare", profile_source_sha256, profile_effective_sha256,
     )

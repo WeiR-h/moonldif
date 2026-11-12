@@ -1,20 +1,20 @@
 ///|
 fn envelope(
-  code : Int,
+  code : Int32,
   output : String,
-  written? : String? = None,
-  markdown? : String? = None,
+  written~ : String? = None,
+  markdown~ : String? = None,
 ) -> String {
   let result : Json = {
     "action": "report",
-    "exit_code": code.to_json(),
-    "output": output.to_json(),
+    "exit_code": ToJson::to_json(code),
+    "output": ToJson::to_json(output),
     "markdown": match markdown {
-      Some(s) => s.to_json()
+      Some(s) => ToJson::to_json(s)
       None => Json::null()
     },
     "written": match written {
-      Some(s) => s.to_json()
+      Some(s) => ToJson::to_json(s)
       None => Json::null()
     },
   }
@@ -26,14 +26,14 @@ fn envelope(
 pub fn host_error(message : String, format : String) -> String {
   let r : Json = {
     "tool": "MoonLDIF",
-    "version": @ldif.version().to_json(),
+    "version": ToJson::to_json(@ldif.version()),
     "status": "invalid",
     "exit_code": 2,
     "diagnostics": [
       {
         "code": "execution-error",
         "severity": "error",
-        "reason": message.to_json(),
+        "reason": ToJson::to_json(message),
       },
     ],
   }
@@ -245,7 +245,7 @@ pub fn cli_plan(args_json : String) -> String {
       "--all cannot be combined with page or filter options.", format,
     )
   }
-  fn number_option(value : String) -> Int {
+  fn number_option(value : String) -> Int32 {
     if value.is_empty() || value.length() > 9 {
       return -1
     }
@@ -283,37 +283,39 @@ pub fn cli_plan(args_json : String) -> String {
     return host_error("Invalid page, page size, query or kind.", format)
   }
   let result : Json = {
-    "paged": paged.to_json(),
-    "all": all_items.to_json(),
+    "paged": ToJson::to_json(paged),
+    "all": ToJson::to_json(all_items),
     "page_query": {
-      "offset": ((page - 1) * limit).to_json(),
-      "limit": limit.to_json(),
-      "query": query.to_json(),
-      "kind": kind.to_json(),
+      "offset": ToJson::to_json((page - 1) * limit),
+      "limit": ToJson::to_json(limit),
+      "query": ToJson::to_json(query),
+      "kind": ToJson::to_json(kind),
     },
-    "action": (if args[0] == "batch" || args[0] == "compare" {
-      args[0]
-    } else {
-      "read"
-    }).to_json(),
-    "inputs": inputs.to_json(),
-    "command": args[0].to_json(),
-    "input": input.unwrap().to_json(),
+    "action": ToJson::to_json(
+      if args[0] == "batch" || args[0] == "compare" {
+        args[0]
+      } else {
+        "read"
+      },
+    ),
+    "inputs": ToJson::to_json(inputs),
+    "command": ToJson::to_json(args[0]),
+    "input": ToJson::to_json(input.unwrap()),
     "output_path": match output {
-      Some(s) => s.to_json()
+      Some(s) => ToJson::to_json(s)
       None => Json::null()
     },
-    "format": format.to_json(),
-    "compat": compat.to_json(),
-    "deny_delete": deny.to_json(),
-    "deny_clear": deny_clear.to_json(),
-    "deny_rename": deny_rename.to_json(),
-    "legacy_dn_spaces": legacy_spaces.to_json(),
-    "ignored_attributes": ignored_attributes.to_json(),
+    "format": ToJson::to_json(format),
+    "compat": ToJson::to_json(compat),
+    "deny_delete": ToJson::to_json(deny),
+    "deny_clear": ToJson::to_json(deny_clear),
+    "deny_rename": ToJson::to_json(deny_rename),
+    "legacy_dn_spaces": ToJson::to_json(legacy_spaces),
+    "ignored_attributes": ToJson::to_json(ignored_attributes),
   }
   if profile is Some(path) {
     if result is Object(fields) {
-      fields["profile_path"] = path.to_json()
+      fields["profile_path"] = ToJson::to_json(path)
     }
   }
   result.stringify()
@@ -563,7 +565,7 @@ pub fn compare_exports_v2(
 
 ///|
 #export_name("batch_remaining_bytes")
-pub fn batch_remaining_bytes(batch : @ldif.BatchReview) -> Int {
+pub fn batch_remaining_bytes(batch : @ldif.BatchReview) -> Int32 {
   batch.remaining_bytes()
 }
 

@@ -25,8 +25,8 @@ test "profile limits apply to all records and safe writer rejects violations" {
     query: "not-present",
     kind: "all",
   })
-  assert_eq(snapshot_field(page, "exit_code"), (1).to_json())
-  assert_eq(snapshot_field(page, "report_schema_version"), (3).to_json())
+  assert_eq(snapshot_field(page, "exit_code"), ToJson::to_json(1))
+  assert_eq(snapshot_field(page, "report_schema_version"), ToJson::to_json(3))
 }
 
 ///|
@@ -96,7 +96,7 @@ test "profile snapshot and batch share validated configuration" {
   assert_eq(batch.exit_code(), 0)
   assert_eq(
     snapshot_field(batch.to_json(), "limit_scope"),
-    "per_file".to_json(),
+    ToJson::to_json("per_file"),
   )
   batch.add_unavailable("missing")
   assert_eq(batch.exit_code(), 2)

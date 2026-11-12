@@ -10,7 +10,7 @@ pub struct Profile {
   priv risk : RiskPolicy
   priv legacy : Bool
   priv ignored : Array[String]
-  priv limits : Array[Int?]
+  priv limits : Array[Int32?]
 }
 
 ///|
@@ -80,7 +80,7 @@ fn profile_limit(
   value : Json,
   key : String,
   path : String,
-) -> Int? raise ProfileDetailError {
+) -> Int32? raise ProfileDetailError {
   if value is Object(fields) {
     match fields.get(key) {
       None => None
@@ -330,11 +330,12 @@ fn parse_profile_detail(data : Bytes) -> Profile raise ProfileDetailError {
 }
 
 ///|
+#derive(Eq, Debug, ToJson)
 pub(all) struct ProfileIssue {
   code : String
   path : String
   message : String
-} derive(Eq, Debug, ToJson)
+}
 
 ///|
 pub(all) enum ProfileValidation {
@@ -375,22 +376,24 @@ pub fn Profile::to_json(self : Profile) -> Json {
       "max_change_records", "max_delete_records", "max_clear_operations",
     ] {
     if self.limits[i] is Some(n) {
-      limits[key] = n.to_json()
+      limits[key] = ToJson::to_json(n)
     }
   }
   {
     "profile_version": 1,
     "common": {
-      "allow_missing_version": self.options.allow_missing_version.to_json(),
-      "legacy_dn_spaces": self.legacy.to_json(),
+      "allow_missing_version": ToJson::to_json(
+        self.options.allow_missing_version,
+      ),
+      "legacy_dn_spaces": ToJson::to_json(self.legacy),
     },
     "review": {
-      "deny_delete": self.options.deny_delete.to_json(),
-      "deny_clear": self.risk.deny_clear.to_json(),
-      "deny_rename": self.risk.deny_rename.to_json(),
+      "deny_delete": ToJson::to_json(self.options.deny_delete),
+      "deny_clear": ToJson::to_json(self.risk.deny_clear),
+      "deny_rename": ToJson::to_json(self.risk.deny_rename),
       "limits": Json::object(limits),
     },
-    "compare": { "ignored_attributes": self.ignored.to_json() },
+    "compare": { "ignored_attributes": ToJson::to_json(self.ignored) },
   }
 }
 
@@ -411,7 +414,7 @@ pub fn Profile::effective_json(
   }
   let config = self.to_json()
   let fields : Map[String, Json] = Map([])
-  fields["profile_version"] = (1).to_json()
+  fields["profile_version"] = ToJson::to_json(1)
   fields["common"] = snapshot_field(config, "common")
   fields[section] = snapshot_field(config, section)
   Json::object(fields)
@@ -421,7 +424,7 @@ pub fn Profile::effective_json(
 fn profile_evaluate(report : Report, profile : Profile) -> Json {
   let counts = [0, 0, 0]
   let first : Array[Span?] = [None, None, None]
-  fn count(i : Int, span : Span) -> Unit {
+  fn count(i : Int32, span : Span) -> Unit {
     counts[i] += 1
     if profile.limits[i] is Some(limit) {
       if counts[i] > limit && first[i] == None {
@@ -457,11 +460,11 @@ fn profile_evaluate(report : Report, profile : Profile) -> Json {
         "change-record-limit", "delete-record-limit", "clear-operation-limit",
       ][i]
     metrics.push({
-      "rule": key.to_json(),
-      "code": code.to_json(),
-      "actual": counts[i].to_json(),
-      "limit": profile.limits[i].to_json(),
-      "first_exceeded_span": first[i].to_json(),
+      "rule": ToJson::to_json(key),
+      "code": ToJson::to_json(code),
+      "actual": ToJson::to_json(counts[i]),
+      "limit": ToJson::to_json(profile.limits[i]),
+      "first_exceeded_span": ToJson::to_json(first[i]),
     })
     if first[i] is Some(span) {
       diagnose(
@@ -488,10 +491,10 @@ fn profile_evaluate(report : Report, profile : Profile) -> Json {
   }
   {
     "scope": "per_file",
-    "applicable": applicable.to_json(),
-    "counts_complete": (complete && applicable).to_json(),
-    "counts_are_lower_bounds": (!complete).to_json(),
-    "metrics": metrics.to_json(),
+    "applicable": ToJson::to_json(applicable),
+    "counts_complete": ToJson::to_json(complete && applicable),
+    "counts_are_lower_bounds": ToJson::to_json(!complete),
+    "metrics": ToJson::to_json(metrics),
   }
 }
 
@@ -527,9 +530,9 @@ fn profile_metadata(
     _ => raise InvalidQuery("Invalid configuration section.")
   }
   {
-    "applied_section": section.to_json(),
-    "source_sha256": source_sha.to_json(),
-    "effective_sha256": effective_sha.to_json(),
+    "applied_section": ToJson::to_json(section),
+    "source_sha256": ToJson::to_json(source_sha),
+    "effective_sha256": ToJson::to_json(effective_sha),
     "effective": config,
   }
 }
