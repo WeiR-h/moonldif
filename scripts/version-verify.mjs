@@ -16,6 +16,14 @@ for(const file of ['README.md','docs/CLI-DISTRIBUTION.md','examples/ci/README.md
   assert.ok(text.includes(version),file+' must identify current version');
 }
 assert.ok(read('docs/SUPPORT.md').includes('版本：'+version+'。'));
+for (const file of ['docs/ACCEPTANCE.md','docs/DEMO.md','docs/NEXT.md','docs/PERFORMANCE.md','docs/PUBLICATION.md','web/README.md']) {
+  assert.ok(read(file).split('\n')[0].includes(version),file+' current heading must identify '+version);
+}
+const toolchain=JSON.parse(read('scripts/toolchain.json'));
+assert.ok(read('docs/IMPLEMENTATION.md').includes('moonc '+toolchain.compilerVersion));
+assert.ok(read('docs/IMPLEMENTATION.md').includes('最低'+toolchain.minimumVersion));
+assert.ok(read('docs/PUBLICATION.md').includes('gh workflow run cli-consumer.yml --ref v'+version));
+
 for (const file of ['.github/workflows/ci.yml','.github/workflows/registry.yml']) {
   const pins=[...read(file).matchAll(/MOONBIT_INSTALL_VERSION:\s*(\S+)/g)].map(m=>m[1]);
   assert.ok(pins.length>0,file);

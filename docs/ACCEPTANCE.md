@@ -1,4 +1,22 @@
-# 0.7.5 当前验收对照
+# 0.7.6 当前验收对照
+
+更新日期：2026-11-12。按提供的九项工程验收要求核对；当前维护版适配官方moonc0.10.20+65efd5b93，源码最低0.10.20。产品范围为LDIF文件读写与离线预检。
+
+| 要求 | 当前实现与证据 | 核查结果 |
+|---|---|---|
+| MoonBit主要实现，moonc不低于0.10.14 | [实现分工](IMPLEMENTATION.md)、[实际工具链与验证](../verification/2026-11-12-v0.7.6/summary.json) | 解析、规则、比较、报告和写回为MoonBit；当前验证0.10.20满足赛事最低要求，当前源码也明确要求0.10.20 |
+| 公开GitHub，提交清晰 | [仓库](https://github.com/WeiR-h/moonldif)、[正式源码](https://github.com/WeiR-h/moonldif/commit/bf6a69e909489f99d17fa6c25ee2e14b8b81b38d)、[发行](https://github.com/WeiR-h/moonldif/releases/tag/v0.7.6) | 兼容修复与交付证据按实际阶段提交，保留历史版本 |
+| 结构清晰，核心功能完成 | [架构](ARCHITECTURE.md)、[支持矩阵](SUPPORT.md)、[公共API](../src/pkg.generated.mbti) | 支持范围内的解析、预检、审阅、比较和安全写回回归通过 |
+| README目标、安装、使用与示例可复现 | [README](../README.md)、[CLI安装](CLI-DISTRIBUTION.md)、[双平台注册表消费](https://github.com/WeiR-h/moonldif/actions/runs/43181052647) | 四类入口清楚；公开库和CLI可从独立工程安装运行 |
+| CI覆盖检查、构建和测试 | [工作流](../.github/workflows/ci.yml)、[正式标签CI](https://github.com/WeiR-h/moonldif/actions/runs/43181018433) | Windows/Ubuntu、Chromium/Firefox通过；安装后核对完整编译器版本，配置每周官方当前稳定版检查 |
+| 至少一个可运行样例 | [三个场景](SCENARIOS.md)、[合成示例](../examples)、[CI示例](../examples/ci/README.md) | 样例及独立CLI消费验证通过 |
+| 核心路径测试 | [本轮证据](../verification/2026-11-12-v0.7.6/README.md)、[失败恢复](RECOVERY.md) | JS/Wasm GC、317项旧输出、独立参考、双浏览器和失败恢复均通过；不以数量代替正确性 |
+| 发布mooncakes | [0.7.6库包](https://mooncakes.io/docs/WeiR-h/moonldif@0.7.6)、[双平台精确安装](https://github.com/WeiR-h/moonldif/actions/runs/43181052647) | 真实注册表新工程消费通过JS/Wasm GC；本机也已复验 |
+| OSI开源许可与来源合规 | [Apache-2.0](../LICENSE)、[来源声明](../THIRD_PARTY.md)、[发行附件](https://github.com/WeiR-h/moonldif/releases/tag/v0.7.6) | CLI及网页包含所打包MoonBit标准库的许可说明，参考依赖来源明确 |
+
+以上为工程核查结果。个人完整验收、真实试用、官方最终验收与奖项分别记录，不能由自动化测试代替。当前发布状态见[STATUS](STATUS.md)。以下保留历史对照。
+
+# 0.7.5 历史验收对照
 
 按提供的九项验收指南核对。声明范围是 LDIF 读写与离线预检，不包含 LDAP 服务器写入、Schema 验证或导入成功保证。
 

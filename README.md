@@ -157,6 +157,8 @@ if report.exit_code() == 0 {
 
 ## 项目资料
 
+- [开发协作说明](AGENTS.md)：工具链、职责边界、验证和交付约定。
+
 - [获奖项目对标与交付目标](docs/AWARD_TARGET.md)：官方依据、实际差距和后续门槛。
 - [规范覆盖表](docs/CONFORMANCE.md)：RFC 示例、勘误与限制。
 - [支持矩阵](docs/SUPPORT.md)：范围、限制与退出码。
