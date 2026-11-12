@@ -16,7 +16,7 @@ for(const file of ['README.md','docs/CLI-DISTRIBUTION.md','examples/ci/README.md
   assert.ok(text.includes(version),file+' must identify current version');
 }
 assert.ok(read('docs/SUPPORT.md').includes('版本：'+version+'。'));
-for (const file of ['docs/ACCEPTANCE.md','docs/DEMO.md','docs/NEXT.md','docs/PERFORMANCE.md','docs/PUBLICATION.md','web/README.md']) {
+for (const file of ['docs/ACCEPTANCE.md','docs/BROWSER_QA.md','docs/DEMO.md','docs/NEXT.md','docs/PERFORMANCE.md','docs/PUBLICATION.md','web/README.md']) {
   assert.ok(read(file).split('\n')[0].includes(version),file+' current heading must identify '+version);
 }
 const toolchain=JSON.parse(read('scripts/toolchain.json'));

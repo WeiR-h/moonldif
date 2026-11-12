@@ -26,7 +26,7 @@ level 是审阅优先级，不是服务器错误或事故概率。内容文件�
 
 文本报告显示目标 DN、属性名与给定值数量；网页在属性审阅项中直接显示目标 DN，便于区分批量文件中的同名属性。两种报告都不展开属性值，但 DN 本身可能包含用户数据，分享报告时需自行判断。
 
-只保存前 200 个审阅项，但继续计算已识别操作的总数并设置 truncated。截断不改变 LDIF 格式检查结果；界面要求分段审阅，不能把列表尾部未显示当作没有其他影响。不完整输入明确标记 analysis_complete=false；已保留的项目不是对全部输入的完整审查。
+旧 `Report::review()` 与默认CLI只保留前200项，同时计算完整已识别总数并设置truncated；截断不改变格式或风险结果。当前工作台及 `ReviewSession` 支持全量搜索、分页与完整报告，见[分页接口](PAGINATION.md)。不完整输入仍标记analysis_complete=false，已识别的项目不代表未知部分已被完整分析。
 
 接口提供 `Review::to_json()` 与 `Review::to_text()`；JSON 中可选 attribute 使用 string/null，index 从 0 开始，行号从 1 开始。现有 Report 也可使用 `to_json(include_review=true)`。
 
