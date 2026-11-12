@@ -1,6 +1,6 @@
-# 0.7.6 兼容维护进度
+# 0.7.6 兼容维护完成
 
-2026-11-12：已适配当前官方moonc0.10.20+65efd5b93，JS/Wasm GC核心、CLI、317项冻结旧输出及归档消费验证通过。远端CI与正式发布正在核对；未完成前不记为同版本交付完成。
+2026-11-12：已适配当前官方moonc0.10.20+65efd5b93，JS/Wasm GC核心、CLI、317项冻结旧输出及归档消费验证通过。Windows/Ubuntu、Chromium/Firefox精确标签CI和Pages部署全部通过；GitHub/mooncakes/CLI/Pages同版本交付完成。双平台注册表与公开CLI独立安装通过，本机全新注册表消费通过JS/Wasm GC。
 
 [维护说明](MAINTENANCE-2026-11.md)、[本轮证据](../verification/2026-11-12-v0.7.6/README.md)。以下保留历史记录。
 

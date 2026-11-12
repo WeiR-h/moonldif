@@ -1,0 +1,58 @@
+{
+  "date": "2026-11-12",
+  "version": "0.7.6",
+  "source_commit": "bf6a69e909489f99d17fa6c25ee2e14b8b81b38d",
+  "status": "delivered",
+  "toolchain": {
+    "moon": "0.1.20261104 (940aa18)",
+    "moonc": "0.10.20+65efd5b93",
+    "moonrun": "0.1.20261104 (940aa18)",
+    "official_channel": "latest stable",
+    "official_archive_sha256_verified": true,
+    "windows_toolchain_sha256": "bdff9a3b2d7c61a3adae2fe09221d3de63effc6cab28bfa0cbeb94fb0d529d79",
+    "core_archive_sha256": "d7982eed233e0c4f933f566274cc9777466447e0d5b633006e8bf18975c7c833"
+  },
+  "checks": {
+    "windows_ubuntu_ci": "passed",
+    "chromium_firefox_ci": "passed",
+    "js_core_tests": 66,
+    "wasm_gc_core_tests": 66,
+    "frozen_output_comparisons": 317,
+    "cli_consumer_cases": 19,
+    "independent_reference": "passed",
+    "snapshot_models": 72,
+    "openldap_fixtures": 6,
+    "ldap_sdk_cases": 27,
+    "rfc_examples": 7,
+    "moonldap_adapter_tests": 4,
+    "local_registry_install_js_wasm_gc": "passed",
+    "dual_platform_registry_install": "passed",
+    "dual_platform_public_cli_install": "passed",
+    "scale_cases": "passed",
+    "pages_deployment": "passed"
+  },
+  "ci": {
+    "source_ci": "https://github.com/WeiR-h/moonldif/actions/runs/43179204727",
+    "tag_ci_pages": "https://github.com/WeiR-h/moonldif/actions/runs/43181018433",
+    "registry_consumer": "https://github.com/WeiR-h/moonldif/actions/runs/43181052647",
+    "public_cli_consumer": "https://github.com/WeiR-h/moonldif/actions/runs/43181058519"
+  },
+  "public": {
+    "public_url": "https://weir-h.github.io/moonldif/",
+    "http_index_ok": true,
+    "asset_path": "/moonldif/assets/index-QvzToqkT.js",
+    "app_contains_0_7_6": true,
+    "app_sha256": "df5ae62586e9c4c8dc9386a2c1c452e9b5f19b97abf11752bcd819d7a76e12e4"
+  },
+  "browser_validation": {
+    "method": "existing Playwright Chromium/Firefox suite in Ubuntu CI",
+    "browser_plugin": "not available",
+    "local_windows_browser_download": "interrupted because download was slow; not counted as a local browser pass",
+    "mobile": "viewport simulation in suite; not a real phone"
+  },
+  "limitations": [
+    "MoonLDAP upstream dependency emits deprecation warnings; pinned sources unchanged",
+    "Only supported JS and Wasm GC backends tested; no server import or schema validation",
+    "No organizer acceptance or award inferred from engineering tests"
+  ]
+}

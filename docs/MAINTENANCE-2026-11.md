@@ -39,4 +39,4 @@ CI固定版本来自 `scripts/toolchain.json`，安装后核对实际moonc完整
 
 ## 交付状态
 
-本地兼容修复已验证；GitHub CI、注册表、CLI附件与Pages逐项完成后更新[状态](STATUS.md)和[本轮证据](../verification/2026-11-12-v0.7.6/README.md)。此前0.7.5发行事实保留在历史记录中。
+本地兼容修复及Windows/Ubuntu、Chromium/Firefox精确标签CI全部通过。GitHub、mooncakes0.7.6和Pages已同版本交付；双平台注册表、公开CLI独立安装通过。本机也通过全新注册表工程JS/Wasm GC测试。完整链接和资源指纹见[本轮证据](../verification/2026-11-12-v0.7.6/README.md)与[状态](STATUS.md)。此前0.7.5发行事实保留在历史记录中。

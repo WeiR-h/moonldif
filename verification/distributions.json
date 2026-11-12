@@ -1,5 +1,20 @@
 [
   {
+    "version": "v0.7.6",
+    "source_commit": "bf6a69e909489f99d17fa6c25ee2e14b8b81b38d",
+    "github_release": "https://github.com/WeiR-h/moonldif/releases/tag/v0.7.6",
+    "archive": "WeiR-h-moonldif-0.7.6.zip",
+    "bytes": 5616175,
+    "sha256": "4b956828c87ecb7a6186e464d5d3d646cd25867dc00d960aa16e05ac3105a647",
+    "download_url": "https://github.com/WeiR-h/moonldif/releases/download/v0.7.6/WeiR-h-moonldif-0.7.6.zip",
+    "cli": {
+      "archive": "moonldif-cli-v0.7.6.zip",
+      "bytes": 134609,
+      "sha256": "a33f681a27bd9e8f37795039a9d68abecef7f1509f504ae6ed412b05e383331e",
+      "download_url": "https://github.com/WeiR-h/moonldif/releases/download/v0.7.6/moonldif-cli-v0.7.6.zip"
+    }
+  },
+  {
     "version": "v0.7.3",
     "source_commit": "e5429fc3669fae09f9441693d2cd5dea0ec7e26d",
     "github_release": "https://github.com/WeiR-h/moonldif/releases/tag/v0.7.3",
